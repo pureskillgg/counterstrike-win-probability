@@ -57,4 +57,4 @@ The rows come from `evaluation/build_gdt_rows_cache.py` (the cache, for the inte
 
 1. **The intern window has predictions only for v4, v6 and the expanded retrain.** Positions, graph, set, GRU and lag need predictions on those 653 matches before they can be compared on the intern protocol. Positions need the position features for those days. The graph and set models need player tensors built for them.
 2. **Coverage.** The positions, graph and set predictions cover every other second. The intern's README asks for every second, so their GDT is on a subsample. Rerunning them on every second would meet the protocol.
-3. **Training seeds.** Two extra seeds for the control and expanded runs are running. Until they land, a gain of about 0.0005 in log loss is not separated from seed noise.
+3. **Training seeds.** Three seeds each for the control and the expanded run are done. The expanded run beats the control on every seed, by 0.00057 on average, against a control spread of about 0.00005 (`docs/RESULTS.md`). Seed-averaged intervals by situation are still to do.
