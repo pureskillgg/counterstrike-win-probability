@@ -1,0 +1,293 @@
+[
+ {
+  "id": "W1-winprob-false-text-is-true",
+  "file": "scripts/model/winprob.py",
+  "find": "return 1.0 if k in _TRUE else 0.0 if k in _FALSE else None",
+  "replace": "return 1.0 if k in _TRUE or k == \"false\" else 0.0 if k in _FALSE else None",
+  "description": "_flag() maps the text 'false' to 1 (planted). Expected to survive today: stress check 10 only exercises truthy spellings, and fuzz GARBAGE never sends the string 'false'. Needs a falsy-spelling check: 'false', 'no', '0', 'n', 'f' must equal bomb_planted=0.",
+  "real_world_bug": "A live feed that sends bomb_planted as the text 'false' is answered as a planted bomb (wrong p, and a timer-terminal path for unplanted rounds).",
+  "should_be_caught_by": [
+   "stress"
+  ],
+  "valid": true
+ },
+ {
+  "id": "W2-winprob-unseen-map-in-scope",
+  "file": "scripts/model/winprob.py",
+  "find": "IN_SCOPE_MAPS = (\"de_ancient\", \"de_anubis\", \"de_cache\", \"de_dust2\", \"de_inferno\", \"de_mirage\", \"de_nuke\")",
+  "replace": "IN_SCOPE_MAPS = (\"de_ancient\", \"de_anubis\", \"de_cache\", \"de_dust2\", \"de_inferno\", \"de_mirage\", \"de_nuke\", \"de_vertigo\")",
+  "description": "de_vertigo is added to the in-scope list, so an unseen map gets status ok and reliable True. Expected to be caught by stress check 2 (de_vertigo must be out_of_scope) and check 10 (map must carry reliable False).",
+  "real_world_bug": "An unseen map is served as if it were trained, with an unwarranted reliable flag.",
+  "should_be_caught_by": [
+   "stress"
+  ],
+  "valid": true
+ },
+ {
+  "id": "W3-winprob-bool-accepted-as-number",
+  "file": "scripts/model/winprob.py",
+  "find": "if isinstance(x, bool):",
+  "replace": "if isinstance(x, bool) and False:",
+  "description": "_num() stops rejecting Python booleans, so True becomes 1.0 wherever a number is read (seconds, counts, extra inputs). Expected to survive today: no check asserts that a bool where a number belongs gives invalid_input; stress 5 and 10 use None, strings, NaN and negatives only.",
+  "real_world_bug": "A feed that puts true/false into alive_ct or seconds_since_round_live is silently treated as 1 or 0 instead of rejected.",
+  "should_be_caught_by": [
+   "stress"
+  ],
+  "valid": true
+ },
+ {
+  "id": "W4-winprob-dead-filter-negative-only",
+  "file": "scripts/model/winprob.py",
+  "find": "if float(q[\"health\"]) <= 0.0:",
+  "replace": "if float(q[\"health\"]) < 0.0:",
+  "description": "_clean_players keeps dead rows with health exactly 0, so they count as alive. Expected to be caught by stress check 10 (dead rows must not change the answer and must be reported).",
+  "real_world_bug": "Dead players reported with health 0 are counted as alive, corrupting alive counts and loadout sums.",
+  "should_be_caught_by": [
+   "stress"
+  ],
+  "valid": true
+ },
+ {
+  "id": "W5-winprob-t-wiped-ignores-plant",
+  "file": "scripts/model/winprob.py",
+  "find": "if at == 0 and not planted:",
+  "replace": "if at == 0:",
+  "description": "The all-T-dead terminal (p_ct_win 1.0) also fires when the bomb is planted, where CT still has to defuse. Stress check 4 only tests the unplanted case, so it survives there. Parity should catch it: planted rows with alive_t 0 are answered 'terminal' and parity counts non-ok rows as failures.",
+  "real_world_bug": "The service reports a certain CT win as soon as the last T dies, even after the plant, so a live feed shows 100 percent during the defuse.",
+  "should_be_caught_by": [
+   "parity"
+  ],
+  "valid": true
+ },
+ {
+  "id": "W6-winprob-predict-many-slot-order",
+  "file": "scripts/model/winprob.py",
+  "find": "for (i, pr), v in zip(items, p):",
+  "replace": "for (i, pr), v in zip(items[::-1], p):",
+  "description": "predict_many writes each batched result into the wrong slot (item list reversed against the booster output). Expected to be caught by stress check 7 (batch == single) and by parity, which runs predict_many.",
+  "real_world_bug": "Batched scoring returns probabilities for other states in the same batch, silently.",
+  "should_be_caught_by": [
+   "stress",
+   "parity"
+  ],
+  "valid": true
+ },
+ {
+  "id": "F1-snapshot-armor-count-every-player",
+  "file": "scripts/model/snapshot_features.py",
+  "find": "a[\"armor_n\"] += 1 if _n(p, \"armor\") > 0 else 0",
+  "replace": "a[\"armor_n\"] += 1 if _n(p, \"armor\") >= 0 else 0",
+  "description": "Every living player counts as armored, including players with 0 armor. test_snapshot_parity compares this with the polars armor_n (armor > 0) and should fail. Parity on real rows should also fail against the frozen pipeline predictions (not yet run).",
+  "real_world_bug": "Unarmored players (pistol rounds, eco) are counted as armored, inflating the team armor counts.",
+  "should_be_caught_by": [
+   "unit_parity",
+   "parity"
+  ],
+  "valid": true
+ },
+ {
+  "id": "F2-snapshot-integer-side-codes-swapped",
+  "file": "scripts/model/snapshot_features.py",
+  "find": "3: SIDE_CT, 2: SIDE_T}",
+  "replace": "3: SIDE_T, 2: SIDE_CT}",
+  "description": "Integer side codes (3 = CT, 2 = T) are swapped in the serving side map, while string codes stay right. The real status and grid rows are integer-coded, so alive counts and both aggregates flip sides. Expected to be caught by parity on the real table; stress 6b may or may not, because it uses mixed side spellings.",
+  "real_world_bug": "CT and T loadouts are swapped for every integer-coded feed, so the model reads each side as the other.",
+  "should_be_caught_by": [
+   "parity"
+  ],
+  "valid": true
+ },
+ {
+  "id": "F3-wpitems-smg-list-drops-mp9",
+  "file": "scripts/model/wp_items.py",
+  "find": "SMG = (17, 19, 23, 24, 26, 33, 34)",
+  "replace": "SMG = (17, 19, 23, 24, 26, 33)",
+  "description": "The SMG item list loses code 34 (mp9). Training and serving import the same constant, so test_snapshot_parity cannot see it. Parity should still catch it, because its reference predictions were frozen before the edit. No check ties item codes to weapon names; a golden code-to-name test would catch it without frozen predictions.",
+  "real_world_bug": "A weapon-code typo changes the SMG count of every player holding that weapon, with no visible error.",
+  "should_be_caught_by": [
+   "parity"
+  ],
+  "valid": true
+ },
+ {
+  "id": "F4-features-status-ak-counts-awp-code",
+  "file": "scripts/model/features_status.py",
+  "find": "(p == 7).sum().alias(\"ak\")",
+  "replace": "(p == 9).sum().alias(\"ak\")",
+  "description": "The polars training feature st_ak counts AWP (code 9). test_snapshot_parity compares it with the serving AK count and should fail. parity_check does not import features_status and reads frozen predictions, so it cannot see this until the export is re-run.",
+  "real_world_bug": "Training features differ from serving features, so the trained model is fed inputs the live service never produces.",
+  "should_be_caught_by": [
+   "unit_parity"
+  ],
+  "valid": true
+ },
+ {
+  "id": "F5-features-status-inconsistent-filter-and",
+  "file": "scripts/model/features_status.py",
+  "find": "J.filter((pl.col(\"n_ct\") != pl.col(\"alive_ct\")) | (pl.col(\"n_t\") != pl.col(\"alive_t\")))",
+  "replace": "J.filter((pl.col(\"n_ct\") != pl.col(\"alive_ct\")) & (pl.col(\"n_t\") != pl.col(\"alive_t\")))",
+  "description": "inconsistent_rounds() flags a round only when both side counts disagree with the grid, so rounds where one side disagrees stay in training. Effect is small. Parity sees it only if a sampled row falls in such a round (alive_count_mismatch_rows), so it is caught by chance. A deterministic check would verify table counts equal grid counts at every tick of every exported round.",
+  "real_world_bug": "Rounds where the player table and the event log disagree (known data flaws) enter training, adding noise the live service never sees.",
+  "should_be_caught_by": [
+   "parity"
+  ],
+  "valid": true
+ },
+ {
+  "id": "F6-wpitems-diff-fields-drop-awp",
+  "file": "scripts/model/wp_items.py",
+  "find": "DIFF_FIELDS = [\"hp\", \"rifle\", \"equip\", \"armor_n\", \"awp\", \"smg\"]",
+  "replace": "DIFF_FIELDS = [\"hp\", \"rifle\", \"equip\", \"armor_n\", \"smg\"]",
+  "description": "The serving path stops emitting st_awp_diff. The model input becomes NaN (warning 'model input(s) not given') and predictions shift. test_snapshot_parity loops only over the keys the Python side emits, so it misses the missing key; parity should catch it through the frozen predictions. Needs a key-set equality check against the polars column list.",
+  "real_world_bug": "A refactor drops a derived feature from the serving path, and the model silently receives NaN for it.",
+  "should_be_caught_by": [
+   "parity"
+  ],
+  "valid": true
+ },
+ {
+  "id": "G1-grid-one-extra-point-per-round",
+  "file": "scripts/data/make_grid.py",
+  "find": "n = np.maximum(0, -(-(end - freeze - off) // TICK)).astype(np.int64)",
+  "replace": "n = (np.maximum(0, -(-(end - freeze - off) // TICK)) + 1).astype(np.int64)",
+  "description": "Adds one grid point per round after the decisive event. e2e D6 should catch the rows with the CT side wiped; parity should catch the terminal post-round rows once the export is re-run. Requires make_grid and export to be re-run. A check that every row lies strictly before end_eff would catch every round; e2e does not have it today.",
+  "real_world_bug": "Post-round states are trained on, and scored as if live, biasing the probability near the end of a round.",
+  "should_be_caught_by": [
+   "e2e",
+   "parity"
+  ],
+  "valid": true
+ },
+ {
+  "id": "G2-grid-planted-flag-one-tick-late",
+  "file": "scripts/data/make_grid.py",
+  "find": "planted = (plant >= 0) & (ts >= plant)",
+  "replace": "planted = (plant >= 0) & (ts > plant)",
+  "description": "The bomb flag turns on one tick late at the plant second. Check D5 tests only that seconds_since_plant and the flag agree, so this survives. e2e should check bomb_planted == (tick >= rounds.plant_tick) against the raw round table. The effect is one row per planted round, but it is a systematic label error.",
+  "real_world_bug": "Off-by-one in the event-to-grid mapping: the state at the plant tick is reported as not planted.",
+  "should_be_caught_by": [
+   "e2e"
+  ],
+  "valid": true
+ },
+ {
+  "id": "G3-grid-clock-feature-one-second-behind",
+  "file": "scripts/data/make_grid.py",
+  "find": "\"seconds_since_round_live\": ((ts - freeze[ridx]) / TICK).astype(np.float32),",
+  "replace": "\"seconds_since_round_live\": ((ts - freeze[ridx] - TICK) / TICK).astype(np.float32),",
+  "description": "The clock feature lags the tick by one second while alive counts and the bomb state stay on the true tick. Every internal check reads the same shifted column (D3 uses the separate 'second' column, parity uses the same grid), so this survives. e2e should compare seconds_since_round_live with (tick - freeze) / 64 from the raw round table.",
+  "real_world_bug": "The clock feature is one second off relative to the game state the service receives, so the live clock and the training clock disagree.",
+  "should_be_caught_by": [
+   "e2e"
+  ],
+  "valid": true
+ },
+ {
+  "id": "G4-grid-label-inverted",
+  "file": "scripts/data/make_grid.py",
+  "find": "label = (R[\"final\"].to_numpy().astype(np.int64) == CT).astype(np.int8)[ridx]",
+  "replace": "label = (R[\"final\"].to_numpy().astype(np.int64) == T).astype(np.int8)[ridx]",
+  "description": "The grid label is inverted (T wins labelled 1). Should be caught by e2e D7 (grid label equals the round table final label) and by G2 calibration (negative slope), after make_grid and export are re-run. Parity and stress cannot see it, because training and serving agree with each other.",
+  "real_world_bug": "Labels are flipped in the materialised grid, so the model learns the reverse probability.",
+  "should_be_caught_by": [
+   "e2e"
+  ],
+  "valid": true
+ },
+ {
+  "id": "P1-prepare-majority-t-labelled-ct",
+  "file": "scripts/data/prepare.py",
+  "find": ".when((pl.col(\"votes_t\") >= 2) & (pl.col(\"votes_t\") > pl.col(\"votes_ct\"))).then(T)",
+  "replace": ".when((pl.col(\"votes_t\") >= 2) & (pl.col(\"votes_t\") > pl.col(\"votes_ct\"))).then(CT)",
+  "description": "Non-bomb rounds whose majority vote is T are labelled CT. e2e C3 (2026 final equals the recorded winner) and C4 (2024 relabels only first rounds of a half in build 9961) should fail after prepare.py is re-run.",
+  "real_world_bug": "The label vote's side mapping is reversed in one branch, so most non-bomb T-win rounds flip.",
+  "should_be_caught_by": [
+   "e2e"
+  ],
+  "valid": true
+ },
+ {
+  "id": "P2-prepare-scope-accepts-out-of-pool-and-hostage",
+  "file": "scripts/data/prepare.py",
+  "find": "H = H.with_columns((pl.col(\"scope_reason\") == \"in_scope\").alias(\"in_scope\"))",
+  "replace": "H = H.with_columns((pl.col(\"scope_reason\") != \"map_unknown\").alias(\"in_scope\"))",
+  "description": "Out-of-pool maps (1,170 matches in prep_report), hostage maps and wingman matches become in scope. e2e A1 (used maps are in the seven) and A2 (no hostage among used) should fail after prepare.py is re-run. e2e_checks.py keeps its own copy of the map list, so the check does not depend on prepare's list.",
+  "real_world_bug": "Out-of-pool maps and hostage servers are trained on as competitive 5v5.",
+  "should_be_caught_by": [
+   "e2e"
+  ],
+  "valid": true
+ },
+ {
+  "id": "P3-prepare-tolerant-duplicate-key-disabled",
+  "file": "scripts/data/prepare.py",
+  "find": "pl.when(pl.col(\"n_rounds_re\").fill_null(0) >= 16)",
+  "replace": "pl.when(pl.col(\"n_rounds_re\").fill_null(0) >= 999)",
+  "description": "The tolerant duplicate key (copies with shifted ticks or renumbered players; prep_report has 4 groups whose exact signatures differ) is switched off, so near-duplicate copies both become keepers. Expected to survive today: B1 and B2 test only exact sig_hash groups. e2e should recompute the tolerant key and require at most one used match per group.",
+  "real_world_bug": "A re-processed copy of a match is trained on twice, double-weighting one game.",
+  "should_be_caught_by": [
+   "e2e"
+  ],
+  "valid": true
+ },
+ {
+  "id": "P4-prepare-elimination-vote-inverted",
+  "file": "scripts/data/prepare.py",
+  "find": "pl.when(pl.col(\"wiped_side\") == CT).then(T).when(pl.col(\"wiped_side\") == T).then(CT).otherwise(None).alias(\"elim\"))",
+  "replace": "pl.when(pl.col(\"wiped_side\") == CT).then(CT).when(pl.col(\"wiped_side\") == T).then(T).otherwise(None).alias(\"elim\"))",
+  "description": "The elimination vote is inverted. Non-bomb rounds then receive the wrong third vote: a wrong label survives only where rec and score disagree, and otherwise the round becomes unresolved and is dropped. Expected to survive C1-C4, which test only final labels in 2026. e2e should add a per-signal agreement check (each vote signal against bomb-decided rounds).",
+  "real_world_bug": "A vote signal is wired to the wrong side. Averages look fine, and rounds silently drop out.",
+  "should_be_caught_by": [
+   "e2e"
+  ],
+  "valid": true
+ },
+ {
+  "id": "C1-wpcommon-monotone-alive-t-positive",
+  "file": "scripts/model/wp_common.py",
+  "find": "MONO_ALIVE = {\"alive_ct\": 1, \"alive_t\": -1, \"ct_alive_minus_t\": 1}",
+  "replace": "MONO_ALIVE = {\"alive_ct\": 1, \"alive_t\": 1, \"ct_alive_minus_t\": 1}",
+  "description": "The fit-time constraint for alive_t flips sign. The frozen artifacts still pass stress check 6, because the constraint only acts when the alive-count model is refit. A non-refit check would catch it at once: meta.json monotone_constraints (alive_t -1) must equal mono_for(features) of the current code.",
+  "real_world_bug": "After a refit, more T alive gives CT a higher chance (a sign typo in the constraint).",
+  "should_be_caught_by": [
+   "stress"
+  ],
+  "valid": true
+ },
+ {
+  "id": "C2-wpcommon-split-val-and-test-swapped",
+  "file": "scripts/model/wp_common.py",
+  "find": "return set(pool[n_val:]), set(pool[:n_val]), set(test)",
+  "replace": "return set(pool[n_val:]), set(test), set(pool[:n_val])",
+  "description": "In the random split the validation and test sets trade places, so early stopping uses the reported test matches. e2e E1/E2 test only disjointness and coverage, so this survives. e2e should compare the recomputed split sizes with meta.training matches and val_matches (4,662 and 518 for winprob_v1_basic).",
+  "real_world_bug": "Early stopping on the test matches makes the reported test log loss optimistic.",
+  "should_be_caught_by": [
+   "e2e"
+  ],
+  "valid": true
+ },
+ {
+  "id": "C3-wpcommon-logloss-clip-loose",
+  "file": "scripts/model/wp_common.py",
+  "find": "p = np.clip(np.asarray(p, dtype=np.float64), EPS, 1 - EPS)",
+  "replace": "p = np.clip(np.asarray(p, dtype=np.float64), 1e-3, 1 - 1e-3)",
+  "description": "ll_vec clips probabilities at 1e-3, so a confident miss costs about 6.9 nats instead of 34.5. No check exercises wp_common.evaluate (e2e re-implements its own log loss and calibration), so this survives. A known-answer unit test (p = 0 with y = 1 must give about 34.5) would catch it.",
+  "real_world_bug": "Reported log loss understates the cost of overconfident errors, biasing model comparisons.",
+  "should_be_caught_by": [
+   "unit_parity"
+  ],
+  "valid": true
+ },
+ {
+  "id": "C4-wpcommon-ci-at-quartiles",
+  "file": "scripts/model/wp_common.py",
+  "find": "return [float(np.percentile(a, 2.5)), float(np.percentile(a, 97.5))]",
+  "replace": "return [float(np.percentile(a, 25.0)), float(np.percentile(a, 75.0))]",
+  "description": "The 95 percent match-cluster bootstrap interval is computed as the 25th to 75th percentile, a 50 percent interval. Every reported CI becomes too narrow. No check reads these intervals. A unit test with a known mean (coverage of the 95 percent interval over simulated samples) would catch it.",
+  "real_world_bug": "Overly narrow confidence intervals make small differences look significant.",
+  "should_be_caught_by": [
+   "unit_parity"
+  ],
+  "valid": true
+ }
+]

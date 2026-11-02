@@ -1,0 +1,1917 @@
+{
+ "format": 1,
+ "params": {
+  "src": "combined",
+  "seed": 0,
+  "n_in_scope": 70,
+  "n_dup_groups": 4,
+  "n_out_of_pool": 4,
+  "n_hostage": 2,
+  "n_wingman": 2
+ },
+ "selected_from": {
+  "matches_sha256": "0b67575492a39002ddf70a65ded7ef2a4aa3b67862e12722d48e0cb9f9dc8ddb",
+  "rounds_sha256": "96e1cb3a0c1e2f9546fd97cc52102a9e7745e595b22577fb1ee3c68503676c43",
+  "n_matches": 17957,
+  "catalog_dir": "data/combined (identical by sha256 to the copy the selection was computed from)"
+ },
+ "selection_sha256": "ba6f61d2510a19871280581947195da71d8acb17f13e7b13fc738ea63b85d92a",
+ "n_selected": 86,
+ "n_feature_cover_matches": 8,
+ "build_quota": {
+  "9842": 17,
+  "9961": 18,
+  "10847": 5,
+  "10896": 19,
+  "10924": 11
+ },
+ "categories": {
+  "in_scope": [
+   "csds/2024/02/01/e1972786-9701-40d4-97cd-567119b5185e/csds",
+   "csds/2024/02/02/558a06d7-f025-4e8a-811f-61a1cfe872cc/csds",
+   "csds/2024/02/03/9523db34-8eca-4289-aa0e-354b61ade1c5/csds",
+   "csds/2024/02/04/b32c566d-6221-4fe9-8105-f0379963dc57/csds",
+   "csds/2024/02/05/7cee2f42-2978-4d00-b75f-3db9c6e15662/csds",
+   "csds/2024/02/06/9c91fe27-9142-47ea-b1b1-b6fbd6f00571/csds",
+   "csds/2024/02/07/3a0429ed-4ffb-493a-b04c-74c7fcbaa568/csds",
+   "csds/2024/02/12/1b699bb0-7ee5-47f6-84f9-9361448a7b0b/csds",
+   "csds/2024/02/12/3bd5cb64-4320-4ea3-a4ec-050896fcfdcc/csds",
+   "csds/2024/02/12/9a437ceb-a312-4fa6-aac8-2e4b1438a3e6/csds",
+   "csds/2024/02/12/dc0e7714-4402-49d6-9414-4260157121fb/csds",
+   "csds/2024/02/13/72c10cc5-0afd-45a9-8223-da8b3499e401/csds",
+   "csds/2024/02/13/a9c3433e-1169-47af-a242-868b6dffd447/csds",
+   "csds/2024/02/14/32bc0592-ef9a-4d0d-842a-9f3ea9e075a6/csds",
+   "csds/2024/02/14/55100df4-4171-44c1-ae3e-79932f86dd9b/csds",
+   "csds/2024/02/15/dc0de9d4-c354-4d8d-b7f9-9ea1a86d261e/csds",
+   "csds/2024/02/16/0f25b713-f831-4882-91ad-a677036cd31c/csds",
+   "csds/2024/02/16/12ca3500-771a-4b47-97d6-a83fdda55351/csds",
+   "csds/2024/02/17/fcef65b6-0bb7-447c-b42d-29ba6dc91984/csds",
+   "csds/2024/02/18/43bc31c5-637e-4e37-b602-a2b4ae428e80/csds",
+   "csds/2024/02/18/c782f7a7-da58-4690-a399-6b80ef817fef/csds",
+   "csds/2024/02/19/9f114890-3f64-4338-997d-7d95b7878857/csds",
+   "csds/2024/02/19/f7a34b98-67af-4d28-ab5d-3bea6d4c6141/csds",
+   "csds/2024/02/20/34468e8e-7a0e-4b4a-8b58-3e1f5ab690d9/csds",
+   "csds/2024/02/20/eda6f1f0-06c8-474e-b434-cc87bca7f49a/csds",
+   "csds/2024/02/21/20310695-72f6-4c9c-9534-f1c3872b5eb8/csds",
+   "csds/2024/02/21/3377c7e4-93ff-49d1-bef0-f5fcb26a336f/csds",
+   "csds/2024/02/21/3e7b1b6b-398d-4b7f-be2f-22b6f83e6afd/csds",
+   "csds/2024/02/22/048e6231-2cdf-4a65-90f7-08dc34c601a1/csds",
+   "csds/2024/02/22/170aaecc-0ab6-4e74-a944-e8b7f067fe35/csds",
+   "csds/2024/02/22/2b104083-f0a0-412e-a817-6bb01a12b183/csds",
+   "csds/2024/02/23/74dd7f45-c545-4457-bf58-e59c12bae5ee/csds",
+   "csds/2024/02/24/6951a95e-1625-417b-8fcc-7921594c6969/csds",
+   "csds/2024/02/24/bb4bcc0b-fa45-44ee-b0de-6fe74cb82c1d/csds",
+   "csds/2024/02/25/fe1b9b34-198a-41fc-8500-deaa848290e4/csds",
+   "csds/2026/09/01/9d8feb6e-20e3-4b80-ba20-2aa6c3d894b6/csds",
+   "csds/2026/09/01/cec8ed97-6ee0-4f74-9b5a-106e2297c629/csds",
+   "csds/2026/09/02/4a613678-a8fa-4b27-bb72-e1a86f350901/csds",
+   "csds/2026/09/02/ca8ca0b1-e6a5-4a1a-a1c1-9b92c84ff387/csds",
+   "csds/2026/09/03/592a85f3-b4ff-47b0-aa85-a217f5b014a2/csds",
+   "csds/2026/09/04/7698238f-7c55-4c67-9c6c-89bf69621e61/csds",
+   "csds/2026/09/05/21fecfd0-aceb-4c0d-8222-d70f6d223602/csds",
+   "csds/2026/09/05/ee81d447-592b-4c98-a322-de8cca1c5892/csds",
+   "csds/2026/09/06/050cc98b-48a6-4929-a799-b45f3924415f/csds",
+   "csds/2026/09/06/3d702045-5d21-4ce7-9ba0-9b5a64d51806/csds",
+   "csds/2026/09/07/1eba4b60-893b-49cc-904c-d9de14af9ea6/csds",
+   "csds/2026/09/08/eab489aa-d4e1-47d5-b56e-a7fef14f56de/csds",
+   "csds/2026/09/09/1f48774b-f012-48fb-8608-b88b24bc3a0d/csds",
+   "csds/2026/09/09/8b8d5f33-27e0-49a9-ba0b-4530e13c3b27/csds",
+   "csds/2026/09/17/bdf44fb6-f8f6-451d-8526-36838209ca58/csds",
+   "csds/2026/09/18/a3f3cb64-2ea7-4db1-b423-4c4fdf56666f/csds",
+   "csds/2026/09/20/2058c7f0-f683-4ecc-82e5-b48626b1ba5d/csds",
+   "csds/2026/09/21/00a43a74-d0a3-4192-8195-5fc55b9079c6/csds",
+   "csds/2026/09/23/681b1bc8-e540-487e-ba5a-65bf2fe58422/csds",
+   "csds/2026/09/27/88dfd54a-ff9c-4d02-92ad-4c9c7bb8b04b/csds",
+   "csds/2026/10/01/a96124a5-fa60-4a28-b4c6-117054d56a39/csds",
+   "csds/2026/10/02/5773ee38-6de4-4799-b716-d795fe34f824/csds",
+   "csds/2026/10/03/da7a1438-82f2-4853-806d-d6ad622867c5/csds",
+   "csds/2026/10/06/c318c410-42a5-4ada-be12-36579534491c/csds",
+   "csds/2026/10/07/c23683d0-8d22-42b9-b1c9-e7488445f6a1/csds",
+   "csds/2026/10/08/7ed3ef70-8e5c-43af-bc94-be5d1e0d6063/csds",
+   "csds/2026/10/08/d2b52558-a6d2-4ff5-bec9-37769ec8030b/csds",
+   "csds/2026/10/09/b2b6ba53-efa5-4cfd-a4ca-d8d80ba52c82/csds",
+   "csds/2026/10/10/10e1b147-7bae-4b08-9897-983f184ff4cc/csds",
+   "csds/2026/10/10/927f4349-0b7e-429f-9fed-3970d4020511/csds",
+   "csds/2026/10/11/477076f5-6066-4b7d-968f-098131a60ce8/csds",
+   "csds/2026/10/11/b7909156-821c-426b-97cf-5a6c081fb5f9/csds",
+   "csds/2026/10/11/d9a760db-220d-4599-8931-ac104c91168b/csds",
+   "csds/2026/10/12/5a10dba8-6813-4b72-97bd-020427fec507/csds",
+   "csds/2026/10/12/e2656f97-c625-42a7-a573-444cf1fe03d0/csds"
+  ],
+  "dup_groups": [
+   {
+    "keys": [
+     "csds/2024/02/12/840854f6-60c7-4ad8-9be7-3421a4329610/csds",
+     "csds/2024/02/14/298bd198-e898-4bac-9447-4b6ea64caed7/csds"
+    ],
+    "exact_signature_differs": true
+   },
+   {
+    "keys": [
+     "csds/2024/02/03/0cd6e38d-a831-4fe8-a7dd-b7cc19fe8104/csds",
+     "csds/2024/02/19/8210c616-dc91-4e37-a842-fe4190b1a5f4/csds"
+    ],
+    "exact_signature_differs": true
+   },
+   {
+    "keys": [
+     "csds/2024/02/20/619f64aa-1588-453f-a016-7269c2fe4f1b/csds",
+     "csds/2024/02/21/93e16adf-8186-420a-884a-c5e6d0ad11b2/csds"
+    ],
+    "exact_signature_differs": false
+   },
+   {
+    "keys": [
+     "csds/2026/09/11/1f17140b-8fad-46ad-9cb0-0b1aafb3791f/csds",
+     "csds/2026/09/11/4743eb39-75a0-4cc3-abd5-78324322d893/csds"
+    ],
+    "exact_signature_differs": false
+   }
+  ],
+  "out_of_pool": [
+   "csds/2024/02/12/8bf3d080-ed6b-449a-b3ab-4c699994f3e5/csds",
+   "csds/2024/02/23/37025ff3-6dda-4eb3-9b94-045a5d2efaba/csds",
+   "csds/2026/09/09/68dafb1a-7890-46b3-ba74-b278ad345213/csds",
+   "csds/2026/09/25/59a68f3e-8fa3-4087-b59b-0c8c85ea2aca/csds"
+  ],
+  "hostage": [
+   "csds/2024/02/21/b18c06c0-ab35-4581-bcf2-de329c83e0b1/csds",
+   "csds/2026/09/19/f73b9e7e-72c9-4d15-a564-78d5c0ffcf61/csds"
+  ],
+  "wingman": [
+   "csds/2024/02/03/5d42c8e0-53b5-4c51-bdc0-6773cd1f7cf8/csds",
+   "csds/2026/09/22/4d3a70e1-a064-4f36-a94a-cbef470a0beb/csds"
+  ]
+ },
+ "match_keys": [
+  "csds/2024/02/01/e1972786-9701-40d4-97cd-567119b5185e/csds",
+  "csds/2024/02/02/558a06d7-f025-4e8a-811f-61a1cfe872cc/csds",
+  "csds/2024/02/03/0cd6e38d-a831-4fe8-a7dd-b7cc19fe8104/csds",
+  "csds/2024/02/03/5d42c8e0-53b5-4c51-bdc0-6773cd1f7cf8/csds",
+  "csds/2024/02/03/9523db34-8eca-4289-aa0e-354b61ade1c5/csds",
+  "csds/2024/02/04/b32c566d-6221-4fe9-8105-f0379963dc57/csds",
+  "csds/2024/02/05/7cee2f42-2978-4d00-b75f-3db9c6e15662/csds",
+  "csds/2024/02/06/9c91fe27-9142-47ea-b1b1-b6fbd6f00571/csds",
+  "csds/2024/02/07/3a0429ed-4ffb-493a-b04c-74c7fcbaa568/csds",
+  "csds/2024/02/12/1b699bb0-7ee5-47f6-84f9-9361448a7b0b/csds",
+  "csds/2024/02/12/3bd5cb64-4320-4ea3-a4ec-050896fcfdcc/csds",
+  "csds/2024/02/12/840854f6-60c7-4ad8-9be7-3421a4329610/csds",
+  "csds/2024/02/12/8bf3d080-ed6b-449a-b3ab-4c699994f3e5/csds",
+  "csds/2024/02/12/9a437ceb-a312-4fa6-aac8-2e4b1438a3e6/csds",
+  "csds/2024/02/12/dc0e7714-4402-49d6-9414-4260157121fb/csds",
+  "csds/2024/02/13/72c10cc5-0afd-45a9-8223-da8b3499e401/csds",
+  "csds/2024/02/13/a9c3433e-1169-47af-a242-868b6dffd447/csds",
+  "csds/2024/02/14/298bd198-e898-4bac-9447-4b6ea64caed7/csds",
+  "csds/2024/02/14/32bc0592-ef9a-4d0d-842a-9f3ea9e075a6/csds",
+  "csds/2024/02/14/55100df4-4171-44c1-ae3e-79932f86dd9b/csds",
+  "csds/2024/02/15/dc0de9d4-c354-4d8d-b7f9-9ea1a86d261e/csds",
+  "csds/2024/02/16/0f25b713-f831-4882-91ad-a677036cd31c/csds",
+  "csds/2024/02/16/12ca3500-771a-4b47-97d6-a83fdda55351/csds",
+  "csds/2024/02/17/fcef65b6-0bb7-447c-b42d-29ba6dc91984/csds",
+  "csds/2024/02/18/43bc31c5-637e-4e37-b602-a2b4ae428e80/csds",
+  "csds/2024/02/18/c782f7a7-da58-4690-a399-6b80ef817fef/csds",
+  "csds/2024/02/19/8210c616-dc91-4e37-a842-fe4190b1a5f4/csds",
+  "csds/2024/02/19/9f114890-3f64-4338-997d-7d95b7878857/csds",
+  "csds/2024/02/19/f7a34b98-67af-4d28-ab5d-3bea6d4c6141/csds",
+  "csds/2024/02/20/34468e8e-7a0e-4b4a-8b58-3e1f5ab690d9/csds",
+  "csds/2024/02/20/619f64aa-1588-453f-a016-7269c2fe4f1b/csds",
+  "csds/2024/02/20/eda6f1f0-06c8-474e-b434-cc87bca7f49a/csds",
+  "csds/2024/02/21/20310695-72f6-4c9c-9534-f1c3872b5eb8/csds",
+  "csds/2024/02/21/3377c7e4-93ff-49d1-bef0-f5fcb26a336f/csds",
+  "csds/2024/02/21/3e7b1b6b-398d-4b7f-be2f-22b6f83e6afd/csds",
+  "csds/2024/02/21/93e16adf-8186-420a-884a-c5e6d0ad11b2/csds",
+  "csds/2024/02/21/b18c06c0-ab35-4581-bcf2-de329c83e0b1/csds",
+  "csds/2024/02/22/048e6231-2cdf-4a65-90f7-08dc34c601a1/csds",
+  "csds/2024/02/22/170aaecc-0ab6-4e74-a944-e8b7f067fe35/csds",
+  "csds/2024/02/22/2b104083-f0a0-412e-a817-6bb01a12b183/csds",
+  "csds/2024/02/23/37025ff3-6dda-4eb3-9b94-045a5d2efaba/csds",
+  "csds/2024/02/23/74dd7f45-c545-4457-bf58-e59c12bae5ee/csds",
+  "csds/2024/02/24/6951a95e-1625-417b-8fcc-7921594c6969/csds",
+  "csds/2024/02/24/bb4bcc0b-fa45-44ee-b0de-6fe74cb82c1d/csds",
+  "csds/2024/02/25/fe1b9b34-198a-41fc-8500-deaa848290e4/csds",
+  "csds/2026/09/01/9d8feb6e-20e3-4b80-ba20-2aa6c3d894b6/csds",
+  "csds/2026/09/01/cec8ed97-6ee0-4f74-9b5a-106e2297c629/csds",
+  "csds/2026/09/02/4a613678-a8fa-4b27-bb72-e1a86f350901/csds",
+  "csds/2026/09/02/ca8ca0b1-e6a5-4a1a-a1c1-9b92c84ff387/csds",
+  "csds/2026/09/03/592a85f3-b4ff-47b0-aa85-a217f5b014a2/csds",
+  "csds/2026/09/04/7698238f-7c55-4c67-9c6c-89bf69621e61/csds",
+  "csds/2026/09/05/21fecfd0-aceb-4c0d-8222-d70f6d223602/csds",
+  "csds/2026/09/05/ee81d447-592b-4c98-a322-de8cca1c5892/csds",
+  "csds/2026/09/06/050cc98b-48a6-4929-a799-b45f3924415f/csds",
+  "csds/2026/09/06/3d702045-5d21-4ce7-9ba0-9b5a64d51806/csds",
+  "csds/2026/09/07/1eba4b60-893b-49cc-904c-d9de14af9ea6/csds",
+  "csds/2026/09/08/eab489aa-d4e1-47d5-b56e-a7fef14f56de/csds",
+  "csds/2026/09/09/1f48774b-f012-48fb-8608-b88b24bc3a0d/csds",
+  "csds/2026/09/09/68dafb1a-7890-46b3-ba74-b278ad345213/csds",
+  "csds/2026/09/09/8b8d5f33-27e0-49a9-ba0b-4530e13c3b27/csds",
+  "csds/2026/09/11/1f17140b-8fad-46ad-9cb0-0b1aafb3791f/csds",
+  "csds/2026/09/11/4743eb39-75a0-4cc3-abd5-78324322d893/csds",
+  "csds/2026/09/17/bdf44fb6-f8f6-451d-8526-36838209ca58/csds",
+  "csds/2026/09/18/a3f3cb64-2ea7-4db1-b423-4c4fdf56666f/csds",
+  "csds/2026/09/19/f73b9e7e-72c9-4d15-a564-78d5c0ffcf61/csds",
+  "csds/2026/09/20/2058c7f0-f683-4ecc-82e5-b48626b1ba5d/csds",
+  "csds/2026/09/21/00a43a74-d0a3-4192-8195-5fc55b9079c6/csds",
+  "csds/2026/09/22/4d3a70e1-a064-4f36-a94a-cbef470a0beb/csds",
+  "csds/2026/09/23/681b1bc8-e540-487e-ba5a-65bf2fe58422/csds",
+  "csds/2026/09/25/59a68f3e-8fa3-4087-b59b-0c8c85ea2aca/csds",
+  "csds/2026/09/27/88dfd54a-ff9c-4d02-92ad-4c9c7bb8b04b/csds",
+  "csds/2026/10/01/a96124a5-fa60-4a28-b4c6-117054d56a39/csds",
+  "csds/2026/10/02/5773ee38-6de4-4799-b716-d795fe34f824/csds",
+  "csds/2026/10/03/da7a1438-82f2-4853-806d-d6ad622867c5/csds",
+  "csds/2026/10/06/c318c410-42a5-4ada-be12-36579534491c/csds",
+  "csds/2026/10/07/c23683d0-8d22-42b9-b1c9-e7488445f6a1/csds",
+  "csds/2026/10/08/7ed3ef70-8e5c-43af-bc94-be5d1e0d6063/csds",
+  "csds/2026/10/08/d2b52558-a6d2-4ff5-bec9-37769ec8030b/csds",
+  "csds/2026/10/09/b2b6ba53-efa5-4cfd-a4ca-d8d80ba52c82/csds",
+  "csds/2026/10/10/10e1b147-7bae-4b08-9897-983f184ff4cc/csds",
+  "csds/2026/10/10/927f4349-0b7e-429f-9fed-3970d4020511/csds",
+  "csds/2026/10/11/477076f5-6066-4b7d-968f-098131a60ce8/csds",
+  "csds/2026/10/11/b7909156-821c-426b-97cf-5a6c081fb5f9/csds",
+  "csds/2026/10/11/d9a760db-220d-4599-8931-ac104c91168b/csds",
+  "csds/2026/10/12/5a10dba8-6813-4b72-97bd-020427fec507/csds",
+  "csds/2026/10/12/e2656f97-c625-42a7-a573-444cf1fe03d0/csds"
+ ],
+ "detail": {
+  "csds/2024/02/01/e1972786-9701-40d4-97cd-567119b5185e/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9842,
+   "map_name": "de_inferno",
+   "upload_day": "2024/02/01",
+   "n_rounds_re": 20,
+   "n_ok_rounds_in_catalog": 19,
+   "tags": [
+    "first_round_missing",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "no_round_announce_match_start",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/02/558a06d7-f025-4e8a-811f-61a1cfe872cc/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9842,
+   "map_name": "de_nuke",
+   "upload_day": "2024/02/02",
+   "n_rounds_re": 12,
+   "n_ok_rounds_in_catalog": 11,
+   "tags": [
+    "first_round_missing",
+    "fragment",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "label:recorded_only",
+    "max_rounds_null",
+    "no_round_announce_match_start",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/03/0cd6e38d-a831-4fe8-a7dd-b7cc19fe8104/csds": {
+   "category": "dup_group_1",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9842,
+   "map_name": "de_ancient",
+   "upload_day": "2024/02/03",
+   "n_rounds_re": 23,
+   "n_ok_rounds_in_catalog": 21,
+   "tags": [
+    "first_round_missing",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "missing_player_rule",
+    "no_round_announce_match_start",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/03/5d42c8e0-53b5-4c51-bdc0-6773cd1f7cf8/csds": {
+   "category": "wingman",
+   "scope_reason": "wingman",
+   "era": "2024",
+   "build_num": 9842,
+   "map_name": "de_inferno",
+   "upload_day": "2024/02/03",
+   "n_rounds_re": 15,
+   "n_ok_rounds_in_catalog": 0,
+   "tags": [
+    "first_round_missing",
+    "fragment",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "label:recorded_only",
+    "max_rounds_null",
+    "no_ok_rounds",
+    "no_round_announce_match_start",
+    "short_tail",
+    "status:player_count != 10"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/03/9523db34-8eca-4289-aa0e-354b61ade1c5/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9842,
+   "map_name": "de_nuke",
+   "upload_day": "2024/02/03",
+   "n_rounds_re": 22,
+   "n_ok_rounds_in_catalog": 21,
+   "tags": [
+    "first_round_missing",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "no_round_announce_match_start",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/04/b32c566d-6221-4fe9-8105-f0379963dc57/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9842,
+   "map_name": "de_anubis",
+   "upload_day": "2024/02/04",
+   "n_rounds_re": 22,
+   "n_ok_rounds_in_catalog": 19,
+   "tags": [
+    "first_round_missing",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "no_round_announce_match_start",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/05/7cee2f42-2978-4d00-b75f-3db9c6e15662/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9842,
+   "map_name": "de_anubis",
+   "upload_day": "2024/02/05",
+   "n_rounds_re": 29,
+   "n_ok_rounds_in_catalog": 27,
+   "tags": [
+    "first_round_missing",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "no_round_announce_match_start",
+    "overtime",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/06/9c91fe27-9142-47ea-b1b1-b6fbd6f00571/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9842,
+   "map_name": "de_ancient",
+   "upload_day": "2024/02/06",
+   "n_rounds_re": 22,
+   "n_ok_rounds_in_catalog": 21,
+   "tags": [
+    "first_round_missing",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "no_round_announce_match_start",
+    "short_tail",
+    "status:no round_start"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/07/3a0429ed-4ffb-493a-b04c-74c7fcbaa568/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9842,
+   "map_name": "de_inferno",
+   "upload_day": "2024/02/07",
+   "n_rounds_re": 16,
+   "n_ok_rounds_in_catalog": 15,
+   "tags": [
+    "first_round_missing",
+    "is_wingman_null",
+    "label:majority",
+    "max_rounds_null",
+    "no_round_announce_match_start",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/12/1b699bb0-7ee5-47f6-84f9-9361448a7b0b/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9961,
+   "map_name": "de_mirage",
+   "upload_day": "2024/02/12",
+   "n_rounds_re": 23,
+   "n_ok_rounds_in_catalog": 21,
+   "tags": [
+    "final_differs_from_recorded",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "missing_player_rule",
+    "rec_suspect_round",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/12/3bd5cb64-4320-4ea3-a4ec-050896fcfdcc/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9961,
+   "map_name": "de_ancient",
+   "upload_day": "2024/02/12",
+   "n_rounds_re": 23,
+   "n_ok_rounds_in_catalog": 21,
+   "tags": [
+    "final_differs_from_recorded",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "label:recorded_only",
+    "max_rounds_null",
+    "missing_player_rule",
+    "rec_suspect_round",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/12/840854f6-60c7-4ad8-9be7-3421a4329610/csds": {
+   "category": "dup_group_0",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9842,
+   "map_name": "de_anubis",
+   "upload_day": "2024/02/12",
+   "n_rounds_re": 23,
+   "n_ok_rounds_in_catalog": 22,
+   "tags": [
+    "first_round_missing",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "missing_player_rule",
+    "no_round_announce_match_start",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/12/8bf3d080-ed6b-449a-b3ab-4c699994f3e5/csds": {
+   "category": "out_of_pool",
+   "scope_reason": "map_out_of_pool",
+   "era": "2024",
+   "build_num": 9842,
+   "map_name": "de_overpass",
+   "upload_day": "2024/02/12",
+   "n_rounds_re": 19,
+   "n_ok_rounds_in_catalog": 18,
+   "tags": [
+    "first_round_missing",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "no_round_announce_match_start",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/12/9a437ceb-a312-4fa6-aac8-2e4b1438a3e6/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9842,
+   "map_name": "de_mirage",
+   "upload_day": "2024/02/12",
+   "n_rounds_re": 28,
+   "n_ok_rounds_in_catalog": 20,
+   "tags": [
+    "first_round_missing",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "label:recorded_only",
+    "max_rounds_null",
+    "missing_player_rule",
+    "no_round_announce_match_start",
+    "overtime",
+    "short_tail",
+    "status:disconnect or bot takeover",
+    "status:player_count != 10",
+    "status:roster not 5v5"
+   ],
+   "from_feature_cover": true
+  },
+  "csds/2024/02/12/dc0e7714-4402-49d6-9414-4260157121fb/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9842,
+   "map_name": "de_ancient",
+   "upload_day": "2024/02/12",
+   "n_rounds_re": 20,
+   "n_ok_rounds_in_catalog": 18,
+   "tags": [
+    "first_round_missing",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "missing_player_rule",
+    "no_round_announce_match_start",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/13/72c10cc5-0afd-45a9-8223-da8b3499e401/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9842,
+   "map_name": "de_inferno",
+   "upload_day": "2024/02/13",
+   "n_rounds_re": 23,
+   "n_ok_rounds_in_catalog": 22,
+   "tags": [
+    "first_round_missing",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "no_round_announce_match_start",
+    "short_tail",
+    "status:no round_start"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/13/a9c3433e-1169-47af-a242-868b6dffd447/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9961,
+   "map_name": "de_inferno",
+   "upload_day": "2024/02/13",
+   "n_rounds_re": 20,
+   "n_ok_rounds_in_catalog": 18,
+   "tags": [
+    "final_differs_from_recorded",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "label:recorded_only",
+    "max_rounds_null",
+    "missing_player_rule",
+    "rec_suspect_round",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/14/298bd198-e898-4bac-9447-4b6ea64caed7/csds": {
+   "category": "dup_group_0",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9842,
+   "map_name": "de_anubis",
+   "upload_day": "2024/02/14",
+   "n_rounds_re": 23,
+   "n_ok_rounds_in_catalog": 22,
+   "tags": [
+    "first_round_missing",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "no_round_announce_match_start",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/14/32bc0592-ef9a-4d0d-842a-9f3ea9e075a6/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9961,
+   "map_name": "de_inferno",
+   "upload_day": "2024/02/14",
+   "n_rounds_re": 23,
+   "n_ok_rounds_in_catalog": 21,
+   "tags": [
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "label:recorded_only",
+    "label:unresolved",
+    "max_rounds_null",
+    "rec_suspect_round",
+    "status:disconnect or bot takeover",
+    "status:label unresolved"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/14/55100df4-4171-44c1-ae3e-79932f86dd9b/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9842,
+   "map_name": "de_dust2",
+   "upload_day": "2024/02/14",
+   "n_rounds_re": 16,
+   "n_ok_rounds_in_catalog": 15,
+   "tags": [
+    "first_round_missing",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "no_round_announce_match_start",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/15/dc0de9d4-c354-4d8d-b7f9-9ea1a86d261e/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9961,
+   "map_name": "de_mirage",
+   "upload_day": "2024/02/15",
+   "n_rounds_re": 18,
+   "n_ok_rounds_in_catalog": 17,
+   "tags": [
+    "final_differs_from_recorded",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "rec_suspect_round",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/16/0f25b713-f831-4882-91ad-a677036cd31c/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9961,
+   "map_name": "de_mirage",
+   "upload_day": "2024/02/16",
+   "n_rounds_re": 14,
+   "n_ok_rounds_in_catalog": 10,
+   "tags": [
+    "final_differs_from_recorded",
+    "fragment",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "label:recorded_only",
+    "max_rounds_null",
+    "missing_player_rule",
+    "rec_suspect_round",
+    "short_tail",
+    "status:disconnect or bot takeover",
+    "status:roster not 5v5"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/16/12ca3500-771a-4b47-97d6-a83fdda55351/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9961,
+   "map_name": "de_mirage",
+   "upload_day": "2024/02/16",
+   "n_rounds_re": 30,
+   "n_ok_rounds_in_catalog": 28,
+   "tags": [
+    "final_differs_from_recorded",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "label:unresolved",
+    "max_rounds_null",
+    "overtime",
+    "rec_suspect_round",
+    "status:label unresolved",
+    "status:no round_start"
+   ],
+   "from_feature_cover": true
+  },
+  "csds/2024/02/17/fcef65b6-0bb7-447c-b42d-29ba6dc91984/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9961,
+   "map_name": "de_anubis",
+   "upload_day": "2024/02/17",
+   "n_rounds_re": 22,
+   "n_ok_rounds_in_catalog": 21,
+   "tags": [
+    "final_differs_from_recorded",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "rec_suspect_round",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/18/43bc31c5-637e-4e37-b602-a2b4ae428e80/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9842,
+   "map_name": "de_dust2",
+   "upload_day": "2024/02/18",
+   "n_rounds_re": 19,
+   "n_ok_rounds_in_catalog": 17,
+   "tags": [
+    "first_round_missing",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "no_round_announce_match_start",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/18/c782f7a7-da58-4690-a399-6b80ef817fef/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9961,
+   "map_name": "de_mirage",
+   "upload_day": "2024/02/18",
+   "n_rounds_re": 21,
+   "n_ok_rounds_in_catalog": 20,
+   "tags": [
+    "final_differs_from_recorded",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "rec_suspect_round",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/19/8210c616-dc91-4e37-a842-fe4190b1a5f4/csds": {
+   "category": "dup_group_1",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9842,
+   "map_name": "de_ancient",
+   "upload_day": "2024/02/19",
+   "n_rounds_re": 23,
+   "n_ok_rounds_in_catalog": 21,
+   "tags": [
+    "first_round_missing",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "no_round_announce_match_start",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/19/9f114890-3f64-4338-997d-7d95b7878857/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9842,
+   "map_name": "de_anubis",
+   "upload_day": "2024/02/19",
+   "n_rounds_re": 21,
+   "n_ok_rounds_in_catalog": 20,
+   "tags": [
+    "first_round_missing",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "no_round_announce_match_start",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/19/f7a34b98-67af-4d28-ab5d-3bea6d4c6141/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9961,
+   "map_name": "de_nuke",
+   "upload_day": "2024/02/19",
+   "n_rounds_re": 16,
+   "n_ok_rounds_in_catalog": 15,
+   "tags": [
+    "final_differs_from_recorded",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "rec_suspect_round",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/20/34468e8e-7a0e-4b4a-8b58-3e1f5ab690d9/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9842,
+   "map_name": "de_mirage",
+   "upload_day": "2024/02/20",
+   "n_rounds_re": 28,
+   "n_ok_rounds_in_catalog": 27,
+   "tags": [
+    "first_round_missing",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "no_round_announce_match_start",
+    "overtime",
+    "short_tail",
+    "status:no round_start"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/20/619f64aa-1588-453f-a016-7269c2fe4f1b/csds": {
+   "category": "dup_group_2",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9961,
+   "map_name": "de_inferno",
+   "upload_day": "2024/02/20",
+   "n_rounds_re": 22,
+   "n_ok_rounds_in_catalog": 21,
+   "tags": [
+    "final_differs_from_recorded",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "rec_suspect_round",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/20/eda6f1f0-06c8-474e-b434-cc87bca7f49a/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9961,
+   "map_name": "de_dust2",
+   "upload_day": "2024/02/20",
+   "n_rounds_re": 21,
+   "n_ok_rounds_in_catalog": 20,
+   "tags": [
+    "final_differs_from_recorded",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "rec_suspect_round",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/21/20310695-72f6-4c9c-9534-f1c3872b5eb8/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9961,
+   "map_name": "de_nuke",
+   "upload_day": "2024/02/21",
+   "n_rounds_re": 15,
+   "n_ok_rounds_in_catalog": 0,
+   "tags": [
+    "fragment",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "label:recorded_only",
+    "label:unresolved",
+    "max_rounds_null",
+    "no_ok_rounds",
+    "rec_suspect_round",
+    "status:roster not 5v5"
+   ],
+   "from_feature_cover": true
+  },
+  "csds/2024/02/21/3377c7e4-93ff-49d1-bef0-f5fcb26a336f/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9961,
+   "map_name": "de_ancient",
+   "upload_day": "2024/02/21",
+   "n_rounds_re": 28,
+   "n_ok_rounds_in_catalog": 27,
+   "tags": [
+    "final_differs_from_recorded",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "label:unresolved",
+    "max_rounds_null",
+    "overtime",
+    "rec_suspect_round",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/21/3e7b1b6b-398d-4b7f-be2f-22b6f83e6afd/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9842,
+   "map_name": "de_ancient",
+   "upload_day": "2024/02/21",
+   "n_rounds_re": 17,
+   "n_ok_rounds_in_catalog": 16,
+   "tags": [
+    "first_round_missing",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "no_round_announce_match_start",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/21/93e16adf-8186-420a-884a-c5e6d0ad11b2/csds": {
+   "category": "dup_group_2",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9961,
+   "map_name": "de_inferno",
+   "upload_day": "2024/02/21",
+   "n_rounds_re": 22,
+   "n_ok_rounds_in_catalog": 21,
+   "tags": [
+    "final_differs_from_recorded",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "rec_suspect_round",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/21/b18c06c0-ab35-4581-bcf2-de329c83e0b1/csds": {
+   "category": "hostage",
+   "scope_reason": "hostage",
+   "era": "2024",
+   "build_num": 9961,
+   "map_name": "cs_office",
+   "upload_day": "2024/02/21",
+   "n_rounds_re": 24,
+   "n_ok_rounds_in_catalog": 23,
+   "tags": [
+    "final_differs_from_recorded",
+    "is_wingman_null",
+    "label:majority",
+    "max_rounds_null",
+    "rec_suspect_round",
+    "status:no round_start"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/22/048e6231-2cdf-4a65-90f7-08dc34c601a1/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9961,
+   "map_name": "de_mirage",
+   "upload_day": "2024/02/22",
+   "n_rounds_re": 22,
+   "n_ok_rounds_in_catalog": 21,
+   "tags": [
+    "final_differs_from_recorded",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "label:recorded_only",
+    "max_rounds_null",
+    "rec_suspect_round",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/22/170aaecc-0ab6-4e74-a944-e8b7f067fe35/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9961,
+   "map_name": "de_mirage",
+   "upload_day": "2024/02/22",
+   "n_rounds_re": 16,
+   "n_ok_rounds_in_catalog": 15,
+   "tags": [
+    "final_differs_from_recorded",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "rec_suspect_round",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/22/2b104083-f0a0-412e-a817-6bb01a12b183/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9842,
+   "map_name": "de_dust2",
+   "upload_day": "2024/02/22",
+   "n_rounds_re": 18,
+   "n_ok_rounds_in_catalog": 12,
+   "tags": [
+    "first_round_missing",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "label:recorded_only",
+    "max_rounds_null",
+    "no_round_announce_match_start",
+    "short_tail",
+    "status:disconnect or bot takeover",
+    "status:player_count != 10"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/23/37025ff3-6dda-4eb3-9b94-045a5d2efaba/csds": {
+   "category": "out_of_pool",
+   "scope_reason": "map_out_of_pool",
+   "era": "2024",
+   "build_num": 9961,
+   "map_name": "de_vertigo",
+   "upload_day": "2024/02/23",
+   "n_rounds_re": 16,
+   "n_ok_rounds_in_catalog": 0,
+   "tags": [
+    "is_wingman_null",
+    "label:majority",
+    "label:recorded_only",
+    "label:unresolved",
+    "max_rounds_null",
+    "no_ok_rounds",
+    "rec_suspect_round",
+    "status:roster not 5v5"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/23/74dd7f45-c545-4457-bf58-e59c12bae5ee/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9961,
+   "map_name": "de_mirage",
+   "upload_day": "2024/02/23",
+   "n_rounds_re": 29,
+   "n_ok_rounds_in_catalog": 28,
+   "tags": [
+    "final_differs_from_recorded",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "overtime",
+    "rec_suspect_round",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/24/6951a95e-1625-417b-8fcc-7921594c6969/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9961,
+   "map_name": "de_ancient",
+   "upload_day": "2024/02/24",
+   "n_rounds_re": 19,
+   "n_ok_rounds_in_catalog": 18,
+   "tags": [
+    "final_differs_from_recorded",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "rec_suspect_round",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/24/bb4bcc0b-fa45-44ee-b0de-6fe74cb82c1d/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9842,
+   "map_name": "de_nuke",
+   "upload_day": "2024/02/24",
+   "n_rounds_re": 13,
+   "n_ok_rounds_in_catalog": 11,
+   "tags": [
+    "first_round_missing",
+    "fragment",
+    "is_wingman_null",
+    "label:majority",
+    "max_rounds_null",
+    "no_round_announce_match_start",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2024/02/25/fe1b9b34-198a-41fc-8500-deaa848290e4/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2024",
+   "build_num": 9961,
+   "map_name": "de_ancient",
+   "upload_day": "2024/02/25",
+   "n_rounds_re": 17,
+   "n_ok_rounds_in_catalog": 16,
+   "tags": [
+    "final_differs_from_recorded",
+    "is_wingman_null",
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "rec_suspect_round",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/09/01/9d8feb6e-20e3-4b80-ba20-2aa6c3d894b6/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10847,
+   "map_name": "de_cache",
+   "upload_day": "2026/09/01",
+   "n_rounds_re": 20,
+   "n_ok_rounds_in_catalog": 17,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "label:recorded_only",
+    "max_rounds_null",
+    "status:player_count != 10"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/09/01/cec8ed97-6ee0-4f74-9b5a-106e2297c629/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10847,
+   "map_name": "de_mirage",
+   "upload_day": "2026/09/01",
+   "n_rounds_re": 19,
+   "n_ok_rounds_in_catalog": 18,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/09/02/4a613678-a8fa-4b27-bb72-e1a86f350901/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10847,
+   "map_name": "de_mirage",
+   "upload_day": "2026/09/02",
+   "n_rounds_re": 19,
+   "n_ok_rounds_in_catalog": 18,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/09/02/ca8ca0b1-e6a5-4a1a-a1c1-9b92c84ff387/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10896,
+   "map_name": "de_anubis",
+   "upload_day": "2026/09/02",
+   "n_rounds_re": 21,
+   "n_ok_rounds_in_catalog": 20,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "status:player_count != 10"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/09/03/592a85f3-b4ff-47b0-aa85-a217f5b014a2/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10896,
+   "map_name": "de_mirage",
+   "upload_day": "2026/09/03",
+   "n_rounds_re": 23,
+   "n_ok_rounds_in_catalog": 22,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/09/04/7698238f-7c55-4c67-9c6c-89bf69621e61/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10896,
+   "map_name": "de_dust2",
+   "upload_day": "2026/09/04",
+   "n_rounds_re": 24,
+   "n_ok_rounds_in_catalog": 23,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/09/05/21fecfd0-aceb-4c0d-8222-d70f6d223602/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10896,
+   "map_name": "de_mirage",
+   "upload_day": "2026/09/05",
+   "n_rounds_re": 28,
+   "n_ok_rounds_in_catalog": 18,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "label:recorded_only",
+    "max_rounds_null",
+    "missing_player_rule",
+    "overtime",
+    "short_tail",
+    "status:disconnect or bot takeover",
+    "status:more than 5 deaths on a side",
+    "status:player_count != 10"
+   ],
+   "from_feature_cover": true
+  },
+  "csds/2026/09/05/ee81d447-592b-4c98-a322-de8cca1c5892/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10896,
+   "map_name": "de_dust2",
+   "upload_day": "2026/09/05",
+   "n_rounds_re": 20,
+   "n_ok_rounds_in_catalog": 19,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/09/06/050cc98b-48a6-4929-a799-b45f3924415f/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10847,
+   "map_name": "de_anubis",
+   "upload_day": "2026/09/06",
+   "n_rounds_re": 14,
+   "n_ok_rounds_in_catalog": 13,
+   "tags": [
+    "fragment",
+    "label:majority",
+    "max_rounds_null",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/09/06/3d702045-5d21-4ce7-9ba0-9b5a64d51806/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10896,
+   "map_name": "de_dust2",
+   "upload_day": "2026/09/06",
+   "n_rounds_re": 16,
+   "n_ok_rounds_in_catalog": 15,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "label:recorded_only",
+    "max_rounds_null",
+    "short_tail",
+    "status:player_count != 10"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/09/07/1eba4b60-893b-49cc-904c-d9de14af9ea6/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10896,
+   "map_name": "de_dust2",
+   "upload_day": "2026/09/07",
+   "n_rounds_re": 20,
+   "n_ok_rounds_in_catalog": 12,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "max_rounds_null",
+    "short_tail",
+    "status:player_count != 10"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/09/08/eab489aa-d4e1-47d5-b56e-a7fef14f56de/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10896,
+   "map_name": "de_ancient",
+   "upload_day": "2026/09/08",
+   "n_rounds_re": 14,
+   "n_ok_rounds_in_catalog": 12,
+   "tags": [
+    "fragment",
+    "label:majority",
+    "label:recorded_only",
+    "short_tail",
+    "status:disconnect or bot takeover",
+    "status:player_count != 10"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/09/09/1f48774b-f012-48fb-8608-b88b24bc3a0d/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10847,
+   "map_name": "de_mirage",
+   "upload_day": "2026/09/09",
+   "n_rounds_re": 20,
+   "n_ok_rounds_in_catalog": 14,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "label:recorded_only",
+    "status:disconnect or bot takeover",
+    "status:player_count != 10"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/09/09/68dafb1a-7890-46b3-ba74-b278ad345213/csds": {
+   "category": "out_of_pool",
+   "scope_reason": "map_out_of_pool",
+   "era": "2026",
+   "build_num": 10896,
+   "map_name": "de_train",
+   "upload_day": "2026/09/09",
+   "n_rounds_re": 17,
+   "n_ok_rounds_in_catalog": 16,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/09/09/8b8d5f33-27e0-49a9-ba0b-4530e13c3b27/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10896,
+   "map_name": "de_cache",
+   "upload_day": "2026/09/09",
+   "n_rounds_re": 17,
+   "n_ok_rounds_in_catalog": 11,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "label:recorded_only",
+    "short_tail",
+    "status:player_count != 10"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/09/11/1f17140b-8fad-46ad-9cb0-0b1aafb3791f/csds": {
+   "category": "dup_group_3",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10896,
+   "map_name": "de_dust2",
+   "upload_day": "2026/09/11",
+   "n_rounds_re": 23,
+   "n_ok_rounds_in_catalog": 21,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/09/11/4743eb39-75a0-4cc3-abd5-78324322d893/csds": {
+   "category": "dup_group_3",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10896,
+   "map_name": "de_dust2",
+   "upload_day": "2026/09/11",
+   "n_rounds_re": 23,
+   "n_ok_rounds_in_catalog": 21,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/09/17/bdf44fb6-f8f6-451d-8526-36838209ca58/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10896,
+   "map_name": "de_mirage",
+   "upload_day": "2026/09/17",
+   "n_rounds_re": 14,
+   "n_ok_rounds_in_catalog": 11,
+   "tags": [
+    "fragment",
+    "label:bomb",
+    "label:majority",
+    "short_tail",
+    "status:disconnect or bot takeover",
+    "status:player_count != 10"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/09/18/a3f3cb64-2ea7-4db1-b423-4c4fdf56666f/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10896,
+   "map_name": "de_dust2",
+   "upload_day": "2026/09/18",
+   "n_rounds_re": 19,
+   "n_ok_rounds_in_catalog": 18,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/09/19/f73b9e7e-72c9-4d15-a564-78d5c0ffcf61/csds": {
+   "category": "hostage",
+   "scope_reason": "hostage",
+   "era": "2026",
+   "build_num": 10896,
+   "map_name": "cs_italy",
+   "upload_day": "2026/09/19",
+   "n_rounds_re": 16,
+   "n_ok_rounds_in_catalog": 12,
+   "tags": [
+    "label:majority",
+    "label:recorded_only",
+    "short_tail",
+    "status:player_count != 10"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/09/20/2058c7f0-f683-4ecc-82e5-b48626b1ba5d/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10896,
+   "map_name": "de_dust2",
+   "upload_day": "2026/09/20",
+   "n_rounds_re": 23,
+   "n_ok_rounds_in_catalog": 22,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/09/21/00a43a74-d0a3-4192-8195-5fc55b9079c6/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10896,
+   "map_name": "de_dust2",
+   "upload_day": "2026/09/21",
+   "n_rounds_re": 13,
+   "n_ok_rounds_in_catalog": 1,
+   "tags": [
+    "fragment",
+    "label:majority",
+    "label:recorded_only",
+    "short_tail",
+    "status:disconnect or bot takeover",
+    "status:player_count != 10",
+    "wingman_flag_disagrees"
+   ],
+   "from_feature_cover": true
+  },
+  "csds/2026/09/22/4d3a70e1-a064-4f36-a94a-cbef470a0beb/csds": {
+   "category": "wingman",
+   "scope_reason": "wingman",
+   "era": "2026",
+   "build_num": 10896,
+   "map_name": "de_debris",
+   "upload_day": "2026/09/22",
+   "n_rounds_re": 16,
+   "n_ok_rounds_in_catalog": 0,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "label:recorded_only",
+    "no_ok_rounds",
+    "status:player_count != 10"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/09/23/681b1bc8-e540-487e-ba5a-65bf2fe58422/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10924,
+   "map_name": "de_mirage",
+   "upload_day": "2026/09/23",
+   "n_rounds_re": 21,
+   "n_ok_rounds_in_catalog": 20,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/09/25/59a68f3e-8fa3-4087-b59b-0c8c85ea2aca/csds": {
+   "category": "out_of_pool",
+   "scope_reason": "map_out_of_pool",
+   "era": "2026",
+   "build_num": 10924,
+   "map_name": "de_fachwerk",
+   "upload_day": "2026/09/25",
+   "n_rounds_re": 17,
+   "n_ok_rounds_in_catalog": 16,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "label:recorded_only",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/09/27/88dfd54a-ff9c-4d02-92ad-4c9c7bb8b04b/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10924,
+   "map_name": "de_mirage",
+   "upload_day": "2026/09/27",
+   "n_rounds_re": 14,
+   "n_ok_rounds_in_catalog": 12,
+   "tags": [
+    "fragment",
+    "label:bomb",
+    "label:majority",
+    "short_tail",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/10/01/a96124a5-fa60-4a28-b4c6-117054d56a39/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10924,
+   "map_name": "de_dust2",
+   "upload_day": "2026/10/01",
+   "n_rounds_re": 24,
+   "n_ok_rounds_in_catalog": 20,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "label:recorded_only",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/10/02/5773ee38-6de4-4799-b716-d795fe34f824/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10924,
+   "map_name": "de_cache",
+   "upload_day": "2026/10/02",
+   "n_rounds_re": 23,
+   "n_ok_rounds_in_catalog": 22,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/10/03/da7a1438-82f2-4853-806d-d6ad622867c5/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10924,
+   "map_name": "de_inferno",
+   "upload_day": "2026/10/03",
+   "n_rounds_re": 28,
+   "n_ok_rounds_in_catalog": 27,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "overtime",
+    "short_tail",
+    "status:player_count != 10"
+   ],
+   "from_feature_cover": true
+  },
+  "csds/2026/10/06/c318c410-42a5-4ada-be12-36579534491c/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10924,
+   "map_name": "de_dust2",
+   "upload_day": "2026/10/06",
+   "n_rounds_re": 16,
+   "n_ok_rounds_in_catalog": 13,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "label:recorded_only",
+    "status:disconnect or bot takeover",
+    "status:player_count != 10"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/10/07/c23683d0-8d22-42b9-b1c9-e7488445f6a1/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10924,
+   "map_name": "de_dust2",
+   "upload_day": "2026/10/07",
+   "n_rounds_re": 24,
+   "n_ok_rounds_in_catalog": 23,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/10/08/7ed3ef70-8e5c-43af-bc94-be5d1e0d6063/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10924,
+   "map_name": "de_ancient",
+   "upload_day": "2026/10/08",
+   "n_rounds_re": 24,
+   "n_ok_rounds_in_catalog": 23,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/10/08/d2b52558-a6d2-4ff5-bec9-37769ec8030b/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10896,
+   "map_name": "de_dust2",
+   "upload_day": "2026/10/08",
+   "n_rounds_re": 42,
+   "n_ok_rounds_in_catalog": 41,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "overtime",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/10/09/b2b6ba53-efa5-4cfd-a4ca-d8d80ba52c82/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10896,
+   "map_name": "de_dust2",
+   "upload_day": "2026/10/09",
+   "n_rounds_re": 23,
+   "n_ok_rounds_in_catalog": 22,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "status:player_count != 10"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/10/10/10e1b147-7bae-4b08-9897-983f184ff4cc/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10896,
+   "map_name": "de_ancient",
+   "upload_day": "2026/10/10",
+   "n_rounds_re": 23,
+   "n_ok_rounds_in_catalog": 22,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "status:player_count != 10"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/10/10/927f4349-0b7e-429f-9fed-3970d4020511/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10924,
+   "map_name": "de_inferno",
+   "upload_day": "2026/10/10",
+   "n_rounds_re": 13,
+   "n_ok_rounds_in_catalog": 0,
+   "tags": [
+    "fragment",
+    "label:majority",
+    "label:recorded_only",
+    "no_ok_rounds",
+    "no_round_announce_match_start",
+    "status:player_count != 10"
+   ],
+   "from_feature_cover": true
+  },
+  "csds/2026/10/11/477076f5-6066-4b7d-968f-098131a60ce8/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10924,
+   "map_name": "de_dust2",
+   "upload_day": "2026/10/11",
+   "n_rounds_re": 18,
+   "n_ok_rounds_in_catalog": 16,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "status:player_count != 10",
+    "status:roster not 5v5"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/10/11/b7909156-821c-426b-97cf-5a6c081fb5f9/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10896,
+   "map_name": "de_cache",
+   "upload_day": "2026/10/11",
+   "n_rounds_re": 23,
+   "n_ok_rounds_in_catalog": 22,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/10/11/d9a760db-220d-4599-8931-ac104c91168b/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10896,
+   "map_name": "de_anubis",
+   "upload_day": "2026/10/11",
+   "n_rounds_re": 24,
+   "n_ok_rounds_in_catalog": 21,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "status:disconnect or bot takeover",
+    "status:roster not 5v5"
+   ],
+   "from_feature_cover": true
+  },
+  "csds/2026/10/12/5a10dba8-6813-4b72-97bd-020427fec507/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10896,
+   "map_name": "de_mirage",
+   "upload_day": "2026/10/12",
+   "n_rounds_re": 16,
+   "n_ok_rounds_in_catalog": 12,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "status:player_count != 10",
+    "status:roster not 5v5"
+   ],
+   "from_feature_cover": false
+  },
+  "csds/2026/10/12/e2656f97-c625-42a7-a573-444cf1fe03d0/csds": {
+   "category": "in_scope",
+   "scope_reason": "in_scope",
+   "era": "2026",
+   "build_num": 10924,
+   "map_name": "de_inferno",
+   "upload_day": "2026/10/12",
+   "n_rounds_re": 21,
+   "n_ok_rounds_in_catalog": 20,
+   "tags": [
+    "label:bomb",
+    "label:majority",
+    "status:disconnect or bot takeover"
+   ],
+   "from_feature_cover": false
+  }
+ }
+}
