@@ -8,6 +8,8 @@ Work on the CS2 round win-probability model: how we evaluate it, and the experim
 - `evaluation/build_gdt_rows.py`: builds the grader's per-second rows. Not yet runnable on our data; see `docs/RESULTS.md`.
 - `analysis/`: loss by seconds into the round, and the split and upload-day check.
 - `experiments/`: snapshots of the scripts behind each experiment (lag, money, GRU, E1 money and equipment, diagnostics, the pipeline runner, the retrain and the frozen-test guard). Paths still point at the local data tree; see below.
+- `docs/EVALUATION.md`: the round-quality evaluation protocol. Read this first; it sets the headline metric, the windows and the rules.
+- `evaluation/evaluate.py`: one entry point for the protocol. It writes a report to `docs/eval_reports/`.
 - `docs/RESULTS.md`: recorded results with their sources, the grading status, and corrections.
 
 ## Data (not in git)
