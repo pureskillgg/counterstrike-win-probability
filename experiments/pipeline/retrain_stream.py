@@ -13,6 +13,7 @@ import gc
 import json
 import os
 import time
+import zlib
 
 import numpy as np
 import polars as pl
@@ -38,11 +39,17 @@ frozen = set(json.load(open(SCR + "/frozen_test_keys.json")))
 F = len(FEATS)
 
 
+TRAIN_FRAC = float(os.environ.get("TRAIN_FRAC", "1"))  # learning curve: keep this fraction of the training matches (by a fixed hash)
+
+
 def split_code(k):
     # frozen test first; manifest test matches that are not frozen are left out (-1)
     if k in frozen:
         return SPLITS["test"]
-    return {"train": SPLITS["train"], "val": SPLITS["val"]}.get(man.get(k), -1)
+    code_ = {"train": SPLITS["train"], "val": SPLITS["val"]}.get(man.get(k), -1)
+    if code_ == SPLITS["train"] and zlib.crc32(k.encode()) % 10000 >= TRAIN_FRAC * 10000:
+        return -1
+    return code_
 
 
 # 1. the split of every match, and the row count per split
