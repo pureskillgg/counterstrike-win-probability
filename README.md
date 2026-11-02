@@ -11,6 +11,10 @@ Work on the CS2 round win-probability model: how we evaluate it, and the experim
 - `docs/EVALUATION.md`: the round-quality evaluation protocol. Read this first; it sets the headline metric, the windows and the rules.
 - `evaluation/evaluate.py`: one entry point for the protocol. It writes a report to `docs/eval_reports/`.
 - `docs/RESULTS.md`: recorded results with their sources, the grading status, and corrections.
+- `scripts/data/` and `scripts/model/`: the pipeline and experiment code, copied from the project folder `G:\pureskill\csds-cs2`. The folder layout is kept, so imports between scripts still work. The model helpers read `CS2_ROOT` (default `G:\pureskill\csds-cs2`). Experiments that aren't used for the current results are kept as a record.
+- `models/`: the v4 and v6 models and their metadata.
+- `data/benchmark/`: the frozen test keys and the split manifest that every result depends on.
+- Not in git: the data, the parquet caches, the prediction files and the experiment outputs in the scratchpad.
 
 ## Data (not in git)
 
