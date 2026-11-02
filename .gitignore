@@ -1,0 +1,21 @@
+# data and model outputs live under G:\pureskill\csds-cs2, not in git
+*.parquet
+*.npy
+*.npz
+*.pt
+*.log
+*.onnx
+results/
+
+# caches and local tooling
+__pycache__/
+*.pyc
+.venv/
+.pixi/
+
+# credentials and local config: never commit
+.env
+*.env
+meridian.toml
+*secret*
+*token*

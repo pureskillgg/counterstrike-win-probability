@@ -1,0 +1,1531 @@
+alive_ct,alive_t,planted,tb,econ_ct,econ_t,p_ct,level,n_train,ct_wins_train,n_level
+5,5,0,lot,low,low,0.488759,full situation,15433,7543,15433
+5,5,0,lot,low,mid,0.15461,full situation,8555,1322,8555
+5,5,0,lot,low,high,0.23315,full situation,19286,4496,19286
+5,5,0,lot,mid,low,0.839129,full situation,6152,5163,6152
+5,5,0,lot,mid,mid,0.543404,full situation,4698,2553,4698
+5,5,0,lot,mid,high,0.44018,full situation,24488,10779,24488
+5,5,0,lot,high,low,0.803538,full situation,20516,16486,20516
+5,5,0,lot,high,mid,0.612754,full situation,30232,18525,30232
+5,5,0,lot,high,high,0.535737,full situation,64343,34471,64343
+5,5,0,medium,low,low,0.468553,full situation,316,148,316
+5,5,0,medium,low,mid,0.185345,full situation,230,42,230
+5,5,0,medium,low,high,0.238267,full situation,552,131,552
+5,5,0,medium,mid,low,0.868852,full situation,303,264,303
+5,5,0,medium,mid,mid,0.541872,full situation,404,219,404
+5,5,0,medium,mid,high,0.49785,full situation,1161,578,1161
+5,5,0,medium,high,low,0.815287,full situation,783,639,783
+5,5,0,medium,high,mid,0.602582,full situation,1392,839,1392
+5,5,0,medium,high,high,0.528184,full situation,3351,1770,3351
+5,5,0,little,low,low,0.546419,without the economy,3,1,375
+5,5,0,little,low,mid,0.546419,without the economy,6,2,375
+5,5,0,little,low,high,0.546419,without the economy,22,2,375
+5,5,0,little,mid,low,0.546419,without the economy,12,11,375
+5,5,0,little,mid,mid,0.546419,without the economy,29,15,375
+5,5,0,little,mid,high,0.411765,full situation,49,20,49
+5,5,0,little,high,low,0.546419,without the economy,22,19,375
+5,5,0,little,high,mid,0.616667,full situation,58,36,58
+5,5,0,little,high,high,0.568182,full situation,174,99,174
+5,4,0,lot,low,low,0.645247,full situation,7530,4859,7530
+5,4,0,lot,low,mid,0.30789,full situation,2330,717,2330
+5,4,0,lot,low,high,0.418412,full situation,5440,2276,5440
+5,4,0,lot,mid,low,0.92324,full situation,3776,3487,3776
+5,4,0,lot,mid,mid,0.705415,full situation,2140,1510,2140
+5,4,0,lot,mid,high,0.629548,full situation,9068,5709,9068
+5,4,0,lot,high,low,0.889802,full situation,10343,9204,10343
+5,4,0,lot,high,mid,0.754571,full situation,13069,9862,13069
+5,4,0,lot,high,high,0.705517,full situation,25137,17735,25137
+5,4,0,medium,low,low,0.681234,full situation,387,264,387
+5,4,0,medium,low,mid,0.324607,full situation,189,61,189
+5,4,0,medium,low,high,0.450915,full situation,599,270,599
+5,4,0,medium,mid,low,0.923364,full situation,533,493,533
+5,4,0,medium,mid,mid,0.72541,full situation,486,353,486
+5,4,0,medium,mid,high,0.678078,full situation,1663,1128,1663
+5,4,0,medium,high,low,0.899625,full situation,1333,1200,1333
+5,4,0,medium,high,mid,0.767657,full situation,2051,1575,2051
+5,4,0,medium,high,high,0.718213,full situation,4945,3552,4945
+5,4,0,little,low,low,0.747911,without the economy,10,9,716
+5,4,0,little,low,mid,0.747911,without the economy,7,2,716
+5,4,0,little,low,high,0.747911,without the economy,14,6,716
+5,4,0,little,mid,low,0.909091,full situation,31,29,31
+5,4,0,little,mid,mid,0.731707,full situation,39,29,39
+5,4,0,little,mid,high,0.656863,full situation,100,66,100
+5,4,0,little,high,low,0.901961,full situation,49,45,49
+5,4,0,little,high,mid,0.786325,full situation,115,91,115
+5,4,0,little,high,high,0.736544,full situation,351,259,351
+5,3,0,lot,low,low,0.824846,full situation,3572,2947,3572
+5,3,0,lot,low,mid,0.546751,full situation,629,344,629
+5,3,0,lot,low,high,0.653342,full situation,1599,1045,1599
+5,3,0,lot,mid,low,0.964392,full situation,2357,2274,2357
+5,3,0,lot,mid,mid,0.873049,full situation,959,838,959
+5,3,0,lot,mid,high,0.811729,full situation,3647,2961,3647
+5,3,0,lot,high,low,0.95422,full situation,6005,5731,6005
+5,3,0,lot,high,mid,0.886666,full situation,5795,5139,5795
+5,3,0,lot,high,high,0.858056,full situation,10791,9260,10791
+5,3,0,medium,low,low,0.801802,full situation,331,266,331
+5,3,0,medium,low,mid,0.589147,full situation,127,75,127
+5,3,0,medium,low,high,0.665037,full situation,407,271,407
+5,3,0,medium,mid,low,0.964407,full situation,588,568,588
+5,3,0,medium,mid,mid,0.886199,full situation,411,365,411
+5,3,0,medium,mid,high,0.834316,full situation,1525,1273,1525
+5,3,0,medium,high,low,0.959519,full situation,1579,1516,1579
+5,3,0,medium,high,mid,0.913204,full situation,1899,1735,1899
+5,3,0,medium,high,high,0.869676,full situation,4694,4083,4694
+5,3,0,little,low,low,0.889366,without the economy,8,8,929
+5,3,0,little,low,mid,0.889366,without the economy,7,4,929
+5,3,0,little,low,high,0.889366,without the economy,18,16,929
+5,3,0,little,mid,low,0.978723,full situation,45,45,45
+5,3,0,little,mid,mid,0.882353,full situation,49,44,49
+5,3,0,little,mid,high,0.8125,full situation,142,116,142
+5,3,0,little,high,low,0.977528,full situation,87,86,87
+5,3,0,little,high,mid,0.942446,full situation,137,130,137
+5,3,0,little,high,high,0.865297,full situation,436,378,436
+5,2,0,lot,low,low,0.951134,full situation,1717,1634,1717
+5,2,0,lot,low,mid,0.844961,full situation,127,108,127
+5,2,0,lot,low,high,0.882075,full situation,422,373,422
+5,2,0,lot,mid,low,0.99328,full situation,1486,1477,1486
+5,2,0,lot,mid,mid,0.964539,full situation,421,407,421
+5,2,0,lot,mid,high,0.944906,full situation,1323,1251,1323
+5,2,0,lot,high,low,0.988547,full situation,3316,3279,3316
+5,2,0,lot,high,mid,0.968604,full situation,2355,2282,2355
+5,2,0,lot,high,high,0.953752,full situation,4409,4206,4409
+5,2,0,medium,low,low,0.943396,full situation,263,249,263
+5,2,0,medium,low,mid,0.83871,full situation,60,51,60
+5,2,0,medium,low,high,0.924623,full situation,197,183,197
+5,2,0,medium,mid,low,0.990115,full situation,605,600,605
+5,2,0,medium,mid,mid,0.966887,full situation,300,291,300
+5,2,0,medium,mid,high,0.950188,full situation,1062,1010,1062
+5,2,0,medium,high,low,0.98961,full situation,1538,1523,1538
+5,2,0,medium,high,mid,0.971244,full situation,1389,1350,1389
+5,2,0,medium,high,high,0.966621,full situation,3623,3503,3623
+5,2,0,little,low,low,0.978495,without the economy,7,7,1021
+5,2,0,little,low,mid,0.978495,without the economy,4,4,1021
+5,2,0,little,low,high,0.978495,without the economy,22,21,1021
+5,2,0,little,mid,low,0.983051,full situation,57,57,57
+5,2,0,little,mid,mid,0.98,full situation,48,48,48
+5,2,0,little,mid,high,0.975806,full situation,122,120,122
+5,2,0,little,high,low,0.982759,full situation,114,113,114
+5,2,0,little,high,mid,0.977778,full situation,133,131,133
+5,2,0,little,high,high,0.968992,full situation,514,499,514
+5,1,0,lot,low,low,0.991774,full situation,849,843,849
+5,1,0,lot,low,mid,0.997216,without the economy,26,25,6823
+5,1,0,lot,low,high,0.983871,full situation,122,121,122
+5,1,0,lot,mid,low,0.998853,full situation,870,870,870
+5,1,0,lot,mid,mid,0.993007,full situation,141,141,141
+5,1,0,lot,mid,high,0.995754,full situation,469,468,469
+5,1,0,lot,high,low,0.9984,full situation,1873,1871,1873
+5,1,0,lot,high,mid,0.993789,full situation,642,639,642
+5,1,0,lot,high,high,0.997272,full situation,1831,1827,1831
+5,1,0,medium,low,low,0.982818,full situation,289,285,289
+5,1,0,medium,low,mid,0.99757,without the economy,18,18,6994
+5,1,0,medium,low,high,0.99,full situation,98,98,98
+5,1,0,medium,mid,low,0.998487,full situation,659,659,659
+5,1,0,medium,mid,mid,0.987578,full situation,159,158,159
+5,1,0,medium,mid,high,0.995798,full situation,712,710,712
+5,1,0,medium,high,low,0.998759,full situation,1610,1609,1610
+5,1,0,medium,high,mid,0.998507,full situation,668,668,668
+5,1,0,medium,high,high,0.996766,full situation,2781,2773,2781
+5,1,0,little,low,low,0.999121,without the economy,8,8,1136
+5,1,0,little,low,mid,0.999121,without the economy,4,4,1136
+5,1,0,little,low,high,0.999121,without the economy,9,9,1136
+5,1,0,little,mid,low,0.987342,full situation,77,77,77
+5,1,0,little,mid,mid,0.999121,without the economy,25,25,1136
+5,1,0,little,mid,high,0.991071,full situation,110,110,110
+5,1,0,little,high,low,0.995146,full situation,204,204,204
+5,1,0,little,high,mid,0.990826,full situation,107,107,107
+5,1,0,little,high,high,0.998316,full situation,592,592,592
+5,0,0,lot,low,low,0.498917,the base rate,0,0,1517301
+5,0,0,lot,mid,low,0.498917,the base rate,0,0,1517301
+5,0,0,lot,high,low,0.498917,the base rate,0,0,1517301
+5,0,0,medium,low,low,0.498917,the base rate,0,0,1517301
+5,0,0,medium,mid,low,0.498917,the base rate,0,0,1517301
+5,0,0,medium,high,low,0.498917,the base rate,0,0,1517301
+5,0,0,little,low,low,0.498917,the base rate,0,0,1517301
+5,0,0,little,mid,low,0.498917,the base rate,0,0,1517301
+5,0,0,little,high,low,0.498917,the base rate,0,0,1517301
+4,5,0,lot,low,low,0.277963,full situation,5711,1587,5711
+4,5,0,lot,low,mid,0.071473,full situation,4839,345,4839
+4,5,0,lot,low,high,0.126148,full situation,9685,1221,9685
+4,5,0,lot,mid,low,0.639687,full situation,1530,979,1530
+4,5,0,lot,mid,mid,0.335272,full situation,1889,633,1889
+4,5,0,lot,mid,high,0.270827,full situation,10045,2720,10045
+4,5,0,lot,high,low,0.596359,full situation,4118,2456,4118
+4,5,0,lot,high,mid,0.407371,full situation,9250,3768,9250
+4,5,0,lot,high,high,0.337709,full situation,20948,7074,20948
+4,5,0,medium,low,low,0.278912,full situation,292,81,292
+4,5,0,medium,low,mid,0.074675,full situation,306,22,306
+4,5,0,medium,low,high,0.132571,full situation,873,115,873
+4,5,0,medium,mid,low,0.692708,full situation,190,132,190
+4,5,0,medium,mid,mid,0.288636,full situation,438,126,438
+4,5,0,medium,mid,high,0.279915,full situation,1402,392,1402
+4,5,0,medium,high,low,0.645094,full situation,477,308,477
+4,5,0,medium,high,mid,0.41534,full situation,1380,573,1380
+4,5,0,medium,high,high,0.321902,full situation,3468,1116,3468
+4,5,0,little,low,low,0.354916,without the economy,6,0,415
+4,5,0,little,low,mid,0.354916,without the economy,10,1,415
+4,5,0,little,low,high,0.354916,without the economy,28,5,415
+4,5,0,little,mid,low,0.354916,without the economy,7,6,415
+4,5,0,little,mid,mid,0.354916,without the economy,24,8,415
+4,5,0,little,mid,high,0.290909,full situation,53,15,53
+4,5,0,little,high,low,0.354916,without the economy,16,9,415
+4,5,0,little,high,mid,0.405405,full situation,72,29,72
+4,5,0,little,high,high,0.373134,full situation,199,74,199
+4,4,0,lot,low,low,0.446758,full situation,6290,2810,6290
+4,4,0,lot,low,mid,0.182054,full situation,3085,561,3085
+4,4,0,lot,low,high,0.262398,full situation,6854,1798,6854
+4,4,0,lot,mid,low,0.775862,full situation,2028,1574,2028
+4,4,0,lot,mid,mid,0.522124,full situation,2145,1120,2145
+4,4,0,lot,mid,high,0.442089,full situation,9573,4232,9573
+4,4,0,lot,high,low,0.734933,full situation,5540,4072,5540
+4,4,0,lot,high,mid,0.575005,full situation,10544,6063,10544
+4,4,0,lot,high,high,0.512836,full situation,21188,10866,21188
+4,4,0,medium,low,low,0.444444,full situation,583,259,583
+4,4,0,medium,low,mid,0.2457,full situation,405,99,405
+4,4,0,medium,low,high,0.284075,full situation,1392,395,1392
+4,4,0,medium,mid,low,0.805611,full situation,497,401,497
+4,4,0,medium,mid,mid,0.531172,full situation,800,425,800
+4,4,0,medium,mid,high,0.467107,full situation,3023,1412,3023
+4,4,0,medium,high,low,0.75021,full situation,1191,894,1191
+4,4,0,medium,high,mid,0.574415,full situation,3203,1840,3203
+4,4,0,medium,high,high,0.519138,full situation,7705,4000,7705
+4,4,0,little,low,low,0.538528,without the economy,9,4,1153
+4,4,0,little,low,mid,0.538528,without the economy,14,3,1153
+4,4,0,little,low,high,0.28,full situation,48,13,48
+4,4,0,little,mid,low,0.84375,full situation,30,26,30
+4,4,0,little,mid,mid,0.471698,full situation,51,24,51
+4,4,0,little,mid,high,0.486034,full situation,177,86,177
+4,4,0,little,high,low,0.75,full situation,62,47,62
+4,4,0,little,high,mid,0.588235,full situation,185,109,185
+4,4,0,little,high,high,0.535406,full situation,577,309,577
+4,3,0,lot,low,low,0.674994,full situation,4481,3025,4481
+4,3,0,lot,low,mid,0.39205,full situation,1281,502,1281
+4,3,0,lot,low,high,0.48913,full situation,3034,1484,3034
+4,3,0,lot,mid,low,0.903608,full situation,1938,1752,1938
+4,3,0,lot,mid,mid,0.742647,full situation,1494,1110,1494
+4,3,0,lot,mid,high,0.666321,full situation,5776,3849,5776
+4,3,0,lot,high,low,0.872179,full situation,5005,4366,5005
+4,3,0,lot,high,mid,0.76385,full situation,7218,5514,7218
+4,3,0,lot,high,high,0.716512,full situation,13921,9975,13921
+4,3,0,medium,low,low,0.703146,full situation,729,513,729
+4,3,0,medium,low,mid,0.410112,full situation,354,145,354
+4,3,0,medium,low,high,0.512157,full situation,1273,652,1273
+4,3,0,medium,mid,low,0.917617,full situation,787,723,787
+4,3,0,medium,mid,mid,0.73587,full situation,918,676,918
+4,3,0,medium,mid,high,0.682121,full situation,3600,2456,3600
+4,3,0,medium,high,low,0.887885,full situation,1880,1670,1880
+4,3,0,medium,high,mid,0.772995,full situation,3738,2890,3738
+4,3,0,medium,high,high,0.727152,full situation,9747,7088,9747
+4,3,0,little,low,low,0.766491,without the economy,17,14,2272
+4,3,0,little,low,mid,0.766491,without the economy,21,11,2272
+4,3,0,little,low,high,0.655738,full situation,59,39,59
+4,3,0,little,mid,low,0.941176,full situation,66,63,66
+4,3,0,little,mid,mid,0.737864,full situation,101,75,101
+4,3,0,little,mid,high,0.692308,full situation,362,251,362
+4,3,0,little,high,low,0.90566,full situation,157,143,157
+4,3,0,little,high,mid,0.80826,full situation,337,273,337
+4,3,0,little,high,high,0.757366,full situation,1152,873,1152
+4,2,0,lot,low,low,0.88057,full situation,2736,2410,2736
+4,2,0,lot,low,mid,0.733813,full situation,415,305,415
+4,2,0,lot,low,high,0.783554,full situation,1056,828,1056
+4,2,0,lot,mid,low,0.977258,full situation,1493,1460,1493
+4,2,0,lot,mid,mid,0.909942,full situation,853,777,853
+4,2,0,lot,mid,high,0.871004,full situation,2688,2342,2688
+4,2,0,lot,high,low,0.960497,full situation,3618,3476,3618
+4,2,0,lot,high,mid,0.919412,full situation,3944,3627,3944
+4,2,0,lot,high,high,0.8904,full situation,7279,6482,7279
+4,2,0,medium,low,low,0.872093,full situation,772,674,772
+4,2,0,medium,low,mid,0.741117,full situation,195,145,195
+4,2,0,medium,low,high,0.786667,full situation,823,648,823
+4,2,0,medium,mid,low,0.976091,full situation,960,938,960
+4,2,0,medium,mid,mid,0.912596,full situation,776,709,776
+4,2,0,medium,mid,high,0.875871,full situation,3156,2765,3156
+4,2,0,medium,high,low,0.968858,full situation,2310,2239,2310
+4,2,0,medium,high,mid,0.926822,full situation,3264,3026,3264
+4,2,0,medium,high,high,0.901673,full situation,9324,8408,9324
+4,2,0,little,low,low,0.931768,without the economy,24,21,3193
+4,2,0,little,low,mid,0.931768,without the economy,13,12,3193
+4,2,0,little,low,high,0.883117,full situation,75,67,75
+4,2,0,little,mid,low,0.99187,full situation,121,121,121
+4,2,0,little,mid,mid,0.923729,full situation,116,108,116
+4,2,0,little,mid,high,0.915354,full situation,506,464,506
+4,2,0,little,high,low,0.985075,full situation,266,263,266
+4,2,0,little,high,mid,0.951049,full situation,427,407,427
+4,2,0,little,high,high,0.919247,full situation,1645,1513,1645
+4,1,0,lot,low,low,0.976103,full situation,1630,1592,1630
+4,1,0,lot,low,mid,0.926606,full situation,107,100,107
+4,1,0,lot,low,high,0.948718,full situation,310,295,310
+4,1,0,lot,mid,low,0.996165,full situation,1041,1038,1041
+4,1,0,lot,mid,mid,0.99505,full situation,402,401,402
+4,1,0,lot,mid,high,0.976598,full situation,1109,1084,1109
+4,1,0,lot,high,low,0.992363,full situation,2355,2338,2355
+4,1,0,lot,high,mid,0.990252,full situation,1229,1218,1229
+4,1,0,lot,high,high,0.98632,full situation,3726,3676,3726
+4,1,0,medium,low,low,0.983945,full situation,870,857,870
+4,1,0,medium,low,mid,0.967742,full situation,91,89,91
+4,1,0,medium,low,high,0.974239,full situation,425,415,425
+4,1,0,medium,mid,low,0.996286,full situation,1075,1072,1075
+4,1,0,medium,mid,mid,0.989518,full situation,475,471,475
+4,1,0,medium,mid,high,0.989167,full situation,2398,2373,2398
+4,1,0,medium,high,low,0.995361,full situation,2585,2574,2585
+4,1,0,medium,high,mid,0.993182,full situation,1758,1747,1758
+4,1,0,medium,high,high,0.988059,full situation,8289,8191,8289
+4,1,0,little,low,low,0.978723,full situation,45,45,45
+4,1,0,little,low,mid,0.995546,without the economy,10,10,4264
+4,1,0,little,low,high,0.987179,full situation,76,76,76
+4,1,0,little,mid,low,0.994681,full situation,186,186,186
+4,1,0,little,mid,mid,0.982609,full situation,113,112,113
+4,1,0,little,mid,high,0.992051,full situation,627,623,627
+4,1,0,little,high,low,0.997831,full situation,459,459,459
+4,1,0,little,high,mid,0.997423,full situation,386,386,386
+4,1,0,little,high,high,0.994078,full situation,2362,2349,2362
+4,0,0,lot,low,low,0.498917,the base rate,0,0,1517301
+4,0,0,lot,mid,low,0.498917,the base rate,0,0,1517301
+4,0,0,lot,high,low,0.498917,the base rate,0,0,1517301
+4,0,0,medium,low,low,0.498917,the base rate,0,0,1517301
+4,0,0,medium,mid,low,0.498917,the base rate,0,0,1517301
+4,0,0,medium,high,low,0.498917,the base rate,0,0,1517301
+4,0,0,little,low,low,0.498917,the base rate,0,0,1517301
+4,0,0,little,mid,low,0.498917,the base rate,0,0,1517301
+4,0,0,little,high,low,0.498917,the base rate,0,0,1517301
+3,5,0,lot,low,low,0.118367,full situation,2448,289,2448
+3,5,0,lot,low,mid,0.023994,full situation,2832,67,2832
+3,5,0,lot,low,high,0.047261,full situation,5182,244,5182
+3,5,0,lot,mid,low,0.357868,full situation,392,140,392
+3,5,0,lot,mid,mid,0.138284,full situation,779,107,779
+3,5,0,lot,mid,high,0.123414,full situation,4017,495,4017
+3,5,0,lot,high,low,0.342792,full situation,879,301,879
+3,5,0,lot,high,mid,0.190281,full situation,3167,602,3167
+3,5,0,lot,high,high,0.151325,full situation,7657,1158,7657
+3,5,0,medium,low,low,0.163866,full situation,236,38,236
+3,5,0,medium,low,mid,0.022535,full situation,353,7,353
+3,5,0,medium,low,high,0.036534,full situation,956,34,956
+3,5,0,medium,mid,low,0.395833,full situation,94,37,94
+3,5,0,medium,mid,mid,0.157377,full situation,303,47,303
+3,5,0,medium,mid,high,0.104129,full situation,1112,115,1112
+3,5,0,medium,high,low,0.342105,full situation,188,64,188
+3,5,0,medium,high,mid,0.173348,full situation,921,159,921
+3,5,0,medium,high,high,0.135722,full situation,2621,355,2621
+3,5,0,little,low,low,0.108303,without the economy,5,0,275
+3,5,0,little,low,mid,0.108303,without the economy,12,0,275
+3,5,0,little,low,high,0.108303,without the economy,26,0,275
+3,5,0,little,mid,low,0.108303,without the economy,1,1,275
+3,5,0,little,mid,mid,0.108303,without the economy,18,0,275
+3,5,0,little,mid,high,0.104167,full situation,46,4,46
+3,5,0,little,high,low,0.108303,without the economy,10,2,275
+3,5,0,little,high,mid,0.15,full situation,38,5,38
+3,5,0,little,high,high,0.14876,full situation,119,17,119
+3,4,0,lot,low,low,0.235021,full situation,3870,909,3870
+3,4,0,lot,low,mid,0.083365,full situation,2661,221,2661
+3,4,0,lot,low,high,0.124092,full situation,5502,682,5502
+3,4,0,lot,mid,low,0.543329,full situation,725,394,725
+3,4,0,lot,mid,mid,0.294073,full situation,1314,386,1314
+3,4,0,lot,mid,high,0.233562,full situation,5975,1395,5975
+3,4,0,lot,high,low,0.496212,full situation,1846,916,1846
+3,4,0,lot,high,mid,0.352319,full situation,5388,1898,5388
+3,4,0,lot,high,high,0.286011,full situation,12036,3442,12036
+3,4,0,medium,low,low,0.231148,full situation,608,140,608
+3,4,0,medium,low,mid,0.092905,full situation,590,54,590
+3,4,0,medium,low,high,0.124797,full situation,1841,229,1841
+3,4,0,medium,mid,low,0.554386,full situation,283,157,283
+3,4,0,medium,mid,mid,0.316731,full situation,781,247,781
+3,4,0,medium,mid,high,0.228409,full situation,3159,721,3159
+3,4,0,medium,high,low,0.511485,full situation,651,333,651
+3,4,0,medium,high,mid,0.324841,full situation,2667,866,2667
+3,4,0,medium,high,high,0.28408,full situation,7429,2110,7429
+3,4,0,little,low,low,0.283737,without the economy,10,3,1154
+3,4,0,little,low,mid,0.283737,without the economy,23,1,1154
+3,4,0,little,low,high,0.097222,full situation,70,6,70
+3,4,0,little,mid,low,0.283737,without the economy,13,12,1154
+3,4,0,little,mid,mid,0.210526,full situation,55,11,55
+3,4,0,little,mid,high,0.273224,full situation,181,49,181
+3,4,0,little,high,low,0.446809,full situation,45,20,45
+3,4,0,little,high,mid,0.302703,full situation,183,55,183
+3,4,0,little,high,high,0.296875,full situation,574,170,574
+3,3,0,lot,low,low,0.46,full situation,3448,1586,3448
+3,3,0,lot,low,mid,0.231715,full situation,1543,357,1543
+3,3,0,lot,low,high,0.295783,full situation,3247,960,3247
+3,3,0,lot,mid,low,0.733935,full situation,885,650,885
+3,3,0,lot,mid,mid,0.553339,full situation,1151,637,1151
+3,3,0,lot,mid,high,0.429164,full situation,4819,2068,4819
+3,3,0,lot,high,low,0.706102,full situation,2145,1515,2145
+3,3,0,lot,high,mid,0.57192,full situation,4941,2826,4941
+3,3,0,lot,high,high,0.501128,full situation,10189,5106,10189
+3,3,0,medium,low,low,0.468817,full situation,928,435,928
+3,3,0,medium,low,mid,0.260125,full situation,640,166,640
+3,3,0,medium,low,high,0.299904,full situation,2072,621,2072
+3,3,0,medium,mid,low,0.754685,full situation,585,442,585
+3,3,0,medium,mid,mid,0.531278,full situation,1101,585,1101
+3,3,0,medium,mid,high,0.45967,full situation,4610,2119,4610
+3,3,0,medium,high,low,0.703793,full situation,1237,871,1237
+3,3,0,medium,high,mid,0.568092,full situation,4066,2310,4066
+3,3,0,medium,high,high,0.5,full situation,11430,5715,11430
+3,3,0,little,low,low,0.516982,without the economy,28,18,3060
+3,3,0,little,low,mid,0.236842,full situation,36,8,36
+3,3,0,little,low,high,0.359375,full situation,126,45,126
+3,3,0,little,mid,low,0.78125,full situation,62,49,62
+3,3,0,little,mid,mid,0.44186,full situation,127,56,127
+3,3,0,little,mid,high,0.484902,full situation,561,272,561
+3,3,0,little,high,low,0.699248,full situation,131,92,131
+3,3,0,little,high,mid,0.536471,full situation,423,227,423
+3,3,0,little,high,high,0.520408,full situation,1566,815,1566
+3,2,0,lot,low,low,0.745523,full situation,2399,1789,2399
+3,2,0,lot,low,mid,0.541436,full situation,541,293,541
+3,2,0,lot,low,high,0.589466,full situation,1289,760,1289
+3,2,0,lot,mid,low,0.901798,full situation,721,651,721
+3,2,0,lot,mid,mid,0.794538,full situation,767,610,767
+3,2,0,lot,mid,high,0.712458,full situation,2655,1892,2655
+3,2,0,lot,high,low,0.86891,full situation,1722,1497,1722
+3,2,0,lot,high,mid,0.810942,full situation,3087,2504,3087
+3,2,0,lot,high,high,0.757147,full situation,6504,4925,6504
+3,2,0,medium,low,low,0.731728,full situation,1161,850,1161
+3,2,0,medium,low,mid,0.63747,full situation,409,261,409
+3,2,0,medium,low,high,0.598667,full situation,1498,897,1498
+3,2,0,medium,mid,low,0.908257,full situation,761,692,761
+3,2,0,medium,mid,mid,0.809827,full situation,1097,889,1097
+3,2,0,medium,mid,high,0.72665,full situation,4666,3391,4666
+3,2,0,medium,high,low,0.892985,full situation,1680,1501,1680
+3,2,0,medium,high,mid,0.820353,full situation,4017,3296,4017
+3,2,0,medium,high,high,0.764715,full situation,12587,9626,12587
+3,2,0,little,low,low,0.811594,full situation,67,55,67
+3,2,0,little,low,mid,0.621622,full situation,35,22,35
+3,2,0,little,low,high,0.648045,full situation,177,115,177
+3,2,0,little,mid,low,0.971223,full situation,137,134,137
+3,2,0,little,mid,mid,0.838384,full situation,196,165,196
+3,2,0,little,mid,high,0.769703,full situation,975,751,975
+3,2,0,little,high,low,0.928854,full situation,251,234,251
+3,2,0,little,high,mid,0.851595,full situation,719,613,719
+3,2,0,little,high,high,0.791569,full situation,2987,2365,2987
+3,1,0,lot,low,low,0.931196,full situation,1495,1393,1495
+3,1,0,lot,low,mid,0.85906,full situation,147,127,147
+3,1,0,lot,low,high,0.898824,full situation,423,381,423
+3,1,0,lot,mid,low,0.982922,full situation,525,517,525
+3,1,0,lot,mid,mid,0.973607,full situation,339,331,339
+3,1,0,lot,mid,high,0.9361,full situation,1203,1127,1203
+3,1,0,lot,high,low,0.970428,full situation,1283,1246,1283
+3,1,0,lot,high,mid,0.964356,full situation,1008,973,1008
+3,1,0,lot,high,high,0.947793,full situation,3465,3285,3465
+3,1,0,medium,low,low,0.934025,full situation,1347,1259,1347
+3,1,0,medium,low,mid,0.908108,full situation,183,167,183
+3,1,0,medium,low,high,0.917167,full situation,831,763,831
+3,1,0,medium,mid,low,0.98092,full situation,889,873,889
+3,1,0,medium,mid,mid,0.965847,full situation,730,706,730
+3,1,0,medium,mid,high,0.952099,full situation,3881,3696,3881
+3,1,0,medium,high,low,0.980217,full situation,2121,2080,2121
+3,1,0,medium,high,mid,0.967085,full situation,2307,2232,2307
+3,1,0,medium,high,high,0.960761,full situation,11772,11311,11772
+3,1,0,little,low,low,0.966102,full situation,116,113,116
+3,1,0,little,low,mid,0.9737,without the economy,25,25,8211
+3,1,0,little,low,high,0.936585,full situation,203,191,203
+3,1,0,little,mid,low,0.991031,full situation,221,220,221
+3,1,0,little,mid,mid,0.990476,full situation,208,207,208
+3,1,0,little,mid,high,0.964657,full situation,1441,1391,1441
+3,1,0,little,high,low,0.989583,full situation,478,474,478
+3,1,0,little,high,mid,0.9869,full situation,685,677,685
+3,1,0,little,high,high,0.971671,full situation,4834,4698,4834
+3,0,0,lot,low,low,0.498917,the base rate,0,0,1517301
+3,0,0,lot,mid,low,0.498917,the base rate,0,0,1517301
+3,0,0,lot,high,low,0.498917,the base rate,0,0,1517301
+3,0,0,medium,low,low,0.498917,the base rate,0,0,1517301
+3,0,0,medium,mid,low,0.498917,the base rate,0,0,1517301
+3,0,0,medium,high,low,0.498917,the base rate,0,0,1517301
+3,0,0,little,low,low,0.498917,the base rate,0,0,1517301
+3,0,0,little,mid,low,0.498917,the base rate,0,0,1517301
+3,0,0,little,high,low,0.498917,the base rate,0,0,1517301
+2,5,0,lot,low,low,0.024211,full situation,948,22,948
+2,5,0,lot,low,mid,0.007348,full situation,1631,11,1631
+2,5,0,lot,low,high,0.012128,full situation,2554,30,2554
+2,5,0,lot,mid,low,0.168831,full situation,75,12,75
+2,5,0,lot,mid,mid,0.034749,full situation,257,8,257
+2,5,0,lot,mid,high,0.027759,full situation,1475,40,1475
+2,5,0,lot,high,low,0.096154,full situation,154,14,154
+2,5,0,lot,high,mid,0.050483,full situation,929,46,929
+2,5,0,lot,high,high,0.034622,full situation,2713,93,2713
+2,5,0,medium,low,low,0.033113,full situation,149,4,149
+2,5,0,medium,low,mid,0.008571,full situation,348,2,348
+2,5,0,medium,low,high,0.010953,full situation,911,9,911
+2,5,0,medium,mid,low,0.166667,full situation,34,5,34
+2,5,0,medium,mid,mid,0.034483,full situation,172,5,172
+2,5,0,medium,mid,high,0.017173,full situation,755,12,755
+2,5,0,medium,high,low,0.113636,full situation,42,4,42
+2,5,0,medium,high,mid,0.04158,full situation,479,19,479
+2,5,0,medium,high,high,0.032334,full situation,1699,54,1699
+2,5,0,little,low,low,0.035294,without the economy,1,0,168
+2,5,0,little,low,mid,0.035294,without the economy,11,0,168
+2,5,0,little,low,high,0.035294,without the economy,18,0,168
+2,5,0,little,mid,low,0.035294,without the economy,0,0,168
+2,5,0,little,mid,mid,0.035294,without the economy,6,0,168
+2,5,0,little,mid,high,0.078947,full situation,36,2,36
+2,5,0,little,high,low,0.035294,without the economy,6,1,168
+2,5,0,little,high,mid,0.035294,without the economy,18,0,168
+2,5,0,little,high,high,0.040541,full situation,72,2,72
+2,4,0,lot,low,low,0.087177,full situation,1776,154,1776
+2,4,0,lot,low,mid,0.024443,full situation,1839,44,1839
+2,4,0,lot,low,high,0.035357,full situation,3392,119,3392
+2,4,0,lot,mid,low,0.207254,full situation,191,39,191
+2,4,0,lot,mid,mid,0.077338,full situation,554,42,554
+2,4,0,lot,mid,high,0.07015,full situation,2792,195,2792
+2,4,0,lot,high,low,0.222506,full situation,389,86,389
+2,4,0,lot,high,mid,0.13124,full situation,1941,254,1941
+2,4,0,lot,high,high,0.095496,full situation,5349,510,5349
+2,4,0,medium,low,low,0.09002,full situation,509,45,509
+2,4,0,medium,low,mid,0.02489,full situation,681,16,681
+2,4,0,medium,low,high,0.032575,full situation,1932,62,1932
+2,4,0,medium,mid,low,0.215278,full situation,142,30,142
+2,4,0,medium,mid,mid,0.119843,full situation,507,60,507
+2,4,0,medium,mid,high,0.058752,full situation,2449,143,2449
+2,4,0,medium,high,low,0.206478,full situation,245,50,245
+2,4,0,medium,high,mid,0.106088,full situation,1657,175,1657
+2,4,0,medium,high,high,0.089675,full situation,5596,501,5596
+2,4,0,little,low,low,0.086364,without the economy,8,1,878
+2,4,0,little,low,mid,0.086364,without the economy,18,0,878
+2,4,0,little,low,high,0.029851,full situation,65,1,65
+2,4,0,little,mid,low,0.086364,without the economy,11,5,878
+2,4,0,little,mid,mid,0.088235,full situation,32,2,32
+2,4,0,little,mid,high,0.097403,full situation,152,14,152
+2,4,0,little,high,low,0.086364,without the economy,25,4,878
+2,4,0,little,high,mid,0.08,full situation,123,9,123
+2,4,0,little,high,high,0.089686,full situation,444,39,444
+2,3,0,lot,low,low,0.223613,full situation,1836,410,1836
+2,3,0,lot,low,mid,0.097621,full situation,1217,118,1217
+2,3,0,lot,low,high,0.121622,full situation,2218,269,2218
+2,3,0,lot,mid,low,0.406639,full situation,239,97,239
+2,3,0,lot,mid,mid,0.263636,full situation,548,144,548
+2,3,0,lot,mid,high,0.184887,full situation,2605,481,2605
+2,3,0,lot,high,low,0.407547,full situation,528,215,528
+2,3,0,lot,high,mid,0.303922,full situation,2038,619,2038
+2,3,0,lot,high,high,0.243587,full situation,5183,1262,5183
+2,3,0,medium,low,low,0.229292,full situation,831,190,831
+2,3,0,medium,low,mid,0.102151,full situation,742,75,742
+2,3,0,medium,low,high,0.110564,full situation,2232,246,2232
+2,3,0,medium,mid,low,0.425101,full situation,245,104,245
+2,3,0,medium,mid,mid,0.240328,full situation,851,204,851
+2,3,0,medium,mid,high,0.193069,full situation,4038,779,4038
+2,3,0,medium,high,low,0.396975,full situation,527,209,527
+2,3,0,medium,high,mid,0.275596,full situation,2850,785,2850
+2,3,0,medium,high,high,0.231826,full situation,9311,2158,9311
+2,3,0,little,low,low,0.241942,without the economy,16,5,2573
+2,3,0,little,low,mid,0.212121,full situation,31,6,31
+2,3,0,little,low,high,0.122137,full situation,129,15,129
+2,3,0,little,mid,low,0.5,full situation,40,20,40
+2,3,0,little,mid,mid,0.181818,full situation,108,19,108
+2,3,0,little,mid,high,0.230108,full situation,463,106,463
+2,3,0,little,high,low,0.285714,full situation,82,23,82
+2,3,0,little,high,mid,0.281818,full situation,328,92,328
+2,3,0,little,high,high,0.244557,full situation,1376,336,1376
+2,2,0,lot,low,low,0.494681,full situation,1314,650,1314
+2,2,0,lot,low,mid,0.330275,full situation,434,143,434
+2,2,0,lot,low,high,0.355739,full situation,965,343,965
+2,2,0,lot,mid,low,0.678414,full situation,225,153,225
+2,2,0,lot,mid,mid,0.530303,full situation,394,209,394
+2,2,0,lot,mid,high,0.452756,full situation,1522,689,1522
+2,2,0,lot,high,low,0.68319,full situation,462,316,462
+2,2,0,lot,high,mid,0.557489,full situation,1320,736,1320
+2,2,0,lot,high,high,0.513043,full situation,3333,1710,3333
+2,2,0,medium,low,low,0.488729,full situation,1107,541,1107
+2,2,0,medium,low,mid,0.305019,full situation,516,157,516
+2,2,0,medium,low,high,0.361079,full situation,1704,615,1704
+2,2,0,medium,mid,low,0.701847,full situation,377,265,377
+2,2,0,medium,mid,mid,0.544304,full situation,946,515,946
+2,2,0,medium,mid,high,0.468413,full situation,4351,2038,4351
+2,2,0,medium,high,low,0.69863,full situation,801,560,801
+2,2,0,medium,high,mid,0.568035,full situation,2945,1673,2945
+2,2,0,medium,high,high,0.506693,full situation,10681,5412,10681
+2,2,0,little,low,low,0.5,full situation,76,38,76
+2,2,0,little,low,mid,0.381818,full situation,53,20,53
+2,2,0,little,low,high,0.385892,full situation,239,92,239
+2,2,0,little,mid,low,0.848837,full situation,84,72,84
+2,2,0,little,mid,mid,0.589474,full situation,188,111,188
+2,2,0,little,mid,high,0.511191,full situation,1115,570,1115
+2,2,0,little,high,low,0.751445,full situation,171,129,171
+2,2,0,little,high,mid,0.58714,full situation,589,346,589
+2,2,0,little,high,high,0.544692,full situation,3097,1687,3097
+2,1,0,lot,low,low,0.812274,full situation,829,674,829
+2,1,0,lot,low,mid,0.747664,full situation,105,79,105
+2,1,0,lot,low,high,0.72381,full situation,313,227,313
+2,1,0,lot,mid,low,0.861314,full situation,135,117,135
+2,1,0,lot,mid,mid,0.880795,full situation,149,132,149
+2,1,0,lot,mid,high,0.811502,full situation,624,507,624
+2,1,0,lot,high,low,0.905263,full situation,378,343,378
+2,1,0,lot,high,mid,0.8825,full situation,398,352,398
+2,1,0,lot,high,high,0.840233,full situation,1713,1440,1713
+2,1,0,medium,low,low,0.825279,full situation,1343,1109,1343
+2,1,0,medium,low,mid,0.728155,full situation,204,149,204
+2,1,0,medium,low,high,0.761905,full situation,985,751,985
+2,1,0,medium,mid,low,0.922049,full situation,447,413,447
+2,1,0,medium,mid,mid,0.865997,full situation,595,516,595
+2,1,0,medium,mid,high,0.833756,full situation,3547,2958,3547
+2,1,0,medium,high,low,0.897206,full situation,1000,898,1000
+2,1,0,medium,high,mid,0.879876,full situation,1613,1420,1613
+2,1,0,medium,high,high,0.856443,full situation,9792,8387,9792
+2,1,0,little,low,low,0.845494,full situation,231,196,231
+2,1,0,little,low,mid,0.76087,full situation,44,34,44
+2,1,0,little,low,high,0.809231,full situation,323,262,323
+2,1,0,little,mid,low,0.955975,full situation,157,151,157
+2,1,0,little,mid,mid,0.92887,full situation,237,221,237
+2,1,0,little,mid,high,0.870241,full situation,1863,1622,1863
+2,1,0,little,high,low,0.961538,full situation,284,274,284
+2,1,0,little,high,mid,0.90873,full situation,754,686,754
+2,1,0,little,high,high,0.886288,full situation,5679,5034,5679
+2,0,0,lot,low,low,0.498917,the base rate,0,0,1517301
+2,0,0,lot,mid,low,0.498917,the base rate,0,0,1517301
+2,0,0,lot,high,low,0.498917,the base rate,0,0,1517301
+2,0,0,medium,low,low,0.498917,the base rate,0,0,1517301
+2,0,0,medium,mid,low,0.498917,the base rate,0,0,1517301
+2,0,0,medium,high,low,0.498917,the base rate,0,0,1517301
+2,0,0,little,low,low,0.498917,the base rate,0,0,1517301
+2,0,0,little,mid,low,0.498917,the base rate,0,0,1517301
+2,0,0,little,high,low,0.498917,the base rate,0,0,1517301
+1,5,0,lot,low,low,0.003322,full situation,299,0,299
+1,5,0,lot,low,mid,0.001362,full situation,732,0,732
+1,5,0,lot,low,high,0.001706,full situation,1170,1,1170
+1,5,0,lot,mid,low,0.001346,without the economy,11,0,3713
+1,5,0,lot,mid,mid,0.014085,full situation,69,0,69
+1,5,0,lot,mid,high,0.002415,full situation,412,0,412
+1,5,0,lot,high,low,0.001346,without the economy,29,0,3713
+1,5,0,lot,high,mid,0.009615,full situation,206,1,206
+1,5,0,lot,high,high,0.003812,full situation,785,2,785
+1,5,0,medium,low,low,0.012346,full situation,79,0,79
+1,5,0,medium,low,mid,0.003876,full situation,256,0,256
+1,5,0,medium,low,high,0.002755,full situation,724,1,724
+1,5,0,medium,mid,low,0.001942,without the economy,7,0,2573
+1,5,0,medium,mid,mid,0.014085,full situation,69,0,69
+1,5,0,medium,mid,high,0.002571,full situation,387,0,387
+1,5,0,medium,high,low,0.001942,without the economy,8,0,2573
+1,5,0,medium,high,mid,0.011429,full situation,173,1,173
+1,5,0,medium,high,high,0.00344,full situation,870,2,870
+1,5,0,little,low,low,0.012987,without the economy,1,0,75
+1,5,0,little,low,mid,0.012987,without the economy,3,0,75
+1,5,0,little,low,high,0.012987,without the economy,10,0,75
+1,5,0,little,mid,low,0.012987,without the economy,0,0,75
+1,5,0,little,mid,mid,0.012987,without the economy,1,0,75
+1,5,0,little,mid,high,0.012987,without the economy,12,0,75
+1,5,0,little,high,low,0.012987,without the economy,0,0,75
+1,5,0,little,high,mid,0.012987,without the economy,4,0,75
+1,5,0,little,high,high,0.021739,full situation,44,0,44
+1,4,0,lot,low,low,0.014493,full situation,619,8,619
+1,4,0,lot,low,mid,0.00297,full situation,1008,2,1008
+1,4,0,lot,low,high,0.001757,full situation,1705,2,1705
+1,4,0,lot,mid,low,0.03125,full situation,30,0,30
+1,4,0,lot,mid,mid,0.011111,full situation,178,1,178
+1,4,0,lot,mid,high,0.008024,full situation,995,7,995
+1,4,0,lot,high,low,0.028986,full situation,67,1,67
+1,4,0,lot,high,mid,0.020534,full situation,485,9,485
+1,4,0,lot,high,high,0.010795,full situation,1758,18,1758
+1,4,0,medium,low,low,0.017361,full situation,286,4,286
+1,4,0,medium,low,mid,0.003497,full situation,570,1,570
+1,4,0,medium,low,high,0.004519,full situation,1547,6,1547
+1,4,0,medium,mid,low,0.02381,full situation,40,0,40
+1,4,0,medium,mid,mid,0.016129,full situation,246,3,246
+1,4,0,medium,mid,high,0.009582,full situation,1459,13,1459
+1,4,0,medium,high,low,0.028169,full situation,69,1,69
+1,4,0,medium,high,mid,0.011852,full situation,673,7,673
+1,4,0,medium,high,high,0.010326,full situation,3097,31,3097
+1,4,0,little,low,low,0.004057,without the economy,2,0,491
+1,4,0,little,low,mid,0.004057,without the economy,11,0,491
+1,4,0,little,low,high,0.019231,full situation,50,0,50
+1,4,0,little,mid,low,0.004057,without the economy,3,0,491
+1,4,0,little,mid,mid,0.004057,without the economy,21,0,491
+1,4,0,little,mid,high,0.010417,full situation,94,0,94
+1,4,0,little,high,low,0.004057,without the economy,7,0,491
+1,4,0,little,high,mid,0.02,full situation,48,0,48
+1,4,0,little,high,high,0.007782,full situation,255,1,255
+1,3,0,lot,low,low,0.052067,full situation,651,33,651
+1,3,0,lot,low,mid,0.006462,full situation,617,3,617
+1,3,0,lot,low,high,0.011786,full situation,1101,12,1101
+1,3,0,lot,mid,low,0.095238,full situation,40,3,40
+1,3,0,lot,mid,mid,0.045045,full situation,220,9,220
+1,3,0,lot,mid,high,0.032321,full situation,1019,32,1019
+1,3,0,lot,high,low,0.15493,full situation,69,10,69
+1,3,0,lot,high,mid,0.074148,full situation,497,36,497
+1,3,0,lot,high,high,0.042882,full situation,1747,74,1747
+1,3,0,medium,low,low,0.051136,full situation,526,26,526
+1,3,0,medium,low,mid,0.01473,full situation,609,8,609
+1,3,0,medium,low,high,0.024793,full situation,1571,38,1571
+1,3,0,medium,mid,low,0.126582,full situation,77,9,77
+1,3,0,medium,mid,mid,0.061181,full situation,472,28,472
+1,3,0,medium,mid,high,0.037948,full situation,2396,90,2396
+1,3,0,medium,high,low,0.131387,full situation,135,17,135
+1,3,0,medium,high,mid,0.061812,full situation,1179,72,1179
+1,3,0,medium,high,high,0.04358,full situation,5115,222,5115
+1,3,0,little,low,low,0.046945,without the economy,5,0,1553
+1,3,0,little,low,mid,0.046945,without the economy,24,0,1553
+1,3,0,little,low,high,0.028571,full situation,103,2,103
+1,3,0,little,mid,low,0.046945,without the economy,10,0,1553
+1,3,0,little,mid,mid,0.107143,full situation,54,5,54
+1,3,0,little,mid,high,0.03003,full situation,331,9,331
+1,3,0,little,high,low,0.046945,without the economy,29,2,1553
+1,3,0,little,high,mid,0.079268,full situation,162,12,162
+1,3,0,little,high,high,0.051374,full situation,835,42,835
+1,2,0,lot,low,low,0.178054,full situation,481,85,481
+1,2,0,lot,low,mid,0.114679,full situation,216,24,216
+1,2,0,lot,low,high,0.082969,full situation,456,37,456
+1,2,0,lot,mid,low,0.157688,without the economy,25,10,3302
+1,2,0,lot,mid,mid,0.186567,full situation,132,24,132
+1,2,0,lot,mid,high,0.129758,full situation,576,74,576
+1,2,0,lot,high,low,0.296296,full situation,79,23,79
+1,2,0,lot,high,mid,0.20679,full situation,322,66,322
+1,2,0,lot,high,high,0.175025,full situation,1015,177,1015
+1,2,0,medium,low,low,0.153635,full situation,727,111,727
+1,2,0,medium,low,mid,0.101617,full situation,431,43,431
+1,2,0,medium,low,high,0.124357,full situation,1164,144,1164
+1,2,0,medium,mid,low,0.356522,full situation,113,40,113
+1,2,0,medium,mid,mid,0.203065,full situation,520,105,520
+1,2,0,medium,mid,high,0.160636,full situation,2513,403,2513
+1,2,0,medium,high,low,0.30131,full situation,227,68,227
+1,2,0,medium,high,mid,0.20595,full situation,1309,269,1309
+1,2,0,medium,high,high,0.18041,full situation,5613,1012,5613
+1,2,0,little,low,low,0.16129,full situation,60,9,60
+1,2,0,little,low,mid,0.156863,full situation,49,7,49
+1,2,0,little,low,high,0.145729,full situation,197,28,197
+1,2,0,little,mid,low,0.487179,full situation,37,18,37
+1,2,0,little,mid,mid,0.281818,full situation,108,30,108
+1,2,0,little,mid,high,0.186131,full situation,820,152,820
+1,2,0,little,high,low,0.4375,full situation,78,34,78
+1,2,0,little,high,mid,0.266846,full situation,369,98,369
+1,2,0,little,high,high,0.194773,full situation,2026,394,2026
+1,1,0,lot,low,low,0.492701,full situation,272,134,272
+1,1,0,lot,low,mid,0.464286,full situation,54,25,54
+1,1,0,lot,low,high,0.354545,full situation,108,38,108
+1,1,0,lot,mid,low,0.521519,without the economy,17,12,1183
+1,1,0,lot,mid,mid,0.606061,full situation,31,19,31
+1,1,0,lot,mid,high,0.483871,full situation,184,89,184
+1,1,0,lot,high,low,0.589744,full situation,37,22,37
+1,1,0,lot,high,mid,0.616279,full situation,84,52,84
+1,1,0,lot,high,high,0.570352,full situation,396,226,396
+1,1,0,medium,low,low,0.512456,full situation,841,431,841
+1,1,0,medium,low,mid,0.462585,full situation,145,67,145
+1,1,0,medium,low,high,0.442122,full situation,620,274,620
+1,1,0,medium,mid,low,0.57265,full situation,115,66,115
+1,1,0,medium,mid,mid,0.56446,full situation,285,161,285
+1,1,0,medium,mid,high,0.53548,full situation,1830,980,1830
+1,1,0,medium,high,low,0.622642,full situation,263,164,263
+1,1,0,medium,high,mid,0.608964,full situation,645,393,645
+1,1,0,medium,high,high,0.561913,full situation,4367,2454,4367
+1,1,0,little,low,low,0.552995,full situation,215,119,215
+1,1,0,little,low,mid,0.609756,full situation,39,24,39
+1,1,0,little,low,high,0.520492,full situation,242,126,242
+1,1,0,little,mid,low,0.767857,full situation,54,42,54
+1,1,0,little,mid,mid,0.675497,full situation,149,101,149
+1,1,0,little,mid,high,0.577086,full situation,1412,815,1412
+1,1,0,little,high,low,0.7,full situation,118,83,118
+1,1,0,little,high,mid,0.652681,full situation,427,279,427
+1,1,0,little,high,high,0.610075,full situation,3591,2191,3591
+1,0,0,lot,low,low,0.498917,the base rate,0,0,1517301
+1,0,0,lot,mid,low,0.498917,the base rate,0,0,1517301
+1,0,0,lot,high,low,0.498917,the base rate,0,0,1517301
+1,0,0,medium,low,low,0.498917,the base rate,0,0,1517301
+1,0,0,medium,mid,low,0.498917,the base rate,0,0,1517301
+1,0,0,medium,high,low,0.498917,the base rate,0,0,1517301
+1,0,0,little,low,low,0.498917,the base rate,0,0,1517301
+1,0,0,little,mid,low,0.498917,the base rate,0,0,1517301
+1,0,0,little,high,low,0.498917,the base rate,0,0,1517301
+0,5,0,lot,low,low,0.498917,the base rate,0,0,1517301
+0,5,0,lot,low,mid,0.498917,the base rate,0,0,1517301
+0,5,0,lot,low,high,0.498917,the base rate,0,0,1517301
+0,5,0,medium,low,low,0.498917,the base rate,0,0,1517301
+0,5,0,medium,low,mid,0.498917,the base rate,0,0,1517301
+0,5,0,medium,low,high,0.498917,the base rate,0,0,1517301
+0,5,0,little,low,low,0.498917,the base rate,0,0,1517301
+0,5,0,little,low,mid,0.498917,the base rate,0,0,1517301
+0,5,0,little,low,high,0.498917,the base rate,0,0,1517301
+0,4,0,lot,low,low,0.498917,the base rate,0,0,1517301
+0,4,0,lot,low,mid,0.498917,the base rate,0,0,1517301
+0,4,0,lot,low,high,0.498917,the base rate,0,0,1517301
+0,4,0,medium,low,low,0.498917,the base rate,0,0,1517301
+0,4,0,medium,low,mid,0.498917,the base rate,0,0,1517301
+0,4,0,medium,low,high,0.498917,the base rate,0,0,1517301
+0,4,0,little,low,low,0.498917,the base rate,0,0,1517301
+0,4,0,little,low,mid,0.498917,the base rate,0,0,1517301
+0,4,0,little,low,high,0.498917,the base rate,0,0,1517301
+0,3,0,lot,low,low,0.498917,the base rate,0,0,1517301
+0,3,0,lot,low,mid,0.498917,the base rate,0,0,1517301
+0,3,0,lot,low,high,0.498917,the base rate,0,0,1517301
+0,3,0,medium,low,low,0.498917,the base rate,0,0,1517301
+0,3,0,medium,low,mid,0.498917,the base rate,0,0,1517301
+0,3,0,medium,low,high,0.498917,the base rate,0,0,1517301
+0,3,0,little,low,low,0.498917,the base rate,0,0,1517301
+0,3,0,little,low,mid,0.498917,the base rate,0,0,1517301
+0,3,0,little,low,high,0.498917,the base rate,0,0,1517301
+0,2,0,lot,low,low,0.498917,the base rate,0,0,1517301
+0,2,0,lot,low,mid,0.498917,the base rate,0,0,1517301
+0,2,0,lot,low,high,0.498917,the base rate,0,0,1517301
+0,2,0,medium,low,low,0.498917,the base rate,0,0,1517301
+0,2,0,medium,low,mid,0.498917,the base rate,0,0,1517301
+0,2,0,medium,low,high,0.498917,the base rate,0,0,1517301
+0,2,0,little,low,low,0.498917,the base rate,0,0,1517301
+0,2,0,little,low,mid,0.498917,the base rate,0,0,1517301
+0,2,0,little,low,high,0.498917,the base rate,0,0,1517301
+0,1,0,lot,low,low,0.498917,the base rate,0,0,1517301
+0,1,0,lot,low,mid,0.498917,the base rate,0,0,1517301
+0,1,0,lot,low,high,0.498917,the base rate,0,0,1517301
+0,1,0,medium,low,low,0.498917,the base rate,0,0,1517301
+0,1,0,medium,low,mid,0.498917,the base rate,0,0,1517301
+0,1,0,medium,low,high,0.498917,the base rate,0,0,1517301
+0,1,0,little,low,low,0.498917,the base rate,0,0,1517301
+0,1,0,little,low,mid,0.498917,the base rate,0,0,1517301
+0,1,0,little,low,high,0.498917,the base rate,0,0,1517301
+5,5,1,lot,low,low,0.304688,full situation,126,38,126
+5,5,1,lot,low,mid,0.052023,full situation,171,8,171
+5,5,1,lot,low,high,0.094118,full situation,83,7,83
+5,5,1,lot,mid,low,0.222597,without the economy,15,10,591
+5,5,1,lot,mid,mid,0.222597,without the economy,22,6,591
+5,5,1,lot,mid,high,0.208333,full situation,46,9,46
+5,5,1,lot,high,low,0.475,full situation,38,18,38
+5,5,1,lot,high,mid,0.452381,full situation,40,18,40
+5,5,1,lot,high,high,0.346154,full situation,50,17,50
+5,5,1,medium,low,low,0.159091,without the economy,10,4,86
+5,5,1,medium,low,mid,0.026316,full situation,36,0,36
+5,5,1,medium,low,high,0.159091,without the economy,19,0,86
+5,5,1,medium,mid,low,0.159091,without the economy,3,3,86
+5,5,1,medium,mid,mid,0.159091,without the economy,3,0,86
+5,5,1,medium,mid,high,0.159091,without the economy,4,1,86
+5,5,1,medium,high,low,0.159091,without the economy,4,2,86
+5,5,1,medium,high,mid,0.159091,without the economy,4,3,86
+5,5,1,medium,high,high,0.159091,without the economy,3,0,86
+5,5,1,little,low,low,0.211288,without the time,1,1,689
+5,5,1,little,low,mid,0.211288,without the time,7,0,689
+5,5,1,little,low,high,0.211288,without the time,3,0,689
+5,5,1,little,mid,low,0.211288,without the time,0,0,689
+5,5,1,little,mid,mid,0.211288,without the time,1,0,689
+5,5,1,little,mid,high,0.211288,without the time,0,0,689
+5,5,1,little,high,low,0.211288,without the time,0,0,689
+5,5,1,little,high,mid,0.211288,without the time,0,0,689
+5,5,1,little,high,high,0.211288,without the time,0,0,689
+5,4,1,lot,low,low,0.526316,full situation,188,99,188
+5,4,1,lot,low,mid,0.163793,full situation,114,18,114
+5,4,1,lot,low,high,0.222222,full situation,79,17,79
+5,4,1,lot,mid,low,0.462833,without the economy,23,20,711
+5,4,1,lot,mid,mid,0.462833,without the economy,28,11,711
+5,4,1,lot,mid,high,0.46875,full situation,62,29,62
+5,4,1,lot,high,low,0.809524,full situation,61,50,61
+5,4,1,lot,high,mid,0.594595,full situation,72,43,72
+5,4,1,lot,high,high,0.5,full situation,84,42,84
+5,4,1,medium,low,low,0.308333,without the economy,15,7,118
+5,4,1,medium,low,mid,0.142857,full situation,33,4,33
+5,4,1,medium,low,high,0.308333,without the economy,15,1,118
+5,4,1,medium,mid,low,0.308333,without the economy,4,4,118
+5,4,1,medium,mid,mid,0.308333,without the economy,8,4,118
+5,4,1,medium,mid,high,0.308333,without the economy,9,5,118
+5,4,1,medium,high,low,0.308333,without the economy,10,3,118
+5,4,1,medium,high,mid,0.308333,without the economy,12,5,118
+5,4,1,medium,high,high,0.308333,without the economy,12,3,118
+5,4,1,little,low,low,0.436019,without the time,1,0,842
+5,4,1,little,low,mid,0.436019,without the time,4,0,842
+5,4,1,little,low,high,0.436019,without the time,5,0,842
+5,4,1,little,mid,low,0.436019,without the time,1,1,842
+5,4,1,little,mid,mid,0.436019,without the time,1,0,842
+5,4,1,little,mid,high,0.436019,without the time,1,1,842
+5,4,1,little,high,low,0.436019,without the time,0,0,842
+5,4,1,little,high,mid,0.436019,without the time,0,0,842
+5,4,1,little,high,high,0.436019,without the time,0,0,842
+5,3,1,lot,low,low,0.696429,full situation,166,116,166
+5,3,1,lot,low,mid,0.432432,full situation,35,15,35
+5,3,1,lot,low,high,0.348837,full situation,41,14,41
+5,3,1,lot,mid,low,0.939394,full situation,31,30,31
+5,3,1,lot,mid,mid,0.721818,without the economy,25,18,548
+5,3,1,lot,mid,high,0.666667,full situation,46,31,46
+5,3,1,lot,high,low,0.916667,full situation,70,65,70
+5,3,1,lot,high,mid,0.80597,full situation,65,53,65
+5,3,1,lot,high,high,0.774648,full situation,69,54,69
+5,3,1,medium,low,low,0.60274,without the economy,18,9,71
+5,3,1,medium,low,mid,0.60274,without the economy,5,2,71
+5,3,1,medium,low,high,0.60274,without the economy,10,4,71
+5,3,1,medium,mid,low,0.60274,without the economy,1,1,71
+5,3,1,medium,mid,mid,0.60274,without the economy,4,3,71
+5,3,1,medium,mid,high,0.60274,without the economy,9,7,71
+5,3,1,medium,high,low,0.60274,without the economy,3,3,71
+5,3,1,medium,high,mid,0.60274,without the economy,11,8,71
+5,3,1,medium,high,high,0.60274,without the economy,10,6,71
+5,3,1,little,low,low,0.702229,without the time,0,0,626
+5,3,1,little,low,mid,0.702229,without the time,4,0,626
+5,3,1,little,low,high,0.702229,without the time,1,0,626
+5,3,1,little,mid,low,0.702229,without the time,1,1,626
+5,3,1,little,mid,mid,0.702229,without the time,1,0,626
+5,3,1,little,mid,high,0.702229,without the time,0,0,626
+5,3,1,little,high,low,0.702229,without the time,0,0,626
+5,3,1,little,high,mid,0.702229,without the time,0,0,626
+5,3,1,little,high,high,0.702229,without the time,0,0,626
+5,2,1,lot,low,low,0.963636,full situation,108,105,108
+5,2,1,lot,low,mid,0.936963,without the economy,13,9,347
+5,2,1,lot,low,high,0.936963,without the economy,14,13,347
+5,2,1,lot,mid,low,0.96875,full situation,30,30,30
+5,2,1,lot,mid,mid,0.936963,without the economy,14,12,347
+5,2,1,lot,mid,high,0.833333,full situation,34,29,34
+5,2,1,lot,high,low,0.956522,full situation,44,43,44
+5,2,1,lot,high,mid,0.891304,full situation,44,40,44
+5,2,1,lot,high,high,0.958333,full situation,46,45,46
+5,2,1,medium,low,low,0.913043,without the economy,13,12,67
+5,2,1,medium,low,mid,0.913043,without the economy,3,3,67
+5,2,1,medium,low,high,0.913043,without the economy,7,5,67
+5,2,1,medium,mid,low,0.913043,without the economy,6,6,67
+5,2,1,medium,mid,mid,0.913043,without the economy,3,3,67
+5,2,1,medium,mid,high,0.913043,without the economy,6,6,67
+5,2,1,medium,high,low,0.913043,without the economy,2,2,67
+5,2,1,medium,high,mid,0.913043,without the economy,10,9,67
+5,2,1,medium,high,high,0.913043,without the economy,17,16,67
+5,2,1,little,low,low,0.921801,without the time,0,0,420
+5,2,1,little,low,mid,0.921801,without the time,1,0,420
+5,2,1,little,low,high,0.921801,without the time,2,0,420
+5,2,1,little,mid,low,0.921801,without the time,0,0,420
+5,2,1,little,mid,mid,0.921801,without the time,1,0,420
+5,2,1,little,mid,high,0.921801,without the time,2,0,420
+5,2,1,little,high,low,0.921801,without the time,0,0,420
+5,2,1,little,high,mid,0.921801,without the time,0,0,420
+5,2,1,little,high,high,0.921801,without the time,0,0,420
+5,1,1,lot,low,low,0.970588,full situation,66,65,66
+5,1,1,lot,low,mid,0.991189,without the economy,5,5,225
+5,1,1,lot,low,high,0.991189,without the economy,3,3,225
+5,1,1,lot,mid,low,0.96875,full situation,30,30,30
+5,1,1,lot,mid,mid,0.991189,without the economy,6,6,225
+5,1,1,lot,mid,high,0.991189,without the economy,17,17,225
+5,1,1,lot,high,low,0.980769,full situation,50,50,50
+5,1,1,lot,high,mid,0.991189,without the economy,13,13,225
+5,1,1,lot,high,high,0.972973,full situation,35,35,35
+5,1,1,medium,low,low,0.974359,without the economy,13,13,76
+5,1,1,medium,low,mid,0.974359,without the economy,2,2,76
+5,1,1,medium,low,high,0.974359,without the economy,3,2,76
+5,1,1,medium,mid,low,0.974359,without the economy,11,11,76
+5,1,1,medium,mid,mid,0.974359,without the economy,3,3,76
+5,1,1,medium,mid,high,0.974359,without the economy,10,10,76
+5,1,1,medium,high,low,0.974359,without the economy,9,9,76
+5,1,1,medium,high,mid,0.974359,without the economy,5,5,76
+5,1,1,medium,high,high,0.974359,without the economy,20,20,76
+5,1,1,little,low,low,0.977564,without the time,0,0,310
+5,1,1,little,low,mid,0.977564,without the time,0,0,310
+5,1,1,little,low,high,0.977564,without the time,4,2,310
+5,1,1,little,mid,low,0.977564,without the time,0,0,310
+5,1,1,little,mid,mid,0.977564,without the time,1,1,310
+5,1,1,little,mid,high,0.977564,without the time,2,0,310
+5,1,1,little,high,low,0.977564,without the time,0,0,310
+5,1,1,little,high,mid,0.977564,without the time,1,1,310
+5,1,1,little,high,high,0.977564,without the time,1,1,310
+5,0,1,lot,low,low,0.991304,without the economy,29,29,113
+5,0,1,lot,mid,low,0.991304,without the economy,29,29,113
+5,0,1,lot,high,low,0.982456,full situation,55,55,55
+5,0,1,medium,low,low,0.972222,full situation,34,34,34
+5,0,1,medium,mid,low,0.972973,full situation,35,35,35
+5,0,1,medium,high,low,0.979167,full situation,46,46,46
+5,0,1,little,low,low,0.996063,without the time,8,8,252
+5,0,1,little,mid,low,0.996063,without the time,6,6,252
+5,0,1,little,high,low,0.996063,without the time,10,10,252
+4,5,1,lot,low,low,0.197183,full situation,353,69,353
+4,5,1,lot,low,mid,0.026012,full situation,344,8,344
+4,5,1,lot,low,high,0.025641,full situation,232,5,232
+4,5,1,lot,mid,low,0.143436,without the economy,29,11,1727
+4,5,1,lot,mid,mid,0.217391,full situation,90,19,90
+4,5,1,lot,mid,high,0.154839,full situation,153,23,153
+4,5,1,lot,high,low,0.336449,full situation,105,35,105
+4,5,1,lot,high,mid,0.207865,full situation,176,36,176
+4,5,1,lot,high,high,0.17004,full situation,245,41,245
+4,5,1,medium,low,low,0.067227,without the economy,24,5,236
+4,5,1,medium,low,mid,0.014706,full situation,66,0,66
+4,5,1,medium,low,high,0.043478,full situation,44,1,44
+4,5,1,medium,mid,low,0.067227,without the economy,1,1,236
+4,5,1,medium,mid,mid,0.067227,without the economy,13,0,236
+4,5,1,medium,mid,high,0.067227,without the economy,18,1,236
+4,5,1,medium,high,low,0.067227,without the economy,14,4,236
+4,5,1,medium,high,mid,0.067227,without the economy,27,1,236
+4,5,1,medium,high,high,0.067227,without the economy,29,2,236
+4,5,1,little,low,low,0.018519,without the economy,4,0,52
+4,5,1,little,low,mid,0.018519,without the economy,23,0,52
+4,5,1,little,low,high,0.018519,without the economy,14,0,52
+4,5,1,little,mid,low,0.018519,without the economy,0,0,52
+4,5,1,little,mid,mid,0.018519,without the economy,1,0,52
+4,5,1,little,mid,high,0.018519,without the economy,3,0,52
+4,5,1,little,high,low,0.018519,without the economy,0,0,52
+4,5,1,little,high,mid,0.018519,without the economy,2,0,52
+4,5,1,little,high,high,0.018519,without the economy,5,0,52
+4,4,1,lot,low,low,0.339339,full situation,664,225,664
+4,4,1,lot,low,mid,0.076087,full situation,366,27,366
+4,4,1,lot,low,high,0.097345,full situation,337,32,337
+4,4,1,lot,mid,low,0.623377,full situation,75,47,75
+4,4,1,lot,mid,mid,0.392405,full situation,156,61,156
+4,4,1,lot,mid,high,0.243671,full situation,314,76,314
+4,4,1,lot,high,low,0.629482,full situation,249,157,249
+4,4,1,lot,high,mid,0.414692,full situation,420,174,420
+4,4,1,lot,high,high,0.322638,full situation,559,180,559
+4,4,1,medium,low,low,0.288462,full situation,50,14,50
+4,4,1,medium,low,mid,0.032258,full situation,91,2,91
+4,4,1,medium,low,high,0.063492,full situation,61,3,61
+4,4,1,medium,mid,low,0.197211,without the economy,9,4,500
+4,4,1,medium,mid,mid,0.197211,without the economy,27,6,500
+4,4,1,medium,mid,high,0.19403,full situation,65,12,65
+4,4,1,medium,high,low,0.536585,full situation,39,21,39
+4,4,1,medium,high,mid,0.277778,full situation,70,19,70
+4,4,1,medium,high,high,0.2,full situation,88,17,88
+4,4,1,little,low,low,0.03125,without the economy,2,0,62
+4,4,1,little,low,mid,0.03125,without the economy,22,0,62
+4,4,1,little,low,high,0.03125,without the economy,15,0,62
+4,4,1,little,mid,low,0.03125,without the economy,0,0,62
+4,4,1,little,mid,mid,0.03125,without the economy,5,0,62
+4,4,1,little,mid,high,0.03125,without the economy,5,1,62
+4,4,1,little,high,low,0.03125,without the economy,0,0,62
+4,4,1,little,high,mid,0.03125,without the economy,7,0,62
+4,4,1,little,high,high,0.03125,without the economy,6,0,62
+4,3,1,lot,low,low,0.59808,full situation,727,435,727
+4,3,1,lot,low,mid,0.25,full situation,206,51,206
+4,3,1,lot,low,high,0.26383,full situation,233,61,233
+4,3,1,lot,mid,low,0.803922,full situation,100,81,100
+4,3,1,lot,mid,mid,0.605714,full situation,173,105,173
+4,3,1,lot,mid,high,0.44582,full situation,321,143,321
+4,3,1,lot,high,low,0.843077,full situation,323,273,323
+4,3,1,lot,high,mid,0.651731,full situation,489,319,489
+4,3,1,lot,high,high,0.546763,full situation,693,379,693
+4,3,1,medium,low,low,0.514019,full situation,105,54,105
+4,3,1,medium,low,mid,0.183099,full situation,69,12,69
+4,3,1,medium,low,high,0.189655,full situation,56,10,56
+4,3,1,medium,mid,low,0.455432,without the economy,18,12,716
+4,3,1,medium,mid,mid,0.452381,full situation,40,18,40
+4,3,1,medium,mid,high,0.392857,full situation,82,32,82
+4,3,1,medium,high,low,0.787879,full situation,64,51,64
+4,3,1,medium,high,mid,0.508621,full situation,114,58,114
+4,3,1,medium,high,high,0.470588,full situation,168,79,168
+4,3,1,little,low,low,0.08,without the economy,0,0,48
+4,3,1,little,low,mid,0.08,without the economy,16,0,48
+4,3,1,little,low,high,0.08,without the economy,10,0,48
+4,3,1,little,mid,low,0.08,without the economy,0,0,48
+4,3,1,little,mid,mid,0.08,without the economy,2,1,48
+4,3,1,little,mid,high,0.08,without the economy,4,0,48
+4,3,1,little,high,low,0.08,without the economy,1,1,48
+4,3,1,little,high,mid,0.08,without the economy,7,1,48
+4,3,1,little,high,high,0.08,without the economy,8,0,48
+4,2,1,lot,low,low,0.851648,full situation,544,464,544
+4,2,1,lot,low,mid,0.465116,full situation,84,39,84
+4,2,1,lot,low,high,0.649485,full situation,95,62,95
+4,2,1,lot,mid,low,0.949495,full situation,97,93,97
+4,2,1,lot,mid,mid,0.806452,full situation,91,74,91
+4,2,1,lot,mid,high,0.809917,full situation,240,195,240
+4,2,1,lot,high,low,0.952542,full situation,293,280,293
+4,2,1,lot,high,mid,0.879888,full situation,356,314,356
+4,2,1,lot,high,high,0.818841,full situation,550,451,550
+4,2,1,medium,low,low,0.719298,full situation,112,81,112
+4,2,1,medium,low,mid,0.40625,full situation,30,12,30
+4,2,1,medium,low,high,0.5,full situation,34,17,34
+4,2,1,medium,mid,low,0.757235,without the economy,21,20,620
+4,2,1,medium,mid,mid,0.757235,without the economy,25,17,620
+4,2,1,medium,mid,high,0.686747,full situation,81,56,81
+4,2,1,medium,high,low,0.880597,full situation,65,58,65
+4,2,1,medium,high,mid,0.909091,full situation,86,79,86
+4,2,1,medium,high,high,0.779762,full situation,166,130,166
+4,2,1,little,low,low,0.216216,without the economy,2,1,35
+4,2,1,little,low,mid,0.216216,without the economy,5,0,35
+4,2,1,little,low,high,0.216216,without the economy,9,0,35
+4,2,1,little,mid,low,0.216216,without the economy,0,0,35
+4,2,1,little,mid,mid,0.216216,without the economy,2,0,35
+4,2,1,little,mid,high,0.216216,without the economy,5,1,35
+4,2,1,little,high,low,0.216216,without the economy,1,1,35
+4,2,1,little,high,mid,0.216216,without the economy,2,0,35
+4,2,1,little,high,high,0.216216,without the economy,9,4,35
+4,1,1,lot,low,low,0.979228,full situation,335,329,335
+4,1,1,lot,low,mid,0.982955,without the economy,16,15,1582
+4,1,1,lot,low,high,0.897436,full situation,37,34,37
+4,1,1,lot,mid,low,0.980952,full situation,103,102,103
+4,1,1,lot,mid,mid,0.980392,full situation,49,49,49
+4,1,1,lot,mid,high,0.957055,full situation,161,155,161
+4,1,1,lot,high,low,0.996226,full situation,263,263,263
+4,1,1,lot,high,mid,0.978261,full situation,136,134,136
+4,1,1,lot,high,high,0.983471,full situation,482,475,482
+4,1,1,medium,low,low,0.932773,full situation,117,110,117
+4,1,1,medium,low,mid,0.967213,without the economy,10,10,608
+4,1,1,medium,low,high,0.967213,without the economy,18,14,608
+4,1,1,medium,mid,low,0.947368,full situation,36,35,36
+4,1,1,medium,mid,mid,0.967213,without the economy,13,13,608
+4,1,1,medium,mid,high,0.971014,full situation,67,66,67
+4,1,1,medium,high,low,0.980392,full situation,100,99,100
+4,1,1,medium,high,mid,0.960784,full situation,49,48,49
+4,1,1,medium,high,high,0.975,full situation,198,194,198
+4,1,1,little,low,low,0.702128,without the economy,10,8,45
+4,1,1,little,low,mid,0.702128,without the economy,2,1,45
+4,1,1,little,low,high,0.702128,without the economy,2,0,45
+4,1,1,little,mid,low,0.702128,without the economy,2,2,45
+4,1,1,little,mid,mid,0.702128,without the economy,1,1,45
+4,1,1,little,mid,high,0.702128,without the economy,6,5,45
+4,1,1,little,high,low,0.702128,without the economy,5,4,45
+4,1,1,little,high,mid,0.702128,without the economy,3,2,45
+4,1,1,little,high,high,0.702128,without the economy,14,9,45
+4,0,1,lot,low,low,0.994898,full situation,194,194,194
+4,0,1,lot,mid,low,0.988636,full situation,174,173,174
+4,0,1,lot,high,low,0.997773,full situation,447,447,447
+4,0,1,medium,low,low,0.995935,full situation,244,244,244
+4,0,1,medium,mid,low,0.990244,full situation,203,202,203
+4,0,1,medium,high,low,0.996008,full situation,499,498,499
+4,0,1,little,low,low,0.959184,full situation,47,46,47
+4,0,1,little,mid,low,0.923077,full situation,50,47,50
+4,0,1,little,high,low,0.990291,full situation,101,101,101
+3,5,1,lot,low,low,0.089431,full situation,613,54,613
+3,5,1,lot,low,mid,0.008913,full situation,559,4,559
+3,5,1,lot,low,high,0.013333,full situation,448,5,448
+3,5,1,lot,mid,low,0.211538,full situation,50,10,50
+3,5,1,lot,mid,mid,0.015625,full situation,126,1,126
+3,5,1,lot,mid,high,0.039088,full situation,305,11,305
+3,5,1,lot,high,low,0.171642,full situation,132,22,132
+3,5,1,lot,high,mid,0.063529,full situation,423,26,423
+3,5,1,lot,high,high,0.070997,full situation,660,46,660
+3,5,1,medium,low,low,0.148936,full situation,45,6,45
+3,5,1,medium,low,mid,0.009009,full situation,109,0,109
+3,5,1,medium,low,high,0.009174,full situation,107,0,107
+3,5,1,medium,mid,low,0.021036,without the economy,5,0,616
+3,5,1,medium,mid,mid,0.026316,full situation,36,0,36
+3,5,1,medium,mid,high,0.044776,full situation,65,2,65
+3,5,1,medium,high,low,0.021036,without the economy,26,2,616
+3,5,1,medium,high,mid,0.022989,full situation,85,1,85
+3,5,1,medium,high,high,0.014286,full situation,138,1,138
+3,5,1,little,low,low,0.005618,without the economy,5,0,176
+3,5,1,little,low,mid,0.005618,without the economy,29,0,176
+3,5,1,little,low,high,0.005618,without the economy,27,0,176
+3,5,1,little,mid,low,0.005618,without the economy,1,0,176
+3,5,1,little,mid,mid,0.005618,without the economy,8,0,176
+3,5,1,little,mid,high,0.005618,without the economy,20,0,176
+3,5,1,little,high,low,0.005618,without the economy,3,0,176
+3,5,1,little,high,mid,0.005618,without the economy,28,0,176
+3,5,1,little,high,high,0.017544,full situation,55,0,55
+3,4,1,lot,low,low,0.159628,full situation,1395,222,1395
+3,4,1,lot,low,mid,0.020661,full situation,724,14,724
+3,4,1,lot,low,high,0.05148,full situation,775,39,775
+3,4,1,lot,mid,low,0.392157,full situation,100,39,100
+3,4,1,lot,mid,mid,0.169096,full situation,341,57,341
+3,4,1,lot,mid,high,0.111765,full situation,848,94,848
+3,4,1,lot,high,low,0.335366,full situation,326,109,326
+3,4,1,lot,high,mid,0.210806,full situation,1127,237,1127
+3,4,1,lot,high,high,0.155172,full situation,1970,305,1970
+3,4,1,medium,low,low,0.102564,full situation,193,19,193
+3,4,1,medium,low,mid,0.004587,full situation,216,0,216
+3,4,1,medium,low,high,0.004785,full situation,207,0,207
+3,4,1,medium,mid,low,0.075029,without the economy,24,7,1744
+3,4,1,medium,mid,mid,0.076923,full situation,89,6,89
+3,4,1,medium,mid,high,0.075377,full situation,197,14,197
+3,4,1,medium,high,low,0.228571,full situation,68,15,68
+3,4,1,medium,high,mid,0.144444,full situation,268,38,268
+3,4,1,medium,high,high,0.066116,full situation,482,31,482
+3,4,1,little,low,low,0.010309,without the economy,8,0,386
+3,4,1,little,low,mid,0.017857,full situation,54,0,54
+3,4,1,little,low,high,0.016949,full situation,57,0,57
+3,4,1,little,mid,low,0.010309,without the economy,4,0,386
+3,4,1,little,mid,mid,0.010309,without the economy,27,0,386
+3,4,1,little,mid,high,0.032258,full situation,60,1,60
+3,4,1,little,high,low,0.010309,without the economy,8,0,386
+3,4,1,little,high,mid,0.033333,full situation,58,1,58
+3,4,1,little,high,high,0.017857,full situation,110,1,110
+3,3,1,lot,low,low,0.342303,full situation,1596,546,1596
+3,3,1,lot,low,mid,0.124046,full situation,522,64,522
+3,3,1,lot,low,high,0.164539,full situation,703,115,703
+3,3,1,lot,mid,low,0.614213,full situation,195,120,195
+3,3,1,lot,mid,mid,0.421842,full situation,465,196,465
+3,3,1,lot,mid,high,0.274809,full situation,1308,359,1308
+3,3,1,lot,high,low,0.616935,full situation,494,305,494
+3,3,1,lot,high,mid,0.43188,full situation,1466,633,1466
+3,3,1,lot,high,high,0.342456,full situation,2921,1000,2921
+3,3,1,medium,low,low,0.259701,full situation,333,86,333
+3,3,1,medium,low,mid,0.07,full situation,198,13,198
+3,3,1,medium,low,high,0.044843,full situation,221,9,221
+3,3,1,medium,mid,low,0.553571,full situation,54,30,54
+3,3,1,medium,mid,mid,0.261905,full situation,166,43,166
+3,3,1,medium,mid,high,0.182254,full situation,415,75,415
+3,3,1,medium,high,low,0.5,full situation,138,69,138
+3,3,1,medium,high,mid,0.307692,full situation,479,147,479
+3,3,1,medium,high,high,0.244713,full situation,991,242,991
+3,3,1,little,low,low,0.028871,without the economy,8,0,379
+3,3,1,little,low,mid,0.016949,full situation,57,0,57
+3,3,1,little,low,high,0.019608,full situation,49,0,49
+3,3,1,little,mid,low,0.028871,without the economy,3,0,379
+3,3,1,little,mid,mid,0.028871,without the economy,17,0,379
+3,3,1,little,mid,high,0.016949,full situation,57,0,57
+3,3,1,little,high,low,0.028871,without the economy,11,3,379
+3,3,1,little,high,mid,0.076923,full situation,63,4,63
+3,3,1,little,high,high,0.034483,full situation,114,3,114
+3,2,1,lot,low,low,0.654284,full situation,1317,862,1317
+3,2,1,lot,low,mid,0.411523,full situation,241,99,241
+3,2,1,lot,low,high,0.458924,full situation,351,161,351
+3,2,1,lot,mid,low,0.834225,full situation,185,155,185
+3,2,1,lot,mid,mid,0.677233,full situation,345,234,345
+3,2,1,lot,mid,high,0.591979,full situation,1145,678,1145
+3,2,1,lot,high,low,0.88024,full situation,499,440,499
+3,2,1,lot,high,mid,0.740709,full situation,1155,856,1155
+3,2,1,lot,high,high,0.660312,full situation,2883,1904,2883
+3,2,1,medium,low,low,0.565854,full situation,408,231,408
+3,2,1,medium,low,mid,0.314516,full situation,122,38,122
+3,2,1,medium,low,high,0.242038,full situation,155,37,155
+3,2,1,medium,mid,low,0.803571,full situation,54,44,54
+3,2,1,medium,mid,mid,0.548193,full situation,164,90,164
+3,2,1,medium,mid,high,0.465116,full situation,471,219,471
+3,2,1,medium,high,low,0.824121,full situation,197,163,197
+3,2,1,medium,high,mid,0.660131,full situation,457,302,457
+3,2,1,medium,high,high,0.572917,full situation,1150,659,1150
+3,2,1,little,low,low,0.237785,without the economy,18,3,305
+3,2,1,little,low,mid,0.237785,without the economy,27,0,305
+3,2,1,little,low,high,0.057143,full situation,33,1,33
+3,2,1,little,mid,low,0.237785,without the economy,6,2,305
+3,2,1,little,mid,mid,0.237785,without the economy,18,3,305
+3,2,1,little,mid,high,0.222222,full situation,43,9,43
+3,2,1,little,high,low,0.237785,without the economy,17,9,305
+3,2,1,little,high,mid,0.368421,full situation,36,13,36
+3,2,1,little,high,high,0.302752,full situation,107,32,107
+3,1,1,lot,low,low,0.919192,full situation,790,727,790
+3,1,1,lot,low,mid,0.818182,full situation,53,44,53
+3,1,1,lot,low,high,0.780822,full situation,144,113,144
+3,1,1,lot,mid,low,0.97093,full situation,170,166,170
+3,1,1,lot,mid,mid,0.955414,full situation,155,149,155
+3,1,1,lot,mid,high,0.904412,full situation,678,614,678
+3,1,1,lot,high,low,0.977324,full situation,439,430,439
+3,1,1,lot,high,mid,0.965596,full situation,434,420,434
+3,1,1,lot,high,high,0.933949,full situation,2057,1922,2057
+3,1,1,medium,low,low,0.857466,full situation,440,378,440
+3,1,1,medium,low,mid,0.654545,full situation,53,35,53
+3,1,1,medium,low,high,0.71875,full situation,94,68,94
+3,1,1,medium,mid,low,0.962963,full situation,106,103,106
+3,1,1,medium,mid,mid,0.898734,full situation,77,70,77
+3,1,1,medium,mid,high,0.855792,full situation,421,361,421
+3,1,1,medium,high,low,0.979021,full situation,284,279,284
+3,1,1,medium,high,mid,0.94052,full situation,267,252,267
+3,1,1,medium,high,high,0.899567,full situation,1153,1038,1153
+3,1,1,little,low,low,0.528302,full situation,51,27,51
+3,1,1,little,low,mid,0.65,without the economy,8,1,338
+3,1,1,little,low,high,0.65,without the economy,20,8,338
+3,1,1,little,mid,low,0.65,without the economy,16,13,338
+3,1,1,little,mid,mid,0.65,without the economy,8,6,338
+3,1,1,little,mid,high,0.54386,full situation,55,30,55
+3,1,1,little,high,low,0.96875,full situation,30,30,30
+3,1,1,little,high,mid,0.787879,full situation,31,25,31
+3,1,1,little,high,high,0.669421,full situation,119,80,119
+3,0,1,lot,low,low,0.997783,full situation,449,449,449
+3,0,1,lot,mid,low,0.998077,full situation,518,518,518
+3,0,1,lot,high,low,0.999245,full situation,1323,1323,1323
+3,0,1,medium,low,low,0.998588,full situation,706,706,706
+3,0,1,medium,mid,low,0.998661,full situation,745,745,745
+3,0,1,medium,high,low,0.998964,full situation,1929,1928,1929
+3,0,1,little,low,low,0.944444,full situation,214,203,214
+3,0,1,little,mid,low,0.971074,full situation,240,234,240
+3,0,1,little,high,low,0.98088,full situation,521,512,521
+2,5,1,lot,low,low,0.019262,full situation,621,11,621
+2,5,1,lot,low,mid,0.002759,full situation,723,1,723
+2,5,1,lot,low,high,0.00569,full situation,701,3,701
+2,5,1,lot,mid,low,0.010319,without the economy,29,4,4165
+2,5,1,lot,mid,mid,0.016,full situation,123,1,123
+2,5,1,lot,mid,high,0.006772,full situation,441,2,441
+2,5,1,lot,high,low,0.050847,full situation,57,2,57
+2,5,1,lot,high,mid,0.016393,full situation,425,6,425
+2,5,1,lot,high,high,0.012416,full situation,1045,12,1045
+2,5,1,medium,low,low,0.0375,full situation,78,2,78
+2,5,1,medium,low,mid,0.004762,full situation,208,0,208
+2,5,1,medium,low,high,0.009524,full situation,208,1,208
+2,5,1,medium,mid,low,0.005,without the economy,3,0,1198
+2,5,1,medium,mid,mid,0.025,full situation,38,0,38
+2,5,1,medium,mid,high,0.006623,full situation,149,0,149
+2,5,1,medium,high,low,0.005,without the economy,20,0,1198
+2,5,1,medium,high,mid,0.006536,full situation,151,0,151
+2,5,1,medium,high,high,0.008696,full situation,343,2,343
+2,5,1,little,low,low,0.006711,without the economy,7,0,445
+2,5,1,little,low,mid,0.017857,full situation,54,0,54
+2,5,1,little,low,high,0.013699,full situation,71,0,71
+2,5,1,little,mid,low,0.006711,without the economy,0,0,445
+2,5,1,little,mid,mid,0.006711,without the economy,16,0,445
+2,5,1,little,mid,high,0.013158,full situation,74,0,74
+2,5,1,little,high,low,0.006711,without the economy,7,0,445
+2,5,1,little,high,mid,0.017241,full situation,56,0,56
+2,5,1,little,high,high,0.018519,full situation,160,2,160
+2,4,1,lot,low,low,0.052758,full situation,1666,87,1666
+2,4,1,lot,low,mid,0.007653,full situation,1174,8,1174
+2,4,1,lot,low,high,0.015813,full situation,1326,20,1326
+2,4,1,lot,mid,low,0.182692,full situation,102,18,102
+2,4,1,lot,mid,mid,0.034884,full situation,428,14,428
+2,4,1,lot,mid,high,0.027796,full situation,1509,41,1509
+2,4,1,lot,high,low,0.137931,full situation,201,27,201
+2,4,1,lot,high,mid,0.064836,full situation,1309,84,1309
+2,4,1,lot,high,high,0.040929,full situation,3614,147,3614
+2,4,1,medium,low,low,0.025381,full situation,392,9,392
+2,4,1,medium,low,mid,0.002049,full situation,486,0,486
+2,4,1,medium,low,high,0.007505,full situation,531,3,531
+2,4,1,medium,mid,low,0.016815,without the economy,27,2,4280
+2,4,1,medium,mid,mid,0.025641,full situation,154,3,154
+2,4,1,medium,mid,high,0.010526,full situation,568,5,568
+2,4,1,medium,high,low,0.085714,full situation,68,5,68
+2,4,1,medium,high,mid,0.047187,full situation,549,25,549
+2,4,1,medium,high,high,0.013271,full situation,1505,19,1505
+2,4,1,little,low,low,0.002653,without the economy,20,0,1506
+2,4,1,little,low,mid,0.00641,full situation,154,0,154
+2,4,1,little,low,high,0.004717,full situation,210,0,210
+2,4,1,little,mid,low,0.002653,without the economy,2,0,1506
+2,4,1,little,mid,mid,0.017241,full situation,56,0,56
+2,4,1,little,mid,high,0.004292,full situation,231,0,231
+2,4,1,little,high,low,0.002653,without the economy,18,0,1506
+2,4,1,little,high,mid,0.005917,full situation,167,0,167
+2,4,1,little,high,high,0.006154,full situation,648,3,648
+2,3,1,lot,low,low,0.14031,full situation,2129,298,2129
+2,3,1,lot,low,mid,0.040881,full situation,952,38,952
+2,3,1,lot,low,high,0.054723,full situation,1332,72,1332
+2,3,1,lot,mid,low,0.317073,full situation,162,51,162
+2,3,1,lot,mid,mid,0.147445,full situation,683,100,683
+2,3,1,lot,mid,high,0.104149,full situation,2408,250,2408
+2,3,1,lot,high,low,0.311005,full situation,416,129,416
+2,3,1,lot,high,mid,0.185784,full situation,2038,378,2038
+2,3,1,lot,high,high,0.141173,full situation,5934,837,5934
+2,3,1,medium,low,low,0.082927,full situation,818,67,818
+2,3,1,medium,low,mid,0.019763,full situation,504,9,504
+2,3,1,medium,low,high,0.018122,full situation,605,10,605
+2,3,1,medium,mid,low,0.24,full situation,73,17,73
+2,3,1,medium,mid,mid,0.071053,full situation,378,26,378
+2,3,1,medium,mid,high,0.053494,full situation,1157,61,1157
+2,3,1,medium,high,low,0.218935,full situation,167,36,167
+2,3,1,medium,high,mid,0.122159,full situation,1054,128,1054
+2,3,1,medium,high,high,0.073318,full situation,3135,229,3135
+2,3,1,little,low,low,0.034483,full situation,56,1,56
+2,3,1,little,low,mid,0.009804,full situation,202,1,202
+2,3,1,little,low,high,0.004425,full situation,224,0,224
+2,3,1,little,mid,low,0.007407,without the economy,6,0,2293
+2,3,1,little,mid,mid,0.009009,full situation,109,0,109
+2,3,1,little,mid,high,0.005063,full situation,393,1,393
+2,3,1,little,high,low,0.007407,without the economy,26,2,2293
+2,3,1,little,high,mid,0.023622,full situation,252,5,252
+2,3,1,little,high,high,0.006816,full situation,1025,6,1025
+2,2,1,lot,low,low,0.392234,full situation,1775,696,1775
+2,2,1,lot,low,mid,0.205418,full situation,441,90,441
+2,2,1,lot,low,high,0.221823,full situation,832,184,832
+2,2,1,lot,mid,low,0.591133,full situation,201,119,201
+2,2,1,lot,mid,mid,0.397188,full situation,567,225,567
+2,2,1,lot,mid,high,0.3364,full situation,2498,840,2498
+2,2,1,lot,high,low,0.600423,full situation,471,283,471
+2,2,1,lot,high,mid,0.469706,full situation,1731,813,1731
+2,2,1,lot,high,high,0.39699,full situation,6444,2558,6444
+2,2,1,medium,low,low,0.26942,full situation,1015,273,1015
+2,2,1,medium,low,mid,0.125767,full situation,324,40,324
+2,2,1,medium,low,high,0.127119,full situation,470,59,470
+2,2,1,medium,mid,low,0.525862,full situation,114,60,114
+2,2,1,medium,mid,mid,0.25,full situation,382,95,382
+2,2,1,medium,mid,high,0.234948,full situation,1526,358,1526
+2,2,1,medium,high,low,0.523511,full situation,317,166,317
+2,2,1,medium,high,mid,0.378615,full situation,1139,431,1139
+2,2,1,medium,high,high,0.315105,full situation,4076,1284,4076
+2,2,1,little,low,low,0.079208,full situation,99,7,99
+2,2,1,little,low,mid,0.023622,full situation,125,2,125
+2,2,1,little,low,high,0.007246,full situation,136,0,136
+2,2,1,little,mid,low,0.085627,without the economy,17,4,1960
+2,2,1,little,mid,mid,0.06,full situation,98,5,98
+2,2,1,little,mid,high,0.040816,full situation,341,13,341
+2,2,1,little,high,low,0.28,full situation,48,13,48
+2,2,1,little,high,mid,0.123457,full situation,241,29,241
+2,2,1,little,high,high,0.110852,full situation,855,94,855
+2,1,1,lot,low,low,0.766098,full situation,1054,808,1054
+2,1,1,lot,low,mid,0.607595,full situation,77,47,77
+2,1,1,lot,low,high,0.633803,full situation,353,224,353
+2,1,1,lot,mid,low,0.888889,full situation,178,159,178
+2,1,1,lot,mid,mid,0.829596,full situation,221,184,221
+2,1,1,lot,mid,high,0.727157,full situation,1574,1145,1574
+2,1,1,lot,high,low,0.87963,full situation,430,379,430
+2,1,1,lot,high,mid,0.828929,full situation,717,595,717
+2,1,1,lot,high,high,0.788708,full situation,4603,3631,4603
+2,1,1,medium,low,low,0.652664,full situation,974,636,974
+2,1,1,medium,low,mid,0.432692,full situation,102,44,102
+2,1,1,medium,low,high,0.550336,full situation,296,163,296
+2,1,1,medium,mid,low,0.840909,full situation,174,147,174
+2,1,1,medium,mid,mid,0.718615,full situation,229,165,229
+2,1,1,medium,mid,high,0.654454,full situation,1390,910,1390
+2,1,1,medium,high,low,0.849188,full situation,429,365,429
+2,1,1,medium,high,mid,0.781906,full situation,617,483,617
+2,1,1,medium,high,high,0.72541,full situation,3902,2831,3902
+2,1,1,little,low,low,0.354167,full situation,190,67,190
+2,1,1,little,low,mid,0.309524,full situation,40,12,40
+2,1,1,little,low,high,0.190083,full situation,119,22,119
+2,1,1,little,mid,low,0.55,full situation,38,21,38
+2,1,1,little,mid,mid,0.415385,full situation,63,26,63
+2,1,1,little,mid,high,0.337802,full situation,371,125,371
+2,1,1,little,high,low,0.679612,full situation,101,69,101
+2,1,1,little,high,mid,0.542373,full situation,175,95,175
+2,1,1,little,high,high,0.489339,full situation,936,458,936
+2,0,1,lot,low,low,0.998117,full situation,529,529,529
+2,0,1,lot,mid,low,0.998782,full situation,819,819,819
+2,0,1,lot,high,low,0.999545,full situation,2195,2195,2195
+2,0,1,medium,low,low,0.999139,full situation,1159,1159,1159
+2,0,1,medium,mid,low,0.996252,full situation,1599,1594,1599
+2,0,1,medium,high,low,0.999022,full situation,4086,4083,4086
+2,0,1,little,low,low,0.908497,full situation,610,555,610
+2,0,1,little,mid,low,0.934325,full situation,805,753,805
+2,0,1,little,high,low,0.955381,full situation,1903,1819,1903
+1,5,1,lot,low,low,0.001931,full situation,516,0,516
+1,5,1,lot,low,mid,0.002732,full situation,730,1,730
+1,5,1,lot,low,high,0.001159,full situation,861,0,861
+1,5,1,lot,mid,low,0.001255,without the economy,7,0,3981
+1,5,1,lot,mid,mid,0.010101,full situation,97,0,97
+1,5,1,lot,mid,high,0.002198,full situation,453,0,453
+1,5,1,lot,high,low,0.001255,without the economy,23,0,3981
+1,5,1,lot,high,mid,0.003831,full situation,259,0,259
+1,5,1,lot,high,high,0.003857,full situation,1035,3,1035
+1,5,1,medium,low,low,0.006211,full situation,159,0,159
+1,5,1,medium,low,mid,0.003003,full situation,331,0,331
+1,5,1,medium,low,high,0.002506,full situation,397,0,397
+1,5,1,medium,mid,low,0.002133,without the economy,3,0,1873
+1,5,1,medium,mid,mid,0.02,full situation,48,0,48
+1,5,1,medium,mid,high,0.004386,full situation,226,0,226
+1,5,1,medium,high,low,0.002133,without the economy,7,0,1873
+1,5,1,medium,high,mid,0.006623,full situation,149,0,149
+1,5,1,medium,high,high,0.007207,full situation,553,3,553
+1,5,1,little,low,low,0.004545,without the economy,29,0,878
+1,5,1,little,low,mid,0.006711,full situation,147,0,147
+1,5,1,little,low,high,0.005525,full situation,179,0,179
+1,5,1,little,mid,low,0.004545,without the economy,1,0,878
+1,5,1,little,mid,mid,0.004545,without the economy,24,0,878
+1,5,1,little,mid,high,0.016129,full situation,122,1,122
+1,5,1,little,high,low,0.004545,without the economy,1,0,878
+1,5,1,little,high,mid,0.015625,full situation,62,0,62
+1,5,1,little,high,high,0.009524,full situation,313,2,313
+1,4,1,lot,low,low,0.004409,full situation,1359,5,1359
+1,4,1,lot,low,mid,0.003281,full situation,1217,3,1217
+1,4,1,lot,low,high,0.001779,full situation,1684,2,1684
+1,4,1,lot,mid,low,0.018519,full situation,52,0,52
+1,4,1,lot,mid,mid,0.004988,full situation,399,1,399
+1,4,1,lot,mid,high,0.002378,full situation,1680,3,1680
+1,4,1,lot,high,low,0.022727,full situation,86,1,86
+1,4,1,lot,high,mid,0.01,full situation,898,8,898
+1,4,1,lot,high,high,0.0065,full situation,3844,24,3844
+1,4,1,medium,low,low,0.00165,full situation,604,0,604
+1,4,1,medium,low,mid,0.002591,full situation,770,1,770
+1,4,1,medium,low,high,0.002198,full situation,908,1,908
+1,4,1,medium,mid,low,0.001918,without the economy,27,0,6776
+1,4,1,medium,mid,mid,0.003861,full situation,257,0,257
+1,4,1,medium,mid,high,0.000929,full situation,1075,0,1075
+1,4,1,medium,high,low,0.015152,full situation,64,0,64
+1,4,1,medium,high,mid,0.006838,full situation,583,3,583
+1,4,1,medium,high,high,0.003213,full situation,2488,7,2488
+1,4,1,little,low,low,0.009346,full situation,105,0,105
+1,4,1,little,low,mid,0.002809,full situation,354,0,354
+1,4,1,little,low,high,0.006148,full situation,486,2,486
+1,4,1,little,mid,low,0.002564,without the economy,11,0,3508
+1,4,1,little,mid,mid,0.007407,full situation,133,0,133
+1,4,1,little,mid,high,0.001565,full situation,637,0,637
+1,4,1,little,high,low,0.002564,without the economy,17,0,3508
+1,4,1,little,high,mid,0.010753,full situation,277,2,277
+1,4,1,little,high,high,0.003356,full situation,1488,4,1488
+1,3,1,lot,low,low,0.025599,full situation,1834,46,1834
+1,3,1,lot,low,mid,0.005051,full situation,988,4,988
+1,3,1,lot,low,high,0.008799,full situation,1589,13,1589
+1,3,1,lot,mid,low,0.039604,full situation,99,3,99
+1,3,1,lot,mid,mid,0.019512,full situation,613,11,613
+1,3,1,lot,mid,high,0.016913,full situation,2777,46,2777
+1,3,1,lot,high,low,0.08046,full situation,172,13,172
+1,3,1,lot,high,mid,0.032468,full situation,1538,49,1538
+1,3,1,lot,high,high,0.023133,full situation,6612,152,6612
+1,3,1,medium,low,low,0.005547,full situation,1260,6,1260
+1,3,1,medium,low,mid,0.003831,full situation,781,2,781
+1,3,1,medium,low,high,0.001021,full situation,977,0,977
+1,3,1,medium,mid,low,0.04878,full situation,80,3,80
+1,3,1,medium,mid,mid,0.011342,full situation,527,5,527
+1,3,1,medium,mid,high,0.004496,full situation,2222,9,2222
+1,3,1,medium,high,low,0.050847,full situation,175,8,175
+1,3,1,medium,high,mid,0.020281,full situation,1280,25,1280
+1,3,1,medium,high,high,0.012008,full situation,5328,63,5328
+1,3,1,little,low,low,0.004149,full situation,239,0,239
+1,3,1,little,low,mid,0.002519,full situation,395,0,395
+1,3,1,little,low,high,0.001949,full situation,511,0,511
+1,3,1,little,mid,low,0.003433,without the economy,25,0,6406
+1,3,1,little,mid,mid,0.003413,full situation,291,0,291
+1,3,1,little,mid,high,0.002191,full situation,1367,2,1367
+1,3,1,little,high,low,0.019608,full situation,49,0,49
+1,3,1,little,high,mid,0.007105,full situation,561,3,561
+1,3,1,little,high,high,0.005724,full situation,2968,16,2968
+1,2,1,lot,low,low,0.112843,full situation,1602,180,1602
+1,2,1,lot,low,mid,0.066667,full situation,508,33,508
+1,2,1,lot,low,high,0.061704,full situation,1019,62,1019
+1,2,1,lot,mid,low,0.213115,full situation,120,25,120
+1,2,1,lot,mid,mid,0.120635,full situation,628,75,628
+1,2,1,lot,mid,high,0.093069,full situation,3071,285,3071
+1,2,1,lot,high,low,0.214286,full situation,250,53,250
+1,2,1,lot,high,mid,0.13678,full situation,1526,208,1526
+1,2,1,lot,high,high,0.111637,full situation,7388,824,7388
+1,2,1,medium,low,low,0.060729,full situation,1727,104,1727
+1,2,1,medium,low,mid,0.024793,full situation,482,11,482
+1,2,1,medium,low,high,0.022989,full situation,781,17,781
+1,2,1,medium,mid,low,0.136364,full situation,130,17,130
+1,2,1,medium,mid,mid,0.071203,full situation,630,44,630
+1,2,1,medium,mid,high,0.057905,full situation,3072,177,3072
+1,2,1,medium,high,low,0.194539,full situation,291,56,291
+1,2,1,medium,high,mid,0.103888,full situation,1644,170,1644
+1,2,1,medium,high,high,0.075272,full situation,7544,567,7544
+1,2,1,little,low,low,0.013944,full situation,500,6,500
+1,2,1,little,low,mid,0.00813,full situation,244,1,244
+1,2,1,little,low,high,0.006135,full situation,324,1,324
+1,2,1,little,mid,low,0.098039,full situation,49,4,49
+1,2,1,little,mid,mid,0.01227,full situation,324,3,324
+1,2,1,little,mid,high,0.004746,full situation,1473,6,1473
+1,2,1,little,high,low,0.070866,full situation,125,8,125
+1,2,1,little,high,mid,0.034868,full situation,715,24,715
+1,2,1,little,high,high,0.018996,full situation,3841,72,3841
+1,1,1,lot,low,low,0.437363,full situation,908,397,908
+1,1,1,lot,low,mid,0.333333,full situation,106,35,106
+1,1,1,lot,low,high,0.362559,full situation,420,152,420
+1,1,1,lot,mid,low,0.478261,full situation,90,43,90
+1,1,1,lot,mid,mid,0.427509,full situation,267,114,267
+1,1,1,lot,mid,high,0.411495,full situation,1964,808,1964
+1,1,1,lot,high,low,0.598291,full situation,232,139,232
+1,1,1,lot,high,mid,0.486862,full situation,645,314,645
+1,1,1,lot,high,high,0.444978,full situation,4996,2223,4996
+1,1,1,medium,low,low,0.326753,full situation,1467,479,1467
+1,1,1,medium,low,mid,0.202614,full situation,151,30,151
+1,1,1,medium,low,high,0.269488,full situation,447,120,447
+1,1,1,medium,mid,low,0.396104,full situation,152,60,152
+1,1,1,medium,mid,mid,0.318966,full situation,346,110,346
+1,1,1,medium,mid,high,0.323314,full situation,2726,881,2726
+1,1,1,medium,high,low,0.537084,full situation,389,209,389
+1,1,1,medium,high,mid,0.438596,full situation,853,374,853
+1,1,1,medium,high,high,0.38483,full situation,6458,2485,6458
+1,1,1,little,low,low,0.096447,full situation,786,75,786
+1,1,1,little,low,mid,0.102041,full situation,96,9,96
+1,1,1,little,low,high,0.071161,full situation,265,18,265
+1,1,1,little,mid,low,0.19,full situation,98,18,98
+1,1,1,little,mid,mid,0.100529,full situation,187,18,187
+1,1,1,little,mid,high,0.111989,full situation,1516,169,1516
+1,1,1,little,high,low,0.29562,full situation,272,80,272
+1,1,1,little,high,mid,0.266272,full situation,505,134,505
+1,1,1,little,high,high,0.226585,full situation,3767,853,3767
+1,0,1,lot,low,low,0.99729,full situation,367,367,367
+1,0,1,lot,mid,low,0.996479,full situation,566,565,566
+1,0,1,lot,high,low,0.999297,full situation,1420,1420,1420
+1,0,1,medium,low,low,0.991011,full situation,888,881,888
+1,0,1,medium,mid,low,0.990521,full situation,1264,1253,1264
+1,0,1,medium,high,low,0.99844,full situation,3204,3200,3204
+1,0,1,little,low,low,0.614314,full situation,1004,617,1004
+1,0,1,little,mid,low,0.686056,full situation,1253,860,1253
+1,0,1,little,high,low,0.785663,full situation,2802,2202,2802
+0,5,1,lot,low,low,0.498917,the base rate,0,0,1517301
+0,5,1,lot,low,mid,0.498917,the base rate,0,0,1517301
+0,5,1,lot,low,high,0.498917,the base rate,0,0,1517301
+0,5,1,medium,low,low,0.498917,the base rate,0,0,1517301
+0,5,1,medium,low,mid,0.498917,the base rate,0,0,1517301
+0,5,1,medium,low,high,0.498917,the base rate,0,0,1517301
+0,5,1,little,low,low,0.498917,the base rate,0,0,1517301
+0,5,1,little,low,mid,0.498917,the base rate,0,0,1517301
+0,5,1,little,low,high,0.498917,the base rate,0,0,1517301
+0,4,1,lot,low,low,0.498917,the base rate,0,0,1517301
+0,4,1,lot,low,mid,0.498917,the base rate,0,0,1517301
+0,4,1,lot,low,high,0.498917,the base rate,0,0,1517301
+0,4,1,medium,low,low,0.498917,the base rate,0,0,1517301
+0,4,1,medium,low,mid,0.498917,the base rate,0,0,1517301
+0,4,1,medium,low,high,0.498917,the base rate,0,0,1517301
+0,4,1,little,low,low,0.498917,the base rate,0,0,1517301
+0,4,1,little,low,mid,0.498917,the base rate,0,0,1517301
+0,4,1,little,low,high,0.498917,the base rate,0,0,1517301
+0,3,1,lot,low,low,0.498917,the base rate,0,0,1517301
+0,3,1,lot,low,mid,0.498917,the base rate,0,0,1517301
+0,3,1,lot,low,high,0.498917,the base rate,0,0,1517301
+0,3,1,medium,low,low,0.498917,the base rate,0,0,1517301
+0,3,1,medium,low,mid,0.498917,the base rate,0,0,1517301
+0,3,1,medium,low,high,0.498917,the base rate,0,0,1517301
+0,3,1,little,low,low,0.498917,the base rate,0,0,1517301
+0,3,1,little,low,mid,0.498917,the base rate,0,0,1517301
+0,3,1,little,low,high,0.498917,the base rate,0,0,1517301
+0,2,1,lot,low,low,0.498917,the base rate,0,0,1517301
+0,2,1,lot,low,mid,0.498917,the base rate,0,0,1517301
+0,2,1,lot,low,high,0.498917,the base rate,0,0,1517301
+0,2,1,medium,low,low,0.498917,the base rate,0,0,1517301
+0,2,1,medium,low,mid,0.498917,the base rate,0,0,1517301
+0,2,1,medium,low,high,0.498917,the base rate,0,0,1517301
+0,2,1,little,low,low,0.498917,the base rate,0,0,1517301
+0,2,1,little,low,mid,0.498917,the base rate,0,0,1517301
+0,2,1,little,low,high,0.498917,the base rate,0,0,1517301
+0,1,1,lot,low,low,0.498917,the base rate,0,0,1517301
+0,1,1,lot,low,mid,0.498917,the base rate,0,0,1517301
+0,1,1,lot,low,high,0.498917,the base rate,0,0,1517301
+0,1,1,medium,low,low,0.498917,the base rate,0,0,1517301
+0,1,1,medium,low,mid,0.498917,the base rate,0,0,1517301
+0,1,1,medium,low,high,0.498917,the base rate,0,0,1517301
+0,1,1,little,low,low,0.498917,the base rate,0,0,1517301
+0,1,1,little,low,mid,0.498917,the base rate,0,0,1517301
+0,1,1,little,low,high,0.498917,the base rate,0,0,1517301
