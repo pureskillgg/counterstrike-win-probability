@@ -74,6 +74,31 @@ The early-round group holds half of the grader's datapoints and gains about 0.00
 
 Outside the frozen test: a per-slot GRU with loadout (18 values per player) beat its own 57-input XGBoost arm by −0.00219 on the 2026 validation split (three seeds, each passing the pre-registered rule). That baseline is not v4's, so the number does not transfer directly. Source: `data/diagnostics/g1_gru_vs_xgb_validation.json`.
 
+## Expanded training data (retrain on the frozen test, 3,059 matches)
+
+The in-memory retrain ran out of memory on the expanded cache, so the reruns use `experiments/pipeline/retrain_stream.py`. Test rows are the frozen matches only.
+
+| Run | Train rows | Test log loss | Test AUC | Best iteration |
+|---|---|---|---|---|
+| Original control (in-memory, seed 0) | 13,758,901 | 0.456435 | 0.857810 | 1059 |
+| Streamed control (seed 0) | 13,758,901 | 0.456516 | 0.857758 | 985 |
+| Expanded (seed 0) | 28,813,624 | 0.456026 | 0.858098 | 1038 |
+
+The streamed and original controls differ by 0.00008 with identical settings, so that is the scale of run-to-run noise from row order alone. The paired gain of the expanded run over the streamed control is +0.00049, with a match-cluster interval of +0.00031 to +0.00065. That interval covers test-match sampling only, not training seed. Seeds 1 and 2 are running; see below.
+
+Paired by situation (`docs/retrain_results/paired_stream_control_vs_expanded.csv`, positive is better for the expanded run):
+
+| Group | Datapoints | Gain (95%) |
+|---|---|---|
+| Pre-plant, lot of time left | 2,148,905 | +0.00049 (+0.00030 to +0.00067) |
+| Pre-plant, medium time left | 960,650 | +0.00044 (+0.00016 to +0.00071) |
+| Pre-plant, little time left | 182,655 | +0.00034 (−0.00034 to +0.00100) |
+| Post-plant, lot of time left | 341,566 | +0.00051 (+0.00009 to +0.00096) |
+| Post-plant, medium time left | 221,105 | +0.00080 (+0.00017 to +0.00148) |
+| Post-plant, little time left | 101,493 | +0.00044 (−0.00028 to +0.00126) |
+
+On the intern window (653 test-assigned matches), the expanded model against v6: GDT +0.0004 (+0.0001 to +0.0008), GDT_sit +0.0003 (−0.0001 to +0.0007). Source: `docs/gdt_results/intern_oct14_25_exp_summary.json`.
+
 ## Corrections
 
 - Earlier I said utility features had not been tested. They were. The utility experiment gave +0.00031 with an interval that includes zero.

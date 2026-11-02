@@ -122,7 +122,7 @@ def ece(yy, p, bins=10):
 
 mono = [int(MONO[f]) for f in FEATS]
 params = {"objective": "binary:logistic", "eval_metric": "logloss", "tree_method": "hist", "device": "cuda",
-          "max_depth": 4, "eta": 0.05, "min_child_weight": 20, "subsample": 0.8, "seed": 0,
+          "max_depth": 4, "eta": 0.05, "min_child_weight": 20, "subsample": 0.8, "seed": int(os.environ.get("SEED", "0")),
           "monotone_constraints": "(" + ",".join(str(m) for m in mono) + ")"}
 t = time.time()
 dtr = xgb.QuantileDMatrix(Stream("train"), max_bin=256)

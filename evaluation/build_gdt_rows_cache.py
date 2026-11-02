@@ -32,8 +32,10 @@ def feats_of(meta):
 def predict(model_path, meta, feats, frame):
     bst = xgb.Booster()
     bst.load_model(model_path)
+    saved = bst.attr("best_iteration")  # each model's own early-stopping point; fall back to the v4 metadata
+    best = int(saved) if saved is not None else int(meta["best_iteration"])
     X = frame.select(feats).to_numpy().astype(np.float32)
-    return bst.predict(xgb.DMatrix(X), iteration_range=(0, int(meta["best_iteration"]) + 1))
+    return bst.predict(xgb.DMatrix(X), iteration_range=(0, best + 1))
 
 
 def main():
