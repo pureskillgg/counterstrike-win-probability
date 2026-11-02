@@ -6,11 +6,22 @@ As of 2026-11-02. Log loss in nats. "Paired" means the same rows scored by both 
 
 - The intern grader (GDT, `evaluation/intern_gdt/`) grades on upload days **Oct 14 to 25, 2026**. Its table was built on Oct 9 to 13.
 - Our frozen test set has **no** Oct 14 to 25 matches. Its upload days run Sep 1 to Oct 13. About 2,300 of its 3,059 matches fall on Oct 9 to 13, the days the table was built from. Scoring it with the grader would favor the table, because the table was fit on those rows.
-- The test-assigned 2026 matches added after the freeze (Oct 14 to 27, 655 of them) are not in the frozen cache. A clean Oct 14 to 25 test window needs the expanded cache (`cache_snapshot_2026_oct23_31.parquet`), once the pipeline finishes. Confirm that it includes those matches before scoring.
+- Correction: the expanded cache (`cache_snapshot_2026_oct23_31.parquet`) does contain the test-assigned matches added after the freeze. 653 of them fall on Oct 14 to 25, and no model trained on them. That is the intern's protocol window, and it is graded below.
 - `evaluation/build_gdt_rows.py` ran end to end on the frozen data and returned 0 rows, which is the expected result here.
-- The extended cache from Oct 27 (`cache_snapshot_2026_ext.parquet`) has Oct 14 to 21 matches, but every one is in the manifest's **train** split. Those days cannot be a test window for our models.
+- The earlier extended cache (`cache_snapshot_2026_ext.parquet`, Oct 27) has Oct 14 to 21 matches, all in the manifest's **train** split. It predates the test-assigned matches, so it cannot provide the window.
 - **Clean window in use:** the frozen test matches from Sep 1 to Oct 8 (743 matches, 13,170 rounds). The table was built from Oct 9 to 13 and neither the table nor our models saw these matches. This is a deviation from the intern's protocol (Oct 14 to 25), and the numbers below are on this window, not that one.
 - Grader run on that window: `docs/gdt_results/sep01_oct08_summary.json`, `docs/gdt_results/sep01_oct08_by_situation.csv`. Per-group differences: `docs/gdt_results/group_gdt_sep01_oct08.csv`, built by `analysis/group_gdt.py`.
+
+## Intern protocol window (upload days Oct 14 to 25, 653 test-assigned matches)
+
+Built by `evaluation/build_gdt_rows_cache.py` from the expanded cache, with every second of every 5v5 round. Reference is v6.
+
+| Model | GDT (95%) | GDT_sit (95%) | GDT minus v6 (95%) |
+|---|---|---|---|
+| v6 (reference) | 0.0184 (0.0162 to 0.0204) | 0.0148 (0.0123 to 0.0174) | |
+| v4 | 0.0186 (0.0164 to 0.0206) | 0.0150 (0.0125 to 0.0176) | +0.0002 (+0.0000 to +0.0004) |
+
+The intern's reference for v6 on his full 12,566-match set is GDT 0.0180 (0.0175 to 0.0184). Our 0.0184 on 653 matches sits inside that, which supports the row build. Positions, graph, set, GRU and lag have no predictions on these matches yet, because their predictions exist only for the frozen matches. The expanded-cache model (`stream_oct23_31`) is the next candidate once its retrain finishes.
 
 ## Grader results on the clean window (Sep 1 to Oct 8, 743 matches)
 
