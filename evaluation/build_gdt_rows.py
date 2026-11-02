@@ -20,7 +20,7 @@ G = ROOT + "/data/gnn"
 OUT = SCR + "/gdt"
 os.makedirs(OUT, exist_ok=True)
 MAPS = ["de_ancient", "de_anubis", "de_cache", "de_dust2", "de_inferno", "de_mirage", "de_nuke"]
-D0, D1 = "2026/10/14", "2026/10/25"
+D0, D1 = os.environ.get("GDT_D0", "2026/09/01"), os.environ.get("GDT_D1", "2026/10/08")  # clean window: before the table's build days
 KEY = ["match_key", "round", "second"]
 
 
@@ -99,8 +99,9 @@ out = df.drop_nulls(["p_v4", "p_v6", "p_xgb83", "p_gnn_hyb1", "p_gnn_set", "p_gr
     pl.col("label_ct_win").cast(pl.Int64).alias("y"),
     "p_v6", "p_v4", "p_xgb83", "p_gnn_hyb1", "p_gnn_set", "p_gru", "p_lag",
 ])
-out.write_parquet(OUT + "/rows_oct14_25.parquet")
-print("WROTE", OUT + "/rows_oct14_25.parquet", "rows", out.height, "matches", out["match"].n_unique(),
+ROWS_PATH = OUT + f"/rows_{D0.replace('/', '-')}_{D1.replace('/', '-')}.parquet"
+out.write_parquet(ROWS_PATH)
+print("WROTE", ROWS_PATH, "rows", out.height, "matches", out["match"].n_unique(),
       "rounds", out.select("match", "round").n_unique(), flush=True)
 
 # quick pooled log loss on these rows, for orientation only (the grader's table-based score is the grade)
