@@ -83,8 +83,14 @@ The in-memory retrain ran out of memory on the expanded cache, so the reruns use
 | Original control (in-memory, seed 0) | 13,758,901 | 0.456435 | 0.857810 | 1059 |
 | Streamed control (seed 0) | 13,758,901 | 0.456516 | 0.857758 | 985 |
 | Expanded (seed 0) | 28,813,624 | 0.456026 | 0.858098 | 1038 |
+| Streamed control (seed 1) | 13,758,901 | 0.456613 | 0.857701 | 733 |
+| Expanded (seed 1) | 28,813,624 | 0.455989 | 0.858133 | 1031 |
+| Streamed control (seed 2) | 13,758,901 | 0.456576 | 0.857708 | 847 |
+| Expanded (seed 2) | 28,813,624 | 0.455982 | 0.858120 | 1085 |
 
-The streamed and original controls differ by 0.00008 with identical settings, so that is the scale of run-to-run noise from row order alone. The paired gain of the expanded run over the streamed control is +0.00049, with a match-cluster interval of +0.00031 to +0.00065. That interval covers test-match sampling only, not training seed. Seeds 1 and 2 are running; see below.
+The streamed and original controls differ by 0.00008 with identical settings, so that is the scale of run-to-run noise from row order alone. The paired gain of the expanded run over the streamed control is +0.00049, with a match-cluster interval of +0.00031 to +0.00065. That interval covers test-match sampling only, not training seed.
+
+Across three seeds, the expanded run beats the streamed control every time: by 0.00049, 0.00062 and 0.00059 in log loss (mean 0.00057). The control's spread across seeds is about 0.00005, so the gain is well outside training noise. The table below is for seed 0. Seed-averaged intervals by situation are not computed yet.
 
 Paired by situation (`docs/retrain_results/paired_stream_control_vs_expanded.csv`, positive is better for the expanded run):
 
