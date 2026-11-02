@@ -21,7 +21,7 @@ Built by `evaluation/build_gdt_rows_cache.py` from the expanded cache, with ever
 | v6 (reference) | 0.0184 (0.0162 to 0.0204) | 0.0148 (0.0123 to 0.0174) | |
 | v4 | 0.0186 (0.0164 to 0.0206) | 0.0150 (0.0125 to 0.0176) | +0.0002 (+0.0000 to +0.0004) |
 
-The intern's reference for v6 on his full 12,566-match set is GDT 0.0180 (0.0175 to 0.0184). Our 0.0184 on 653 matches sits inside that, which supports the row build. Positions, graph, set, GRU and lag have no predictions on these matches yet, because their predictions exist only for the frozen matches. The expanded-cache model (`stream_oct23_31`) is the next candidate once its retrain finishes.
+The intern's reference for v6 on the full 12,566-match set is GDT 0.0180 (0.0175 to 0.0184). Our 0.0184 on 653 matches sits inside that, which supports the row build. Positions, graph, set, GRU and lag have no predictions on these matches yet, because their predictions exist only for the frozen matches. The expanded-cache model (`stream_oct23_31`) is the next candidate once its retrain finishes.
 
 ## Grader results on the clean window (Sep 1 to Oct 8, 743 matches)
 
