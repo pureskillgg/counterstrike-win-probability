@@ -16,12 +16,15 @@ XGBoost on the full feature set: 83 inputs (59 base, plus GEO, VIEW and BLIND po
 | GRU, 60-second vs 20-second window | no claim (pooled +0.000184) | 7085b272 |
 | Holdout, Oct 26 to 31 uploads (3,315 matches, 4,320,801 seconds), seed mean | 0.452295; match-cluster 95% interval [0.449288, 0.454983]. Scored once. | 56316f69 |
 | Holdout checks: duplicates, coverage | no overlap with training or holdout B; all scored matches are keepers; 10 in-scope keeper matches not in the cache, not scored | 538c3c01 |
+| Learning curve, 10-feature model on the AWS archive, 5,000 vs 10,000 vs 14,300 fit matches | all minus 5,000: -0.000294; all minus 10,000: -0.000145. No claim. Not comparable with the candidate (different features and validation set). | 238a70d6, e3ec1051 |
 
 The validation number is optimistic, because it was the selection. The holdout score is a single read, and its status depends on Dr. Freeman's go, which is not on record.
 
 ## Event-only state table (SageMaker archive)
 
-Built on the SageMaker space by `scripts/sagemaker/build_event_state.py`: 19,498 matches, 374,073 rounds, 3,053,289 states, 10 features (the bake-off's `build_states`, copied unchanged). Holdout B (653 matches) excluded. Parity with the bake-off's own output on the same matches has not been run (pin 9053f4c2 records the build; d7d0bb65 records the data finding).
+Built on the SageMaker space by `scripts/sagemaker/build_event_state.py`: 19,232 matches with states (19,498 entered the build; 266 produced no states, per pin e3ec1051), 374,073 rounds, 3,053,289 states, 10 features (the bake-off's `build_states`, copied unchanged). Holdout B (653 matches) excluded. Pins 9053f4c2 and d7d0bb65 record the build and the data finding. The parity check against the bake-off is recorded below.
+
+PARITY_PLACEHOLDER
 
 ## Not done
 
