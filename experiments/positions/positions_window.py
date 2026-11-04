@@ -1,12 +1,18 @@
-"""Positions model (the 59 inputs + 24 position, view and blindness inputs) predictions for the intern protocol window.
+"""Positions model predictions for the intern protocol window (memory-lean version).
 
-Trained on the frozen split's training matches, exactly as scripts/model/exp_positions.py does, so it is comparable with v4 and v6.
-Scored on the window's test-assigned matches (the rows in --window-rows) at the seconds where the position table exists (every other second).
+Two feature sets, trained on the same frozen-split training rows as scripts/model/exp_positions.py:
+  full : the 59 inputs of the final model + 24 position, view and blindness inputs (83 inputs)
+  base : the 59 inputs only (the matched control)
 
-    CS2_ROOT=/mnt/g/pureskill/csds-cs2 ~/venvs/csds/bin/python -I -X utf8 positions_window.py \
-        --window-rows <rows_intern.parquet> --out <preds.parquet>
+Scored on the window's test-assigned matches (the rows in --window-rows), at every second the position table has.
 
-Writes match_key, round, second, label_ct_win and p_xgb83 for the scored seconds.
+Memory: only the needed columns are read, only the training and validation matches are loaded for fitting, and every feature is
+cast to float32 before it becomes an array. An earlier version read the whole cache and ran out of memory.
+
+    CS2_ROOT=G:/pureskill/csds-cs2 python -I -X utf8 positions_window.py --window-rows <rows.parquet> --out <preds.parquet> \
+        [--features full|base] [--device cpu|cuda]
+
+Writes match_key, round, second, label_ct_win and p_xgb83 (or p_base) for the scored seconds.
 """
 import argparse
 import os
@@ -25,6 +31,16 @@ GEO = ["c_site_hi", "c_site_lo", "t_site_hi", "t_site_lo", "c_nearest_site_mean"
 VIEW = ["c_sees_enemy", "t_sees_enemy", "c_exposed", "t_exposed"]
 BLIND = ["c_blind_n", "t_blind_n", "c_blind_sum", "t_blind_sum"]
 POS_KEY = ["match_key", "round", "tick"]
+TRAIN_CACHE = os.path.join(ROOT, "data", "combined", "cache_snapshot_2026.parquet")
+WINDOW_CACHE = os.path.join(ROOT, "data", "combined", "cache_snapshot_2026_oct23_31.parquet")
+
+
+def to_xy(df, feats):
+    X = df.select(feats).to_numpy()
+    if X.dtype != np.float32:
+        X = X.astype(np.float32)
+    y = df["label_ct_win"].to_numpy().astype(np.int64)
+    return X, y
 
 
 def ll(y, p):
@@ -37,39 +53,63 @@ def main():
     ap.add_argument("--window-rows", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--pos", default=os.path.join(ROOT, "data", "combined", "cache_pos_2026.parquet"))
+    ap.add_argument("--device", default="cuda")
+    ap.add_argument("--features", choices=["full", "base"], default="full")
     a = ap.parse_args()
 
-    pos = pl.read_parquet(a.pos)
-    pos_cols = [c for c in pos.columns if c not in POS_KEY]
+    # 1. which columns exist, and the feature list
+    names = list(pl.read_parquet_schema(TRAIN_CACHE).keys())
+    cache_base = [c for c in W.F6 if c in names] + [c for c in names if c.startswith("map_is_")] + [c for c in names if c.startswith("st_")]
+    base = list(dict.fromkeys(cache_base))
+    feats = base if a.features == "base" else base + GEO + VIEW + BLIND
+    pos_feats = [c for c in feats if c not in names]  # the position-table inputs
+    print(f"features {a.features}: {len(feats)} inputs ({len(pos_feats)} from the position table)", flush=True)
 
-    # 1. training: the frozen cache, joined to positions, split exactly as exp_positions.py does it
-    G = pl.read_parquet(os.path.join(ROOT, "data", "combined", "cache_snapshot_2026.parquet"))
-    G = G.join(pos, on=POS_KEY, how="inner")
-    sp = W.make_split("random", G, seed=0)
-    ST = [c for c in G.columns if c.startswith("st_")]
-    base = W.F6 + [c for c in G.columns if c.startswith("map_is_")] + ST
-    feats = base + GEO + VIEW + BLIND
-    print(f"training positions rows {G.height:,}; train matches {len(sp['train'])}, val {len(sp['val'])}; inputs {len(feats)}", flush=True)
-    _, Xtr, ytr = W.arrays(G, sp["train"], feats, stride=1)
-    _, Xva, yva = W.arrays(G, sp["val"], feats, stride=1)
+    pos = (pl.scan_parquet(a.pos).select(POS_KEY + pos_feats)
+           .with_columns([pl.col(c).cast(pl.Float32) for c in pos_feats]))
+
+    # 2. the frozen split, exactly as exp_positions.py does it: match-level, on the training cache's matches
+    meta = pl.scan_parquet(TRAIN_CACHE).select(["match_key", "era", "match_date"]).unique(subset=["match_key"]).collect()
+    sp = W.make_split("random", meta, seed=0)
+    print(f"train matches {len(sp['train'])}, val {len(sp['val'])}", flush=True)
+
+    # 3. training and validation rows only, joined to the position table, float32 throughout
+    tv = sorted(sp["train"] | sp["val"])
+    G = (pl.scan_parquet(TRAIN_CACHE)
+         .filter(pl.col("match_key").is_in(tv))
+         .select(POS_KEY + ["label_ct_win"] + base)
+         .with_columns([pl.col(c).cast(pl.Float32) for c in base])
+         .join(pos, on=POS_KEY, how="inner")
+         .collect())
+    print(f"training rows with positions {G.height:,}", flush=True)
+    Xtr, ytr = to_xy(G.filter(pl.col("match_key").is_in(sorted(sp["train"]))), feats)
+    Xva, yva = to_xy(G.filter(pl.col("match_key").is_in(sorted(sp["val"]))), feats)
     del G
-    m, best = W.fit_xgb(Xtr, ytr, Xva, yva, W.mono_for(feats), seed=0, device="cuda")
+    print(f"train {Xtr.shape}, val {Xva.shape}", flush=True)
+
+    m, best = W.fit_xgb(Xtr, ytr, Xva, yva, W.mono_for(feats), seed=0, device=a.device)
     print(f"best iteration {best}", flush=True)
+    del Xtr, Xva
     m.get_booster().save_model(a.out.replace(".parquet", "_model.json"))
 
-    # 2. the window: the expanded cache rows of the window's matches, joined to positions
-    rows = pl.read_parquet(a.window_rows).select(["match", "round", "second"]).rename({"match": "match_key"})
+    # 4. the window: the expanded cache rows of the window's matches, joined to positions and the rows file
+    rows = (pl.read_parquet(a.window_rows).select(["match", "round", "second"])
+            .rename({"match": "match_key"}).with_columns(pl.col("second").cast(pl.Int64)))
     keys = rows["match_key"].unique().to_list()
-    W_cache = (pl.scan_parquet(os.path.join(ROOT, "data", "combined", "cache_snapshot_2026_oct23_31.parquet"))
-               .filter(pl.col("match_key").is_in(keys)).collect())
-    W_cache = W_cache.join(pos, on=POS_KEY, how="inner").with_columns(pl.col("second").cast(pl.Int64))
-    W_cache = W_cache.join(rows.with_columns(pl.col("second").cast(pl.Int64)), on=["match_key", "round", "second"], how="inner")
-    print(f"window rows with positions: {W_cache.height:,} in {W_cache['match_key'].n_unique()} matches", flush=True)
-    sub, X, y = W.arrays(W_cache, set(W_cache["match_key"].to_list()), feats, stride=1)
-    p = W.predict(m, best, X)
-    out = sub.select(["match_key", "round", "second", "label_ct_win"]).with_columns(pl.Series("p_xgb83", p))
+    Wd = (pl.scan_parquet(WINDOW_CACHE)
+          .filter(pl.col("match_key").is_in(keys))
+          .select(POS_KEY + ["second", "label_ct_win"] + base)
+          .with_columns([pl.col(c).cast(pl.Float32) for c in base] + [pl.col("second").cast(pl.Int64)])
+          .join(pos, on=POS_KEY, how="inner")
+          .join(rows.lazy(), on=["match_key", "round", "second"], how="inner")
+          .collect())
+    print(f"window rows with positions: {Wd.height:,} in {Wd['match_key'].n_unique()} matches", flush=True)
+    Xw, yw = to_xy(Wd, feats)
+    p = W.predict(m, best, Xw)
+    col = "p_base" if a.features == "base" else "p_xgb83"
+    out = Wd.select(["match_key", "round", "second", "label_ct_win"]).with_columns(pl.Series(col, p))
     out.write_parquet(a.out)
-    print(f"window log loss {ll(y.astype(np.float64), p):.5f}; wrote {a.out} ({out.height:,} rows)", flush=True)
+    print(f"window log loss {ll(yw.astype(np.float64), p):.5f}; wrote {a.out} ({out.height:,} rows)", flush=True)
 
 
 if __name__ == "__main__":

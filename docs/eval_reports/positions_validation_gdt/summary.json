@@ -1,0 +1,93 @@
+{
+ "models": {
+  "p_base": {
+   "table_logloss": 0.46100319952253926,
+   "model_logloss": 0.4406105348272739,
+   "GDT": 0.020392664695265357,
+   "GDT_ci": [
+    0.017007848461148316,
+    0.023789985335296363
+   ],
+   "rGDT": 0.04423540816286309,
+   "GDT_sit": 0.011736037451880144,
+   "GDT_sit_ci": [
+    0.007569969078701896,
+    0.016119724458656497
+   ],
+   "share_of_matches_model_better": 0.7508417508417509
+  },
+  "p_full_trainctr": {
+   "table_logloss": 0.46100319952253926,
+   "model_logloss": 0.4356007571968432,
+   "GDT": 0.025402442325696054,
+   "GDT_ci": [
+    0.021759551587060656,
+    0.029131894042863298
+   ],
+   "rGDT": 0.055102529336033546,
+   "GDT_sit": 0.012647614637473747,
+   "GDT_sit_ci": [
+    0.007662204971956101,
+    0.017483645983295014
+   ],
+   "share_of_matches_model_better": 0.7946127946127947
+  },
+  "p_full_oldctr": {
+   "table_logloss": 0.46100319952253926,
+   "model_logloss": 0.43558674169324013,
+   "GDT": 0.02541645782929913,
+   "GDT_ci": [
+    0.02179962814384757,
+    0.029177054418005353
+   ],
+   "rGDT": 0.05513293151896326,
+   "GDT_sit": 0.01249571201067141,
+   "GDT_sit_ci": [
+    0.007585898721926034,
+    0.017216521660245548
+   ],
+   "share_of_matches_model_better": 0.8047138047138047
+  }
+ },
+ "vs_first": {
+  "p_full_trainctr": {
+   "against": "p_base",
+   "GDT_difference": 0.005009777630430696,
+   "GDT_difference_ci": [
+    0.0036224472499037158,
+    0.006251341908994701
+   ],
+   "GDT_sit_difference": 0.0009115771855936039,
+   "GDT_sit_difference_ci": [
+    -0.0006918342994997028,
+    0.0024807309360410797
+   ]
+  },
+  "p_full_oldctr": {
+   "against": "p_base",
+   "GDT_difference": 0.005023793134033771,
+   "GDT_difference_ci": [
+    0.0037792293176883074,
+    0.006182062264586008
+   ],
+   "GDT_sit_difference": 0.0007596745587912679,
+   "GDT_sit_difference_ci": [
+    -0.0008285216282420674,
+    0.002330658699763748
+   ]
+  }
+ },
+ "counts": {
+  "rows": 356986,
+  "matches": 297,
+  "rounds": 5275,
+  "datapoints": 50471,
+  "situations": 1129,
+  "situations_with_500_or_more": 10
+ },
+ "settings": {
+  "seed": 0,
+  "reps": 1000,
+  "table": "C:\\Users\\13144\\Documents\\pureskill\\counterstrike-win-probability\\evaluation\\intern_gdt\\table.csv"
+ }
+}
