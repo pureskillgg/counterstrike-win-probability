@@ -1,0 +1,19 @@
+bundle,n_inputs,mean_abs_bundle_shap_logit,mean_abs_effect_pp,mean_signed_effect_pp,perm_delta_logloss,inputs
+ALL_LOADOUT,46,1.3032968242160294,15.812185596845664,0.7634960699959465,,"st_hp_ct, st_armor_n_ct, st_armor_sum_ct, st_helmet_n_ct, st_kit_n_ct, st_defusing_ct, st_ak_ct, st_m4_ct, st_awp_ct, st_rifle_ct, st_sniper_other_ct, st_smg_ct, st_heavy_ct, st_no_primary_ct, st_flash_ct, st_smoke_ct, st_he_ct, st_fire_ct, st_decoy_ct, st_equip_ct, st_hp_t, st_armor_n_t, st_armor_sum_t, st_helmet_n_t, st_kit_n_t, st_defusing_t, st_ak_t, st_m4_t, st_awp_t, st_rifle_t, st_sniper_other_t, st_smg_t, st_heavy_t, st_no_primary_t, st_flash_t, st_smoke_t, st_he_t, st_fire_t, st_decoy_t, st_equip_t, st_hp_diff, st_rifle_diff, st_equip_diff, st_armor_n_diff, st_awp_diff, st_smg_diff"
+LOADOUT_DIFF,6,1.081611750319245,13.293873561953186,0.5706596155813339,0.18432474171484298,"st_hp_diff, st_rifle_diff, st_equip_diff, st_armor_n_diff, st_awp_diff, st_smg_diff"
+ALL_POSITION (GEO+VIEW+BLIND),24,0.448344806883785,3.4993391181887534,0.2583899998870073,,"c_site_hi, c_site_lo, t_site_hi, t_site_lo, c_nearest_site_mean, t_nearest_site_mean, c_spread, t_spread, ct_t_centroid_dist, min_enemy_dist, c_in_contact, t_in_contact, c_min_bomb_dist, c_n_bomb_500, t_min_bomb_dist, defuse_slack, c_sees_enemy, t_sees_enemy, c_exposed, t_exposed, c_blind_n, t_blind_n, c_blind_sum, t_blind_sum"
+ROUND_STATE,6,0.3810961112018395,3.1078773456581925,0.04293629691084384,0.04318667872116638,"alive_ct, alive_t, ct_alive_minus_t, bomb_planted, seconds_since_round_live, seconds_since_plant"
+BOMB_GEO,4,0.3326507547739743,2.5610984281126092,0.6770869498800888,0.11118478407393428,"c_min_bomb_dist, c_n_bomb_500, t_min_bomb_dist, defuse_slack"
+GEO_SITES_SPREAD,9,0.17801408124804705,1.8260477882959927,-0.29488425423528963,0.009464217689893223,"c_site_hi, c_site_lo, t_site_hi, t_site_lo, c_nearest_site_mean, t_nearest_site_mean, c_spread, t_spread, ct_t_centroid_dist"
+LOADOUT_T_HEALTH_ARMOR,6,0.1303729899541641,1.4563809569834523,-0.1610507007502124,0.00765367801592487,"st_hp_t, st_armor_n_t, st_armor_sum_t, st_helmet_n_t, st_kit_n_t, st_defusing_t"
+MAP,7,0.07209895836750134,1.1006550275039286,0.04093708686183535,0.001578457276419365,"map_is_ancient, map_is_anubis, map_is_cache, map_is_dust2, map_is_inferno, map_is_mirage, map_is_nuke"
+LOADOUT_CT_EQUIP,1,0.07602066643125546,1.0745601469100692,0.47669197023284854,0.003001485980348384,st_equip_ct
+LOADOUT_CT_WEAPONS,8,0.0700550008245373,1.0149050605517806,0.08477332139997933,0.0022267426999042217,"st_ak_ct, st_m4_ct, st_awp_ct, st_rifle_ct, st_sniper_other_ct, st_smg_ct, st_heavy_ct, st_no_primary_ct"
+LOADOUT_CT_HEALTH_ARMOR,6,0.11059937390228755,0.9272677249228758,0.1393908854315434,0.008905881514453623,"st_hp_ct, st_armor_n_ct, st_armor_sum_ct, st_helmet_n_ct, st_kit_n_ct, st_defusing_ct"
+LOADOUT_T_WEAPONS,8,0.05153048893870842,0.7106190872093381,-0.06318059278583552,0.001522774932703419,"st_ak_t, st_m4_t, st_awp_t, st_rifle_t, st_sniper_other_t, st_smg_t, st_heavy_t, st_no_primary_t"
+VIEW,4,0.04625885989319339,0.6251741496990122,0.027574393864215167,0.0009851930785261254,"c_sees_enemy, t_sees_enemy, c_exposed, t_exposed"
+LOADOUT_T_EQUIP,1,0.0586308902474884,0.5069539480046701,-0.31857525630247663,0.0028595998429656877,st_equip_t
+LOADOUT_CT_GRENADES,5,0.025905757969624865,0.3674084174831922,0.00871066753820575,0.00034612601283784405,"st_flash_ct, st_smoke_ct, st_he_ct, st_fire_ct, st_decoy_ct"
+LOADOUT_T_GRENADES,5,0.019940792489310574,0.3085165421202944,-0.05558689904532963,0.00038401772282758984,"st_flash_t, st_smoke_t, st_he_t, st_fire_t, st_decoy_t"
+GEO_CONTACT,3,0.01036015355027445,0.13530798951020198,-0.05092783839164971,0.00010473862670298817,"min_enemy_dist, c_in_contact, t_in_contact"
+BLIND,4,0.0024198221083458543,0.025956934364636,-0.002121615484658824,0.000024880043301117594,"c_blind_n, t_blind_n, c_blind_sum, t_blind_sum"

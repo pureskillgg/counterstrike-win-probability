@@ -1,0 +1,5 @@
+example,rule,sample_position,match_key,round,second,label_ct_win,p_ct_win,logit_z,base_logit,log_loss_row
+largest_loss,the second with the largest log loss in the sample,27932,csds/2026/10/09/m_d6966528bff481c5d8d1e392/csds,2,52,1,0.0010651275485197402,-6.843595027923584,0.05388950929045677,6.844660723123567
+confident_ct_win,label CT wins; the highest P(CT wins) among those seconds,45630,csds/2026/10/08/m_8bf2efa13dca02a915777486/csds,23,100,1,0.9999920522200949,11.742609977722168,0.05388950929045677,7.947811488863157e-6
+confident_t_win,label T wins; the lowest P(CT wins) among those seconds,3877,csds/2026/10/13/m_543d308511f4b4e8ee0c6f97/csds,2,71,0,2.0894011325678206e-7,-15.381217956542969,0.05388950929045677,2.0894013503903094e-7
+close_call,P(CT wins) closest to 0.5,31234,csds/2026/10/12/m_eb0c3614f31e3b6c6a632364/csds,18,49,0,0.5000011527226889,4.610890755429864e-6,0.05388950929045677,0.6931494860079805

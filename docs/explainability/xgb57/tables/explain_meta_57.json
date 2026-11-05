@@ -1,0 +1,13 @@
+{
+ "model": "winprob_v6_drop_heavy",
+ "n_inputs": 57,
+ "best_iteration": 1029,
+ "input_file": "cache_snapshot_2026.parquet",
+ "validation_logloss_all_rows": 0.45355674974009597,
+ "validation_rows": 1515228,
+ "shap_rows": 100000,
+ "shap_additivity_max_error": 2.288818359375e-05,
+ "repeats_group": 2,
+ "repeats_feature": 1,
+ "note": "no position inputs; heavy weapons dropped"
+}
