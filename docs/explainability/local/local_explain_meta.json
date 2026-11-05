@@ -1,0 +1,74 @@
+{
+ "booster": "xgb83_s0.json",
+ "best_iteration": 2695,
+ "n_sample": 100000,
+ "base_logit": 0.05388950929045677,
+ "base_probability": 0.5134691178649405,
+ "examples": {
+  "largest_loss": {
+   "rule": "the second with the largest log loss in the sample",
+   "sample_position": 27932,
+   "p_ct_win": 0.0010651275485197402,
+   "label_ct_win": 1
+  },
+  "confident_ct_win": {
+   "rule": "label CT wins; the highest P(CT wins) among those seconds",
+   "sample_position": 45630,
+   "p_ct_win": 0.9999920522200949,
+   "label_ct_win": 1
+  },
+  "confident_t_win": {
+   "rule": "label T wins; the lowest P(CT wins) among those seconds",
+   "sample_position": 3877,
+   "p_ct_win": 2.0894011325678206e-07,
+   "label_ct_win": 0
+  },
+  "close_call": {
+   "rule": "P(CT wins) closest to 0.5",
+   "sample_position": 31234,
+   "p_ct_win": 0.5000011527226889,
+   "label_ct_win": 0
+  }
+ },
+ "contrasts": {
+  "confident_ct_vs_t": {
+   "a": 45630,
+   "b": 3877,
+   "z_a": 11.742609977722168,
+   "z_b": -15.381217956542969,
+   "p_a": 0.9999920522200949,
+   "p_b": 2.0894011325678206e-07,
+   "logit_gap": 27.123827934265137,
+   "sum_of_input_differences": 27.123823336667556
+  },
+  "largest_loss_vs_neighbour": {
+   "a": 27932,
+   "b": 28583,
+   "z_a": -6.843595027923584,
+   "z_b": -6.8198747634887695,
+   "p_a": 0.0010651275485197402,
+   "p_b": 0.0010906668012656872,
+   "logit_gap": -0.023720264434814453,
+   "sum_of_input_differences": -0.023718661359453108,
+   "neighbour_rule": "same state, any P",
+   "neighbour_candidates": 425
+  }
+ },
+ "largest_loss_state_group": {
+  "alive_ct": 1.0,
+  "alive_t": 5.0,
+  "bomb_planted": 1.0,
+  "seconds": 426,
+  "mean_predicted_p_ct_win": 0.0007572758943386899,
+  "observed_ct_win_rate": 0.007042253521126761
+ },
+ "interactions": {
+  "n_seconds": 2000,
+  "seed": 20261105,
+  "seconds_per_second_s": 0.0023,
+  "row_sum_max_error": 9.346803908627521e-06,
+  "pairs_reported": 20,
+  "convention": "xgboost off-diagonal entry; the standard total pair effect is twice this"
+ },
+ "wall_seconds": 6.1
+}
