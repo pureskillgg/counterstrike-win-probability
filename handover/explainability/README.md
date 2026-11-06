@@ -1,6 +1,6 @@
 # Handover: explainability for the 83-input model
 
-Status as of Nov 5, 2026. Everything here is either in the repo or listed below with its location. Nothing is running in the background.
+Status as of Nov 6, 2026. Everything here is either in the repo or listed below with its location. Nothing is running in the background.
 
 Start with `docs/explainability/README.md` for the results and caveats.
 
@@ -20,6 +20,7 @@ python scripts/explain/xgb83_calibration.py               # shipped booster on a
 python3 scripts/explain/xgb83_drop_ablation.py --matrix /home/adam/sprint/matrix_trainctr --out /mnt/c/Users/13144/sprint/explain83_ablation --device cuda   # WSL GPU; about 40 min
 python scripts/explain/xgb83_gdt.py --sets full minus_alive round_state_only loadout_only minus_round_state minus_blind minus_view minus_armor_sums minus_bomb_geo --seeds 0 1 2   # GDT with the team's scorer
 python scripts/explain/xgb83_ablation_report.py           # ablation tables, log loss and GDT
+python scripts/explain/readme_figs.py                     # README figures: GDT, calibration, one waterfall
 ```
 
 To rebuild the Word report, run `scripts/explain/docx/prep_docx_data.py`, then `build_docx.js`. Both are in the repo. `build_docx.js` takes the output path as its second argument.
@@ -55,6 +56,6 @@ The Oct 26–31 holdout has one recorded read, for the 83-input candidate (0.452
 
 ## Not in this handover
 
-- The I9 form and the email to Bill (his checklist, item 1). Not done.
+- The I9 form to Bill (his checklist, item 1). Sent by Adam (reported Nov 6). The form is not in this repo.
 - The deep model (item 4 of Bill's checklist). Its handoff is in [handover/deep-model/README.md](../deep-model/README.md). No deep-model training was run.
 - The git push to `pureskillgg/counterstrike-win-probability`. Work is committed on `wrap-up-nov-2026` only, if the commit goes through. Not pushed.

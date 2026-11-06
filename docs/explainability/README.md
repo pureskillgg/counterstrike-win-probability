@@ -2,9 +2,11 @@
 
 As of Nov 6, 2026. This folder explains the 83-input XGBoost model that gives the probability that CT wins a CS2 round, second by second. It answers three questions:
 
-1. **Which inputs matter, and how much?** Global view, by bundle of inputs, and by drop-group retrains.
-2. **Where did one prediction come from?** Local view: what each input contributed to a single second.
+1. **Which inputs matter, and how much?** A global view by bundle of inputs, and drop-group retrains.
+2. **Where did one prediction come from?** A local view: what each input contributed to one second.
 3. **How do two predictions differ, and which inputs work together?** Contrasts and interactions.
+
+> **In short.** The loadout inputs (each side's equipment, armour and health) carry most of the signal. Among the single-group drops tested, none costs more than 0.0005 GDT, the team's metric. Round state, position and map together add about 0.016 GDT on top of loadout alone. Calibration holds per decile (largest gap 0.009) and in the 1-versus-5 state, checked per round.
 
 Explanation and importance are reported separately:
 
@@ -15,6 +17,7 @@ The team's evaluation metric is **GDT**, the gain over the lookup table (see [th
 
 ## Contents
 
+- [At a glance](#at-a-glance)
 - [Status](#status)
 - [Where to look](#where-to-look)
 - [One prediction: four example seconds](#one-prediction-four-example-seconds)
@@ -27,6 +30,33 @@ The team's evaluation metric is **GDT**, the gain over the lookup table (see [th
 - [Caveats](#caveats)
 - [Reproduce](#reproduce)
 - [Files](#files)
+
+## At a glance
+
+| Question | Answer | Go to |
+|---|---|---|
+| Which inputs matter most? | The loadout difference (CT minus T) averages 13.3 pp of effect per second. The 24 position inputs total 3.5 pp. | [Global results](#global-results) |
+| How does it score on the team's metric? | GDT 0.0254 on 295 matches (scorer interval 0.0217 to 0.0290). Loadout alone scores 0.0098. | [GDT ablations](#drop-group-ablations-scored-on-gdt) |
+| Is it calibrated? | Largest decile gap 0.009 over 1,515,228 validation seconds. In 1,033 rounds in 1-versus-5 states: 1.48 CT wins expected, 1 observed. | [Calibration](#calibration) |
+| What is still open? | Rebuilding the matrix from raw data, the Oct 9–10 match counts, and the feature fixes from the team notes. | [Caveats](#caveats), [handover](../../handover/explainability/README.md) |
+
+### How the pieces fit
+
+```mermaid
+flowchart LR
+  A["Training cache<br/>14,804 matches"] --> B["Design matrix<br/>15.3 M rows, 83 inputs"]
+  B --> C["Shipped booster<br/>CPU refit, 2,695 rounds"]
+  C --> D["TreeSHAP<br/>100,000 validation seconds"]
+  C --> E["Permutation<br/>all 1.5 M validation seconds"]
+  C --> F["Calibration<br/>deciles and 1-versus-5 rounds"]
+  B --> G["Drop-group retrains<br/>9 sets, 3 seeds, WSL GPU"]
+  G --> H["GDT scorer<br/>295 matches"]
+  D --> I["Tables and figures"]
+  E --> I
+  F --> I
+  H --> I
+  I --> J["Word report and this README"]
+```
 
 ## Status
 
@@ -46,7 +76,7 @@ The team's evaluation metric is **GDT**, the gain over the lookup table (see [th
 
 | You want | Go to |
 |---|---|
-| The write-up with figures (9 pages) | [XGB_explainability_report.docx](XGB_explainability_report.docx) |
+| The write-up with figures (10 pages) | [XGB_explainability_report.docx](XGB_explainability_report.docx) |
 | The shipped model and its metadata | [winprob_xgb83_final.json](../../models/winprob_xgb83_final.json), [meta](../../models/winprob_xgb83_final.meta.json) |
 | Global results by bundle | [bundle_importance_and_effects.csv](tables/bundle_importance_and_effects.csv) |
 | Each input: effect, slope, curve | [feature_slopes_all83.csv](tables/feature_slopes_all83.csv), [feature_curves_all83.csv](tables/feature_curves_all83.csv) |
@@ -68,14 +98,14 @@ Four seconds from the 100,000-second validation sample were chosen by fixed rule
 
 **Reading a waterfall.** The base value is the model's average logit, P = 51.3%. Each input adds a contribution on the logit scale, largest first. The base plus the contributions equals the prediction's logit exactly, checked to 0.001. The `pp_leave_out` column is the change in probability if that one contribution is removed. Those changes do not add up, because the sigmoid is not linear.
 
+<p align="center"><img src="figures/waterfall_largest_loss.png" alt="Waterfall for the largest-loss second. The base value of 51.3% falls to a prediction of 0.11%, mostly through team HP difference, CT alive minus T alive and armoured-player difference." width="820"></p>
+
 For the `largest_loss` second, the biggest pushes against CT were:
 
 - team HP difference of −270 (CT has 100 HP, T has 370), about the 1st percentile of the sample: −1.65 logit;
 - CT alive minus T alive of −4 (1 against 5), about the 1st percentile: −1.36 logit;
 - armoured-player difference of −5: −0.95 logit;
 - equipment difference of −$13,850: −0.51 logit.
-
-![Bundle effects](figures/bundle_effects.png)
 
 ## Two predictions: contrasts
 
@@ -114,9 +144,17 @@ Average absolute effect on P(CT wins), in percentage points per second, from Tre
 | T health and armour | 6 | 1.46 |
 | Map | 7 | 1.10 |
 
-Position (24 inputs) totals 3.50 pp, visibility (4 inputs) 0.63 pp, and blindness (4 inputs) 0.03 pp. The SHAP ranking and the permutation ranking disagree for a few inputs, and the figure below shows where:
+<p align="center"><img src="figures/bundle_effects.png" alt="Average absolute effect by bundle of inputs" width="640"></p>
 
-![SHAP against permutation importance](figures/shap_vs_permutation.png)
+Position (24 inputs) totals 3.50 pp, visibility (4 inputs) 0.63 pp, and blindness (4 inputs) 0.03 pp.
+
+The 25 inputs with the largest effects are below. Colour shows the bundle: orange for loadout, green for position, blue for round state, purple for map. Four were flagged in the team's notes.
+
+<p align="center"><img src="figures/top25_inputs.png" alt="Top 25 inputs by mean absolute SHAP effect, coloured by bundle" width="560"></p>
+
+The SHAP ranking and the permutation ranking disagree for a few inputs, and the figure below shows where:
+
+<p align="center"><img src="figures/shap_vs_permutation.png" alt="SHAP against permutation importance for each input" width="720"></p>
 
 The 57-input submission model (no position inputs) gives round state 4.72 pp, against 3.11 pp. Its bomb-timing inputs take over what defuse slack and bomb distance carried. Validation log loss is 0.453557 for 57 inputs, against 0.450210 for 83. Comparison: [compare_83_vs_57_bundles.csv](xgb57/tables/compare_83_vs_57_bundles.csv).
 
@@ -125,6 +163,8 @@ The 57-input submission model (no position inputs) gives round state 4.72 pp, ag
 Each set is the full 83-input model with one group removed, or one group alone. Same matrix, split and fit settings as the sprint's full cell. Three seeds each, refit in one environment: xgboost 3.2.0 on the WSL RTX 3080.
 
 GDT is the team's metric, from [score_gdt.py](../../evaluation/intern_gdt/score_gdt.py), on the 295-match population: matches dated Sept 1 to Oct 8, with rounds that start 5 against 5. Paired differences are against the full model with the same seed, on the same datapoints. Negative means worse.
+
+<p align="center"><img src="figures/gdt_ablation.png" alt="GDT for the full model and eight drop-group sets. Full model 0.0254; minus view and minus bomb geometry each lose 0.0005; loadout only 0.0098; round state only is below the lookup table." width="820"></p>
 
 | Set (inputs) | GDT, mean of 3 seeds | Paired GDT vs full (range over seeds) | Log loss, all validation seconds | Paired log loss vs full |
 |---|---|---|---|---|
@@ -142,7 +182,7 @@ What the table says:
 
 - **Alive counts.** Removing them does not reduce GDT, so the loadout inputs carry the alive signal.
 - **Round state.** Removing it from the full model costs nothing on GDT. Alone, it scores below the lookup table.
-- **Loadout only** beats the table (GDT 0.0098), but the position inputs add about 0.016 GDT on top of it.
+- **Loadout only** beats the table (GDT 0.0098). Round state, position and map together add about 0.016 GDT on top of it.
 - **Armour sums and blind.** No measurable effect on GDT. The team's notes asked to drop the armour sums and to rebuild the blind inputs.
 - **View and bomb geometry.** Each gives a small, consistent gain of about 0.0005 GDT. For each, the paired interval excludes zero in two seeds and touches it in the third.
 
@@ -153,6 +193,8 @@ Tables: [drop_ablation_83_gdt.csv](tables/drop_ablation_83_gdt.csv), [drop_ablat
 ## Calibration
 
 **Overall.** Deciles of predicted probability over all 1,515,228 validation seconds match the observed CT-win rate to within 1 percentage point in every decile ([calibration_deciles_shipped.csv](tables/calibration_deciles_shipped.csv)). The intervals in that table treat seconds as independent, so they are too narrow.
+
+<p align="center"><img src="figures/calibration_deciles.png" alt="Predicted against observed CT-win rate by decile; all ten points lie on the diagonal" width="460"></p>
 
 **The largest miss's state (1 CT alive against 5 T).** Seconds in a round share one outcome, so this is checked per round, using the sum of each round's mean predicted probability ([calibration_1v5_shipped.csv](tables/calibration_1v5_shipped.csv)):
 
@@ -206,6 +248,7 @@ The data is not in git. Where each input lives is listed in the [handover](../..
    - `python scripts/explain/xgb83_gdt.py --sets full minus_alive round_state_only loadout_only minus_round_state minus_blind minus_view minus_armor_sums minus_bomb_geo --seeds 0 1 2`
    - `python scripts/explain/xgb83_ablation_report.py`
 5. **Word report.** [prep_docx_data.py](../../scripts/explain/docx/prep_docx_data.py) collects the tables and figures. [build_docx.js](../../scripts/explain/docx/build_docx.js) builds the `.docx` with the `docx` package, and takes the output path as its second argument.
+6. **README figures.** `python scripts/explain/readme_figs.py` draws the GDT, calibration and waterfall figures. It reads only the committed tables and [local/](local/), so it runs without the data.
 
 ## Files
 
@@ -213,10 +256,10 @@ The data is not in git. Where each input lives is listed in the [handover](../..
 |---|---|
 | [README.md](README.md) | This file, for people |
 | [README.agents.md](README.agents.md) | The same results, with the file map and invariants that agents need |
-| [XGB_explainability_report.docx](XGB_explainability_report.docx) | The 9-page Word report |
+| [XGB_explainability_report.docx](XGB_explainability_report.docx) | The 10-page Word report |
 | [tables/](tables/) | Global tables, calibration tables, and the GDT ablation tables |
-| [figures/](figures/) | PNG figures used in the report |
+| [figures/](figures/) | PNG figures for this README and the report |
 | [local/](local/) | One-prediction waterfalls, contrasts, interactions, and their metadata |
 | [xgb57/tables/](xgb57/tables/) | The 57-input model's effects, permutation scores, and comparison |
 
-The scripts are in [scripts/explain/](../../scripts/explain/). The handover notes are in [handover/explainability/](../../handover/explainability/README.md).
+The scripts are in [scripts/explain/](../../scripts/explain/), including [readme_figs.py](../../scripts/explain/readme_figs.py). The handover notes are in [handover/explainability/](../../handover/explainability/README.md).

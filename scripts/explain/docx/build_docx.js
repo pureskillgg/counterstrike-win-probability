@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const {
   Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell, WidthType, ShadingType, ImageRun,
-  AlignmentType, LevelFormat, HeadingLevel, Footer, PageNumber, BorderStyle,
+  AlignmentType, LevelFormat, HeadingLevel, Footer, PageNumber,
 } = require("docx");
 
 const DATA = process.argv[2];
@@ -14,6 +14,7 @@ const FONT = "Arial";
 const BODY = 20; // 10 pt
 const SMALL = 16; // 8 pt in tables
 const NAVY = "1F3864";
+const DECK_URL = "https://claude.ai/artifact/8qHvXnNhVSj8KB1nfhytu4";
 
 function run(text, opts = {}) {
   return new TextRun({ text, font: FONT, size: opts.size || BODY, bold: !!opts.bold, italics: !!opts.italics, color: opts.color });
@@ -81,8 +82,9 @@ body.push(new Paragraph({
   spacing: { before: 0, after: 80 },
   children: [new TextRun({ text: "What drives the XGBoost win-probability model, input by input", font: FONT, size: 36, bold: true, color: NAVY })],
 }));
-body.push(para("83-input candidate (explained) and 57-input submission model (v6). Validation seconds only. 5 November 2026.",
-  { color: "555555", after: 200 }));
+body.push(para("83-input candidate (explained) and 57-input submission model (v6). Validation seconds only; GDT on 295 matches. 6 November 2026.",
+  { color: "555555", after: 60 }));
+body.push(para(`Companion slides: ${DECK_URL}`, { color: "555555", after: 200 }));
 
 // 1 Summary
 body.push(heading("1. Summary", 1));
@@ -90,10 +92,14 @@ body.push(bullet([run("Economy drives most of the movement. ", { bold: true }),
   run("The loadout-difference inputs (team HP, equipment, armor, rifles) move P(CT wins) by about 13 pp per second on average. The round-state group (alive counts, clock, bomb) is about 3 pp, and the position inputs together are about 3.5 pp.")]));
 body.push(bullet([run("Per-unit effects, from the linear slope of each input's effect: ", { bold: true }),
   run("each 100 HP of team HP difference (CT minus T) is worth about 3.7 pp; each armored player of difference about 1.9 pp; each extra rifle of difference about 0.75 pp; each $1,000 of equipment difference about 0.37 pp; each alive player of CT minus T about 1.6 pp.")]));
-body.push(bullet([run("Position: ", { bold: true }),
-  run("defuse slack (about +0.14 pp per second of slack, when the bomb is planted) and bomb distance matter most. Site geometry is smaller, the VIEW inputs are small, and the BLIND inputs have no measurable effect.")]));
+body.push(bullet([run("Position, by SHAP: ", { bold: true }),
+  run("defuse slack (about +0.14 pp per second of slack, when the bomb is planted) and bomb distance carry most of it. Site geometry is smaller, the VIEW inputs are small, and the BLIND inputs have no measurable effect.")]));
+body.push(bullet([run("On GDT, the team's metric: ", { bold: true }),
+  run("the full model scores 0.0254 on 295 matches. The loadout inputs alone score 0.0098, and round state alone scores -0.0164, which is worse than the lookup table. Dropping the four bomb-geometry inputs (defuse slack included) costs 0.0005, and dropping the VIEW inputs costs 0.0005. Dropping the armor sums or BLIND changes GDT by 0.0001 or less.")]));
+body.push(bullet([run("Calibration: ", { bold: true }),
+  run("predicted and observed rates agree to within 0.01 in every decile (largest gap 0.009). Per round, the 1-versus-5 states give 1.48 expected CT round wins against 1 observed.")]));
 body.push(bullet([run("Read these with care. ", { bold: true }),
-  run("The explained model is a CPU refit that matches the sprint's log loss but not its per-row predictions. The loadout inputs probably also carry the alive-count signal, because dead players lose HP and equipment. Permutation ranks are distorted for the missing-value, sentinel and difference inputs.")]));
+  run("The explained booster is a CPU refit that matches the sprint's log loss but not its per-row predictions. The loadout inputs probably also carry the alive-count signal, because dead players lose HP and equipment. The armor, BLIND and round-state GDT changes switch sign between seeds, so treat them as zero (Section 7). Permutation ranks are distorted for the missing-value, sentinel and difference inputs.")]));
 
 // 2 What was explained
 body.push(heading("2. What was explained, and how", 1));
@@ -102,7 +108,7 @@ body.push(bullet("Explained on 100,000 random validation seconds out of 1,515,22
 body.push(bullet("TreeSHAP (XGBoost pred_contribs) gives each input's contribution to the log-odds. Its additivity check passed (max error 3.5e-5)."));
 body.push(bullet("Effect in pp per second for an input: 100 × [sigmoid(z) − sigmoid(z − φ)], where z is the row's log-odds and φ the input's SHAP value. Mean absolute effect is the average over rows. Signed effect shows direction."));
 body.push(bullet("Permutation importance (black box) shuffles an input (or a bundle) over all 1,515,228 validation seconds and records the rise in log loss."));
-body.push(bullet("The CPU refit is not the GPU model file. Its validation log loss is 0.450210 against 0.450228 for the sprint, but per-row predictions differ by up to 0.25 (mean 0.0043)."));
+body.push(bullet("The explained booster is a CPU refit (models/winprob_xgb83_final.json). Its validation log loss is 0.450210, against 0.450228 for the sprint's GPU fit. Per-row predictions differ by up to 0.25 (mean 0.004)."));
 
 // 3 Economy and health inputs
 body.push(heading("3. Economy and health inputs, precisely", 1));
@@ -156,25 +162,65 @@ body.push(caption("Table 4. Inputs where the two methods disagree most."));
 body.push(figure(d.figs.shap_vs_perm, 520));
 body.push(caption("Figure 4. Mean absolute SHAP effect against permutation log-loss increase, per input."));
 
-// 7 Flags and ablation
-body.push(heading("7. Flags from the team's notes, and retrain evidence", 1));
+// 7 Retrain ablations on GDT
+body.push(heading("7. Retrain ablations, scored on GDT", 1));
+body.push(para("GDT is the team's evaluation metric: table log loss minus model log loss, on sampled datapoints (one per round per situation). Positive means the model beats the lookup table. Each drop set was refit with the 83-input settings and scored on the same 295 matches (Sept 1 to Oct 8, 5-against-5 starts; 5,239 rounds, 354,519 seconds). Each row is the mean of three seeds."));
 body.push(table(
-  ["Input", "Note", "Mean |effect| (pp/s)", "Perm. Δ log loss", "Retrain ablation (sprint, log loss)"],
+  ["Feature set", "Inputs", "GDT (mean)", "GDT change vs full", "Seed range of change", "Log-loss change vs full"],
+  d.gdt_rows,
+  [3200, 900, 1500, 1500, 1900, 1080],
+  [1, 2, 3, 4, 5],
+));
+body.push(caption(`Table 7. Retrain ablations on GDT. Change vs full is the paired difference on the same datapoints; negative = worse than full. Seed range is the lowest and highest of the three seed values of that change. The scorer's interval for the full model's GDT is ${d.gdt_ci}, so compare the changes, not the levels.`));
+body.push(bullet([run("Loadout inputs carry the signal. ", { bold: true }),
+  run("The 46 loadout inputs alone reach 0.0098 of the full model's 0.0254. Round state alone is negative (-0.0164): it does worse than the lookup table.")]));
+body.push(bullet([run("Alive counts. ", { bold: true }),
+  run("Dropping them changes GDT by +0.0002, positive in all three seeds, and raises log loss by 0.00027. This is the one set where log loss and GDT disagree in direction.")]));
+body.push(bullet([run("Armor sums and BLIND. ", { bold: true }),
+  run("No measurable effect on GDT. Dropping the armor sums, as the team's notes ask, costs nothing.")]));
+body.push(bullet([run("VIEW and bomb geometry. ", { bold: true }),
+  run("About 0.0005 each on GDT, negative in all three seeds. The bomb-geometry set includes defuse slack, so defuse slack was not tested on its own.")]));
+body.push(bullet([run("Log loss is shown alongside, as the team's notes ask. ", { bold: true }),
+  run("It agrees in direction with GDT for every set except alive counts.")]));
+
+// 8 Flags and the earlier sprint run
+body.push(heading("8. Flags from the team's notes, and the earlier sprint run", 1));
+body.push(table(
+  ["Input", "Note", "Mean |effect| (pp/s)", "Perm. Δ log loss", "Drop test on GDT"],
   d.flags,
   [2300, 3000, 1500, 1600, 1680],
   [2, 3],
 ));
-body.push(caption("Table 5. Flagged inputs. The retrain column is from the sprint at depth 4, eta 0.05, 3 seeds, relative to base (59 inputs)."));
+body.push(caption("Table 8. Flagged inputs. The last column is the GDT drop test from Table 7 (three seeds, paired with the full model)."));
 body.push(table(
   ["Feature set", "Δ log loss vs base", "Note"],
   d.ablation,
   [3600, 2600, 3880],
   [1],
 ));
-body.push(caption("Table 6. Retrain ablation of position groups. Negative = better than base."));
+body.push(caption("Table 9. Earlier sprint run of position groups (log loss, depth 4, eta 0.05, 3 seeds, relative to a base of 59 inputs). Superseded for decisions by Table 7; kept for the record. Negative = better than base."));
 
-// 8 57-input model
-body.push(heading("8. The 57-input submission model", 1));
+// 9 Calibration
+body.push(heading("9. Calibration", 1));
+body.push(para("The shipped booster on all 1,515,228 validation seconds. Each decile holds about 151,500 seconds, sorted by predicted probability. The intervals are Wilson intervals, which treat seconds as independent. Seconds within a round are correlated, so the true intervals are wider."));
+body.push(table(
+  ["Decile", "Seconds", "Mean predicted P(CT wins)", "Observed CT win rate", "Observed 95% interval", "Observed minus predicted"],
+  d.calib_rows,
+  [1000, 1300, 2000, 1800, 2280, 1700],
+  [1, 2, 3, 4, 5],
+));
+body.push(caption("Table 10. Calibration deciles, shipped booster. The largest gap is 0.009, in decile 6."));
+body.push(para("Per round, rather than per second. Expected is the sum over rounds of each round's mean predicted probability; observed is the number of rounds CT won."));
+body.push(table(
+  ["1-versus-5 state", "Rounds", "Matches", "Expected CT round wins", "Observed CT round wins"],
+  d.onev5_rows,
+  [4080, 1500, 1500, 1500, 1500],
+  [1, 2, 3, 4],
+));
+body.push(caption("Table 11. Round-level 1-versus-5 check. The one CT win in the planted state is the same round as the largest per-second miss. A round can count in both bomb states, so the rows do not add to the first row."));
+
+// 10 57-input model
+body.push(heading("10. The 57-input submission model", 1));
 if (d.cmp57_rows) {
   const m = d.meta57;
   body.push(para(`Model winprob_v6_drop_heavy: 57 inputs, no position inputs, heavy weapons dropped. Best iteration ${m.best_iteration}. Validation log loss ${Number(m.validation_logloss_all_rows).toFixed(6)} on all ${Number(m.validation_rows).toLocaleString("en-US")} validation seconds. It was explained on the same ${Number(m.shap_rows).toLocaleString("en-US")} seconds as the 83-input model, and the bundle columns below compare the two on identical rows.`));
@@ -188,24 +234,27 @@ if (d.cmp57_rows) {
     [3080, 1800, 1800, 1700, 1700],
     [1, 2, 3, 4],
   ));
-  body.push(caption("Table 7. Bundle effects, 83-input vs 57-input model, on the same validation seconds."));
+  body.push(caption("Table 12. Bundle effects, 83-input vs 57-input model, on the same validation seconds."));
   body.push(table(
     ["Input", "Bundle", "Mean |effect| (pp/s)", "Mean signed (pp/s)", "Perm. Δ log loss"],
     d.top57_rows,
     [2600, 2600, 1800, 1800, 1280],
     [2, 3, 4],
   ));
-  body.push(caption("Table 8. The 20 largest inputs in the 57-input model."));
+  body.push(caption("Table 13. The 20 largest inputs in the 57-input model."));
 } else {
   body.push(para("The 57-input explanation was still running when this report was built."));
 }
 
-// 9 Next steps
-body.push(heading("9. Next steps", 1));
-body.push(bullet("Retrain ablations on the WSL GPU (about 2 minutes per fit, against 83 minutes for the CPU refit): drop BLIND, drop VIEW, drop the armor sums, and remove the bomb inputs from GEO."));
-body.push(bullet("Check the alive-count question: fit a loadout-only and a round-state-only model, and see how much alive count adds once HP and equipment are present."));
-body.push(bullet("Make the feature changes from the notes (rebuild VIEW, BLIND and defuse slack; drop armor sums), then rerun this explanation on the new feature set."));
-body.push(bullet("Nothing is committed or pushed."));
+// 11 Open items
+body.push(heading("11. Open items", 1));
+body.push(bullet("Reproduce the design matrix from the raw tomes. sprint_prepare.py has not been rerun, frozen_test_keys.json is not on this machine, and the builder of cache_pos_2026_trainctr.parquet is not identified."));
+body.push(bullet("Reconcile October 9 and 10. The handoff gives 2,598 matches for these days, and the training cache has 4,865."));
+body.push(bullet("Feature fixes from the team's notes: rebuild VIEW (sees-enemy and exposed), BLIND (from player blind events) and defuse slack (time to reach and defuse), then rerun the explanation. Dropping the armor sums is already supported by Table 7."));
+body.push(bullet("The Oct 26 to 31 holdout has one recorded read and no new scoring. Any new read needs a pre-registration pin and an explicit go-ahead."));
+body.push(bullet("The deep model has a handoff only (handover/deep-model/README.md). No training has run."));
+body.push(bullet("The I9 form has been sent to Bill (Adam, Nov 6)."));
+body.push(bullet("This report and its build scripts are regenerated in the working tree and not committed."));
 
 const doc = new Document({
   creator: "Claude",

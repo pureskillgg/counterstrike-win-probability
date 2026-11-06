@@ -21,17 +21,19 @@ WHY = {
     "alive_t": "Little direct credit, as for alive_ct.",
     "ct_alive_minus_t": "Partly a function of the two alive counts, so credit is shared.",
 }
+# Last column: the GDT drop test from drop_ablation_83_gdt.csv (mean of three seeds, paired with the full model).
 FLAGS = [
     ("st_armor_sum_ct / st_armor_sum_t", "Dropped by request (notes).", "CT 0.44 pp, T 0.54 pp", "CT 0.0041, T 0.0030",
-     "not yet measured"),
+     "Drop: GDT +0.0001"),
     ("VIEW: c/t sees_enemy, c/t exposed", "Unreliable (notes): remove with sees-enemy.", "0.63 pp", "0.00099",
-     "VIEW alone -0.00067 vs base"),
+     "Drop: GDT -0.0005"),
     ("BLIND: c/t blind_n, blind_sum", "Source unclear (notes): rebuild from player blind events.", "0.03 pp", "0.000025",
-     "BLIND alone -0.00002 vs base"),
+     "Drop: GDT 0.0000"),
     ("defuse_slack", "Crude (notes): rebuild as time to reach and defuse.", "1.28 pp", "0.072 (see disagreement)",
-     "GEO alone -0.00313 vs base"),
+     "Only in bomb geometry: GDT -0.0005"),
     ("st_heavy_ct / st_heavy_t", "Dropped in v6 (drop heavy).", "0.07 and 0.05 pp", "about 0", "n/a"),
 ]
+# Earlier sprint run (eta 0.05, base of 59 inputs), log loss only. Superseded for decisions by the GDT table.
 ABLATION = [
     ("base (59 inputs)", "0", "reference"),
     ("base + GEO", "-0.00313", "GEO alone"),
@@ -42,6 +44,22 @@ ABLATION = [
     ("base + VIEW + BLIND", "-0.00066", ""),
     ("full (83 inputs)", "-0.00344", "all position groups"),
 ]
+GDT_LABEL = {
+    "full": "Full model",
+    "minus_alive": "Minus alive counts",
+    "minus_armor_sums": "Minus armor sums",
+    "minus_blind": "Minus BLIND",
+    "minus_round_state": "Minus round state",
+    "minus_view": "Minus VIEW",
+    "minus_bomb_geo": "Minus bomb geometry (incl. defuse slack)",
+    "loadout_only": "Loadout only",
+    "round_state_only": "Round state only",
+}
+STATE_LABEL = {
+    "1v5_any_bomb": "Any 1v5 state (either bomb status)",
+    "1v5_bomb_planted": "Bomb planted",
+    "1v5_no_bomb": "No bomb planted",
+}
 
 
 def fmt(v, nd=2):
@@ -52,9 +70,51 @@ def fmt(v, nd=2):
     return f"{v:.{nd}f}"
 
 
+def signed(v, nd=4):
+    # Signed value; a value that rounds to zero prints as unsigned zero (no "-0.0000").
+    if round(v, nd) == 0:
+        return f"{0:.{nd}f}"
+    return f"{v:+.{nd}f}"
+
+
 def img(path):
     w, h = Image.open(path).size
     return {"path": path.replace("\\", "/"), "w": w, "h": h}
+
+
+def gdt_rows():
+    g = {r["set"]: r for r in pl.read_csv(f"{T}/drop_ablation_83_gdt.csv").iter_rows(named=True)}
+    a = {r["set"]: r for r in pl.read_csv(f"{T}/drop_ablation_83.csv").iter_rows(named=True)}
+    rows = []
+    for s, label in GDT_LABEL.items():
+        gr, ar = g[s], a[s]
+        if s == "full":
+            rows.append([label, str(ar["n_inputs"]), f"{gr['mean_GDT']:.4f}", "reference", "", "reference"])
+        else:
+            rows.append([label, str(ar["n_inputs"]), f"{gr['mean_GDT']:.4f}",
+                         signed(gr["mean_paired_GDT_difference_vs_full"]),
+                         f"{signed(gr['paired_difference_min'])} to {signed(gr['paired_difference_max'])}",
+                         signed(ar["mean_delta_vs_full"], 6)])
+    ci = (g["full"]["mean_GDT_ci_low"], g["full"]["mean_GDT_ci_high"])
+    return rows, f"{ci[0]:.4f} to {ci[1]:.4f}"
+
+
+def calibration_rows():
+    d = pl.read_csv(f"{T}/calibration_deciles_shipped.csv")
+    rows = []
+    for r in d.iter_rows(named=True):
+        gap = r["observed_ct_win_rate"] - r["mean_predicted_p_ct_win"]
+        rows.append([str(r["decile"]), f"{r['n']:,}", f"{r['mean_predicted_p_ct_win']:.4f}",
+                     f"{r['observed_ct_win_rate']:.4f}", f"{r['observed_ci_low']:.4f} to {r['observed_ci_high']:.4f}",
+                     signed(gap)])
+    return rows
+
+
+def onev5_rows():
+    m = {r["state"]: r for r in pl.read_csv(f"{T}/calibration_1v5_shipped.csv").iter_rows(named=True)}
+    return [[STATE_LABEL[s], f"{m[s]['rounds']:,}", f"{m[s]['matches']:,}",
+             f"{m[s]['expected_ct_win_rounds']:.2f}", str(m[s]["observed_ct_win_rounds"])]
+            for s in STATE_LABEL]
 
 
 def main():
@@ -90,9 +150,13 @@ def main():
         disagree_rows.append([f, str(fe_rank.get(f, "")), fmt(fe_map[f]["mean_abs_effect_pp"]),
                               fmt(fe_map[f]["perm_delta_logloss"], 4), WHY[f]])
 
+    gdt, gdt_ci = gdt_rows()
+
     data = {
         "bundle_rows": bundle_rows, "loadout_rows": loadout_rows, "top_rows": top_rows,
         "disagree_rows": disagree_rows, "flags": [list(x) for x in FLAGS], "ablation": [list(x) for x in ABLATION],
+        "gdt_rows": gdt, "gdt_ci": gdt_ci,
+        "calib_rows": calibration_rows(), "onev5_rows": onev5_rows(),
         "figs": {
             "bundles": img(f"{F}/bundle_effects.png"),
             "curves_loadout": img(f"{F}/curves_loadout.png"),
@@ -114,7 +178,7 @@ def main():
         data["top57_rows"] = [[r["feature"], r["bundle"], fmt(r["mean_abs_effect_pp"]), fmt(r["mean_signed_effect_pp"]),
                                fmt(r["perm_delta_logloss"], 4)] for r in f57.iter_rows(named=True)]
     json.dump(data, open(OUT, "w", encoding="utf-8"), indent=1)
-    print("wrote", OUT, "| 57 section:", "cmp57_rows" in data)
+    print("wrote", OUT, "| 57 section:", "cmp57_rows" in data, "| gdt rows:", len(gdt))
 
 
 if __name__ == "__main__":
