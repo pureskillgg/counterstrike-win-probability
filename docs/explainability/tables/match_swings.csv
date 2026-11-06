@@ -1,0 +1,19 @@
+match,round,second_from,second_to,p_from,p_to,change_pp,biggest_mover,mover_logit,second_mover,second_logit,label_ct_win
+largest_loss,2,62,63,0.0596,0.5368,47.71,CT loadout,1.638,bomb geometry,0.459,1
+largest_loss,18,73,74,0.5501,0.0836,-46.65,loadout difference,-1.408,round state,-0.722,1
+largest_loss,10,13,14,0.6124,0.1816,-43.08,loadout difference,-1.414,round state,-0.506,0
+largest_loss,9,100,101,0.8843,0.4662,-41.8,loadout difference,-0.902,round state,-0.446,0
+largest_loss,17,81,82,0.2514,0.6595,40.81,loadout difference,1.005,round state,0.341,1
+largest_loss,18,72,73,0.1601,0.5501,39.0,loadout difference,1.155,round state,0.388,1
+positional_help,6,85,86,0.8367,0.2067,-63.0,loadout difference,-1.169,round state,-0.512,0
+positional_help,1,63,64,0.3431,0.9618,61.87,T loadout,1.365,round state,1.084,1
+positional_help,15,62,63,0.4009,0.8631,46.22,loadout difference,1.126,round state,0.471,0
+positional_help,7,53,54,0.7374,0.3285,-40.89,loadout difference,-0.717,round state,-0.42,0
+positional_help,2,34,35,0.779,0.4059,-37.31,loadout difference,-1.256,round state,-0.331,0
+positional_help,15,69,70,0.8721,0.5469,-32.52,loadout difference,-0.705,round state,-0.583,0
+worst_vs_table,7,51,52,0.5437,0.9941,45.04,loadout difference,1.538,T loadout,1.457,1
+worst_vs_table,4,20,21,0.4701,0.8959,42.58,loadout difference,1.4,round state,0.648,1
+worst_vs_table,8,56,57,0.3529,0.7436,39.07,loadout difference,1.027,round state,0.294,0
+worst_vs_table,2,48,49,0.6095,0.9938,38.43,T loadout,1.462,round state,1.175,1
+worst_vs_table,2,27,28,0.2389,0.5887,34.99,loadout difference,1.123,round state,0.333,1
+worst_vs_table,2,38,39,0.314,0.6413,32.72,loadout difference,0.72,site and spread,0.324,1

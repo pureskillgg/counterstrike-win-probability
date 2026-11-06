@@ -1,0 +1,38 @@
+{
+ "matches": 295,
+ "datapoints_seed0": 50107,
+ "share_matches_full_beats_table": 0.7796610169491526,
+ "median_match_gain_full": 0.024318977774564265,
+ "check": {
+  "full": {
+   "plain_mean_gain": 0.025471555329029852,
+   "scorer_GDT": 0.025471555329029845
+  },
+  "no_position": {
+   "plain_mean_gain": 0.020538381154607457,
+   "scorer_GDT": 0.020538381154607325
+  },
+  "checklist_77": {
+   "plain_mean_gain": 0.025041080595385446,
+   "scorer_GDT": 0.025041080595385335
+  },
+  "loadout_only": {
+   "plain_mean_gain": 0.009680848538414187,
+   "scorer_GDT": 0.009680848538414074
+  },
+  "round_state_only": {
+   "plain_mean_gain": -0.01636096773124229,
+   "scorer_GDT": -0.016360967731242272
+  },
+  "minus_view": {
+   "plain_mean_gain": 0.024983568706911354,
+   "scorer_GDT": 0.024983568706911336
+  },
+  "minus_bomb_geo": {
+   "plain_mean_gain": 0.024772075510251804,
+   "scorer_GDT": 0.024772075510251738
+  }
+ },
+ "share_matches_full_beats_no_position": 0.6779661016949152,
+ "median_match_diff_position": 0.0032539628659525354
+}

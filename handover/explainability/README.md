@@ -18,7 +18,8 @@ python scripts/explain/xgb83_local.py                     # waterfalls, contrast
 python scripts/explain/xgb57_explain.py                  # the 57-input submission model on the same seconds
 python scripts/explain/xgb83_calibration.py               # shipped booster on all validation seconds; calibration tables
 python3 scripts/explain/xgb83_drop_ablation.py --matrix /home/adam/sprint/matrix_trainctr --out /mnt/c/Users/13144/sprint/explain83_ablation --device cuda   # WSL GPU; about 40 min
-python scripts/explain/xgb83_gdt.py --sets full minus_alive round_state_only loadout_only minus_round_state minus_blind minus_view minus_armor_sums minus_bomb_geo --seeds 0 1 2   # GDT with the team's scorer
+python scripts/explain/xgb83_gdt.py --sets full minus_alive round_state_only loadout_only minus_round_state minus_blind minus_view minus_armor_sums minus_bomb_geo no_position checklist_77 --seeds 0 1 2   # GDT with the team's scorer
+python scripts/explain/gdt_examples.py                    # example matches and GDT by alive count (after xgb83_gdt.py)
 python scripts/explain/xgb83_ablation_report.py           # ablation tables, log loss and GDT
 python scripts/explain/readme_figs.py                     # README figures: GDT, calibration, one waterfall
 ```

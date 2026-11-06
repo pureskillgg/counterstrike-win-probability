@@ -1,0 +1,40 @@
+[workspace]
+authors = ["Adam Camerer <ajc3xc@umsystem.edu>"]
+channels = ["conda-forge"]
+name = "csds-cs2"
+platforms = ["win-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+python = "3.12.*"
+pyarrow = ">=25.0.0,<26"
+duckdb = ">=1.5.6,<2"
+polars = ">=2.0.0,<3"
+pandas = ">=3.0.6,<4"
+numpy = ">=2.5.4,<3"
+scikit-learn = ">=1.9.1,<2"
+xgboost = ">=3.4.2,<4"
+lightgbm = ">=4.7.0,<5"
+
+[pypi-dependencies]
+catboost = "==1.2.10"
+
+# Round-state encoder (stage 2): a separate environment, so the default environment and pixi.lock for the builder stay as they are.
+# torch 2.3.1 with CUDA 12.1 matches the chinampa crft_cuda_env that already runs on the RTX 3080 here; numpy below 2 for torch 2.3.
+# Use:  pixi install -e torch    then    pixi run -e torch python scripts\model\...   (or the env's python.exe directly)
+[feature.torch.dependencies]
+python = "3.12.*"
+numpy = ">=1.26,<2"
+polars = ">=2.0.0,<3"
+
+[feature.torch.pypi-options]
+extra-index-urls = ["https://download.pytorch.org/whl/cu121"]
+
+[feature.torch.pypi-dependencies]
+torch = "==2.3.1"
+
+[environments]
+# no-default-feature: the top-level [dependencies] (numpy 2.x, catboost, ...) must not leak into this environment
+torch = { features = ["torch"], no-default-feature = true }
