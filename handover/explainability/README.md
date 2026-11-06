@@ -40,9 +40,9 @@ To rebuild the Word report, run `scripts/explain/docx/prep_docx_data.py`, then `
 2. **Find `frozen_test_keys.json`.** It is not under `G:/pureskill/csds-cs2` to depth 5. `sprint_prepare.py` needs it.
 3. **Identify the builder of `cache_pos_2026_trainctr.parquet`.** Its name suggests the train-centre table used by the validation runs. Not confirmed in this session.
 4. **Reconcile Oct 9–10.** The handoff (Nov 4) says these days are unreconciled and gives 2,598 matches. The training cache has 4,865 matches on those two days. Decide which count is right and whether these days stay in the pool.
-5. **GPU retrain ablations** (offered, not run): drop BLIND; drop VIEW; drop `st_armor_sum_ct` and `st_armor_sum_t`; remove bomb inputs from GEO.
-6. **Alive-count question:** fit a loadout-only model and a round-state-only model. Does the alive signal sit in the loadout inputs?
-7. **1-versus-5 calibration:** 426 seconds in the 100,000-second sample have 1 CT alive, 5 T alive, and the bomb planted. Mean predicted P(CT wins) is 0.08%, with 3 wins (0.7%). Three wins are too few to call a miscalibration. Check it on the full validation set and on the training pool before acting.
+5. **GPU retrain ablations: done.** Results and GDT are in `docs/explainability/README.md` ("Drop-group ablations"). Armour sums and blind add nothing on GDT. View and bomb geometry add about 0.0005 each.
+6. **Alive-count question: done.** Dropping the alive counts costs nothing on GDT (+0.0002). Loadout only scores GDT 0.0098, round state only −0.0164. The loadout inputs carry the signal.
+7. **1-versus-5 calibration: done, per round.** Across the full validation set, the 1-versus-5 states give 1.48 expected CT-win rounds against 1 observed (all states). The bomb-planted state gives 0.59 against 1. The one win is the largest miss's round, so the earlier "3 wins in 426 seconds" was the same round. Table: `docs/explainability/tables/calibration_1v5_shipped.csv`.
 8. **Feature fixes from the team notes:** rebuild VIEW (sees-enemy and exposed), BLIND (from player blind events) and defuse slack (time to reach and defuse). Drop the armor sums. Heavy weapons are already dropped in v6. Then rerun the explanation.
 
 ## Holdout governance

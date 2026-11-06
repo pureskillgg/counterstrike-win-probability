@@ -92,11 +92,38 @@ The 57-input submission model (no position inputs) gives round state 4.72 pp (ag
 - **Training pool.** `cache_snapshot_2026.parquet`: 14,804 matches dated 2026-08-02 to 2026-10-13. The validation sample has 1,168 matches and 1,515,228 seconds. Checked on Nov 5, 2026: the pool has no match on or after Oct 26, and no match in common with the Oct 26–31 holdout keys.
 - **Fit.** The CPU refit gives validation log loss 0.450210. The sprint's GPU run gave 0.450228. Per-row predictions differ from the sprint's by up to 0.25 (mean 0.004), so the refit is not identical to the GPU run.
 
+## Drop-group ablations (retrained, scored on GDT)
+
+Each set below is the full 83-input model with one group removed, or one group alone. Same matrix, split and fit settings as the sprint's full cell, three seeds each, refit in one environment (xgboost 3.2.0 on the WSL RTX 3080). GDT is the team's metric (`evaluation/intern_gdt/score_gdt.py`, the 295-match population from Sept 1 to Oct 8, 5-against-5 starts). Paired differences are against the full model with the same seed, on the same datapoints. Negative means the set is worse.
+
+| Set (inputs) | GDT, mean of 3 seeds | Paired GDT vs full (range over seeds) | Log loss, all validation seconds | Paired log loss vs full |
+|---|---|---|---|---|
+| full (83) | 0.0254 | — | 0.450270 | — |
+| minus alive counts (80) | 0.0256 | +0.0002 (+0.0000 to +0.0003) | 0.450536 | +0.00027 |
+| minus armour sums (81) | 0.0255 | +0.0001 (−0.0000 to +0.0004) | 0.450259 | −0.00001 |
+| minus blind (79) | 0.0254 | +0.0000 (−0.0001 to +0.0002) | 0.450255 | −0.00002 |
+| minus round state (77) | 0.0253 | −0.0001 (−0.0002 to +0.0001) | 0.451096 | +0.00083 |
+| minus view (79) | 0.0249 | −0.0005 (−0.0006 to −0.0004) | 0.450552 | +0.00028 |
+| minus bomb geometry (79) | 0.0249 | −0.0005 (−0.0007 to −0.0004) | 0.450614 | +0.00034 |
+| loadout only (46) | 0.0098 | −0.0156 (−0.0158 to −0.0154) | 0.463166 | +0.01290 |
+| round state only (6) | −0.0164 | −0.0418 (−0.0418 to −0.0416) | 0.497067 | +0.04680 |
+
+What the table says:
+- **Alive counts:** removing them does not reduce GDT. The loadout inputs carry the alive signal.
+- **Round state:** removing it from the full model costs nothing on GDT. Alone, round state scores below the lookup table.
+- **Loadout only** beats the table (GDT 0.0098), but the position inputs add about 0.016 GDT on top of it.
+- **Armour sums and blind inputs** have no measurable effect on GDT. These are the inputs the team's notes asked to drop (armour sums) or rebuild (blind).
+- **View and bomb geometry** each give a small, consistent gain: about 0.0005 GDT. For each, the paired interval excludes zero in two seeds and touches it in the third.
+
+The full model's scorer numbers match the team's documented 83-input figures: GDT 0.0254 against 0.0254 for the 297-match population in `docs/final/TRAINING_METRIC.md`. The population here is 295 matches. The full-model log loss matches the sprint's saved values on each seed to within 0.00005 (`tables/drop_ablation_reproduction.csv`).
+
+Tables: `tables/drop_ablation_83_gdt.csv`, `tables/drop_ablation_83.csv`, `tables/drop_ablation_83_per_seed.csv`, and the three scorer summaries `tables/gdt_ablation_summary_seed{0,1,2}.json`. Built by `scripts/explain/xgb83_drop_ablation.py`, `scripts/explain/xgb83_gdt.py` and `scripts/explain/xgb83_ablation_report.py`.
+
 ## Caveats
 
 - **Oct 9 and Oct 10.** The handoff of Nov 4 marks these days as unreconciled and gives 2,598 matches for them. The training cache holds 4,865 matches dated Oct 9–10 (2,214 and 2,651). The two counts disagree. Reconcile them before relying on those days. The `largest_loss` example is from Oct 9.
 - **Missing and sentinel values.** `defuse_slack` is missing when no bomb is planted, and `seconds_since_plant` is −1. Both inflate permutation importance.
-- **Correlated inputs.** TreeSHAP splits credit between correlated inputs. The alive-count inputs get little direct credit, probably because the loadout inputs carry the same signal. This has not been tested.
+- **Correlated inputs.** TreeSHAP splits credit between correlated inputs. The alive-count inputs get little direct credit, and the retrains below show why: dropping them costs nothing on GDT. The loadout inputs carry the signal.
 - **Not causal.** These are explanations of the model's behavior. They are not causal effects.
 - **Clustered outcomes.** Seconds in a round share one outcome, so per-second statistics overstate how much evidence there is. The 1-versus-5 check is therefore done per round.
 - **Small samples.** The interaction values use 2,000 seconds.
