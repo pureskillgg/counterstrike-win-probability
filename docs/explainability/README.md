@@ -66,7 +66,7 @@ flowchart LR
 | One prediction (waterfalls, four seconds) | Done | [local/](local/), [examples](local/examples.csv) |
 | Contrasts between two predictions | Done | [local/](local/) |
 | Interactions (2,000 seconds) | Done | [top pairs](local/interactions_top_pairs.csv) |
-| Drop-group retrains, scored on GDT | Done, 9 sets × 3 seeds | [section](#drop-group-ablations-scored-on-gdt) |
+| Drop-group retrains, scored on GDT | Done, 11 sets × 3 seeds | [section](#drop-group-ablations-scored-on-gdt) |
 | Calibration per second and per round | Done | [section](#calibration) |
 | Rebuilding the design matrix from raw tomes | **Not verified** | [handover item 1](../../handover/explainability/README.md#open-items) |
 | Oct 9–10 match counts | **Open**, sources disagree | [caveats](#caveats) |
@@ -121,6 +121,18 @@ For the `largest_loss` second, the biggest pushes against CT were:
 | seconds since plant | 10.2 | 40.7 | +1.85 |
 
 [contrast_largest_loss_vs_neighbour.csv](local/contrast_largest_loss_vs_neighbour.csv) compares the `largest_loss` second with its nearest neighbour, which must have the same alive counts and bomb state. Distance is measured on the top 10 inputs. The neighbour's prediction is almost the same (0.11% against 0.11%), so the model treats those seconds alike. This contrast is more useful as a calibration check than as an explanation.
+
+## Whole matches
+
+Every row of three validation matches, explained by input bundle. The rows are the seconds the matrix holds, in round order. TreeSHAP splits each row's log-odds into the ten bundles, and the bundles sum to the prediction exactly.
+
+- **Largest-loss match** (Oct 9): [figure](figures/match_largest_loss.png), [timeline](tables/match_largest_loss_timeline.csv)
+- **Position inputs help most on GDT** (Sep 22): [figure](figures/match_positional_help.png), [timeline](tables/match_positional_help_timeline.csv)
+- **Worst against the table** (Oct 5): [figure](figures/match_worst_vs_table.png), [timeline](tables/match_worst_vs_table_timeline.csv)
+
+The largest moves in P(CT wins) between consecutive rows, with the bundles behind each, are in [match_swings.csv](tables/match_swings.csv). The bundle shares are in [match_bundle_summary.csv](tables/match_bundle_summary.csv). The largest single move in the largest-loss match (6% to 54%, seconds 62 to 63 of round 2) is a jump of that size in one second. Check it against the raw seconds before reading it as a game event.
+
+<p align="center"><img src="figures/match_largest_loss.png" alt="Largest-loss match: P(CT wins) over the match, and each bundle's contribution row by row" width="820"></p>
 
 ## Interactions
 
@@ -177,12 +189,16 @@ GDT is the team's metric, from [score_gdt.py](../../evaluation/intern_gdt/score_
 | minus bomb geometry (79) | 0.0249 | −0.0005 (−0.0007 to −0.0004) | 0.450614 | +0.00034 |
 | loadout only (46) | 0.0098 | −0.0156 (−0.0158 to −0.0154) | 0.463166 | +0.01290 |
 | round state only (6) | −0.0164 | −0.0418 (−0.0418 to −0.0416) | 0.497067 | +0.04680 |
+| non-positional (59) | 0.0205 | −0.0049 (−0.0049 to −0.0048) | 0.453703 | +0.00343 |
+| checklist fallback (77) | 0.0251 | −0.0003 (−0.0004 to −0.0001) | 0.450551 | +0.00028 |
 
 What the table says:
 
 - **Alive counts.** Removing them does not reduce GDT, so the loadout inputs carry the alive signal.
 - **Round state.** Removing it from the full model costs nothing on GDT. Alone, it scores below the lookup table.
 - **Loadout only** beats the table (GDT 0.0098). Round state, position and map together add about 0.016 GDT on top of it.
+- **Positional vs non-positional.** Dropping all 24 position inputs (the non-positional 59-input model) costs 0.0049 GDT and 0.0034 log loss. The two groups dropped alone, VIEW and bomb geometry, are about 0.0005 GDT each. Site-and-spread and contact geometry were never dropped alone, so most of the position effect is not yet split by group.
+- **83 against the 77s.** The checklist fallback (77, no armour sums and no VIEW) costs 0.0003 GDT and 0.00028 log loss against the full model, and the sign holds in every seed. Minus round state (77) changes GDT by −0.0001, which is within seed noise, and adds 0.00083 log loss.
 - **Armour sums and blind.** No measurable effect on GDT. The team's notes asked to drop the armour sums and to rebuild the blind inputs.
 - **View and bomb geometry.** Each gives a small, consistent gain of about 0.0005 GDT. For each, the paired interval excludes zero in two seeds and touches it in the third.
 
@@ -209,7 +225,7 @@ The one win is the largest miss's own round. The earlier "3 wins in 426 seconds"
 ## Model and data
 
 - **Model.** XGBoost, binary logistic, 83 inputs: 59 base, plus GEO (16), VIEW (4) and BLIND (4). Depth 4, eta 0.03, min_child_weight 20, subsample 0.8, max_bin 256, seed 0. Early stopping after 100 rounds on a 10% split, with a 3,000-round cap. Best iteration 2,695 (the sprint's was 2,555). Monotone constraints on the alive counts.
-- **The shipped file** is [winprob_xgb83_final.json](../../models/winprob_xgb83_final.json). It is a CPU refit, and it is byte-identical to the booster these explanations were computed from. Its metadata records the checklist deviation: the armour sums and the sees-enemy and exposed inputs are kept.
+- **The shipped file** is [winprob_xgb83_final.json](../../models/winprob_xgb83_final.json). It is a CPU refit, and it is byte-identical to the booster these explanations were computed from. The file holds 2,796 boosted rounds (best iteration 2,695 plus 100 early-stopping rounds). Predict and explain with the first 2,696 (`iteration_range=(0, 2696)`): a plain predict uses all rounds and differs by up to 0.02. Its metadata records the checklist deviation: the armour sums and the sees-enemy and exposed inputs are kept.
 - **Training pool.** `cache_snapshot_2026.parquet`: 14,804 matches dated 2026-08-02 to 2026-10-13. The validation sample has 1,168 matches and 1,515,228 seconds. Checked Nov 5, 2026: the pool has no match on or after Oct 26, and no match in common with the Oct 26–31 holdout keys.
 - **Fit.** The CPU refit gives validation log loss 0.450210. The sprint's GPU run gave 0.450228. Per-row predictions differ from the sprint's by up to 0.25 (mean 0.004), so the refit is not identical to the GPU run.
 - **Protocol.** The team's rules are in [MODELS_TO_RUN.md](../final/MODELS_TO_RUN.md). Nothing here reads the frozen test or the Oct 26–31 holdout.
@@ -245,8 +261,9 @@ The data is not in git. Where each input lives is listed in the [handover](../..
 3. **Drop-group ablations** (WSL, GPU; about 40 minutes):
    - `python3 scripts/explain/xgb83_drop_ablation.py --matrix /home/<user>/sprint/matrix_trainctr --out /mnt/c/Users/<user>/sprint/explain83_ablation --device cuda`
 4. **GDT and tables** (Windows):
-   - `python scripts/explain/xgb83_gdt.py --sets full minus_alive round_state_only loadout_only minus_round_state minus_blind minus_view minus_armor_sums minus_bomb_geo --seeds 0 1 2`
+   - `python scripts/explain/xgb83_gdt.py --sets full minus_alive round_state_only loadout_only minus_round_state minus_blind minus_view minus_armor_sums minus_bomb_geo no_position checklist_77 --seeds 0 1 2`
    - `python scripts/explain/xgb83_ablation_report.py`
+   - `python scripts/explain/gdt_examples.py` (example matches and the GDT-by-alive figure)
 5. **Word report.** [prep_docx_data.py](../../scripts/explain/docx/prep_docx_data.py) collects the tables and figures. [build_docx.js](../../scripts/explain/docx/build_docx.js) builds the `.docx` with the `docx` package, and takes the output path as its second argument.
 6. **README figures.** `python scripts/explain/readme_figs.py` draws the GDT, calibration and waterfall figures. It reads only the committed tables and [local/](local/), so it runs without the data.
 
@@ -262,4 +279,4 @@ The data is not in git. Where each input lives is listed in the [handover](../..
 | [local/](local/) | One-prediction waterfalls, contrasts, interactions, and their metadata |
 | [xgb57/tables/](xgb57/tables/) | The 57-input model's effects, permutation scores, and comparison |
 
-The scripts are in [scripts/explain/](../../scripts/explain/), including [readme_figs.py](../../scripts/explain/readme_figs.py). The handover notes are in [handover/explainability/](../../handover/explainability/README.md).
+The scripts are in [scripts/explain/](../../scripts/explain/), including [readme_figs.py](../../scripts/explain/readme_figs.py) and [match_explain.py](../../scripts/explain/match_explain.py). What each model was trained on, in what order, and what is still missing is in [RETRAIN.md](RETRAIN.md). The handover notes are in [handover/explainability/](../../handover/explainability/README.md).

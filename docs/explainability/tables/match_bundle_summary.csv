@@ -1,0 +1,31 @@
+match,bundle,mean_logit,share_of_abs
+largest_loss,loadout difference,-0.1462,0.442
+largest_loss,CT loadout,0.0157,0.0892
+largest_loss,T loadout,0.0194,0.0923
+largest_loss,round state,-0.0117,0.169
+largest_loss,map,-0.0628,0.0253
+largest_loss,bomb geometry,0.0184,0.0825
+largest_loss,site and spread,-0.0422,0.0752
+largest_loss,contact,-0.0027,0.0045
+largest_loss,view,0.0,0.019
+largest_loss,blindness,0.0004,0.0011
+positional_help,loadout difference,-0.3767,0.3991
+positional_help,CT loadout,-0.1224,0.0986
+positional_help,T loadout,-0.0139,0.0643
+positional_help,round state,-0.1055,0.1258
+positional_help,map,0.0662,0.0271
+positional_help,bomb geometry,-0.2587,0.1741
+positional_help,site and spread,-0.1194,0.088
+positional_help,contact,-0.006,0.0048
+positional_help,view,-0.004,0.0175
+positional_help,blindness,0.0,0.0006
+worst_vs_table,loadout difference,0.0644,0.383
+worst_vs_table,CT loadout,-0.102,0.1223
+worst_vs_table,T loadout,0.0476,0.0947
+worst_vs_table,round state,-0.0811,0.1416
+worst_vs_table,map,0.0588,0.0279
+worst_vs_table,bomb geometry,-0.0632,0.1161
+worst_vs_table,site and spread,0.0326,0.0836
+worst_vs_table,contact,-0.0036,0.0048
+worst_vs_table,view,0.0022,0.0244
+worst_vs_table,blindness,0.0015,0.0015

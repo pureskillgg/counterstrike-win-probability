@@ -12,6 +12,8 @@ two sets that answer the open alive-count question directly:
   minus_view           full without the four VIEW inputs
   minus_armor_sums     full without st_armor_sum_ct and st_armor_sum_t
   minus_bomb_geo       full without c_min_bomb_dist, c_n_bomb_500, t_min_bomb_dist, defuse_slack
+  no_position          the 59 non-positional inputs (full without the 24 position inputs)
+  checklist_77         full without the armour sums and the VIEW inputs (the team checklist's fallback)
 
 Fit path, copied from experiments/sprint/sprint_worker.py (fit_cell_prepared and prepare_set): binary:logistic, logloss,
 eta 0.03, depth 4, min_child_weight 20, subsample 0.8, hist, max_bin 256, early stopping 100 on the early-stop rows,
@@ -42,6 +44,10 @@ BLIND = ["c_blind_n", "t_blind_n", "c_blind_sum", "t_blind_sum"]
 VIEW = ["c_sees_enemy", "t_sees_enemy", "c_exposed", "t_exposed"]
 ARMOR_SUMS = ["st_armor_sum_ct", "st_armor_sum_t"]
 BOMB_GEO = ["c_min_bomb_dist", "c_n_bomb_500", "t_min_bomb_dist", "defuse_slack"]
+GEO_SITES_SPREAD = ["c_site_hi", "c_site_lo", "t_site_hi", "t_site_lo", "c_nearest_site_mean", "t_nearest_site_mean",
+                    "c_spread", "t_spread", "ct_t_centroid_dist"]
+GEO_CONTACT = ["min_enemy_dist", "c_in_contact", "t_in_contact"]
+POSITION = BOMB_GEO + GEO_SITES_SPREAD + GEO_CONTACT + VIEW + BLIND  # the 24 position inputs
 MONO = {"alive_ct": 1, "alive_t": -1, "ct_alive_minus_t": 1}  # same as wp_common.MONO_ALIVE
 SPRINT_FULL = "/mnt/g/pureskill/csds-cs2/data/sprint/run/gpu_fast/results/full_d4_e0.03_m20_s{seed}.json"
 SEEDS = [0, 1, 2]
@@ -60,9 +66,18 @@ def build_sets(feats):
         "minus_view": [f for f in full if f not in VIEW],
         "minus_armor_sums": [f for f in full if f not in ARMOR_SUMS],
         "minus_bomb_geo": [f for f in full if f not in BOMB_GEO],
+        # non-positional: the 59 base inputs (loadout, round state, map), with no position inputs
+        "no_position": [f for f in full if f not in POSITION],
+        # the team checklist's fallback: 83 without the armour sums and the VIEW inputs
+        "checklist_77": [f for f in full if f not in ARMOR_SUMS + VIEW],
+        # the two position groups never dropped on their own (the 24-input drop is no_position)
+        "minus_site_spread": [f for f in full if f not in GEO_SITES_SPREAD],
+        "minus_contact": [f for f in full if f not in GEO_CONTACT],
     }
     assert len(sets["loadout_only"]) == 46, f"expected 46 loadout inputs, got {len(sets['loadout_only'])}"
     assert len(sets["round_state_only"]) == 6 and len(sets["minus_bomb_geo"]) == 79
+    assert len(sets["no_position"]) == 59 and len(sets["checklist_77"]) == 77
+    assert len(sets["minus_site_spread"]) == 74 and len(sets["minus_contact"]) == 80
     return sets
 
 

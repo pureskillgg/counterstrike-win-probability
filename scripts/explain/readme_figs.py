@@ -39,6 +39,8 @@ plt.rcParams.update({
 
 GDT_LABEL = {
     "full": "Full model (83)",
+    "no_position": "Non-positional (59)",
+    "checklist_77": "Checklist fallback (77)",
     "minus_alive": "Minus alive counts",
     "minus_armor_sums": "Minus armour sums",
     "minus_blind": "Minus blind",
@@ -47,6 +49,8 @@ GDT_LABEL = {
     "minus_bomb_geo": "Minus bomb geometry",
     "loadout_only": "Loadout only (46)",
     "round_state_only": "Round state only (6)",
+    "minus_site_spread": "Minus site and spread (74)",
+    "minus_contact": "Minus contact (80)",
 }
 
 
