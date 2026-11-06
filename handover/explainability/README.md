@@ -16,6 +16,10 @@ python scripts/explain/feature_curves.py
 python scripts/explain/feature_curve_figs.py
 python scripts/explain/xgb83_local.py                     # waterfalls, contrasts, interactions; about 5 seconds
 python scripts/explain/xgb57_explain.py                  # the 57-input submission model on the same seconds
+python scripts/explain/xgb83_calibration.py               # shipped booster on all validation seconds; calibration tables
+python3 scripts/explain/xgb83_drop_ablation.py --matrix /home/adam/sprint/matrix_trainctr --out /mnt/c/Users/13144/sprint/explain83_ablation --device cuda   # WSL GPU; about 40 min
+python scripts/explain/xgb83_gdt.py --sets full minus_alive round_state_only loadout_only minus_round_state minus_blind minus_view minus_armor_sums minus_bomb_geo --seeds 0 1 2   # GDT with the team's scorer
+python scripts/explain/xgb83_ablation_report.py           # ablation tables, log loss and GDT
 ```
 
 To rebuild the Word report, run `scripts/explain/docx/prep_docx_data.py`, then `build_docx.js`. Both are in the repo. `build_docx.js` takes the output path as its second argument.
@@ -24,7 +28,7 @@ To rebuild the Word report, run `scripts/explain/docx/prep_docx_data.py`, then `
 
 | Input | Where | Size | Note |
 |---|---|---|---|
-| Design matrix `X.npy`, `y.npy`, `meta.json`, `val_keys.parquet` | `C:/Users/13144/sprint/matrix_trainctr/` | 5.1 GB + 0.1 GB | Written by `experiments/sprint/sprint_prepare.py` on Nov 3, 2026 |
+| Design matrix `X.npy`, `y.npy`, `meta.json`, `val_keys.parquet` | `C:/Users/13144/sprint/matrix_trainctr/` | 5.1 GB + 0.1 GB | Written by `experiments/sprint/sprint_prepare.py` on Nov 3, 2026. A copy is at `/home/adam/sprint/matrix_trainctr/` in WSL, which the ablation reads |
 | Training cache `cache_snapshot_2026.parquet` | `G:/pureskill/csds-cs2/data/combined/` | 182 MB | 14,804 matches, Aug 2 to Oct 13, 2026 |
 | Position table `cache_pos_2026_trainctr.parquet` | `G:/pureskill/csds-cs2/data/combined/` | 1.25 GB | Input to `sprint_prepare.py`. Builder not identified (see open items) |
 | Holdout-B keys `holdout_22_25_test_keys.json` | `G:/pureskill/csds-cs2/data/combined/` | 42 KB | Excluded by `sprint_prepare.py` |
