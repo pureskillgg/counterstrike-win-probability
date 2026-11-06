@@ -31,7 +31,8 @@ To rebuild the Word report, run `scripts/explain/docx/prep_docx_data.py`, then `
 | Frozen test keys `frozen_test_keys.json` | not located | | Input to `sprint_prepare.py` (see open items) |
 | Sprint predictions and results | `G:/pureskill/csds-cs2/data/sprint/run/gpu_fast/` | | Used by `train` to check the refit |
 | Oct 26–31 holdout keys | `C:/Users/<user>/sprint/holdout_oct26_31/keys.parquet` | | Do not score without a pin and a go-ahead (see below) |
-| Booster, shap sample, sampled features | `C:/Users/<user>/sprint/explain83/` | 5.7 MB booster, 35 MB sample, 33 MB features | Written by `train` and `explain`. Not in git |
+| Booster | `models/winprob_xgb83_final.json` (in git) | 5.7 MB | Byte-identical to `explain83/xgb83_s0.json`; committed by Adam in `3936180` |
+| Shap sample, sampled features | `C:/Users/<user>/sprint/explain83/` | 35 MB sample, 33 MB features | Written by `explain`. Not in git |
 
 ## Open items
 
@@ -50,5 +51,5 @@ The Oct 26–31 holdout has one recorded read, for the 83-input candidate (0.452
 
 ## Not in this handover
 
-- The deep model (item 4 of Dr Freeman's checklist). Not in scope here.
+- The deep model (item 4 of Dr Freeman's checklist). Its handoff is in [handover/deep-model/README.md](../deep-model/README.md). No deep-model training was run.
 - The git push to `pureskillgg/counterstrike-win-probability`. Work is committed on `wrap-up-nov-2026` only, if the commit goes through. Not pushed.

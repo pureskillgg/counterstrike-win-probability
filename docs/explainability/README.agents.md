@@ -46,7 +46,7 @@ Same content as `README.md`, in the form an agent needs. Read `README.md` for re
 
 ## Do not
 
-- Do not commit `*.npy`, `*.npz`, the booster JSON, or `*.parquet`. `.gitignore` covers most of them.
+- Do not commit `*.npy`, `*.npz` or `*.parquet`. `.gitignore` covers most of them. The 83-input booster is committed as `models/winprob_xgb83_final.json`, byte-identical to `xgb83_s0.json` in the work folder.
 - Do not run any holdout scoring. The Oct 26–31 holdout has one recorded read (the 83-input candidate). A new read needs a pre-registration pin and an explicit go-ahead.
 - Do not change the sprint's split or the matrix in place. Write new matrices to new directories.
 - Do not state causal effects. These are model explanations.
