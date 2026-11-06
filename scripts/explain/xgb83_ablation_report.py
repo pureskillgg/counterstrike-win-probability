@@ -63,5 +63,29 @@ def main():
     print(pl.DataFrame(repro).to_pandas().to_string(index=False, float_format=lambda v: f"{v:.6f}") if repro else "none")
 
 
+def gdt_table():
+    """GDT (the team's metric, from evaluation/intern_gdt/score_gdt.py) for each set, and its paired difference from the full
+    model on the same datapoints, per seed. A negative difference means the set is worse than the full model."""
+    gdir = os.path.join(RUN, "gdt")
+    summ = {s: json.load(open(os.path.join(gdir, f"score_seed{s}", "summary.json")))["models"] for s in SEEDS}
+    names = [k[:-3] for k in summ[SEEDS[0]] if k.endswith("_s0")]
+    rows = []
+    for name in names:
+        g = [summ[s][f"{name}_s{s}"]["GDT"] for s in SEEDS]
+        ll = [summ[s][f"{name}_s{s}"]["model_logloss"] for s in SEEDS]
+        d = [summ[s][f"{name}_s{s}"]["GDT"] - summ[s][f"full_s{s}"]["GDT"] for s in SEEDS]
+        lo = [summ[s][f"{name}_s{s}"]["GDT_ci"][0] for s in SEEDS]
+        hi = [summ[s][f"{name}_s{s}"]["GDT_ci"][1] for s in SEEDS]
+        rows.append({"set": name, "mean_GDT": st.mean(g), "GDT_min_seed": min(g), "GDT_max_seed": max(g),
+                     "mean_GDT_ci_low": st.mean(lo), "mean_GDT_ci_high": st.mean(hi),
+                     "mean_model_logloss_scored_population": st.mean(ll),
+                     "mean_paired_GDT_difference_vs_full": st.mean(d),
+                     "paired_difference_min": min(d), "paired_difference_max": max(d)})
+    df = pl.DataFrame(rows).sort("mean_GDT", descending=True)
+    df.write_csv(os.path.join(TABLES, "drop_ablation_83_gdt.csv"))
+    print(df.to_pandas().to_string(index=False, float_format=lambda v: f"{v:.5f}"))
+
+
 if __name__ == "__main__":
     main()
+    gdt_table()
