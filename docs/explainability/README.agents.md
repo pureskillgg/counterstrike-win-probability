@@ -18,6 +18,7 @@ Scripts are in [scripts/explain/](../../scripts/explain/).
 | `xgb83_gdt.py` | population rows (295 matches) and the team's scorer, per seed | work folder `gdt/` |
 | `xgb83_ablation_report.py` | log-loss and GDT ablation tables | [tables/drop_ablation_*](tables/) |
 | `xgb57_explain.py` | explains the saved v6 booster on the same seconds | [xgb57/tables/](xgb57/tables/) |
+| `readme_figs.py` | README figures: GDT ablations, calibration deciles, the largest-loss waterfall (reads the tables and [local/](local/)) | [figures/](figures/) |
 | `docx/prep_docx_data.py`, `docx/build_docx.js` | the Word report | [XGB_explainability_report.docx](XGB_explainability_report.docx) |
 
 ## Environment and paths
