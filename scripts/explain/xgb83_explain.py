@@ -4,7 +4,7 @@ Model: 59 base inputs + GEO (16) + VIEW (4) + BLIND (4); depth 4, eta 0.03, min_
 early stopping 100 on the early-stop rows, 3,000-round cap, seed 0. Row split and settings follow
 experiments/sprint/sprint_worker.py (fit_cell_prepared). The sprint kept predictions but not the booster, so stage `train`
 refits it here on CPU (this Windows xgboost build has no CUDA) and checks the validation log loss and predictions against the
-sprint's saved predictions.
+sprint's saved predictions. (The pixi default environment used here is CPU xgboost; the GPU sprint result is not refit here.)
 
 Stages (run in order):
   train    refit, save the booster, compare with the sprint predictions
@@ -71,21 +71,23 @@ GROUPS["BLIND"] = ["c_blind_n", "t_blind_n", "c_blind_sum", "t_blind_sum"]
 POSITION_GROUPS = ["GEO_SITES_SPREAD", "GEO_CONTACT", "BOMB_GEO", "VIEW", "BLIND"]
 LOADOUT_GROUPS = [g for g in GROUPS if g.startswith("LOADOUT_")]
 
-# Flags from the team's notes on the feature quality (for reading the results; not used by the model).
+# Flags from the team's review notes on feature quality. They are labels for reading the results only; they do not change
+# the model. The checklist asked for st_armor_sum_ct/t and the sees-enemy/exposed inputs to be removed; the 83-input model
+# keeps them. This is disclosed, and the 77-input variant (without them) is the fallback.
 NOTES = {
-    "st_armor_sum_ct": "dropped by request (notes: 'dont want these')",
-    "st_armor_sum_t": "dropped by request (notes: 'dont want these')",
-    "c_sees_enemy": "unreliable (notes: enemy-spotted output removed; sees-enemy not reliable)",
-    "t_sees_enemy": "unreliable (notes: enemy-spotted output removed; sees-enemy not reliable)",
-    "c_exposed": "unreliable (notes: remove with sees-enemy)",
-    "t_exposed": "unreliable (notes: remove with sees-enemy)",
-    "c_blind_n": "source unclear (notes: rebuild from player blind events)",
-    "t_blind_n": "source unclear (notes: rebuild from player blind events)",
-    "c_blind_sum": "source unclear (notes: rebuild from player blind events)",
-    "t_blind_sum": "source unclear (notes: rebuild from player blind events)",
-    "defuse_slack": "crude (notes: defuse race = time to reach and defuse)",
-    "st_heavy_ct": "dropped in v6 (drop heavy)",
-    "st_heavy_t": "dropped in v6 (drop heavy)",
+    "st_armor_sum_ct": "in the 83 model; checklist asked to drop it (disclosed; 77 variant drops it)",
+    "st_armor_sum_t": "in the 83 model; checklist asked to drop it (disclosed; 77 variant drops it)",
+    "c_sees_enemy": "in the 83 model; checklist asked to remove (enemy-spotted output unreliable; disclosed)",
+    "t_sees_enemy": "in the 83 model; checklist asked to remove (enemy-spotted output unreliable; disclosed)",
+    "c_exposed": "in the 83 model; checklist asked to remove with sees-enemy (disclosed)",
+    "t_exposed": "in the 83 model; checklist asked to remove with sees-enemy (disclosed)",
+    "c_blind_n": "built from S3 player_blind events",
+    "t_blind_n": "built from S3 player_blind events",
+    "c_blind_sum": "built from S3 player_blind events",
+    "t_blind_sum": "built from S3 player_blind events",
+    "defuse_slack": "in the 83 model; crude (defuse race time to reach and defuse)",
+    "st_heavy_ct": "in the 83 model; dropped only in the v6 variant",
+    "st_heavy_t": "in the 83 model; dropped only in the v6 variant",
 }
 
 
