@@ -1,6 +1,23 @@
 {
  "model": "winprob_xgb83_final",
- "description": "XGBoost binary:logistic, 83 inputs (59 base incl. armour sums, GEO 16, VIEW 4, BLIND 4). Final feature set per pin 0cf889ba (5 Nov 2026).",
+ "description": "XGBoost binary:logistic, 83 inputs (59 base incl. armour sums, GEO 16, VIEW 4, BLIND 4). Final feature set per pin 0cf889ba (5 Nov 2026). The delivered file is a CPU refit of the sprint cell full_d4_e0.03_m20_s0 (see delivered_file).",
+ "delivered_file": {
+  "what": "CPU refit made by scripts/explain/xgb83_explain.py --stage train (10:43, 5 Nov 2026). Not the GPU sprint booster.",
+  "device": "cpu",
+  "best_iteration": 2695,
+  "sprint_gpu_best_iteration_s0": 2555,
+  "validation_log_loss_seed0_refit_1168_matches": 0.450210,
+  "prediction_diff_vs_sprint_saved_predictions": {"max_abs": 0.24567, "mean": 0.00426, "rows": 1515228},
+  "feature_names_stored_in_booster": false,
+  "column_order": "positional; the meta features list is the order, checked against matrix_trainctr meta feats_all",
+  "monotone_constraints_used_in_refit": {"alive_ct": 1, "alive_t": -1, "ct_alive_minus_t": 1},
+  "note": "The validation headline 0.450252 is the 3-seed GPU sprint mean (seeds 0,1,2), not this file's value."
+ },
+ "checklist_deviation": {
+  "what": "The Freeman checklist asked to drop st_armor_sum_ct, st_armor_sum_t, and the sees-enemy/exposed inputs (c_sees_enemy, t_sees_enemy, c_exposed, t_exposed). This model keeps all six.",
+  "decision": "Keep the 83-input model and disclose (owner decision, 5 Nov 2026).",
+  "fallback": "The 77-input variant drops the armour sums and the VIEW inputs. Use it only if a learned temporal model favours it on validation, pinned before the run."
+ },
  "features": [
   "alive_ct",
   "alive_t",
@@ -98,7 +115,9 @@
   "early_stopping_rounds": 100,
   "num_boost_round_cap": 3000,
   "seed": 0,
-  "best_iteration": 2695
+  "best_iteration": 2695,
+  "device": "cpu (refit)",
+  "monotone_constraints": {"alive_ct": 1, "alive_t": -1, "ct_alive_minus_t": 1}
  },
  "validation": {
   "log_loss_1168_matches_seed_mean": 0.450252,
@@ -106,8 +125,9 @@
   "gdt_297_matches": 0.0254,
   "gdt_ci95": [
    0.0218,
-   0.0292
-  ]
+   0.0291
+  ],
+  "gdt_ci95_note": "0.0291 is the trainctr arm (docs/eval_reports/positions_validation_gdt.md). The earlier 0.0292 upper bound is the oldctr arm."
  },
  "holdout_oct26_31": {
   "scored_once": true,
