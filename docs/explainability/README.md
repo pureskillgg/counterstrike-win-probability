@@ -41,7 +41,9 @@ Full match keys are in `local/examples.csv`.
 - armored-player difference of −5: −0.95 logit;
 - equipment difference of −$13,850: −0.51 logit.
 
-**Calibration check for that state.** In the sample, 426 seconds have the same state (1 CT alive, 5 T alive, bomb planted). Their mean predicted P(CT wins) is 0.08%, and 3 of the 426 were CT wins (0.7%). The model is in the direction the miss suggests, but 3 wins is too few to call a calibration error. Check this on more data before acting on it.
+**Calibration check for that state.** The state is 1 CT alive against 5 T. On the full validation set (1,515,228 seconds), 1,033 rounds reach it. Summing each round's mean predicted P(CT wins) gives 1.48 expected CT-win rounds. One occurred, and it is the largest miss itself: all of the CT-win seconds in the bomb-planted version of the state come from that one round. With the bomb planted, 580 rounds give 0.59 expected against 1 observed. With no bomb, 724 rounds give 1.30 expected against 0 observed. So the miss is one rare round, and this data does not show a calibration problem in this state. The earlier "3 wins in 426 seconds" was the same round, counted per second. Seconds within a round are not independent, so the per-second counts overstate the evidence.
+
+**Overall calibration.** Deciles of predicted probability over all 1,515,228 validation seconds match the observed CT-win rate to within 1 percentage point in every decile (`tables/calibration_deciles_shipped.csv`). The intervals in that table treat seconds as independent, so they are too narrow.
 
 ## Two predictions: contrasts
 
@@ -96,7 +98,8 @@ The 57-input submission model (no position inputs) gives round state 4.72 pp (ag
 - **Missing and sentinel values.** `defuse_slack` is missing when no bomb is planted, and `seconds_since_plant` is −1. Both inflate permutation importance.
 - **Correlated inputs.** TreeSHAP splits credit between correlated inputs. The alive-count inputs get little direct credit, probably because the loadout inputs carry the same signal. This has not been tested.
 - **Not causal.** These are explanations of the model's behavior. They are not causal effects.
-- **Small samples.** The 1-versus-5 calibration check rests on 3 wins in 426 seconds. The interaction values use 2,000 seconds.
+- **Clustered outcomes.** Seconds in a round share one outcome, so per-second statistics overstate how much evidence there is. The 1-versus-5 check is therefore done per round.
+- **Small samples.** The interaction values use 2,000 seconds.
 
 ## Reproduce
 
