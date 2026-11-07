@@ -1,0 +1,246 @@
+device cuda; torch 2.3.1+cu121
+rows excluded from training and evaluation (no winner or no snapshot state): 8239
+  de_mirage: 6,179,870 seconds, 5,498 matches, usable 6,173,134
+rows excluded from training and evaluation (no winner or no snapshot state): 2305
+  de_dust2: 5,237,668 seconds, 4,753 matches, usable 5,235,798
+rows excluded from training and evaluation (no winner or no snapshot state): 784
+  de_ancient: 3,852,186 seconds, 3,530 matches, usable 3,851,540
+rows excluded from training and evaluation (no winner or no snapshot state): 3428
+  de_anubis: 3,651,183 seconds, 3,104 matches, usable 3,649,712
+rows excluded from training and evaluation (no winner or no snapshot state): 1115
+  de_inferno: 3,615,011 seconds, 2,817 matches, usable 3,614,215
+rows excluded from training and evaluation (no winner or no snapshot state): 3419
+  de_nuke: 2,425,214 seconds, 2,145 matches, usable 2,422,000
+rows excluded from training and evaluation (no winner or no snapshot state): 965
+  de_cache: 2,152,478 seconds, 1,869 matches, usable 2,151,560
+added 24 train-only site distance columns (matched by key for every map)
+rows: train 25,582,731, validation 1,515,228 (test rows dropped by the loader)
+objective gdt: groups 3,530,375, mean weight over train rows 1.000000
+== rwkv7_gdt_seed2: lookback 20, size default, seq params 25,452, total params 45,325
+  step 200: 7.7 s elapsed
+  step 1000: 33.4 s elapsed
+{"step": 1000, "val_log_loss": 0.45450255274772644, "seconds": 41.6}
+{"step": 2000, "val_log_loss": 0.4567146897315979, "seconds": 81.6}
+{"step": 3000, "val_log_loss": 0.4541339576244354, "seconds": 121.8}
+{"step": 4000, "val_log_loss": 0.4527624845504761, "seconds": 161.9}
+{"step": 5000, "val_log_loss": 0.45438525080680847, "seconds": 201.9}
+{"step": 6000, "val_log_loss": 0.4529208242893219, "seconds": 242.1}
+{"step": 7000, "val_log_loss": 0.4525966942310333, "seconds": 282.3}
+{"step": 8000, "val_log_loss": 0.4519451856613159, "seconds": 322.4}
+{"step": 9000, "val_log_loss": 0.4529011845588684, "seconds": 362.6}
+{"step": 10000, "val_log_loss": 0.452697217464447, "seconds": 402.7}
+{"step": 11000, "val_log_loss": 0.45179247856140137, "seconds": 442.8}
+{"step": 12000, "val_log_loss": 0.4514724016189575, "seconds": 483.0}
+{"step": 13000, "val_log_loss": 0.45259419083595276, "seconds": 523.9}
+{"step": 14000, "val_log_loss": 0.4515370726585388, "seconds": 564.0}
+{"step": 15000, "val_log_loss": 0.4517347812652588, "seconds": 604.1}
+{"step": 16000, "val_log_loss": 0.4518428146839142, "seconds": 644.3}
+{"step": 17000, "val_log_loss": 0.4504185616970062, "seconds": 684.4}
+{"step": 18000, "val_log_loss": 0.45187604427337646, "seconds": 724.9}
+{"step": 19000, "val_log_loss": 0.450830340385437, "seconds": 765.0}
+{"step": 20000, "val_log_loss": 0.4506136178970337, "seconds": 805.1}
+{"step": 21000, "val_log_loss": 0.4507351815700531, "seconds": 845.6}
+{"step": 22000, "val_log_loss": 0.4511096775531769, "seconds": 885.7}
+{"step": 23000, "val_log_loss": 0.451183944940567, "seconds": 925.8}
+{"step": 24000, "val_log_loss": 0.450747013092041, "seconds": 966.0}
+{"step": 25000, "val_log_loss": 0.45028048753738403, "seconds": 1007.2}
+{"step": 26000, "val_log_loss": 0.4513486623764038, "seconds": 1047.5}
+{"step": 27000, "val_log_loss": 0.4501950740814209, "seconds": 1088.2}
+{"step": 28000, "val_log_loss": 0.4509541690349579, "seconds": 1128.3}
+{"step": 29000, "val_log_loss": 0.4502352178096771, "seconds": 1168.6}
+{"step": 30000, "val_log_loss": 0.45058974623680115, "seconds": 1208.8}
+{"tag": "rwkv7_gdt_seed2", "best_step": 27000, "best_val_log_loss": 0.4501950740814209, "undertrained_flag": false}
+== rwkv7_gdt_seed3: lookback 20, size default, seq params 25,452, total params 45,325
+  step 200: 6.4 s elapsed
+  step 1000: 31.9 s elapsed
+{"step": 1000, "val_log_loss": 0.45528444647789, "seconds": 40.1}
+{"step": 2000, "val_log_loss": 0.45365428924560547, "seconds": 80.2}
+{"step": 3000, "val_log_loss": 0.45448848605155945, "seconds": 120.3}
+{"step": 4000, "val_log_loss": 0.4542359709739685, "seconds": 160.4}
+{"step": 5000, "val_log_loss": 0.4545186460018158, "seconds": 200.6}
+{"step": 6000, "val_log_loss": 0.4527093768119812, "seconds": 240.7}
+{"step": 7000, "val_log_loss": 0.45235106348991394, "seconds": 280.8}
+{"step": 8000, "val_log_loss": 0.4522823393344879, "seconds": 320.9}
+{"step": 9000, "val_log_loss": 0.4519486129283905, "seconds": 361.0}
+{"step": 10000, "val_log_loss": 0.4522656500339508, "seconds": 401.1}
+{"step": 11000, "val_log_loss": 0.4518028795719147, "seconds": 441.2}
+{"step": 12000, "val_log_loss": 0.45302584767341614, "seconds": 481.5}
+{"step": 13000, "val_log_loss": 0.4515520930290222, "seconds": 522.9}
+{"step": 14000, "val_log_loss": 0.45173531770706177, "seconds": 562.9}
+{"step": 15000, "val_log_loss": 0.45208144187927246, "seconds": 603.1}
+{"step": 16000, "val_log_loss": 0.45112690329551697, "seconds": 643.3}
+{"step": 17000, "val_log_loss": 0.45126649737358093, "seconds": 683.4}
+{"step": 18000, "val_log_loss": 0.45443522930145264, "seconds": 724.3}
+{"step": 19000, "val_log_loss": 0.45125505328178406, "seconds": 764.3}
+{"step": 20000, "val_log_loss": 0.4516632854938507, "seconds": 804.4}
+{"step": 21000, "val_log_loss": 0.45048174262046814, "seconds": 845.0}
+{"step": 22000, "val_log_loss": 0.4510088562965393, "seconds": 885.1}
+{"step": 23000, "val_log_loss": 0.4510771930217743, "seconds": 925.3}
+{"step": 24000, "val_log_loss": 0.4509868323802948, "seconds": 965.4}
+{"step": 25000, "val_log_loss": 0.4497947692871094, "seconds": 1006.8}
+{"step": 26000, "val_log_loss": 0.4507027566432953, "seconds": 1046.9}
+{"step": 27000, "val_log_loss": 0.4524121582508087, "seconds": 1087.0}
+{"step": 28000, "val_log_loss": 0.45252764225006104, "seconds": 1127.1}
+{"step": 29000, "val_log_loss": 0.4507442116737366, "seconds": 1167.2}
+{"step": 30000, "val_log_loss": 0.4501657485961914, "seconds": 1207.4}
+{"tag": "rwkv7_gdt_seed3", "best_step": 25000, "best_val_log_loss": 0.4497947692871094, "undertrained_flag": false}
+RUN_DONE_b2_rwkv7
+device cuda; torch 2.3.1+cu121
+rows excluded from training and evaluation (no winner or no snapshot state): 8239
+  de_mirage: 6,179,870 seconds, 5,498 matches, usable 6,173,134
+rows excluded from training and evaluation (no winner or no snapshot state): 2305
+  de_dust2: 5,237,668 seconds, 4,753 matches, usable 5,235,798
+rows excluded from training and evaluation (no winner or no snapshot state): 784
+  de_ancient: 3,852,186 seconds, 3,530 matches, usable 3,851,540
+rows excluded from training and evaluation (no winner or no snapshot state): 3428
+  de_anubis: 3,651,183 seconds, 3,104 matches, usable 3,649,712
+rows excluded from training and evaluation (no winner or no snapshot state): 1115
+  de_inferno: 3,615,011 seconds, 2,817 matches, usable 3,614,215
+rows excluded from training and evaluation (no winner or no snapshot state): 3419
+  de_nuke: 2,425,214 seconds, 2,145 matches, usable 2,422,000
+rows excluded from training and evaluation (no winner or no snapshot state): 965
+  de_cache: 2,152,478 seconds, 1,869 matches, usable 2,151,560
+added 24 train-only site distance columns (matched by key for every map)
+rows: train 25,582,731, validation 1,515,228 (test rows dropped by the loader)
+objective gdt: groups 3,530,375, mean weight over train rows 1.000000
+== lru_gdt_seed0: lookback 20, size default, seq params 25,184, total params 45,121
+  step 200: 3.1 s elapsed
+  step 1000: 11.3 s elapsed
+{"step": 1000, "val_log_loss": 0.4544825851917267, "seconds": 13.6}
+{"step": 2000, "val_log_loss": 0.4543837308883667, "seconds": 26.0}
+{"step": 3000, "val_log_loss": 0.45300137996673584, "seconds": 38.4}
+{"step": 4000, "val_log_loss": 0.4558137059211731, "seconds": 51.4}
+{"step": 5000, "val_log_loss": 0.4525781273841858, "seconds": 63.9}
+{"step": 6000, "val_log_loss": 0.4522116184234619, "seconds": 76.3}
+{"step": 7000, "val_log_loss": 0.45394429564476013, "seconds": 88.7}
+{"step": 8000, "val_log_loss": 0.4526717960834503, "seconds": 101.2}
+{"step": 9000, "val_log_loss": 0.45281073451042175, "seconds": 113.6}
+{"step": 10000, "val_log_loss": 0.4513571858406067, "seconds": 125.9}
+{"step": 11000, "val_log_loss": 0.45127764344215393, "seconds": 138.3}
+{"step": 12000, "val_log_loss": 0.4516986608505249, "seconds": 150.8}
+{"step": 13000, "val_log_loss": 0.45232540369033813, "seconds": 163.9}
+{"step": 14000, "val_log_loss": 0.45130348205566406, "seconds": 176.4}
+{"step": 15000, "val_log_loss": 0.4514347314834595, "seconds": 188.8}
+{"step": 16000, "val_log_loss": 0.450592577457428, "seconds": 201.2}
+{"step": 17000, "val_log_loss": 0.4521087408065796, "seconds": 213.7}
+{"step": 18000, "val_log_loss": 0.4505600333213806, "seconds": 226.7}
+{"step": 19000, "val_log_loss": 0.45016077160835266, "seconds": 239.2}
+{"step": 20000, "val_log_loss": 0.4510287344455719, "seconds": 251.6}
+{"step": 21000, "val_log_loss": 0.45079854130744934, "seconds": 263.9}
+{"step": 22000, "val_log_loss": 0.45112302899360657, "seconds": 276.3}
+{"step": 23000, "val_log_loss": 0.45068222284317017, "seconds": 289.1}
+{"step": 24000, "val_log_loss": 0.45021721720695496, "seconds": 301.5}
+{"step": 25000, "val_log_loss": 0.45170876383781433, "seconds": 314.6}
+{"step": 26000, "val_log_loss": 0.45023685693740845, "seconds": 327.1}
+{"step": 27000, "val_log_loss": 0.4503644108772278, "seconds": 339.5}
+{"step": 28000, "val_log_loss": 0.45089974999427795, "seconds": 352.1}
+{"step": 29000, "val_log_loss": 0.4503477215766907, "seconds": 364.5}
+{"step": 30000, "val_log_loss": 0.45030084252357483, "seconds": 376.9}
+{"tag": "lru_gdt_seed0", "best_step": 19000, "best_val_log_loss": 0.45016077160835266, "undertrained_flag": false}
+RUN_DONE_b2_lru
+device cuda; torch 2.3.1+cu121
+rows excluded from training and evaluation (no winner or no snapshot state): 8239
+  de_mirage: 6,179,870 seconds, 5,498 matches, usable 6,173,134
+rows excluded from training and evaluation (no winner or no snapshot state): 2305
+  de_dust2: 5,237,668 seconds, 4,753 matches, usable 5,235,798
+rows excluded from training and evaluation (no winner or no snapshot state): 784
+  de_ancient: 3,852,186 seconds, 3,530 matches, usable 3,851,540
+rows excluded from training and evaluation (no winner or no snapshot state): 3428
+  de_anubis: 3,651,183 seconds, 3,104 matches, usable 3,649,712
+rows excluded from training and evaluation (no winner or no snapshot state): 1115
+  de_inferno: 3,615,011 seconds, 2,817 matches, usable 3,614,215
+rows excluded from training and evaluation (no winner or no snapshot state): 3419
+  de_nuke: 2,425,214 seconds, 2,145 matches, usable 2,422,000
+rows excluded from training and evaluation (no winner or no snapshot state): 965
+  de_cache: 2,152,478 seconds, 1,869 matches, usable 2,151,560
+added 24 train-only site distance columns (matched by key for every map)
+rows: train 25,582,731, validation 1,515,228 (test rows dropped by the loader)
+objective gdt: groups 3,530,375, mean weight over train rows 1.000000
+== xlstm_mh_gdt_seed0: lookback 20, size default, seq params 25,460, total params 47,317
+  step 200: 3.0 s elapsed
+  step 1000: 9.6 s elapsed
+{"step": 1000, "val_log_loss": 0.4531087577342987, "seconds": 12.0}
+{"step": 2000, "val_log_loss": 0.4532563388347626, "seconds": 22.7}
+{"step": 3000, "val_log_loss": 0.4524881839752197, "seconds": 33.5}
+{"step": 4000, "val_log_loss": 0.4550424814224243, "seconds": 44.1}
+{"step": 5000, "val_log_loss": 0.4522598683834076, "seconds": 54.8}
+{"step": 6000, "val_log_loss": 0.4512357711791992, "seconds": 65.5}
+{"step": 7000, "val_log_loss": 0.4529162049293518, "seconds": 76.2}
+{"step": 8000, "val_log_loss": 0.45250821113586426, "seconds": 86.9}
+{"step": 9000, "val_log_loss": 0.45195767283439636, "seconds": 97.7}
+{"step": 10000, "val_log_loss": 0.4510297179222107, "seconds": 108.4}
+{"step": 11000, "val_log_loss": 0.450869619846344, "seconds": 119.1}
+{"step": 12000, "val_log_loss": 0.451113224029541, "seconds": 129.8}
+{"step": 13000, "val_log_loss": 0.45180878043174744, "seconds": 141.1}
+{"step": 14000, "val_log_loss": 0.4504516124725342, "seconds": 151.8}
+{"step": 15000, "val_log_loss": 0.45144015550613403, "seconds": 162.5}
+{"step": 16000, "val_log_loss": 0.45024943351745605, "seconds": 173.1}
+{"step": 17000, "val_log_loss": 0.4513186812400818, "seconds": 183.8}
+{"step": 18000, "val_log_loss": 0.45004919171333313, "seconds": 194.5}
+{"step": 19000, "val_log_loss": 0.450196772813797, "seconds": 205.2}
+{"step": 20000, "val_log_loss": 0.4503629207611084, "seconds": 216.5}
+{"step": 21000, "val_log_loss": 0.4504671096801758, "seconds": 227.2}
+{"step": 22000, "val_log_loss": 0.45098769664764404, "seconds": 237.9}
+{"step": 23000, "val_log_loss": 0.4505173861980438, "seconds": 248.6}
+{"step": 24000, "val_log_loss": 0.45011067390441895, "seconds": 259.3}
+{"step": 25000, "val_log_loss": 0.4508396089076996, "seconds": 270.5}
+{"step": 26000, "val_log_loss": 0.4505368173122406, "seconds": 281.3}
+{"step": 27000, "val_log_loss": 0.4497984051704407, "seconds": 291.9}
+{"step": 28000, "val_log_loss": 0.45009320974349976, "seconds": 302.6}
+{"step": 29000, "val_log_loss": 0.45046740770339966, "seconds": 313.3}
+{"step": 30000, "val_log_loss": 0.4504505395889282, "seconds": 324.0}
+{"tag": "xlstm_mh_gdt_seed0", "best_step": 27000, "best_val_log_loss": 0.4497984051704407, "undertrained_flag": false}
+RUN_DONE_b2_xlstm_mh
+device cuda; torch 2.3.1+cu121
+rows excluded from training and evaluation (no winner or no snapshot state): 8239
+  de_mirage: 6,179,870 seconds, 5,498 matches, usable 6,173,134
+rows excluded from training and evaluation (no winner or no snapshot state): 2305
+  de_dust2: 5,237,668 seconds, 4,753 matches, usable 5,235,798
+rows excluded from training and evaluation (no winner or no snapshot state): 784
+  de_ancient: 3,852,186 seconds, 3,530 matches, usable 3,851,540
+rows excluded from training and evaluation (no winner or no snapshot state): 3428
+  de_anubis: 3,651,183 seconds, 3,104 matches, usable 3,649,712
+rows excluded from training and evaluation (no winner or no snapshot state): 1115
+  de_inferno: 3,615,011 seconds, 2,817 matches, usable 3,614,215
+rows excluded from training and evaluation (no winner or no snapshot state): 3419
+  de_nuke: 2,425,214 seconds, 2,145 matches, usable 2,422,000
+rows excluded from training and evaluation (no winner or no snapshot state): 965
+  de_cache: 2,152,478 seconds, 1,869 matches, usable 2,151,560
+added 24 train-only site distance columns (matched by key for every map)
+rows: train 25,582,731, validation 1,515,228 (test rows dropped by the loader)
+objective gdt: groups 3,530,375, mean weight over train rows 1.000000
+== lstm_gdt_seed0: lookback 20, size default, seq params 25,652, total params 44,885
+  step 200: 2.5 s elapsed
+  step 1000: 8.6 s elapsed
+{"step": 1000, "val_log_loss": 0.4547935724258423, "seconds": 10.9}
+{"step": 2000, "val_log_loss": 0.45296385884284973, "seconds": 20.7}
+{"step": 3000, "val_log_loss": 0.4523662030696869, "seconds": 30.6}
+{"step": 4000, "val_log_loss": 0.45239758491516113, "seconds": 40.5}
+{"step": 5000, "val_log_loss": 0.45218726992607117, "seconds": 50.3}
+{"step": 6000, "val_log_loss": 0.4513368308544159, "seconds": 60.2}
+{"step": 7000, "val_log_loss": 0.4533774256706238, "seconds": 70.0}
+{"step": 8000, "val_log_loss": 0.45140427350997925, "seconds": 79.9}
+{"step": 9000, "val_log_loss": 0.4521004855632782, "seconds": 89.7}
+{"step": 10000, "val_log_loss": 0.4507359266281128, "seconds": 99.6}
+{"step": 11000, "val_log_loss": 0.4503636658191681, "seconds": 109.4}
+{"step": 12000, "val_log_loss": 0.4509247839450836, "seconds": 119.3}
+{"step": 13000, "val_log_loss": 0.4509817659854889, "seconds": 129.7}
+{"step": 14000, "val_log_loss": 0.4502541124820709, "seconds": 139.6}
+{"step": 15000, "val_log_loss": 0.4510994851589203, "seconds": 149.4}
+{"step": 16000, "val_log_loss": 0.44996777176856995, "seconds": 159.3}
+{"step": 17000, "val_log_loss": 0.4512205421924591, "seconds": 169.1}
+{"step": 18000, "val_log_loss": 0.4501868188381195, "seconds": 179.0}
+{"step": 19000, "val_log_loss": 0.4498332440853119, "seconds": 188.8}
+{"step": 20000, "val_log_loss": 0.4508812725543976, "seconds": 198.7}
+{"step": 21000, "val_log_loss": 0.45037841796875, "seconds": 208.5}
+{"step": 22000, "val_log_loss": 0.45084303617477417, "seconds": 218.4}
+{"step": 23000, "val_log_loss": 0.45019277930259705, "seconds": 228.2}
+{"step": 24000, "val_log_loss": 0.45009854435920715, "seconds": 238.1}
+{"step": 25000, "val_log_loss": 0.4508540630340576, "seconds": 248.5}
+{"step": 26000, "val_log_loss": 0.4498322904109955, "seconds": 258.4}
+{"step": 27000, "val_log_loss": 0.4499017298221588, "seconds": 268.3}
+{"step": 28000, "val_log_loss": 0.4505486488342285, "seconds": 278.1}
+{"step": 29000, "val_log_loss": 0.45004457235336304, "seconds": 288.0}
+{"step": 30000, "val_log_loss": 0.45028582215309143, "seconds": 297.9}
+{"tag": "lstm_gdt_seed0", "best_step": 26000, "best_val_log_loss": 0.4498322904109955, "undertrained_flag": false}
+RUN_DONE_b2_lstm

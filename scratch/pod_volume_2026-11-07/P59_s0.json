@@ -1,0 +1,17 @@
+{
+ "run": "P59_s0",
+ "seed": 0,
+ "n_features": 59,
+ "feature_source": "cache snapshot (base 59)",
+ "rows_train": 12355820,
+ "matches_train": 9516,
+ "rows_es": 1403081,
+ "matches_es": 1061,
+ "rows_val": 1515228,
+ "matches_val": 1168,
+ "best_iteration": 1617,
+ "val_logloss": 0.4537567517589395,
+ "fit_seconds": 23.6,
+ "gpu": "NVIDIA GeForce RTX 4090",
+ "test_rows_loaded": 0
+}

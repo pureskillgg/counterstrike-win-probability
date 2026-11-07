@@ -1,0 +1,26 @@
+device cuda; torch 2.3.1+cu121
+rows excluded from training and evaluation (no winner or no snapshot state): 8239
+  de_mirage: 6,179,870 seconds, 5,498 matches, usable 6,173,134
+rows excluded from training and evaluation (no winner or no snapshot state): 2305
+  de_dust2: 5,237,668 seconds, 4,753 matches, usable 5,235,798
+rows excluded from training and evaluation (no winner or no snapshot state): 784
+  de_ancient: 3,852,186 seconds, 3,530 matches, usable 3,851,540
+rows excluded from training and evaluation (no winner or no snapshot state): 3428
+  de_anubis: 3,651,183 seconds, 3,104 matches, usable 3,649,712
+rows excluded from training and evaluation (no winner or no snapshot state): 1115
+  de_inferno: 3,615,011 seconds, 2,817 matches, usable 3,614,215
+rows excluded from training and evaluation (no winner or no snapshot state): 3419
+  de_nuke: 2,425,214 seconds, 2,145 matches, usable 2,422,000
+rows excluded from training and evaluation (no winner or no snapshot state): 965
+  de_cache: 2,152,478 seconds, 1,869 matches, usable 2,151,560
+added 24 train-only site distance columns (matched by key for every map)
+rows: train 25,582,731, validation 1,515,228 (test rows dropped by the loader)
+== xlstm_sig_seed1: lookback 20, size default, seq params 25,326, total params 47,183
+  step 200: 5.0 s elapsed
+  step 1000: 16.6 s elapsed
+{"step": 1000, "val_log_loss": 0.4539256691932678, "seconds": 19.0}
+{"step": 2000, "val_log_loss": 0.45223626494407654, "seconds": 34.7}
+{"step": 3000, "val_log_loss": 0.45128679275512695, "seconds": 50.4}
+{"step": 4000, "val_log_loss": 0.45091453194618225, "seconds": 67.9}
+{"step": 5000, "val_log_loss": 0.4514726996421814, "seconds": 84.7}
+{"step": 6000, "val_log_loss": 0.4509314298629761, "seconds": 100.2}

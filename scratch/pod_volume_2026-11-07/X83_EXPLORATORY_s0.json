@@ -1,0 +1,17 @@
+{
+ "run": "X83_EXPLORATORY_s0",
+ "seed": 0,
+ "n_features": 83,
+ "feature_source": "cache snapshot + cache_pos_2026 ALL-MATCH centres (EXPLORATORY, not for results)",
+ "rows_train": 12355820,
+ "matches_train": 9516,
+ "rows_es": 1403081,
+ "matches_es": 1061,
+ "rows_val": 1515228,
+ "matches_val": 1168,
+ "best_iteration": 2163,
+ "val_logloss": 0.4503418008649466,
+ "fit_seconds": 56.5,
+ "gpu": "NVIDIA GeForce RTX 4090",
+ "test_rows_loaded": 0
+}

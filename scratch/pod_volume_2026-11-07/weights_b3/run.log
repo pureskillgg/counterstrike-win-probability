@@ -1,0 +1,31 @@
+device cuda; torch 2.3.1+cu121
+rows excluded from training and evaluation (no winner or no snapshot state): 8239
+  de_mirage: 6,179,870 seconds, 5,498 matches, usable 6,173,134
+rows excluded from training and evaluation (no winner or no snapshot state): 2305
+  de_dust2: 5,237,668 seconds, 4,753 matches, usable 5,235,798
+rows excluded from training and evaluation (no winner or no snapshot state): 784
+  de_ancient: 3,852,186 seconds, 3,530 matches, usable 3,851,540
+rows excluded from training and evaluation (no winner or no snapshot state): 3428
+  de_anubis: 3,651,183 seconds, 3,104 matches, usable 3,649,712
+rows excluded from training and evaluation (no winner or no snapshot state): 1115
+  de_inferno: 3,615,011 seconds, 2,817 matches, usable 3,614,215
+rows excluded from training and evaluation (no winner or no snapshot state): 3419
+  de_nuke: 2,425,214 seconds, 2,145 matches, usable 2,422,000
+rows excluded from training and evaluation (no winner or no snapshot state): 965
+  de_cache: 2,152,478 seconds, 1,869 matches, usable 2,151,560
+added 24 train-only site distance columns (matched by key for every map)
+rows: train 25,582,731, validation 1,515,228 (test rows dropped by the loader)
+objective gdt: groups 3,530,375, mean weight over train rows 1.000000
+== rwkv7_gdt_seed4: lookback 20, size default, seq params 25,452, total params 45,325
+  step 200: 26.8 s elapsed
+  step 1000: 127.7 s elapsed
+{"step": 1000, "val_log_loss": 0.4664232134819031, "seconds": 156.7}
+{"step": 2000, "val_log_loss": 0.4574069082736969, "seconds": 312.5}
+{"step": 3000, "val_log_loss": 0.45429062843322754, "seconds": 468.1}
+{"step": 4000, "val_log_loss": 0.4551808834075928, "seconds": 623.3}
+{"step": 5000, "val_log_loss": 0.4575693905353546, "seconds": 778.9}
+{"step": 6000, "val_log_loss": 0.45312362909317017, "seconds": 934.1}
+{"step": 7000, "val_log_loss": 0.45298680663108826, "seconds": 1089.3}
+{"step": 8000, "val_log_loss": 0.4531306028366089, "seconds": 1244.5}
+{"step": 9000, "val_log_loss": 0.4524846374988556, "seconds": 1399.7}
+{"step": 10000, "val_log_loss": 0.4528547525405884, "seconds": 1555.4}

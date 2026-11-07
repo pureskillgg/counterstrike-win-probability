@@ -1,0 +1,154 @@
+device cuda; torch 2.3.1+cu121
+rows excluded from training and evaluation (no winner or no snapshot state): 8239
+  de_mirage: 6,179,870 seconds, 5,498 matches, usable 6,173,134
+rows excluded from training and evaluation (no winner or no snapshot state): 2305
+  de_dust2: 5,237,668 seconds, 4,753 matches, usable 5,235,798
+rows excluded from training and evaluation (no winner or no snapshot state): 784
+  de_ancient: 3,852,186 seconds, 3,530 matches, usable 3,851,540
+rows excluded from training and evaluation (no winner or no snapshot state): 3428
+  de_anubis: 3,651,183 seconds, 3,104 matches, usable 3,649,712
+rows excluded from training and evaluation (no winner or no snapshot state): 1115
+  de_inferno: 3,615,011 seconds, 2,817 matches, usable 3,614,215
+rows excluded from training and evaluation (no winner or no snapshot state): 3419
+  de_nuke: 2,425,214 seconds, 2,145 matches, usable 2,422,000
+rows excluded from training and evaluation (no winner or no snapshot state): 965
+  de_cache: 2,152,478 seconds, 1,869 matches, usable 2,151,560
+added 24 train-only site distance columns (matched by key for every map)
+rows: train 25,582,731, validation 1,515,228 (test rows dropped by the loader)
+== mingru_seed1: lookback 20, size default, seq params 25,326, total params 53,263
+  step 200: 4.4 s elapsed
+  step 1000: 17.4 s elapsed
+{"step": 1000, "val_log_loss": 0.4529246687889099, "seconds": 20.0}
+{"step": 2000, "val_log_loss": 0.452156126499176, "seconds": 38.9}
+{"step": 3000, "val_log_loss": 0.45133253931999207, "seconds": 57.7}
+{"step": 4000, "val_log_loss": 0.4517672061920166, "seconds": 76.6}
+{"step": 5000, "val_log_loss": 0.4514663517475128, "seconds": 95.4}
+{"step": 6000, "val_log_loss": 0.45148730278015137, "seconds": 114.3}
+{"step": 7000, "val_log_loss": 0.45007121562957764, "seconds": 133.2}
+{"step": 8000, "val_log_loss": 0.45081791281700134, "seconds": 152.1}
+{"step": 9000, "val_log_loss": 0.45101961493492126, "seconds": 171.5}
+{"step": 10000, "val_log_loss": 0.45063018798828125, "seconds": 190.8}
+{"step": 11000, "val_log_loss": 0.4496093690395355, "seconds": 209.8}
+{"step": 12000, "val_log_loss": 0.450293630361557, "seconds": 228.7}
+{"step": 13000, "val_log_loss": 0.4497397541999817, "seconds": 248.5}
+{"step": 14000, "val_log_loss": 0.44999945163726807, "seconds": 267.4}
+{"step": 15000, "val_log_loss": 0.44970566034317017, "seconds": 286.3}
+{"step": 16000, "val_log_loss": 0.45008906722068787, "seconds": 305.1}
+{"step": 17000, "val_log_loss": 0.44943585991859436, "seconds": 324.0}
+{"step": 18000, "val_log_loss": 0.44976404309272766, "seconds": 342.9}
+{"step": 19000, "val_log_loss": 0.4504683315753937, "seconds": 361.8}
+{"step": 20000, "val_log_loss": 0.44933006167411804, "seconds": 380.6}
+{"step": 21000, "val_log_loss": 0.4505024552345276, "seconds": 399.5}
+{"step": 22000, "val_log_loss": 0.44922003149986267, "seconds": 418.4}
+{"step": 23000, "val_log_loss": 0.44900867342948914, "seconds": 437.3}
+{"step": 24000, "val_log_loss": 0.44999539852142334, "seconds": 456.2}
+{"step": 25000, "val_log_loss": 0.4493059813976288, "seconds": 475.7}
+{"step": 26000, "val_log_loss": 0.4497842788696289, "seconds": 494.6}
+{"step": 27000, "val_log_loss": 0.45012274384498596, "seconds": 513.5}
+{"step": 28000, "val_log_loss": 0.4498075246810913, "seconds": 532.5}
+{"step": 29000, "val_log_loss": 0.44965407252311707, "seconds": 551.3}
+{"step": 30000, "val_log_loss": 0.4496913552284241, "seconds": 570.2}
+{"tag": "mingru_seed1", "best_step": 23000, "best_val_log_loss": 0.44900867342948914, "undertrained_flag": false}
+== mingru_seed2: lookback 20, size default, seq params 25,326, total params 53,263
+  step 200: 3.2 s elapsed
+  step 1000: 16.9 s elapsed
+{"step": 1000, "val_log_loss": 0.45317578315734863, "seconds": 19.6}
+{"step": 2000, "val_log_loss": 0.45164674520492554, "seconds": 38.6}
+{"step": 3000, "val_log_loss": 0.45434829592704773, "seconds": 57.7}
+{"step": 4000, "val_log_loss": 0.4513198137283325, "seconds": 76.9}
+{"step": 5000, "val_log_loss": 0.45171788334846497, "seconds": 95.9}
+{"step": 6000, "val_log_loss": 0.4515398442745209, "seconds": 115.0}
+{"step": 7000, "val_log_loss": 0.45075321197509766, "seconds": 134.0}
+{"step": 8000, "val_log_loss": 0.45080503821372986, "seconds": 153.0}
+{"step": 9000, "val_log_loss": 0.4495643079280853, "seconds": 172.0}
+{"step": 10000, "val_log_loss": 0.4499180018901825, "seconds": 191.0}
+{"step": 11000, "val_log_loss": 0.4498949646949768, "seconds": 210.0}
+{"step": 12000, "val_log_loss": 0.4499259889125824, "seconds": 229.0}
+{"step": 13000, "val_log_loss": 0.44942378997802734, "seconds": 248.6}
+{"step": 14000, "val_log_loss": 0.4494476318359375, "seconds": 267.6}
+{"step": 15000, "val_log_loss": 0.44931530952453613, "seconds": 286.6}
+{"step": 16000, "val_log_loss": 0.4491702616214752, "seconds": 305.8}
+{"step": 17000, "val_log_loss": 0.44906118512153625, "seconds": 324.7}
+{"step": 18000, "val_log_loss": 0.4499109983444214, "seconds": 343.8}
+{"step": 19000, "val_log_loss": 0.4499701261520386, "seconds": 362.8}
+{"step": 20000, "val_log_loss": 0.44915950298309326, "seconds": 381.8}
+{"step": 21000, "val_log_loss": 0.44962435960769653, "seconds": 400.8}
+{"step": 22000, "val_log_loss": 0.449724942445755, "seconds": 419.8}
+{"step": 23000, "val_log_loss": 0.44956761598587036, "seconds": 438.9}
+{"step": 24000, "val_log_loss": 0.44954997301101685, "seconds": 458.0}
+{"step": 25000, "val_log_loss": 0.4502415955066681, "seconds": 477.6}
+{"step": 26000, "val_log_loss": 0.44994038343429565, "seconds": 496.6}
+{"step": 27000, "val_log_loss": 0.44962310791015625, "seconds": 515.5}
+{"step": 28000, "val_log_loss": 0.44850388169288635, "seconds": 534.5}
+{"step": 29000, "val_log_loss": 0.44951802492141724, "seconds": 553.5}
+{"step": 30000, "val_log_loss": 0.44966328144073486, "seconds": 572.5}
+{"tag": "mingru_seed2", "best_step": 28000, "best_val_log_loss": 0.44850388169288635, "undertrained_flag": false}
+== mingru_seed3: lookback 20, size default, seq params 25,326, total params 53,263
+  step 200: 3.3 s elapsed
+  step 1000: 16.4 s elapsed
+{"step": 1000, "val_log_loss": 0.4556904435157776, "seconds": 19.1}
+{"step": 2000, "val_log_loss": 0.452317476272583, "seconds": 38.2}
+{"step": 3000, "val_log_loss": 0.45157358050346375, "seconds": 57.3}
+{"step": 4000, "val_log_loss": 0.4525190591812134, "seconds": 76.4}
+{"step": 5000, "val_log_loss": 0.4509125053882599, "seconds": 95.5}
+{"step": 6000, "val_log_loss": 0.4503275156021118, "seconds": 114.6}
+{"step": 7000, "val_log_loss": 0.45123258233070374, "seconds": 133.7}
+{"step": 8000, "val_log_loss": 0.4500066936016083, "seconds": 152.8}
+{"step": 9000, "val_log_loss": 0.44954508543014526, "seconds": 172.5}
+{"step": 10000, "val_log_loss": 0.4500921666622162, "seconds": 191.6}
+{"step": 11000, "val_log_loss": 0.44936153292655945, "seconds": 210.6}
+{"step": 12000, "val_log_loss": 0.4499731659889221, "seconds": 229.7}
+{"step": 13000, "val_log_loss": 0.4500238299369812, "seconds": 249.5}
+{"step": 14000, "val_log_loss": 0.44932958483695984, "seconds": 268.5}
+{"step": 15000, "val_log_loss": 0.44953274726867676, "seconds": 287.6}
+{"step": 16000, "val_log_loss": 0.44985470175743103, "seconds": 306.7}
+{"step": 17000, "val_log_loss": 0.4499438405036926, "seconds": 325.8}
+{"step": 18000, "val_log_loss": 0.4493296444416046, "seconds": 344.9}
+{"step": 19000, "val_log_loss": 0.44936299324035645, "seconds": 364.0}
+{"step": 20000, "val_log_loss": 0.4500300884246826, "seconds": 383.1}
+{"step": 21000, "val_log_loss": 0.4494026303291321, "seconds": 402.2}
+{"step": 22000, "val_log_loss": 0.44929301738739014, "seconds": 421.2}
+{"step": 23000, "val_log_loss": 0.4490024745464325, "seconds": 440.3}
+{"step": 24000, "val_log_loss": 0.44929829239845276, "seconds": 459.4}
+{"step": 25000, "val_log_loss": 0.4495175778865814, "seconds": 479.0}
+{"step": 26000, "val_log_loss": 0.4497014582157135, "seconds": 498.2}
+{"step": 27000, "val_log_loss": 0.4521935284137726, "seconds": 517.4}
+{"step": 28000, "val_log_loss": 0.44999757409095764, "seconds": 536.4}
+{"step": 29000, "val_log_loss": 0.4496516287326813, "seconds": 555.5}
+{"step": 30000, "val_log_loss": 0.4509824216365814, "seconds": 574.6}
+{"tag": "mingru_seed3", "best_step": 23000, "best_val_log_loss": 0.4490024745464325, "undertrained_flag": false}
+== mingru_seed4: lookback 20, size default, seq params 25,326, total params 53,263
+  step 200: 3.3 s elapsed
+  step 1000: 16.4 s elapsed
+{"step": 1000, "val_log_loss": 0.45595377683639526, "seconds": 19.1}
+{"step": 2000, "val_log_loss": 0.4536786675453186, "seconds": 38.8}
+{"step": 3000, "val_log_loss": 0.45213937759399414, "seconds": 57.8}
+{"step": 4000, "val_log_loss": 0.4508589506149292, "seconds": 76.9}
+{"step": 5000, "val_log_loss": 0.4504877030849457, "seconds": 96.2}
+{"step": 6000, "val_log_loss": 0.4505622386932373, "seconds": 115.3}
+{"step": 7000, "val_log_loss": 0.45034992694854736, "seconds": 134.4}
+{"step": 8000, "val_log_loss": 0.45017606019973755, "seconds": 153.5}
+{"step": 9000, "val_log_loss": 0.4534028470516205, "seconds": 172.6}
+{"step": 10000, "val_log_loss": 0.45263177156448364, "seconds": 191.8}
+{"step": 11000, "val_log_loss": 0.4496675133705139, "seconds": 210.9}
+{"step": 12000, "val_log_loss": 0.45020270347595215, "seconds": 230.0}
+{"step": 13000, "val_log_loss": 0.44986382126808167, "seconds": 249.7}
+{"step": 14000, "val_log_loss": 0.4495290517807007, "seconds": 268.8}
+{"step": 15000, "val_log_loss": 0.44982707500457764, "seconds": 287.8}
+{"step": 16000, "val_log_loss": 0.4495072662830353, "seconds": 306.9}
+{"step": 17000, "val_log_loss": 0.44928547739982605, "seconds": 326.5}
+{"step": 18000, "val_log_loss": 0.4498753547668457, "seconds": 345.6}
+{"step": 19000, "val_log_loss": 0.4496079683303833, "seconds": 364.7}
+{"step": 20000, "val_log_loss": 0.4501107633113861, "seconds": 384.8}
+{"step": 21000, "val_log_loss": 0.44935551285743713, "seconds": 403.8}
+{"step": 22000, "val_log_loss": 0.44978654384613037, "seconds": 422.9}
+{"step": 23000, "val_log_loss": 0.44998544454574585, "seconds": 442.2}
+{"step": 24000, "val_log_loss": 0.4489508271217346, "seconds": 461.3}
+{"step": 25000, "val_log_loss": 0.44974926114082336, "seconds": 481.1}
+{"step": 26000, "val_log_loss": 0.4509076476097107, "seconds": 500.2}
+{"step": 27000, "val_log_loss": 0.45011597871780396, "seconds": 519.7}
+{"step": 28000, "val_log_loss": 0.44937121868133545, "seconds": 538.8}
+{"step": 29000, "val_log_loss": 0.44943490624427795, "seconds": 557.9}
+{"step": 30000, "val_log_loss": 0.45005708932876587, "seconds": 577.0}
+{"tag": "mingru_seed4", "best_step": 24000, "best_val_log_loss": 0.4489508271217346, "undertrained_flag": false}
+RUN_DONE_mingru_s1234
