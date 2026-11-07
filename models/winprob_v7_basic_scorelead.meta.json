@@ -1,0 +1,63 @@
+{
+ "version": "winprob_v7_basic_scorelead",
+ "features": [
+  "alive_ct",
+  "alive_t",
+  "ct_alive_minus_t",
+  "bomb_planted",
+  "seconds_since_round_live",
+  "seconds_since_plant",
+  "map_is_ancient",
+  "map_is_anubis",
+  "map_is_cache",
+  "map_is_dust2",
+  "map_is_inferno",
+  "map_is_mirage",
+  "map_is_nuke",
+  "score_lead_diag"
+ ],
+ "monotone_constraints": {
+  "alive_ct": 1,
+  "alive_t": -1,
+  "ct_alive_minus_t": 1,
+  "bomb_planted": 0,
+  "seconds_since_round_live": 0,
+  "seconds_since_plant": 0,
+  "map_is_ancient": 0,
+  "map_is_anubis": 0,
+  "map_is_cache": 0,
+  "map_is_dust2": 0,
+  "map_is_inferno": 0,
+  "map_is_mirage": 0,
+  "map_is_nuke": 0,
+  "score_lead_diag": 0
+ },
+ "best_iteration": 548,
+ "params": {
+  "depth": 4,
+  "eta": 0.05,
+  "mcw": 20,
+  "subsample": 0.8,
+  "early_stopping_rounds": 100,
+  "seed": 0
+ },
+ "xgboost": "3.4.2",
+ "device": "cuda",
+ "split": "random",
+ "split_manifest_sha256": "a17f219b5287ff1ebae9c4bf976ef9927a9c2f2daa6107f739f390c6777b2ef6",
+ "drop_roster_defect_rounds": true,
+ "validation_logloss": 0.49860796808745794,
+ "test_logloss": 0.5012422232971732,
+ "test": {
+  "rows": 4568043
+ },
+ "served": true,
+ "serving": {"function": "scripts/serving/win_probability.py (default model_name)", "parity_test": "scripts/serving/test_win_probability.py",
+             "parity_result": "294 of 294 tome test matches, 374,541 seconds: max gap 0.0001 pp, mean 0.00002 pp, 100% within 0.01 pp; score lead equals the grid in 5,431 of 5,431 tome rounds",
+             "parity_log": "logs/test_win_probability_scorelead.log"},
+ "selection": "served 13 inputs plus score lead; served after the serving function read score lead and the parity test passed",
+ "rows_without_grid_score_lead": 0,
+ "served_reference": "winprob_v4_basic",
+ "served_reference_test_logloss": 0.5021984902254347,
+ "served_reference_validation_logloss": 0.4996167367894728
+}

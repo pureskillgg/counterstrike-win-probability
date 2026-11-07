@@ -19,3 +19,6 @@ __pycache__/
 meridian.toml
 *secret*
 *token*
+
+# small model weights are kept in git (see models/README.md)
+!models/**/*.pt

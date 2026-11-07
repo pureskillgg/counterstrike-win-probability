@@ -1,0 +1,69 @@
+{
+ "version": "winprob_v4_basic",
+ "created": "2026-10-16T18:28:26",
+ "features": [
+  "alive_ct",
+  "alive_t",
+  "ct_alive_minus_t",
+  "bomb_planted",
+  "seconds_since_round_live",
+  "seconds_since_plant",
+  "map_is_ancient",
+  "map_is_anubis",
+  "map_is_cache",
+  "map_is_dust2",
+  "map_is_inferno",
+  "map_is_mirage",
+  "map_is_nuke"
+ ],
+ "monotone_constraints": {
+  "alive_ct": 1,
+  "alive_t": -1,
+  "ct_alive_minus_t": 1,
+  "bomb_planted": 0,
+  "seconds_since_round_live": 0,
+  "seconds_since_plant": 0,
+  "map_is_ancient": 0,
+  "map_is_anubis": 0,
+  "map_is_cache": 0,
+  "map_is_dust2": 0,
+  "map_is_inferno": 0,
+  "map_is_mirage": 0,
+  "map_is_nuke": 0
+ },
+ "best_iteration": 443,
+ "params": {
+  "depth": 4,
+  "eta": 0.05,
+  "mcw": 20,
+  "subsample": 0.8
+ },
+ "xgboost": "3.2.0",
+ "seed": 0,
+ "stride": 1,
+ "device": "cuda",
+ "split": "random",
+ "split_manifest_sha256": "a17f219b5287ff1ebae9c4bf976ef9927a9c2f2daa6107f739f390c6777b2ef6",
+ "input_file": "grid.parquet",
+ "input_file_sha256": "2f08dc8de55cce6dac48a159455bcd2a3888fdbfd89420e00439a5ae91071afc",
+ "drop_roster_defect_rounds": true,
+ "training": {
+  "matches": 12509,
+  "val_matches": 1383,
+  "rows": 15933894
+ },
+ "test": {
+  "matches": 3601,
+  "rows": 4568043
+ },
+ "validation_logloss": 0.4996167367894728,
+ "test_logloss": 0.5021984902254347,
+ "test_logloss_ci95": [
+  0.4997971897096913,
+  0.5045927687993162
+ ],
+ "test_logloss_round_weighted": 0.4904424456571849,
+ "test_auc": 0.8141505050096024,
+ "test_ece10": 0.0042893570770306845,
+ "test_brier": 0.17146428576687753
+}

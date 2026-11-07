@@ -1,0 +1,76 @@
+{
+ "version": "winprob_test",
+ "created": "2026-10-14T04:34:22",
+ "features": [
+  "alive_ct",
+  "alive_t",
+  "ct_alive_minus_t",
+  "bomb_planted",
+  "seconds_since_round_live",
+  "seconds_since_plant",
+  "hp_ct",
+  "hp_t",
+  "map_is_ancient",
+  "map_is_anubis",
+  "map_is_cache",
+  "map_is_dust2",
+  "map_is_inferno",
+  "map_is_mirage",
+  "map_is_nuke"
+ ],
+ "best_iteration": 437,
+ "monotone_constraints": {
+  "alive_ct": 1,
+  "alive_t": -1,
+  "ct_alive_minus_t": 1,
+  "bomb_planted": 0,
+  "seconds_since_round_live": 0,
+  "seconds_since_plant": 0,
+  "hp_ct": 0,
+  "hp_t": 0,
+  "map_is_ancient": 0,
+  "map_is_anubis": 0,
+  "map_is_cache": 0,
+  "map_is_dust2": 0,
+  "map_is_inferno": 0,
+  "map_is_mirage": 0,
+  "map_is_nuke": 0
+ },
+ "prior_ct_win": 0.5041201886584706,
+ "scope": {
+  "maps": [
+   "de_ancient",
+   "de_anubis",
+   "de_cache",
+   "de_dust2",
+   "de_inferno",
+   "de_mirage",
+   "de_nuke"
+  ],
+  "modes": [
+   "competitive"
+  ],
+  "excluded": [
+   "wingman",
+   "hostage",
+   "other maps"
+  ]
+ },
+ "training": {
+  "matches": 3061,
+  "val_matches": 340,
+  "rows": 3760022,
+  "eras": {
+   "2026": 1392391,
+   "2024": 2367631
+  }
+ },
+ "xgboost": "3.4.2",
+ "seed": 0,
+ "grid_file_sha1": "379b73ef491892666fd4e89b8e547a021ac992c7",
+ "test_logloss": 0.504771072163346,
+ "test_logloss_ci95": [
+  0.4994325556358546,
+  0.5102960315347053
+ ]
+}

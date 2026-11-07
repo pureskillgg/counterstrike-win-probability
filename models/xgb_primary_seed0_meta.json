@@ -1,0 +1,99 @@
+{
+  "model_file": "models/xgb_primary_seed0.json",
+  "model_format": "XGBoost Booster JSON (Booster.save_model). Load with xgboost.Booster().load_model; predict with iteration_range=(0, best_iteration + 1).",
+  "xgboost_version": "3.4.2",
+  "label": "ct_win = (winner_team_code == 3); round-level label repeated on each state of the round",
+  "features": [
+    "alive_ct",
+    "alive_t",
+    "ct_alive_minus_t",
+    "bomb_planted",
+    "seconds_since_round_live",
+    "seconds_since_plant",
+    "round_number",
+    "ct_score_minus_t_score",
+    "is_pistol_round",
+    "is_overtime"
+  ],
+  "feature_order_note": "Pass the feature matrix columns in the order listed in features.",
+  "monotone_constraints": [
+    1,
+    -1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+  ],
+  "best_iteration": 261,
+  "predict_iteration_range": [
+    0,
+    262
+  ],
+  "xgb_settings": {
+    "n_estimators": 3000,
+    "learning_rate": 0.05,
+    "max_depth": 4,
+    "min_child_weight": 20,
+    "subsample": 0.8,
+    "tree_method": "hist",
+    "early_stopping_rounds": 100,
+    "eval_metric": "logloss",
+    "random_state": 0
+  },
+  "split": {
+    "name": "primary",
+    "seed": 0,
+    "test_frac": 0.2,
+    "val_frac_of_train_pool": 0.1,
+    "train_matches": 1095,
+    "val_matches": 122,
+    "test_matches": 304,
+    "train_dates": [
+      "2026-09-25",
+      "2026-10-08"
+    ],
+    "val_dates": [
+      "2026-10-01",
+      "2026-10-08"
+    ],
+    "test_dates": [
+      "2026-09-18",
+      "2026-10-08"
+    ]
+  },
+  "data": {
+    "tome": "tomes/2026-10-01_to_08/tome/csds",
+    "dedupe_applied": true,
+    "kept_matches": 1521,
+    "kept_rounds": 28683,
+    "states_total": 234265
+  },
+  "metrics_test": {
+    "n": 47716,
+    "logloss": 0.4365987668076211,
+    "brier": 0.1463668231836436,
+    "auc": 0.870336692355569,
+    "ece": 0.008942104794085493,
+    "acc": 0.7697418056836282
+  },
+  "metrics_val": {
+    "n": 19170,
+    "logloss": 0.4351121037832858,
+    "brier": 0.14552103495895696,
+    "auc": 0.8715845563485368,
+    "ece": 0.012393351094567392,
+    "acc": 0.7730307772561293
+  },
+  "reproduction": {
+    "reported_test_log_loss": 0.4366,
+    "reported_test_brier": 0.14637,
+    "tolerance": 0.0002,
+    "reproduced": true
+  },
+  "source_script": "scripts/model/xgb_primary_seed0.py",
+  "created": "2026-10-12"
+}
