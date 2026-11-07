@@ -1,0 +1,8 @@
+{
+ "base_logloss_all_validation": 0.4502097950581587,
+ "n_validation": 1515228,
+ "best_iteration": 2695,
+ "shap_rows": 100000,
+ "repeats_group": 2,
+ "repeats_feature": 1
+}
