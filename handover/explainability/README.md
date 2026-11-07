@@ -59,4 +59,4 @@ The Oct 26–31 holdout has one recorded read, for the 83-input candidate (0.452
 ## Not in this handover
 
 - The deep model (item 4 of Dr Freeman's checklist). Its handoff is in [handover/deep-model/README.md](../deep-model/README.md). No deep-model training was run.
-- The git push to `pureskillgg/counterstrike-win-probability`. Work is committed on `wrap-up-nov-2026` only, if the commit goes through. Not pushed.
+- The git push is done: work is on `pureskillgg/counterstrike-win-probability`, branch `wrap-up-nov-2026` (7 Nov 2026; the history was rewritten to remove private identifiers).

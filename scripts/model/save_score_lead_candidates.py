@@ -2,7 +2,7 @@
 
 (a) winprob_v7_59_drop_heavy_scorelead: the 59 inputs minus the heavy group, plus score lead (58 inputs). The best measured 59-input variant
     (exp_scorelead_combo.py). Same rows and split as winprob_v4 (cache_snapshot_2026, frozen split). Needs per-tick player status to serve.
-(b) winprob_v7_basic_scorelead: the served 13 inputs plus score lead (14 inputs), with the served model's rows and settings (all matches,
+(b) winprob_v7_basic_scorelead: the 13 inputs of winprob_v4_basic plus score lead (14 inputs), with that model's rows and settings (all matches,
     grid, roster-defect rounds dropped, monotone alive counts, score lead unconstrained). Servable once the serving function reads score lead.
 
 Both: depth 4, eta 0.05, min child weight 20, subsample 0.8, early stopping after 100 rounds on validation, seed 0, GPU. Score lead is the

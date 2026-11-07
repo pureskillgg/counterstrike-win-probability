@@ -143,6 +143,8 @@ def main(argv=None):
 
     uuids = set()
     for k in args.keys:
+        if not os.path.isfile(k):
+            sys.exit(f"keys file not found: {k}")
         uuids |= read_keys(k)
     table = {anon(u): u for u in uuids}
     print(f"keys loaded: {len(uuids)} distinct match uuids")

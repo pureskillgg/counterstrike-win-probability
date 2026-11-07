@@ -26,7 +26,7 @@ Served model: winprob_v6_drop_heavy (pin aaecad58, 20 Oct 2026; the serving code
 | `winprob_test` | 15 | 14 Oct | Early model with an older metadata format. Its purpose isn't recorded. |
 | `golden_winprob_v1` to `v3` (+ `_basic`) | | | Not models: test fixtures written by `scripts/model/stress_test_winprob.py --write-golden`. |
 
-Every model from v2 onwards records `split: random`. Matches go to train, validation or test by a hash of the match key, using the split manifest present at training time ([TRAINING.md](../TRAINING.md) says which one). The 83-input model uses the same split.
+Every model from v2 to v8 records `split: random`. Matches go to train, validation or test by a hash of the match key, using the split manifest present at training time ([TRAINING.md](../TRAINING.md) says which one). The 83-input model's metadata has no split key; it uses the same split through `make_split`.
 
 ## Sequence and temporal models
 

@@ -22,7 +22,7 @@ Keys in these files are pseudonymised (`csds/YYYY/MM/DD/m_<24 hex>/csds`; hex = 
 
 The hashes above are of the restored files. The copies in this repo have pseudonymised keys, so their own hashes differ until you run the restore step.
 
-Check: `cache_snapshot_2026` keys under the a17f219b manifest give train 10,577 / val 1,168 / test 3,059, equal to the v4-v8 metadata. Restore it as `<CS2_ROOT>/data/combined/split_manifest.json` before any XGBoost retrain. Rule (`wp_common.py` lines 67-75): `u = sha256(seed:match_key)[:12] / 16^12`; test if u < 0.20, validation if u < 0.28, else train. Early stopping inside sprint runs: `crc32("es:"+key) % 100 < 10`.
+Check: `cache_snapshot_2026` keys under the a17f219b manifest give train 10,577 / val 1,168 / test 3,059, equal to the v4-v8 metadata. Restore it as `<CS2_ROOT>/data/combined/split_manifest.json` before any XGBoost retrain. Rule (`wp_common.py` lines 67-75): `u = sha256(seed:match_key)[:12] / 16^12`; test if u < 0.20, validation if u < 0.28, else train. On its own the rule reproduces 14,732 of the 17,563 manifest assignments (83.9%): the manifest was frozen from an earlier split and the rule applies to matches added later, so restore the manifest rather than recomputing it. Early stopping inside sprint runs: `crc32("es:"+key) % 100 < 10`.
 
 ## XGBoost
 
@@ -79,7 +79,7 @@ On RunPod: `sequence/pod/setup_pod.sh`, then `sequence/pod/run_w.sh "<arms>" "<s
 
 Inputs (data root): `data/round_state/<map>_ext.npz`, `<map>_ext_loadout.npy`, `<map>_ext.json` for 7 maps; `data/combined/cache_snapshot_2026_ext.parquet`; `data/combined/rounds.parquet`; `data/diagnostics/allmaps_pos24_trainsites_grid/<map>.parquet`. Population 23,716 matches, uploads 2026-09-01 to 2026-10-21; split from the npz `split` array: train 19,486, val 1,169, test 3,061 (test not loaded). 84 protected-batch matches (dated 2026-10-21) are in train.
 
-Settings: lookback 20 s, batch 2048, lr 1e-3, 30,000 steps (script default 12,000), eval every 1,000, final-step scoring, arm widths from the `ArmModel` defaults (no width flags passed). Load a weights file: `ArmModel(arch, state_dim=34, K=20, cfg={})`, then `load_state_dict(torch.load(path))`. Saved weights are the final step; `gdn2 s0`, `mingru s3`, `xlstm_fast s3`, `xlstm_blk s3`, `xlstm_sig s3` and the TCN reruns `tcnr0`, `tcnr3` had best step 30,000. The 47 metrics files predate the `dropout`/`weight_decay` keys (trainer revision drift; current defaults should reproduce, unproven).
+Settings: lookback 20 s, batch 2048, lr 1e-3, 30,000 steps (script default 12,000), eval every 1,000, final-step scoring, arm widths from the `ArmModel` defaults (no width flags passed). Load a weights file: `ArmModel(arch, state_dim=34, K=20, cfg={})`, then `load_state_dict(torch.load(path))`. Saved weights are the final step; `gdn2 s0`, `mingru s3`, `xlstm_fast s3`, `xlstm_blk s3`, `xlstm_sig s3` and the TCN reruns `tcnr0`, `tcnr3` had best step 30,000. All 51 metrics files (the 47 arm-seeds and the 4 TCN reruns) predate the `dropout`/`weight_decay` keys (trainer revision drift; current defaults should reproduce, unproven).
 
 Site-grid input: `scripts/model/build_pos24_maps.py` builds `allmaps_pos24_trainsites/<map>.parquet` from `cache_pos_2026_trainctr.parquet` joined to `cache_snapshot_2026.parquet`. The `_grid` folder the trainer reads holds the same 24 inputs at every second; it was built the same way from the every-second table (`cache_pos_2026_trainctr_every1`), but that exact script version was not saved (inference).
 
@@ -104,7 +104,7 @@ Run from a tree with `data/` beside `scripts/` (trainers use `parents[2]`). Metr
 | `de_mirage_ext_thgnn_lite_ms8544*` | `... train_thgnn_lite.py --map de_mirage --stem de_mirage_ext --cache cache_snapshot_2026_ext.parquet --epochs 6 --max_steps 8544 --eval_every 500 --tag thgnn_lite_ms8544 [--seed s --tag thgnn_lite_ms8544_seed<s>]` |
 | `de_mirage_ext_navgraph_ms8544*` | same plus `--graph data/round_state/de_mirage_ext_navgraph.npz --tag navgraph_ms8544`; graph from `scripts/model/build_nav_region_graph.py` |
 | `allmaps_gru_loadout*` | `<torch-py> -I -X utf8 -u scripts/model/train_temporal_allmaps.py --seeds 0,1,2 [--dist | --walk]`; learning curves: `--seeds 0 --match-fraction 0.25 --subset-seed 0 --no-test --suffix _lc25` (0.5, `_lc50`); `--walk` needs `scripts/model/build_nav_walk_allmaps.py` |
-| `round_state/de_mirage_h3.pt` | `<torch-py> -I -X utf8 scripts/model/train_round_state_encoder.py --map de_mirage --horizon 3` (state encoder, not a win-probability model) |
+| `models/round_state/de_mirage_h3.pt` | `<torch-py> -I -X utf8 scripts/model/train_round_state_encoder.py --map de_mirage --horizon 3` (state encoder, not a win-probability model) |
 
 Round-state arrays: `scripts/model/build_round_state_map.py --map <map>` (split labels from the manifest present at build time; build metadata in `data/manifests/round_state_meta/`). Mirage-only arrays: 43 upload days (2026-09-01 to 10-13), 2,455 / 274 / 687 matches; `_ext` arrays: 51 days to 2026-10-21. `--dist` and the default `--walk` builder fit site centres on all matches (methodology caveat).
 

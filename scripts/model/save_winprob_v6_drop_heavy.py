@@ -2,7 +2,7 @@
 
 Chosen because it is the only candidate that beats the control on both splits for both XGBoost seeds (exp_loadout_select.json, exp_loadout_seed1.json).
 Same settings and frozen split as winprob_v4. The retrain should reproduce the seed-0 numbers recorded there (validation 0.453557, test 0.456411).
-Saved as models/winprob_v6_drop_heavy.json with metadata, served: false.
+Saved as models/winprob_v6_drop_heavy.json with metadata, served: true (the 20 Oct 2026 decision, pin aaecad58).
 
   ...python.exe -I -X utf8 scripts\\model\\save_winprob_v6_drop_heavy.py
 """

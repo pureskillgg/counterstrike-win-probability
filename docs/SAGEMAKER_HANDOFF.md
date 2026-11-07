@@ -24,7 +24,7 @@ Source of the setup: the admin's setup message (domain, profile, space, data lay
 
 ## Rules (from the admin)
 
-- GPU bills $1.22 an hour while the space runs. Stop the space when done. It also stops itself after 60 minutes idle. The budget is a fixed monthly amount, shared.
+- GPU bills $1.22 an hour while the space runs. Stop the space when done. It also stops itself after 60 minutes idle.
 - One GPU job at a time. Ask before any job longer than an hour. Don't change the instance type without asking.
 - Match data stays inside AWS. Nothing downloaded to a laptop, nothing pasted into outside tools, nothing shared. Write only under `adam/` in the working bucket.
 

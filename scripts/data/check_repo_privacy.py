@@ -70,7 +70,14 @@ def scan_bytes(data, counter):
 
 
 def main(argv):
-    root = argv[1] if len(argv) > 1 else os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+    args = argv[1:]
+    if args and args[0] in ("-h", "--help"):
+        print(__doc__)
+        return 0
+    root = args[0] if args else os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+    if not os.path.isdir(root):
+        print(f"error: not a folder: {root}", file=sys.stderr)
+        return 2
     total = Counter()
     per_file = {}
     self_path = os.path.abspath(__file__)
