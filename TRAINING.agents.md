@@ -20,6 +20,8 @@ Conventions used below:
 
 Keys in these files are pseudonymised (`csds/YYYY/MM/DD/m_<24 hex>/csds`; hex = first 24 chars of sha256 of the lowercase match uuid). Restore on a copy: `<py> scripts/data/restore_match_keys.py --keys <CS2_ROOT>/data/combined/grid.parquet [--check-sha256 a17f219b] <copy of the file>`. `grid.parquet` has `match_key` for all 17,563 manifest keys and 33,200 matches in all. The restored manifest should hash to `a17f219b…`. The same step applies to `frozen_test_keys.json`, `holdout_22_25_test_keys.json`, `centre_fit_train_keys.json` and any key list under `docs/` or `data/manifests/`.
 
+The hashes above are of the restored files. The copies in this repo have pseudonymised keys, so their own hashes differ until you run the restore step.
+
 Check: `cache_snapshot_2026` keys under the a17f219b manifest give train 10,577 / val 1,168 / test 3,059, equal to the v4-v8 metadata. Restore it as `<CS2_ROOT>/data/combined/split_manifest.json` before any XGBoost retrain. Rule (`wp_common.py` lines 67-75): `u = sha256(seed:match_key)[:12] / 16^12`; test if u < 0.20, validation if u < 0.28, else train. Early stopping inside sprint runs: `crc32("es:"+key) % 100 < 10`.
 
 ## XGBoost
@@ -111,5 +113,5 @@ Round-state arrays: `scripts/model/build_round_state_map.py --map <map>` (split 
 - Manifests for v2 and v3 are lost; v1, v1_basic and winprob_test use an older meta schema.
 - The `_grid` sequence position folder's exact builder version is not saved (see above).
 - The xgb83 refit-to-`models/` copy is manual; the GPU sprint launch command was reconstructed from `make_queues.py`.
-- `served` flags were reconciled by hand on 7 Nov 2026: `winprob_v6_drop_heavy` is true; `winprob_v7_basic_scorelead` and `winprob_v8_ensemble` are false. Rerunning the save scripts writes `served: false`, so re-check v6 after a rerun. The serving default in code is `winprob_v6_drop_heavy`.
+- `served` flags were reconciled by hand on 7 Nov 2026: `winprob_v6_drop_heavy` is true; `winprob_v7_basic_scorelead` and `winprob_v8_ensemble` are false. All other metas (v5, v6_selected, v7_59, v8_tuned, xgb83_final) say `served: false`. `save_winprob_v6_drop_heavy.py` writes `served: true`; `save_score_lead_candidates.py` and `finalize_ensemble58.py` write `false` for v7 and v8, so a rerun keeps these settings. The serving default in code is `winprob_v6_drop_heavy`.
 - The THGNN all-maps trainer (`train_thgnn_allmaps.py`) and `train_graph_transformer.py` have no saved run.

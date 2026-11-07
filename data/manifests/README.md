@@ -12,6 +12,6 @@ Per-day match counts for every training input, so you can see which days a model
 | `tome_folders.txt` | the tome folder names on the data root | |
 | `round_state_meta/` | build metadata of each round-state array (scaling window, rows and matches per split, days built) | |
 
-The match keys in `data/benchmark/` are pseudonymised, with the upload day left readable. See [DATA.md](../../DATA.md) for how to restore the real keys. These day tables hold no match keys.
+The match keys in `data/benchmark/` are pseudonymised, with the upload day left readable. See [DATA.md](../../DATA.md) for how to restore the real keys. These day tables hold no match keys. The round-state arrays hold 14,814 matches up to 13 Oct (10,584 train, 1,169 validation, 3,061 test), ten more than the 14,804 in the XGBoost table; the difference hasn't been traced.
 
 Built by `scratch/session_2026-11-06/day_manifests.py` and the a17f219b recount in this commit's history. Only match keys and split labels were read.

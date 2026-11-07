@@ -16,7 +16,7 @@ Models that estimate, second by second, the probability that the CT side wins a 
 All numbers are validation results unless marked. Lower log loss is better; higher GDT is better.
 
 - **Serving-default XGBoost (v6, 57 inputs):** validation log loss 0.4536; frozen-test log loss 0.4564.
-- **XGBoost with positions (83 inputs):** validation log loss 0.4503, the mean of three seeds. GDT 0.0254 on the 297-match validation proxy. October 26 to 31 holdout, read once: 0.4523.
+- **XGBoost with positions (83 inputs):** validation log loss 0.4503, the mean of three seeds. GDT 0.0254 on the 297-match validation proxy (the explainability report counts 295 matches; the gap is open). October 26 to 31 holdout, read once: 0.4523.
 - **Sequence models:** none beats the GRU control on GDT by the pre-registered bar. Training the GRU for 25,000 steps instead of 30,000 lowered its validation log loss on all five seeds, by 0.0011 on average.
 
 ## What's where

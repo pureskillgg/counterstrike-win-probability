@@ -65,8 +65,8 @@ def main():
             "drop_roster_defect_rounds": True, "input_file": "cache_snapshot_2026.parquet",
             "training": {"matches": len(tr), "val_matches": len(va), "rows": int(len(ytr))},
             "test": {"matches": len(te), "rows": int(len(yte))},
-            "validation_logloss": ll_va, "test_logloss": ll_te, "served": False,
-            "note": "59-input model without the heavy group; needs per-tick player status to serve, so not the served default"}
+            "validation_logloss": ll_va, "test_logloss": ll_te, "served": True,
+            "note": "served default since the 20 Oct 2026 decision (pin aaecad58): 57 inputs, one XGBoost model, needs per-tick player status in the tome"}
     with open(os.path.join(W.ROOT, "models", "winprob_v6_drop_heavy.meta.json"), "w", encoding="utf-8") as f:
         json.dump(meta, f, indent=1)
     print(f"saved models/winprob_v6_drop_heavy.json ({time.time() - t0:.0f}s)", flush=True)

@@ -47,7 +47,7 @@ Scope: 1,493 parquet files on the data root and the S3 mirror; 1,353 value-scree
 - Pseudonymous identifiers: `player_id`, `attacker_id`, `player_controller_id`, `player_id_fixed` (per-match), `match_key` (resolves to `E:/csds_final/csds/...`). `deaths.parquet` `player_id` can act as a per-player pseudonym.
 - Raw tomes: `basic_player_personal` (33M rows scanned), `basic_player_name`: name and clan tag hold one placeholder value (`redacted`), steam_id holds one-letter codes. `header.client_name` and `header.server_name` are free text, not classifiable. An unlisted tome copy in `G:/pureskill/csds-cs2/evac_2026-10-13/tomes` has `header.game_directory` with `/home/<user>/` paths (904 distinct usernames).
 - Not screened: the full E: store (36,895 `player_personal` files; 20-match sample only), some tome tables (`basic_player_inputs`, `_footstep`, `_sound`, grenade, item and weapon tables), git-history contents, export_clean_v4/v5 contents.
-- Repo (public): author email in `pixi.toml`, user-profile paths and the Windows account name in many scripts, match-key lists, a Steam64-shaped fixture in history.
+- Repo (public): scrubbed on 7 Nov 2026. Author emails, the Windows account name, pod IPs, pod ids and the AWS account number are removed; match keys are pseudonyms (`csds/YYYY/MM/DD/m_<24 hex>/csds`), restorable with `scripts/data/restore_match_keys.py`; `scripts/data/check_repo_privacy.py` reports clean. The Steam64-shaped number is a synthetic base value in `scripts/model/stress_test_winprob.py`. Still named in the repo: company bucket names, the SageMaker space name and the RunPod volume id.
 Audit scripts: `scratch/session_2026-11-06/` (`value_screen.py`, `tome_value_screen.py`, `pii_audit/`, `pii_refute/`).
 
 ## Protected batch and split checks

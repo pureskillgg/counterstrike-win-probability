@@ -377,7 +377,8 @@ def build():
     # 12. Weights, data, PII
     s = new_slide(prs, "Weights, data and PII status",
                   notes="Weights status is from the inventory of S3, the repo and local copies on 6 Nov 2026. The personal-data audit screened 1,353 processed parquet files; "
-                        "frozen-test, holdout and 26-31 Oct rows were left out. An automated scan is not proof of absence, so the slide does not describe the dataset as cleared.")
+                        "frozen-test, holdout and 26-31 Oct rows were left out. An automated scan is not proof of absence, so the slide does not describe the dataset as cleared. "
+                        "The RunPod volume copy holds all 76,188 objects (37.4 GiB) except 1,485 Python-environment files whose names Windows cannot hold; the environments rebuild from pixi.lock.")
     rows = [
         ["Item", "Where", "Status"],
         ["GDT-objective weights, 47 arm-seeds", "GitHub repo models/seq_gdt_weights; S3 results; handover bucket", "saved; sha256 matches across copies"],
@@ -386,23 +387,22 @@ def build():
         ["TCN extra seeds (0, 1, 3, 4)", "repo models/seq_gdt_weights/weights_tcnr*", "4 weight files with metrics"],
         ["XGBoost 83-input model", "repo models/winprob_xgb83_final.json", "CPU refit of the validated GPU model"],
         ["Dataset personal data", "processed tables (1,353 files screened)", "no direct identifiers found; pseudonymous, not proven clean"],
-        ["Data backup", "C:\\Users\\<user>\\Backups (about 462 GB, verified)", "raw E: data (989 GB) not backed up"],
+        ["Data backup", "local backup folder, with a copy of the RunPod volume", "verified; raw E: data (989 GB) not backed up"],
     ]
     table(s, 0.89, 1.95, [3.5, 4.7, 3.7], rows, size=13, row_h=0.56)
     source(s, "Sources: weights inventory, repo and S3 listings, PII audit and backup verification (6 Nov 2026); weights_manifest.csv (sha256, 47 rows).")
 
     # 13. Next steps
     s = new_slide(prs, "Decisions and next steps",
-                  notes="The 25k re-run and the volume clear-out are proposals, not decisions. The 25k re-run needs a new pin before any run.")
+                  notes="The 25k re-run is a proposal, not a decision, and needs a new pin before any run. GDT is the agreed objective. The served model is v6 per the 20 Oct pin.")
     text(s, 0.89, 1.95, 11.9, 4.6, [
         [("1. Re-run the five-seed arms at 25k steps (proposed). ", True), ("Tests whether the step count changes the ranking. Needs a new pin first.", False)],
         [("2. Holdout. ", True), ("No candidate passes the pinned rules. Decide: keep the holdout on hold, or pre-register a different rule before any read.", False)],
-        [("3. Dr Freeman's GDT confirmation. ", True), ("Recorded from your report of his instruction. His written confirmation is still needed.", False)],
+        [("3. Served model. ", True), ("v6 (57 inputs) is served: the 20 October pin aaecad58 and the serving default agree, and the v7 and v8 metadata now say not served. The 83-input model scores better (validation 0.4503 against 0.4536) but the serving function cannot run it and no pin names it.", False)],
         [("4. Population. ", True), ("The explainability deck gives 295 matches for its GDT figures; the 6 November report gives 297. Reconcile before presenting.", False)],
-        [("5. Served model. ", True), ("The serving code defaults to v6 (57 inputs); the v7 and v8 metadata also say served. Confirm which one ships.", False)],
-        [("6. Volumes (proposed). ", True), ("Back up, then clear pureskill-train-euro1 after final training. Needs your explicit confirmation before any delete.", False)],
+        [("5. Volumes. ", True), ("The RunPod volume is copied to the local backup. Delete it only after an explicit confirmation.", False)],
     ], size=15, space_after=10)
-    source(s, "Open items for 6 November 2026.")
+    source(s, "Open items for 7 November 2026. GDT is the agreed objective.")
 
     # 14. Appendix pins
     s = new_slide(prs, "Appendix: pins behind the decisions",

@@ -13,7 +13,7 @@ data      dict of DataFrames keyed by channel name, read as-is from the DSDK tom
           pandas or polars DataFrames both work.
 output    dict  tick -> percent (0 to 100) for the team asked ("CT" or "T"); unit="fraction" gives 0 to 1 instead. One entry per live second of each round: ticks freeze_end + 64 k,
           from the start of live play up to the round end. Round ticks never overlap, so a match gives one dictionary.
-model     winprob_v6_drop_heavy (the default; the submission, decided 19 October): 57 inputs, one XGBoost model (seed 0), no score lead. The inputs: the alive counts,
+model     winprob_v6_drop_heavy (the default; the submission, decided 20 October): 57 inputs, one XGBoost model (seed 0), no score lead. The inputs: the alive counts,
           clock, bomb and map (from the event channels), and 44 loadout inputs from the per-tick player_status channel: 19 per side
           (health, armour, helmets, kits, defusing, weapon classes, grenades, equipment value) for each of the two sides, plus 6
           CT-minus-T differences. A tome without player_status cannot be scored: the function returns {} and says so in last_warnings.

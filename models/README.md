@@ -4,7 +4,7 @@ Every model file kept in git. Each XGBoost model is a JSON booster. Most have a 
 
 ## Which model is served
 
-The serving code, `scripts/serving/win_probability.py`, uses **`winprob_v6_drop_heavy`** (57 inputs) by default. It describes that model as "the submission, decided 19 October".
+The serving code, `scripts/serving/win_probability.py`, uses **`winprob_v6_drop_heavy`** (57 inputs) by default. It describes that model as "the submission, decided 20 October" (pin aaecad58).
 
 Served model: winprob_v6_drop_heavy (pin aaecad58, 20 Oct 2026; the serving code default). v8 was named production on 19 Oct and v7 was served earlier; both are superseded and their metadata now says served: false. The 83-input model is more accurate but is not servable by win_probability.py and was never pinned as the submission.
 
