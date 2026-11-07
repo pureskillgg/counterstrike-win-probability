@@ -1,0 +1,95 @@
+{
+ "map": "de_mirage",
+ "split_codes": {
+  "train": 0,
+  "val": 1,
+  "test": 2
+ },
+ "window": {
+  "xy_min": -2655.97265625,
+  "xy_max": 1455.9708251953125,
+  "z_min": -367.96875,
+  "z_max": 68.09468078613281,
+  "n_train_rows": 21886862
+ },
+ "window_train_rows_by_day": {
+  "2026-09-01.parquet": 77248,
+  "2026-09-02.parquet": 150895,
+  "2026-09-03.parquet": 114522,
+  "2026-09-04.parquet": 106141,
+  "2026-09-05.parquet": 56175,
+  "2026-09-06.parquet": 113703,
+  "2026-09-07.parquet": 101719,
+  "2026-09-08.parquet": 118726,
+  "2026-09-09.parquet": 116371,
+  "2026-09-10.parquet": 173130,
+  "2026-09-11.parquet": 93087,
+  "2026-09-12.parquet": 104865,
+  "2026-09-13.parquet": 109946,
+  "2026-09-14.parquet": 68253,
+  "2026-09-15.parquet": 106480,
+  "2026-09-16.parquet": 42801,
+  "2026-09-17.parquet": 134313,
+  "2026-09-18.parquet": 86094,
+  "2026-09-19.parquet": 95208,
+  "2026-09-20.parquet": 142860,
+  "2026-09-21.parquet": 55498,
+  "2026-09-22.parquet": 41500,
+  "2026-09-23.parquet": 145239,
+  "2026-09-24.parquet": 117499,
+  "2026-09-25.parquet": 84627,
+  "2026-09-26.parquet": 68152,
+  "2026-09-27.parquet": 78008,
+  "2026-09-28.parquet": 64290,
+  "2026-09-29.parquet": 99544,
+  "2026-09-30.parquet": 75784,
+  "2026-10-01.parquet": 61960,
+  "2026-10-02.parquet": 96426,
+  "2026-10-03.parquet": 126764,
+  "2026-10-04.parquet": 82940,
+  "2026-10-05.parquet": 54070,
+  "2026-10-06.parquet": 74067,
+  "2026-10-07.parquet": 15628,
+  "2026-10-08.parquet": 1628210,
+  "2026-10-09.parquet": 3535373,
+  "2026-10-10.parquet": 3987635,
+  "2026-10-11.parquet": 4996882,
+  "2026-10-12.parquet": 457746,
+  "2026-10-13.parquet": 3826483
+ },
+ "days_built": 43,
+ "days_skipped": {},
+ "stats": {
+  "position_rows_in_map": 30329652,
+  "position_rows_unmapped_match_key": 65064,
+  "rows_dropped_sentinel_pid": 0,
+  "rows_player_id_0_kept": 2955859,
+  "rows_dropped_bad_coordinates": 246,
+  "rows_dropped_roster_overflow": 0,
+  "rows_dropped_unlabelled": 0,
+  "n_rows": 4342609,
+  "rounds_gapped": 0,
+  "frac_alive_slots": 0.6984143853187561,
+  "rows_per_split": {
+   "train": 3135188,
+   "val": 341139,
+   "test": 866282
+  },
+  "matches_per_split": {
+   "train": 2455,
+   "val": 274,
+   "test": 687
+  },
+  "frac_alive_coords_outside_window": {
+   "train": 0.0,
+   "val": 9.768565927074584e-07,
+   "test": 1.6518195618383432e-07
+  }
+ },
+ "X_shape": [
+  4342609,
+  10,
+  6
+ ],
+ "elapsed_s": 81.4
+}

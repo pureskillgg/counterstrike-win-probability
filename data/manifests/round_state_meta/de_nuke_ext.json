@@ -1,0 +1,110 @@
+{
+ "map": "de_nuke",
+ "split_codes": {
+  "train": 0,
+  "val": 1,
+  "test": 2
+ },
+ "window": {
+  "xy_min": -2991.9716796875,
+  "xy_max": 3497.972412109375,
+  "z_min": -775.96875,
+  "z_max": 91.828125,
+  "n_train_rows": 15787163
+ },
+ "window_train_rows_by_day": {
+  "2026-09-01.parquet": 32544,
+  "2026-09-02.parquet": 47312,
+  "2026-09-03.parquet": 23448,
+  "2026-09-04.parquet": 27666,
+  "2026-09-05.parquet": 45794,
+  "2026-09-06.parquet": 122331,
+  "2026-09-07.parquet": 35001,
+  "2026-09-08.parquet": 45623,
+  "2026-09-09.parquet": 67458,
+  "2026-09-10.parquet": 57344,
+  "2026-09-11.parquet": 26171,
+  "2026-09-12.parquet": 38180,
+  "2026-09-13.parquet": 48034,
+  "2026-09-14.parquet": 50772,
+  "2026-09-15.parquet": 43801,
+  "2026-09-16.parquet": 43028,
+  "2026-09-17.parquet": 72292,
+  "2026-09-18.parquet": 45792,
+  "2026-09-19.parquet": 42889,
+  "2026-09-20.parquet": 80913,
+  "2026-09-21.parquet": 30976,
+  "2026-09-22.parquet": 42808,
+  "2026-09-23.parquet": 85475,
+  "2026-09-24.parquet": 25378,
+  "2026-09-25.parquet": 72353,
+  "2026-09-26.parquet": 16745,
+  "2026-09-27.parquet": 58655,
+  "2026-09-28.parquet": "skipped: no labelled rows for 'de_nuke' in the given day files",
+  "2026-09-29.parquet": 35424,
+  "2026-09-30.parquet": 25377,
+  "2026-10-01.parquet": 31141,
+  "2026-10-02.parquet": 26687,
+  "2026-10-03.parquet": 54413,
+  "2026-10-04.parquet": 42392,
+  "2026-10-05.parquet": 81680,
+  "2026-10-06.parquet": 49626,
+  "2026-10-07.parquet": 40078,
+  "2026-10-08.parquet": 535536,
+  "2026-10-09.parquet": 1101005,
+  "2026-10-10.parquet": 1178533,
+  "2026-10-11.parquet": 1593132,
+  "2026-10-12.parquet": 218829,
+  "2026-10-13.parquet": 1479362,
+  "2026-10-14.parquet": 824395,
+  "2026-10-15.parquet": 675351,
+  "2026-10-16.parquet": 1079414,
+  "2026-10-17.parquet": 1911830,
+  "2026-10-18.parquet": 1594290,
+  "2026-10-19.parquet": 1130673,
+  "2026-10-20.parquet": 689649,
+  "2026-10-21.parquet": 59563
+ },
+ "days_built": 50,
+ "days_skipped": {
+  "2026-09-28.parquet": "no labelled rows for 'de_nuke' in the given day files"
+ },
+ "stats": {
+  "position_rows_in_map": 19334823,
+  "position_rows_unmapped_match_key": 0,
+  "rows_dropped_sentinel_pid": 0,
+  "rows_player_id_0_kept": 1874664,
+  "rows_dropped_bad_coordinates": 318,
+  "rows_dropped_roster_overflow": 0,
+  "rows_dropped_unlabelled": 0,
+  "n_rows": 2794269,
+  "rounds_gapped": 0,
+  "frac_alive_slots": 0.6919342279434204,
+  "rows_per_split": {
+   "train": 2280938,
+   "val": 144276,
+   "test": 369055
+  },
+  "matches_per_split": {
+   "train": 1746,
+   "val": 112,
+   "test": 287
+  },
+  "frac_alive_coords_outside_window": {
+   "train": 0.0,
+   "val": 0.0,
+   "test": 0.0
+  }
+ },
+ "X_shape": [
+  2794269,
+  10,
+  6
+ ],
+ "elapsed_s": 28.9,
+ "day_dirs": [
+  "G:\\pureskill\\csds-cs2\\data\\positions_1hz"
+ ],
+ "maps_from": "catalog",
+ "fixed_window": false
+}

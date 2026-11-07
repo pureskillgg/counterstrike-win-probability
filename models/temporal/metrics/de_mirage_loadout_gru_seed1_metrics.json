@@ -1,0 +1,41 @@
+{
+ "map": "de_mirage",
+ "stem": "de_mirage",
+ "cache": "cache_snapshot_2026.parquet",
+ "loadout": true,
+ "gat": false,
+ "seed": 1,
+ "max_steps": 0,
+ "eval_every": 0,
+ "steps_run": 4593,
+ "lookback_s": 20,
+ "epochs": 3,
+ "history": [
+  {
+   "epoch": 1,
+   "train_loss": 0.46177342252509895,
+   "val_log_loss": 0.45952773094177246,
+   "seconds": 715.4
+  },
+  {
+   "epoch": 2,
+   "train_loss": 0.45524665106772133,
+   "val_log_loss": 0.45503413677215576,
+   "seconds": 1027.5
+  },
+  {
+   "epoch": 3,
+   "train_loss": 0.4528192239703129,
+   "val_log_loss": 0.45616021752357483,
+   "seconds": 1532.9
+  }
+ ],
+ "test_log_loss": 0.4510118067264557,
+ "test_ci95_match_bootstrap": [
+  0.4449388760231961,
+  0.45725957436125314
+ ],
+ "test_rows": 865974,
+ "test_matches": 687,
+ "device": "cuda"
+}

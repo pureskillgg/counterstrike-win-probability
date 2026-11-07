@@ -1,0 +1,43 @@
+{
+ "tag": "allmaps_gru_loadout_walk",
+ "maps": [
+  "de_mirage",
+  "de_dust2",
+  "de_ancient",
+  "de_anubis",
+  "de_inferno",
+  "de_nuke",
+  "de_cache"
+ ],
+ "scope": "all maps (train, validation); de_mirage test",
+ "seed": 0,
+ "lookback_s": 20,
+ "epochs": 3,
+ "selected_epoch": 2,
+ "history": [
+  {
+   "epoch": 1,
+   "train_loss": 0.45427524258236385,
+   "val_log_loss": 0.45101818442344666,
+   "seconds": 175.9
+  },
+  {
+   "epoch": 2,
+   "train_loss": 0.4501264786355523,
+   "val_log_loss": 0.4504123032093048,
+   "seconds": 345.9
+  },
+  {
+   "epoch": 3,
+   "train_loss": 0.447541072932414,
+   "val_log_loss": 0.45261749625205994,
+   "seconds": 516.0
+  }
+ ],
+ "test_log_loss": 0.4489381015300751,
+ "test_rows": 865974,
+ "test_matches": 687,
+ "device": "cuda",
+ "train_rows": 25582731,
+ "val_rows": 1515228
+}

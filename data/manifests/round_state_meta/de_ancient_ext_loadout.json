@@ -1,0 +1,30 @@
+{
+ "map": "de_ancient",
+ "in_stem": "de_ancient_ext",
+ "out_stem": "de_ancient_ext",
+ "maps_from": "catalog",
+ "features": [
+  "health",
+  "armor",
+  "helmet",
+  "defuser",
+  "money",
+  "equip_value",
+  "defusing",
+  "has_primary",
+  "has_secondary",
+  "has_flash",
+  "has_smoke",
+  "has_he_or_fire"
+ ],
+ "rows_expected": 4376026,
+ "shape": [
+  4376026,
+  10,
+  12
+ ],
+ "slot_values_written": 30361902,
+ "position_rows_without_status": 0,
+ "days_skipped": {},
+ "elapsed_s": 29.8
+}

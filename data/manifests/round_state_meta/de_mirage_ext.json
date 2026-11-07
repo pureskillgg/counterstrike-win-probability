@@ -1,0 +1,55 @@
+{
+ "map": "de_mirage",
+ "split_codes": {
+  "train": 0,
+  "val": 1,
+  "test": 2
+ },
+ "window": {
+  "xy_min": -2655.97265625,
+  "xy_max": 1455.9708251953125,
+  "z_min": -367.96875,
+  "z_max": 68.09468078613281
+ },
+ "window_train_rows_by_day": {},
+ "days_built": 51,
+ "days_skipped": {},
+ "stats": {
+  "position_rows_in_map": 49232328,
+  "position_rows_unmapped_match_key": 0,
+  "rows_dropped_sentinel_pid": 0,
+  "rows_player_id_0_kept": 4792246,
+  "rows_dropped_bad_coordinates": 507,
+  "rows_dropped_roster_overflow": 0,
+  "rows_dropped_unlabelled": 0,
+  "n_rows": 7047347,
+  "rounds_gapped": 0,
+  "frac_alive_slots": 0.6985865831375122,
+  "rows_per_split": {
+   "train": 5838536,
+   "val": 341334,
+   "test": 867477
+  },
+  "matches_per_split": {
+   "train": 4535,
+   "val": 275,
+   "test": 688
+  },
+  "frac_alive_coords_outside_window": {
+   "train": 1.63481896280464e-08,
+   "val": 9.760858955588093e-07,
+   "test": 1.649597184863428e-07
+  }
+ },
+ "X_shape": [
+  7047347,
+  10,
+  6
+ ],
+ "elapsed_s": 186.2,
+ "day_dirs": [
+  "G:\\pureskill\\csds-cs2\\data\\positions_1hz"
+ ],
+ "maps_from": "catalog",
+ "fixed_window": true
+}

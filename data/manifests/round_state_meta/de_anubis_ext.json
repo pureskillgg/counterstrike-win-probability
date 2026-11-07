@@ -1,0 +1,108 @@
+{
+ "map": "de_anubis",
+ "split_codes": {
+  "train": 0,
+  "val": 1,
+  "test": 2
+ },
+ "window": {
+  "xy_min": -1971.9610595703125,
+  "xy_max": 3168.279052734375,
+  "z_min": -192.96875,
+  "z_max": 215.65625,
+  "n_train_rows": 24379349
+ },
+ "window_train_rows_by_day": {
+  "2026-09-01.parquet": 37536,
+  "2026-09-02.parquet": 29506,
+  "2026-09-03.parquet": 13795,
+  "2026-09-04.parquet": 47155,
+  "2026-09-05.parquet": 37170,
+  "2026-09-06.parquet": 61355,
+  "2026-09-07.parquet": "skipped: no train rows for this map in the given day files; cannot fit a window",
+  "2026-09-08.parquet": 91074,
+  "2026-09-09.parquet": 36502,
+  "2026-09-10.parquet": 68625,
+  "2026-09-11.parquet": 5605,
+  "2026-09-12.parquet": 57141,
+  "2026-09-13.parquet": 62186,
+  "2026-09-14.parquet": 15992,
+  "2026-09-15.parquet": 36481,
+  "2026-09-16.parquet": 62052,
+  "2026-09-17.parquet": 60226,
+  "2026-09-18.parquet": 45538,
+  "2026-09-19.parquet": 44003,
+  "2026-09-20.parquet": 69483,
+  "2026-09-21.parquet": 52061,
+  "2026-09-22.parquet": 44352,
+  "2026-09-23.parquet": 44143,
+  "2026-09-24.parquet": 27042,
+  "2026-09-25.parquet": 79683,
+  "2026-09-26.parquet": 47833,
+  "2026-09-27.parquet": 36757,
+  "2026-09-28.parquet": 30478,
+  "2026-09-29.parquet": 59167,
+  "2026-09-30.parquet": 42409,
+  "2026-10-01.parquet": 49673,
+  "2026-10-02.parquet": 14789,
+  "2026-10-03.parquet": 39956,
+  "2026-10-04.parquet": 58254,
+  "2026-10-05.parquet": 34974,
+  "2026-10-06.parquet": 76029,
+  "2026-10-07.parquet": 40929,
+  "2026-10-08.parquet": 1031977,
+  "2026-10-09.parquet": 1998352,
+  "2026-10-10.parquet": 2482340,
+  "2026-10-11.parquet": 3042476,
+  "2026-10-12.parquet": 270338,
+  "2026-10-13.parquet": 2619324,
+  "2026-10-14.parquet": 1188519,
+  "2026-10-15.parquet": 816257,
+  "2026-10-16.parquet": 1562536,
+  "2026-10-17.parquet": 2576468,
+  "2026-10-18.parquet": 2511598,
+  "2026-10-19.parquet": 1639155,
+  "2026-10-20.parquet": 958306,
+  "2026-10-21.parquet": 21749
+ },
+ "days_built": 51,
+ "days_skipped": {},
+ "stats": {
+  "position_rows_in_map": 29264225,
+  "position_rows_unmapped_match_key": 0,
+  "rows_dropped_sentinel_pid": 0,
+  "rows_player_id_0_kept": 2834373,
+  "rows_dropped_bad_coordinates": 226,
+  "rows_dropped_roster_overflow": 0,
+  "rows_dropped_unlabelled": 0,
+  "n_rows": 4179752,
+  "rounds_gapped": 0,
+  "frac_alive_slots": 0.7001372575759888,
+  "rows_per_split": {
+   "train": 3480839,
+   "val": 170344,
+   "test": 528569
+  },
+  "matches_per_split": {
+   "train": 2583,
+   "val": 126,
+   "test": 395
+  },
+  "frac_alive_coords_outside_window": {
+   "train": 0.0,
+   "val": 0.0,
+   "test": 9.028336970398882e-08
+  }
+ },
+ "X_shape": [
+  4179752,
+  10,
+  6
+ ],
+ "elapsed_s": 48.5,
+ "day_dirs": [
+  "G:\\pureskill\\csds-cs2\\data\\positions_1hz"
+ ],
+ "maps_from": "catalog",
+ "fixed_window": false
+}

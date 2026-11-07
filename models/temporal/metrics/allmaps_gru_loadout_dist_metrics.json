@@ -1,0 +1,43 @@
+{
+ "tag": "allmaps_gru_loadout_dist",
+ "maps": [
+  "de_mirage",
+  "de_dust2",
+  "de_ancient",
+  "de_anubis",
+  "de_inferno",
+  "de_nuke",
+  "de_cache"
+ ],
+ "scope": "all maps (train, validation); de_mirage test",
+ "seed": 0,
+ "lookback_s": 20,
+ "epochs": 3,
+ "selected_epoch": 2,
+ "history": [
+  {
+   "epoch": 1,
+   "train_loss": 0.4542692541368296,
+   "val_log_loss": 0.4506686329841614,
+   "seconds": 413.6
+  },
+  {
+   "epoch": 2,
+   "train_loss": 0.4502768137525545,
+   "val_log_loss": 0.4503481984138489,
+   "seconds": 757.8
+  },
+  {
+   "epoch": 3,
+   "train_loss": 0.4477854246757641,
+   "val_log_loss": 0.4528878331184387,
+   "seconds": 1078.2
+  }
+ ],
+ "test_log_loss": 0.448555052280426,
+ "test_rows": 865974,
+ "test_matches": 687,
+ "device": "cuda",
+ "train_rows": 25582731,
+ "val_rows": 1515228
+}

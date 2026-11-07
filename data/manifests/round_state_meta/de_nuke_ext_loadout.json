@@ -1,0 +1,32 @@
+{
+ "map": "de_nuke",
+ "in_stem": "de_nuke_ext",
+ "out_stem": "de_nuke_ext",
+ "maps_from": "catalog",
+ "features": [
+  "health",
+  "armor",
+  "helmet",
+  "defuser",
+  "money",
+  "equip_value",
+  "defusing",
+  "has_primary",
+  "has_secondary",
+  "has_flash",
+  "has_smoke",
+  "has_he_or_fire"
+ ],
+ "rows_expected": 2794269,
+ "shape": [
+  2794269,
+  10,
+  12
+ ],
+ "slot_values_written": 19334505,
+ "position_rows_without_status": 0,
+ "days_skipped": {
+  "2026-09-28.parquet": "no labelled rows for 'de_nuke' in the given day files"
+ },
+ "elapsed_s": 15.1
+}

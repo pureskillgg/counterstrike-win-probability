@@ -1,0 +1,37 @@
+{
+ "map": "de_mirage",
+ "stem": "de_mirage_ext",
+ "cache": "cache_snapshot_2026_ext.parquet",
+ "model": "THGNN-lite (data-driven map graph, 20 s window at 1 Hz)",
+ "epochs": 3,
+ "selected_epoch": 1,
+ "selection": "lowest validation log loss",
+ "history": [
+  {
+   "epoch": 1,
+   "train_loss": 0.49873264849020965,
+   "val_log_loss": 0.45338839292526245,
+   "seconds": 500.8
+  },
+  {
+   "epoch": 2,
+   "train_loss": 0.4904978623645711,
+   "val_log_loss": 0.4592576026916504,
+   "seconds": 1001.6
+  },
+  {
+   "epoch": 3,
+   "train_loss": 0.48262475673571353,
+   "val_log_loss": 0.46634408831596375,
+   "seconds": 1503.2
+  }
+ ],
+ "test_log_loss": 0.4498347043991089,
+ "test_ci95_match_bootstrap": [
+  0.4441901274699972,
+  0.45586036637031935
+ ],
+ "test_rows": 865974,
+ "test_matches": 687,
+ "device": "cuda"
+}

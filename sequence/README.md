@@ -16,6 +16,7 @@ Deep sequence models (GRU, LSTM, TCN, transformer, minGRU, minLSTM, LRU, xLSTM v
 ## Key settings
 - Inputs: per-second state, loadout and 24 train-only position features (`--dist`), lookback 20 s.
 - Training: lr 1e-3, batch 2048, 30,000 steps in the pod runs (the script default is 12,000; the pod runs pass `--steps 30000`), final-step scoring, no checkpoint selection, `--no_test_load`.
+- Data: the round-state arrays for 7 maps, 23,716 matches uploaded 1 Sep to 21 Oct 2026. The split comes from the arrays: 19,486 train, 1,169 validation, 3,061 test (test not loaded). 84 matches from the protected 21-25 Oct batch are in train. Per-day counts: `data/manifests/round_state_days.csv`. Retraining: [TRAINING.agents.md](../TRAINING.agents.md).
 - Objective: `--objective gdt` (GDT-equivalent per-second weights) or the default log loss. `--save_weights` writes final weights. `--dropout` and `--weight_decay` default to off.
 
 ## Results (validation only, as of 6 Nov 2026)
