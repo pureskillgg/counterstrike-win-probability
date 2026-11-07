@@ -66,7 +66,7 @@ flowchart LR
 | One prediction (waterfalls, four seconds) | Done | [local/](local/), [examples](local/examples.csv) |
 | Contrasts between two predictions | Done | [local/](local/) |
 | Interactions (2,000 seconds) | Done | [top pairs](local/interactions_top_pairs.csv) |
-| Drop-group retrains, scored on GDT | Done, 11 sets × 3 seeds | [section](#drop-group-ablations-scored-on-gdt) |
+| Drop-group retrains, scored on GDT | Done, 13 sets × 3 seeds | [section](#drop-group-ablations-scored-on-gdt) |
 | Calibration per second and per round | Done | [section](#calibration) |
 | Rebuilding the design matrix from raw tomes | **Not verified** | [handover item 1](../../handover/explainability/README.md#open-items) |
 | Oct 9–10 match counts | **Open**, sources disagree | [caveats](#caveats) |
@@ -197,7 +197,7 @@ What the table says:
 - **Alive counts.** Removing them does not reduce GDT, so the loadout inputs carry the alive signal.
 - **Round state.** Removing it from the full model costs nothing on GDT. Alone, it scores below the lookup table.
 - **Loadout only** beats the table (GDT 0.0098). Round state, position and map together add about 0.016 GDT on top of it.
-- **Positional vs non-positional.** Dropping all 24 position inputs (the non-positional 59-input model) costs 0.0049 GDT and 0.0034 log loss. The two groups dropped alone, VIEW and bomb geometry, are about 0.0005 GDT each. Site-and-spread and contact geometry were never dropped alone, so most of the position effect is not yet split by group.
+- **Positional vs non-positional.** Dropping all 24 position inputs (the non-positional 59-input model) costs 0.0049 GDT and 0.0034 log loss. Dropped alone, site and spread costs 0.0020 GDT, VIEW and bomb geometry about 0.0005 each, and contact less than 0.0001 ([table](tables/drop_ablation_83_gdt.csv)). Site and spread carries most of the position effect.
 - **83 against the 77s.** The checklist fallback (77, no armour sums and no VIEW) costs 0.0003 GDT and 0.00028 log loss against the full model, and the sign holds in every seed. Minus round state (77) changes GDT by −0.0001, which is within seed noise, and adds 0.00083 log loss.
 - **Armour sums and blind.** No measurable effect on GDT. The team's notes asked to drop the armour sums and to rebuild the blind inputs.
 - **View and bomb geometry.** Each gives a small, consistent gain of about 0.0005 GDT. For each, the paired interval excludes zero in two seeds and touches it in the third.

@@ -1,20 +1,20 @@
 # Models
 
-Every model file kept in git. Each XGBoost model is a JSON booster with a `.meta.json` next to it that lists its inputs and training settings. To retrain any of them, see [TRAINING.md](../TRAINING.md).
+Every model file kept in git. Each XGBoost model is a JSON booster. Most have a `.meta.json` next to them listing inputs and training settings. The five `winprob_v8_seed` files share `winprob_v8_ensemble.meta.json`, and `xgb_primary_seed0` uses `xgb_primary_seed0_meta.json`. To retrain them, see [TRAINING.md](../TRAINING.md); v1 to v3 can only be approximated.
 
 ## Which model is served
 
 The serving code, `scripts/serving/win_probability.py`, uses **`winprob_v6_drop_heavy`** (57 inputs) by default. It describes that model as "the submission, decided 19 October".
 
-Two metadata files also say `served: true`: `winprob_v7_basic_scorelead` and `winprob_v8_ensemble`. Those flags predate the 19 October decision and conflict with the serving code. Treat the serving code as the record until the owner confirms.
+Two metadata files also say `served: true`: `winprob_v7_basic_scorelead` and `winprob_v8_ensemble`. Those flags were edited by hand after the runs; rerunning the scripts writes `served: false`. They conflict with the serving code. Treat the serving code as the record until the owner confirms.
 
 ## XGBoost models
 
 | File | Inputs | Created | What it is |
 |---|---|---|---|
-| `winprob_v6_drop_heavy` | 57 | Oct 2026 | Serving default. The 59 snapshot inputs without the heavy-weapon group. |
+| `winprob_v6_drop_heavy` | 57 | Oct 2026 | Serving default in code. The 59 snapshot inputs without the two heavy-weapon inputs. Its metadata says `served: false`. |
 | `winprob_v8_seed0` to `seed4` (+ `winprob_v8_ensemble.meta.json`) | 58 | Oct 2026 | Mean of five seeds: v6's inputs plus the score lead. |
-| `winprob_v8_tuned` | 58 | Oct 2026 | v8 inputs with the selected hyperparameters. |
+| `winprob_v8_tuned` | 58 | Oct 2026 | The same booster as `winprob_v8_seed0`: the hyperparameter search picked the baseline settings. |
 | `winprob_v7_basic_scorelead` | 14 | Oct 2026 | Event channels only, plus the score lead. |
 | `winprob_v7_59_drop_heavy_scorelead` | 58 | Oct 2026 | Same inputs as v8, one seed. |
 | `winprob_v6_selected` | 38 | Oct 2026 | Loadout inputs selected on validation. |
@@ -22,16 +22,16 @@ Two metadata files also say `served: true`: `winprob_v7_basic_scorelead` and `wi
 | `winprob_v1` to `v4` | 59 | 14 to 16 Oct | Earlier 59-input models. |
 | `winprob_v1_basic` to `v4_basic` | 13 | 14 to 16 Oct | Earlier event-only models. |
 | `winprob_xgb83_final` | 83 | 5 Nov | 59 base inputs plus position, view and blind inputs. A CPU refit; the subject of the explainability report. Not served. |
-| `xgb_primary_seed0` | 10 | 12 Oct | First model, on tome `2026-10-01_to_08` (1,521 matches). |
-| `winprob_test` | 15 | 14 Oct | Pipeline test model. |
-| `golden_winprob_v1` to `v3` (+ `_basic`) | | | Reference boosters with no metadata file. Their purpose isn't recorded. |
+| `xgb_primary_seed0` | 10 | 12 Oct | Baseline model, on tome `2026-10-01_to_08` (1,521 matches). |
+| `winprob_test` | 15 | 14 Oct | Early model with an older metadata format. Its purpose isn't recorded. |
+| `golden_winprob_v1` to `v3` (+ `_basic`) | | | Not models: test fixtures written by `scripts/model/stress_test_winprob.py --write-golden`. |
 
-Every model from v2 onwards records `split: random` in its metadata: matches are assigned to train, validation or test at random by match.
+Every model from v2 onwards records `split: random`. Matches go to train, validation or test by a hash of the match key, using the split manifest present at training time ([TRAINING.md](../TRAINING.md) says which one). The 83-input model uses the same split.
 
 ## Sequence and temporal models
 
 - `seq_gdt_weights/`: the 47 sequence models trained on the GDT objective (one `.pt` and one metrics JSON per arm and seed), plus four extra TCN runs in `weights_tcnr*/`. Results are in [sequence/README.md](../sequence/README.md).
-- `temporal/`: 43 earlier temporal and graph models (GRU on loadouts, graph and navigation-graph variants, mostly on Mirage).
+- `temporal/`: 40 earlier temporal and graph models (GRU on loadouts, graph and navigation-graph variants, mostly on Mirage), with their run metrics in `temporal/metrics/`.
 - `round_state/de_mirage_h3.pt`: an earlier round-state model.
 
 ## Not in git

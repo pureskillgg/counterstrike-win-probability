@@ -5,7 +5,7 @@ Models that estimate, second by second, the probability that the CT side wins a 
 ## Start here
 
 - **[models/README.md](models/README.md)**: which model file is which. The serving code uses `winprob_v6_drop_heavy` (XGBoost, 57 inputs).
-- **[TRAINING.md](TRAINING.md)**: how to retrain any model, and which days of data each one used.
+- **[TRAINING.md](TRAINING.md)**: how to retrain each model, and which upload days each one used.
 - **[DATA.md](DATA.md)**: where the data lives, how it was built, and what's known about personal data.
 - **[sequence/README.md](sequence/README.md)**: the sequence-model screen (GRU, LSTM, transformers, xLSTM and others) against XGBoost.
 - **[docs/explainability/README.md](docs/explainability/README.md)**: what drives the 83-input XGBoost model.
@@ -15,9 +15,9 @@ Models that estimate, second by second, the probability that the CT side wins a 
 
 All numbers are validation results unless marked. Lower log loss is better; higher GDT is better.
 
-- **Served XGBoost (v6, 57 inputs):** validation log loss 0.4536; frozen-test log loss 0.4564.
+- **Serving-default XGBoost (v6, 57 inputs):** validation log loss 0.4536; frozen-test log loss 0.4564.
 - **XGBoost with positions (83 inputs):** validation log loss 0.4503, the mean of three seeds. GDT 0.0254 on the 297-match validation proxy. October 26 to 31 holdout, read once: 0.4523.
-- **Sequence models:** none beats the GRU control on GDT by the pre-registered bar. Stopping the GRU at 25,000 steps instead of 30,000 lowered its log loss on all five seeds, by 0.0011 on average.
+- **Sequence models:** none beats the GRU control on GDT by the pre-registered bar. Training the GRU for 25,000 steps instead of 30,000 lowered its validation log loss on all five seeds, by 0.0011 on average.
 
 ## What's where
 
@@ -37,7 +37,7 @@ All numbers are validation results unless marked. Lower log loss is better; high
 ## Conventions
 
 - Each `DOCUMENT.md` is for people. An optional `DOCUMENT.agents.md` next to it carries the detail an agent needs.
-- Choices are made on validation data only. The frozen test and the holdouts are read once, after a choice is fixed.
-- Models are compared on the same rows and the same seed.
+- Choices are made on validation data only. Frozen-test numbers were reported for several candidates, so treat them as descriptive. The 26 to 31 October holdout was read once, after the 83-input choice was fixed.
+- Models are compared on the same rows. Comparisons over several seeds pair each seed with the same seed of the other model.
 
 The code is under the MIT License, © FPS Critic, Inc.

@@ -22,3 +22,9 @@ meridian.toml
 
 # small model weights are kept in git (see models/README.md)
 !models/**/*.pt
+
+# Windows crash dumps from MSYS tools
+*.stackdump
+
+# small sequence result summaries are kept in git
+!sequence/results/
