@@ -1,0 +1,143 @@
+{
+  "script": "scripts/model/exp_scorelead_leak.py",
+  "input_files": {
+    "grid": "G:\\pureskill\\csds-cs2\\data\\combined\\grid.parquet",
+    "rounds": "G:\\pureskill\\csds-cs2\\data\\combined\\rounds.parquet"
+  },
+  "store": "data/combined",
+  "era_filter": "2026",
+  "definitions": {
+    "round_present": "round has at least one row in grid.parquet with era 2026, and rounds.parquet has use == True for it",
+    "consecutive_pair": "same match_key and round(r) - round(r-1) == 1, both rounds present; rounds sorted by round number within match",
+    "score_lead_diag": "grid column = ct_sc - t_sc at freeze end (rounds.parquet, fill_null(0)); see scripts/data/make_grid.py line 75",
+    "d": "score_lead_diag(r) - score_lead_diag(r-1)",
+    "sign": "sign(x) = +1 if x > 0, -1 if x < 0; d == 0 pairs are excluded from all shares",
+    "prev": "+1 if CT won round r-1 (grid label_ct_win = 1; equals rounds.final == 3), else -1",
+    "cur": "+1 if CT won round r (grid label_ct_win = 1; equals rounds.final == 3), else -1",
+    "shares": "share of pairs with d != 0 where sign(d) == prev, sign(d) == -prev, sign(d) == cur, sign(d) == -cur",
+    "side_swap": "pair (r-1, r) crosses a side swap iff rounds.swap_boundary(r-1) is True; swap_boundary = prepare.swap_after(round, max_rounds_final) = (round == max_rounds_final // 2) or (round > max_rounds_final and (round - max_rounds_final - 3) % 6 == 0); recomputed from max_rounds_final and checked against the stored column",
+    "excluding_side_swap": "same shares recomputed on pairs with prev_swap == False",
+    "prev_eq_cur_winner": "diagnostic: share of pairs where the CT-win sign of round r-1 equals that of round r (a winner-repeat share, not a score-lead share)"
+  },
+  "checks": {
+    "grid_rows_2026": 19248633,
+    "rounds_use_2026": 282284,
+    "rounds_present_in_grid_2026": 282284,
+    "grid_rounds_without_rounds_row": 0,
+    "rounds_in_rounds_file_not_in_grid": 0,
+    "rounds_with_more_than_one_distinct_score_lead": 0,
+    "rounds_with_more_than_one_distinct_label": 0,
+    "label_ct_win_vs_final_mismatch": 0,
+    "swap_boundary_vs_recomputed_mismatch": 0,
+    "pairs_with_null_label_excluded": 0
+  },
+  "counts": {
+    "consecutive_pairs": 259948,
+    "pairs_d_zero": 0,
+    "pairs_d_nonzero": 259948,
+    "pairs_crossing_side_swap_all": 14812,
+    "pairs_crossing_side_swap_nonzero_d": 14812,
+    "pairs_no_side_swap_nonzero_d": 245136,
+    "sign_d_counts": {
+      "-1": 125293,
+      "1": 134655
+    },
+    "no_swap_pairs_with_sign_d_equal_prev": 245136
+  },
+  "shares_pct": {
+    "all_nonzero_d_pairs": {
+      "n": 259948,
+      "prev_same": 96.7947,
+      "prev_opp": 3.2053,
+      "cur_same": 62.219,
+      "cur_opp": 37.781,
+      "prev_eq_cur_winner": 62.1974
+    },
+    "excluding_side_swap_pairs": {
+      "n": 245136,
+      "prev_same": 100.0,
+      "prev_opp": 0.0,
+      "cur_same": 62.9067,
+      "cur_opp": 37.0933,
+      "prev_eq_cur_winner": 62.9067
+    },
+    "side_swap_pairs_only": {
+      "n": 14812,
+      "prev_same": 43.7483,
+      "prev_opp": 56.2517,
+      "cur_same": 50.8372,
+      "cur_opp": 49.1628,
+      "prev_eq_cur_winner": 50.4591
+    }
+  },
+  "counts_raw": {
+    "all_nonzero_d_pairs": {
+      "pairs": 259948,
+      "prev_same": 251616,
+      "prev_opp": 8332,
+      "cur_same": 161737,
+      "cur_opp": 98211,
+      "prev_eq_cur_winner": 161681
+    },
+    "excluding_side_swap_pairs": {
+      "pairs": 245136,
+      "prev_same": 245136,
+      "prev_opp": 0,
+      "cur_same": 154207,
+      "cur_opp": 90929,
+      "prev_eq_cur_winner": 154207
+    },
+    "side_swap_pairs_only": {
+      "pairs": 14812,
+      "prev_same": 6480,
+      "prev_opp": 8332,
+      "cur_same": 7530,
+      "cur_opp": 7282,
+      "prev_eq_cur_winner": 7474
+    }
+  },
+  "reference": {
+    "consecutive_pairs": 259948,
+    "prev_same_pct": 95.13,
+    "prev_opp_pct": 0.37,
+    "cur_same_pct": 59.93,
+    "cur_opp_pct": 35.58,
+    "reference_internal_sum_pct": {
+      "prev": 95.5,
+      "cur": 95.51
+    },
+    "note": "a binary sign over one denominator sums to 100; the reference pairs sum to about 95.5"
+  },
+  "comparison": {
+    "consecutive_pairs": {
+      "reference": 259948,
+      "ours": 259948,
+      "match": true
+    },
+    "prev_same_pct": {
+      "reference": 95.13,
+      "ours_2dp": 96.79,
+      "match": false,
+      "diff_pp": 1.6647
+    },
+    "prev_opp_pct": {
+      "reference": 0.37,
+      "ours_2dp": 3.21,
+      "match": false,
+      "diff_pp": 2.8353
+    },
+    "cur_same_pct": {
+      "reference": 59.93,
+      "ours_2dp": 62.22,
+      "match": false,
+      "diff_pp": 2.289
+    },
+    "cur_opp_pct": {
+      "reference": 35.58,
+      "ours_2dp": 37.78,
+      "match": false,
+      "diff_pp": 2.201
+    },
+    "all_match": false
+  }
+}

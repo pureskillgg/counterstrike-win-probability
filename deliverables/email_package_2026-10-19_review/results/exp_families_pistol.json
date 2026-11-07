@@ -1,0 +1,81 @@
+{
+ "families": {
+  "xgboost": {
+   "validation_logloss": 0.4528313501837507,
+   "test_logloss": 0.4557829663383278,
+   "best_iteration": 1080,
+   "device": "cuda"
+  },
+  "catboost (GPU, no monotone constraints)": {
+   "validation_logloss": 0.4528270811914173,
+   "test_logloss": 0.4558818767325549,
+   "best_iteration": 1523,
+   "device": "cuda",
+   "test_delta_vs_xgboost": 9.891039422713492e-05,
+   "test_delta_ci95": [
+    -6.745835071393045e-05,
+    0.0002744095513509539
+   ],
+   "validation_delta_vs_xgboost": -4.270357881651598e-06,
+   "validation_delta_ci95": [
+    -0.00028227859261166656,
+    0.00029188866216237644
+   ]
+  },
+  "lightgbm": {
+   "validation_logloss": 0.4527166978954443,
+   "test_logloss": 0.45571213681793793,
+   "best_iteration": 1207,
+   "device": "cpu",
+   "test_delta_vs_xgboost": -7.082952038994386e-05,
+   "test_delta_ci95": [
+    -0.0001606450458575019,
+    1.9746380893998386e-05
+   ],
+   "validation_delta_vs_xgboost": -0.0001146536538546837,
+   "validation_delta_ci95": [
+    -0.00025899743378695987,
+    3.288952947594831e-05
+   ]
+  }
+ },
+ "pistol": {
+  "pistol rounds (1, 13)": {
+   "train_seconds": 1019038,
+   "test_seconds": 294872,
+   "test_matches": 3033,
+   "main_test_logloss": 0.5192231696994863,
+   "dedicated_test_logloss": 0.5203252157201942,
+   "dedicated_minus_main": 0.0011020460207078198,
+   "ci95": [
+    0.00010738000664153436,
+    0.0021093330403064393
+   ],
+   "best_iteration": 360,
+   "device": "cuda"
+  },
+  "round after pistol (2, 14)": {
+   "train_seconds": 1104977,
+   "test_seconds": 320192,
+   "test_matches": 3032,
+   "main_test_logloss": 0.31361900523165753,
+   "dedicated_test_logloss": 0.31536871414226686,
+   "dedicated_minus_main": 0.0017497089106092937,
+   "ci95": [
+    0.00012914211471975483,
+    0.0032518385916756255
+   ],
+   "best_iteration": 377,
+   "device": "cuda"
+  },
+  "overall_test": {
+   "main_test_logloss": 0.4556802999550573,
+   "with_split_test_logloss": 0.45590404151986486,
+   "split_minus_main": 0.0002237415648075655,
+   "ci95": [
+    7.46224493294998e-05,
+    0.00037075005945852365
+   ]
+  }
+ }
+}

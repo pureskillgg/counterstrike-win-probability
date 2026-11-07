@@ -1,0 +1,72 @@
+{
+  "de_ancient": {
+    "pos_x": -2953.0,
+    "pos_y": 2164.0,
+    "scale": 5.0,
+    "size": 1024,
+    "file": "maps/de_ancient.png",
+    "sha256": "cb6adca45e32ecff0b131f742c129324ba5e2dd695247f61d2d21d85ef2c581c",
+    "source": "https://github.com/pnxenopoulos/awpy-data/releases/download/2000932/images.zip (member radars/de_ancient.png); transform from https://github.com/pnxenopoulos/awpy-data/releases/download/2000932/map_data.json",
+    "licence": "MIT (pnxenopoulos/awpy-data LICENSE, Copyright (c) 2025 Peter Xenopoulos) covers the packaging and the coordinate table. The radar images are derived from Valve CS2 game assets, which are not MIT-licensed; that licence is not verified here."
+  },
+  "de_anubis": {
+    "pos_x": -2796.0,
+    "pos_y": 3328.0,
+    "scale": 5.22,
+    "size": 1024,
+    "file": "maps/de_anubis.png",
+    "sha256": "b8f07c36edb13e34dbfaabf9a74e057961ac4fb29545d98d16ff9b7c4e6d1206",
+    "source": "https://github.com/pnxenopoulos/awpy-data/releases/download/2000932/images.zip (member radars/de_anubis.png); transform from https://github.com/pnxenopoulos/awpy-data/releases/download/2000932/map_data.json",
+    "licence": "MIT (pnxenopoulos/awpy-data LICENSE, Copyright (c) 2025 Peter Xenopoulos) covers the packaging and the coordinate table. The radar images are derived from Valve CS2 game assets, which are not MIT-licensed; that licence is not verified here."
+  },
+  "de_cache": {
+    "pos_x": -2000.0,
+    "pos_y": 3250.0,
+    "scale": 5.5,
+    "size": 1024,
+    "file": "maps/de_cache.png",
+    "sha256": "94c058b3deaa5cc24be81006322da3af1ef0bbded116160a3fcdea6d87227967",
+    "source": "https://github.com/pnxenopoulos/awpy-data/releases/download/2000932/images.zip (member radars/de_cache.png); transform from https://github.com/pnxenopoulos/awpy-data/releases/download/2000932/map_data.json",
+    "licence": "MIT (pnxenopoulos/awpy-data LICENSE, Copyright (c) 2025 Peter Xenopoulos) covers the packaging and the coordinate table. The radar images are derived from Valve CS2 game assets, which are not MIT-licensed; that licence is not verified here."
+  },
+  "de_dust2": {
+    "pos_x": -2476.0,
+    "pos_y": 3239.0,
+    "scale": 4.4,
+    "size": 1024,
+    "file": "maps/de_dust2.png",
+    "sha256": "0828297130ce26db25a299806ff743df9104de634a3e64b52b358f6f4399354d",
+    "source": "https://github.com/pnxenopoulos/awpy-data/releases/download/2000932/images.zip (member radars/de_dust2.png); transform from https://github.com/pnxenopoulos/awpy-data/releases/download/2000932/map_data.json",
+    "licence": "MIT (pnxenopoulos/awpy-data LICENSE, Copyright (c) 2025 Peter Xenopoulos) covers the packaging and the coordinate table. The radar images are derived from Valve CS2 game assets, which are not MIT-licensed; that licence is not verified here."
+  },
+  "de_inferno": {
+    "pos_x": -2087.0,
+    "pos_y": 3870.0,
+    "scale": 4.9,
+    "size": 1024,
+    "file": "maps/de_inferno.png",
+    "sha256": "53e1d660d5e61a9b876cc56725c2e891c56efcb788657520fa9c10fec321dce3",
+    "source": "https://github.com/pnxenopoulos/awpy-data/releases/download/2000932/images.zip (member radars/de_inferno.png); transform from https://github.com/pnxenopoulos/awpy-data/releases/download/2000932/map_data.json",
+    "licence": "MIT (pnxenopoulos/awpy-data LICENSE, Copyright (c) 2025 Peter Xenopoulos) covers the packaging and the coordinate table. The radar images are derived from Valve CS2 game assets, which are not MIT-licensed; that licence is not verified here."
+  },
+  "de_mirage": {
+    "pos_x": -3230.0,
+    "pos_y": 1713.0,
+    "scale": 5.0,
+    "size": 1024,
+    "file": "maps/de_mirage.png",
+    "sha256": "c8032f6c83ffca63c0a20ebdcc598a0e1aa618efd746e381e2db26f33a4a964f",
+    "source": "https://github.com/pnxenopoulos/awpy-data/releases/download/2000932/images.zip (member radars/de_mirage.png); transform from https://github.com/pnxenopoulos/awpy-data/releases/download/2000932/map_data.json",
+    "licence": "MIT (pnxenopoulos/awpy-data LICENSE, Copyright (c) 2025 Peter Xenopoulos) covers the packaging and the coordinate table. The radar images are derived from Valve CS2 game assets, which are not MIT-licensed; that licence is not verified here."
+  },
+  "de_nuke": {
+    "pos_x": -3453.0,
+    "pos_y": 2887.0,
+    "scale": 7.0,
+    "size": 1024,
+    "file": "maps/de_nuke.png",
+    "sha256": "21167d05292e80eebe7b068f0bba36a2e3f9116d154d96952a8366cdcc72e6b1",
+    "source": "https://github.com/pnxenopoulos/awpy-data/releases/download/2000932/images.zip (member radars/de_nuke.png); transform from https://github.com/pnxenopoulos/awpy-data/releases/download/2000932/map_data.json",
+    "licence": "MIT (pnxenopoulos/awpy-data LICENSE, Copyright (c) 2025 Peter Xenopoulos) covers the packaging and the coordinate table. The radar images are derived from Valve CS2 game assets, which are not MIT-licensed; that licence is not verified here."
+  }
+}

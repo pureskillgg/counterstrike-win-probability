@@ -1,0 +1,39 @@
+{
+ "test_seconds": 3956374,
+ "test_matches": 3059,
+ "production_test_logloss": 0.4556045509857458,
+ "event_only_test_logloss": 0.49869458983227605,
+ "event_only_minus_production": 0.043090038846530294,
+ "ci95": [
+  0.04144884278425559,
+  0.04488433352986828
+ ],
+ "n_boot": 1000,
+ "event_only_best_iteration": 548,
+ "groups": {
+  "pistol (1, 13)": {
+   "seconds": 294872,
+   "event_only_minus_production": 0.012045557721299768,
+   "ci95": [
+    0.008447713628705781,
+    0.01578552445988948
+   ]
+  },
+  "after pistol (2, 14)": {
+   "seconds": 320192,
+   "event_only_minus_production": 0.13906979777166076,
+   "ci95": [
+    0.12906072135247176,
+    0.1483632212256836
+   ]
+  },
+  "other rounds": {
+   "seconds": 3341310,
+   "event_only_minus_production": 0.036632151750931145,
+   "ci95": [
+    0.03476677124841855,
+    0.038516503884584115
+   ]
+  }
+ }
+}

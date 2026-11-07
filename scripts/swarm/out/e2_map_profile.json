@@ -1,0 +1,830 @@
+{
+ "definitions": "see module docstring",
+ "eras": {
+  "2026": {
+   "diagnostics": {
+    "header_matches": 1752,
+    "header_unique_keys": 1752,
+    "dup_groups": 47,
+    "dup_members": 99,
+    "dup_removed": 52,
+    "dup_removed_by_map": {
+     "de_mirage": 8,
+     "de_inferno": 6,
+     "de_anubis": 12,
+     "de_nuke": 5,
+     "de_dust2": 8,
+     "de_ancient": 7,
+     "de_vertigo": 3,
+     "de_cache": 3
+    },
+    "repeat_round_matches_dropped": 0,
+    "matches_after_dedupe": 1700,
+    "wingman_matches_after_dedupe": 147,
+    "wingman_clean_rounds_check": 0,
+    "round_end_rows_after_dedupe": 34906,
+    "player_count_dist_after_dedupe": {
+     "12": 1,
+     "2": 17,
+     "6": 30,
+     "3": 51,
+     "5": 15,
+     "4": 1943,
+     "11": 178,
+     "10": 31065,
+     "7": 66,
+     "9": 1351,
+     "8": 189
+    },
+    "clean_rounds": 31065,
+    "clean_matches": 1544,
+    "clean_rounds_with_10_player_info_slots": 30595,
+    "clean_rounds_with_player_info_slots_checked": 31062,
+    "clean_rounds_no_live_start": 3,
+    "tick_rate_values": {
+     "64": 31065
+    },
+    "clean_matches_without_bomb_rows": 12,
+    "clean_rounds_in_matches_without_bomb_rows": 152,
+    "planted_rows_total": 18306,
+    "planted_rows_in_clean_rounds": 16447,
+    "planted_rows_before_live": 0,
+    "planted_rows_after_end": 1210,
+    "rounds_with_2plus_planted_rows": 0,
+    "deaths_in_clean_rounds": 226984,
+    "deaths_in_live_window": 222830,
+    "kills_in_live_window": 221809,
+    "team_kills_in_live_window": 416,
+    "self_kills_in_live_window": 155,
+    "deaths_no_attacker_side_in_live_window": 450
+   },
+   "maps": {
+    "de_mirage": {
+     "matches": 337,
+     "rounds": 6745,
+     "ct_wins": 3622,
+     "ct_win_rate": 0.5369903632320238,
+     "ct_ci95_wilson": [
+      0.5250729942012545,
+      0.5488656222330982
+     ],
+     "ct_ci95_match_cluster_boot": [
+      0.5230024665845346,
+      0.5511054390476333
+     ],
+     "low_n_flag": false,
+     "rounds_with_live_start": 6745,
+     "avg_live_round_len_s": 66.98028632320238,
+     "median_live_round_len_s": 63.90625,
+     "rounds_bomb_ok": 6732,
+     "planted_rounds": 3071,
+     "plant_rate": 0.4561794414735591,
+     "plant_to_end_mean_s": 23.099351799088243,
+     "plant_to_end_median_s": 22.765625,
+     "kills_per_round_mean": 7.146034099332839,
+     "kills_per_round_median": 7,
+     "ct_kills_per_round": 3.771979243884359,
+     "t_kills_per_round": 3.37405485544848,
+     "batch_split": {
+      "1008_rounds": 5044,
+      "1008_ct_rate": 0.5402458366375892,
+      "other_days_rounds": 1701,
+      "other_days_ct_rate": 0.527336860670194
+     }
+    },
+    "de_dust2": {
+     "matches": 307,
+     "rounds": 6061,
+     "ct_wins": 3086,
+     "ct_win_rate": 0.5091569048011879,
+     "ct_ci95_wilson": [
+      0.4965695135540457,
+      0.5217326961168373
+     ],
+     "ct_ci95_match_cluster_boot": [
+      0.4923451050709049,
+      0.5267195584005041
+     ],
+     "low_n_flag": false,
+     "rounds_with_live_start": 6059,
+     "avg_live_round_len_s": 66.40742851543159,
+     "median_live_round_len_s": 63.75,
+     "rounds_bomb_ok": 6041,
+     "planted_rounds": 2831,
+     "plant_rate": 0.46863102135408047,
+     "plant_to_end_mean_s": 22.510795655245495,
+     "plant_to_end_median_s": 21.890625,
+     "kills_per_round_mean": 7.130714639379436,
+     "kills_per_round_median": 7,
+     "ct_kills_per_round": 3.6817956758541013,
+     "t_kills_per_round": 3.448918963525334,
+     "batch_split": {
+      "1008_rounds": 4249,
+      "1008_ct_rate": 0.4963520828430219,
+      "other_days_rounds": 1812,
+      "other_days_ct_rate": 0.5391832229580574
+     }
+    },
+    "de_ancient": {
+     "matches": 210,
+     "rounds": 4337,
+     "ct_wins": 2310,
+     "ct_win_rate": 0.5326262393359465,
+     "ct_ci95_wilson": [
+      0.5177549234101878,
+      0.5474398096121246
+     ],
+     "ct_ci95_match_cluster_boot": [
+      0.5138178225268177,
+      0.5527179160778461
+     ],
+     "low_n_flag": false,
+     "rounds_with_live_start": 4337,
+     "avg_live_round_len_s": 63.99454187802628,
+     "median_live_round_len_s": 60.46875,
+     "rounds_bomb_ok": 4324,
+     "planted_rounds": 2308,
+     "plant_rate": 0.5337650323774283,
+     "plant_to_end_mean_s": 23.92852984185442,
+     "plant_to_end_median_s": 23.71875,
+     "kills_per_round_mean": 7.177311505649066,
+     "kills_per_round_median": 7,
+     "ct_kills_per_round": 3.7862577818768735,
+     "t_kills_per_round": 3.3910537237721927,
+     "batch_split": {
+      "1008_rounds": 3530,
+      "1008_ct_rate": 0.5362606232294618,
+      "other_days_rounds": 807,
+      "other_days_ct_rate": 0.516728624535316
+     }
+    },
+    "de_anubis": {
+     "matches": 195,
+     "rounds": 3995,
+     "ct_wins": 2052,
+     "ct_win_rate": 0.5136420525657072,
+     "ct_ci95_wilson": [
+      0.4981375909298809,
+      0.5291203039185298
+     ],
+     "ct_ci95_match_cluster_boot": [
+      0.4935718065409805,
+      0.5329066760062
+     ],
+     "low_n_flag": false,
+     "rounds_with_live_start": 3994,
+     "avg_live_round_len_s": 69.3764279231347,
+     "median_live_round_len_s": 67.0,
+     "rounds_bomb_ok": 3994,
+     "planted_rounds": 2110,
+     "plant_rate": 0.528292438657987,
+     "plant_to_end_mean_s": 23.38436018957346,
+     "plant_to_end_median_s": 22.6171875,
+     "kills_per_round_mean": 7.155733600400601,
+     "kills_per_round_median": 7.0,
+     "ct_kills_per_round": 3.6975463194792186,
+     "t_kills_per_round": 3.4581872809213823,
+     "batch_split": {
+      "1008_rounds": 3082,
+      "1008_ct_rate": 0.5129785853341986,
+      "other_days_rounds": 913,
+      "other_days_ct_rate": 0.515881708652793
+     }
+    },
+    "de_inferno": {
+     "matches": 188,
+     "rounds": 3837,
+     "ct_wins": 1942,
+     "ct_win_rate": 0.5061245764920511,
+     "ct_ci95_wilson": [
+      0.49030697708834253,
+      0.5219299247738944
+     ],
+     "ct_ci95_match_cluster_boot": [
+      0.48516877806912545,
+      0.5280426533923844
+     ],
+     "low_n_flag": false,
+     "rounds_with_live_start": 3837,
+     "avg_live_round_len_s": 74.4148016028147,
+     "median_live_round_len_s": 72.828125,
+     "rounds_bomb_ok": 3828,
+     "planted_rounds": 2010,
+     "plant_rate": 0.5250783699059561,
+     "plant_to_end_mean_s": 24.85495180348259,
+     "plant_to_end_median_s": 24.6875,
+     "kills_per_round_mean": 7.0456085483450615,
+     "kills_per_round_median": 7,
+     "ct_kills_per_round": 3.6656241855616365,
+     "t_kills_per_round": 3.3799843627834245,
+     "batch_split": {
+      "1008_rounds": 2687,
+      "1008_ct_rate": 0.5061406773353182,
+      "other_days_rounds": 1150,
+      "other_days_ct_rate": 0.5060869565217392
+     }
+    },
+    "de_cache": {
+     "matches": 137,
+     "rounds": 2696,
+     "ct_wins": 1392,
+     "ct_win_rate": 0.516320474777448,
+     "ct_ci95_wilson": [
+      0.49744697284477724,
+      0.5351475336631859
+     ],
+     "ct_ci95_match_cluster_boot": [
+      0.4918017747029628,
+      0.541020752638648
+     ],
+     "low_n_flag": false,
+     "rounds_with_live_start": 2696,
+     "avg_live_round_len_s": 68.171875,
+     "median_live_round_len_s": 65.4453125,
+     "rounds_bomb_ok": 2683,
+     "planted_rounds": 1343,
+     "plant_rate": 0.5005590756615729,
+     "plant_to_end_mean_s": 22.683253443782576,
+     "plant_to_end_median_s": 22.09375,
+     "kills_per_round_mean": 7.137982195845697,
+     "kills_per_round_median": 7.0,
+     "ct_kills_per_round": 3.698813056379822,
+     "t_kills_per_round": 3.4391691394658754,
+     "batch_split": {
+      "1008_rounds": 1718,
+      "1008_ct_rate": 0.5419091967403958,
+      "other_days_rounds": 978,
+      "other_days_ct_rate": 0.47137014314928427
+     }
+    },
+    "de_nuke": {
+     "matches": 131,
+     "rounds": 2670,
+     "ct_wins": 1383,
+     "ct_win_rate": 0.5179775280898876,
+     "ct_ci95_wilson": [
+      0.4990121451124102,
+      0.5368912550997852
+     ],
+     "ct_ci95_match_cluster_boot": [
+      0.49518410563029397,
+      0.5412213146906546
+     ],
+     "low_n_flag": false,
+     "rounds_with_live_start": 2670,
+     "avg_live_round_len_s": 68.290859082397,
+     "median_live_round_len_s": 65.6171875,
+     "rounds_bomb_ok": 2662,
+     "planted_rounds": 1276,
+     "plant_rate": 0.4793388429752066,
+     "plant_to_end_mean_s": 23.419462676332287,
+     "plant_to_end_median_s": 22.8359375,
+     "kills_per_round_mean": 7.180898876404495,
+     "kills_per_round_median": 7.0,
+     "ct_kills_per_round": 3.743820224719101,
+     "t_kills_per_round": 3.4370786516853933,
+     "batch_split": {
+      "1008_rounds": 1698,
+      "1008_ct_rate": 0.5082449941107184,
+      "other_days_rounds": 972,
+      "other_days_ct_rate": 0.5349794238683128
+     }
+    },
+    "de_vertigo": {
+     "matches": 18,
+     "rounds": 359,
+     "ct_wins": 193,
+     "ct_win_rate": 0.5376044568245125,
+     "ct_ci95_wilson": [
+      0.48590354470581354,
+      0.5885091205054753
+     ],
+     "ct_ci95_match_cluster_boot": [
+      0.47655020072418136,
+      0.5935976561945457
+     ],
+     "low_n_flag": false,
+     "rounds_with_live_start": 359,
+     "avg_live_round_len_s": 64.86655640668523,
+     "median_live_round_len_s": 61.84375,
+     "rounds_bomb_ok": 359,
+     "planted_rounds": 157,
+     "plant_rate": 0.4373259052924791,
+     "plant_to_end_mean_s": 22.09454617834395,
+     "plant_to_end_median_s": 21.921875,
+     "kills_per_round_mean": 7.256267409470752,
+     "kills_per_round_median": 7,
+     "ct_kills_per_round": 3.8050139275766015,
+     "t_kills_per_round": 3.4512534818941503,
+     "batch_split": {
+      "1008_rounds": 297,
+      "1008_ct_rate": 0.5488215488215489,
+      "other_days_rounds": 62,
+      "other_days_ct_rate": 0.4838709677419355
+     }
+    },
+    "de_train": {
+     "matches": 16,
+     "rounds": 265,
+     "ct_wins": 144,
+     "ct_win_rate": 0.5433962264150943,
+     "ct_ci95_wilson": [
+      0.48323027990572437,
+      0.6023220009846275
+     ],
+     "ct_ci95_match_cluster_boot": [
+      0.4779404382234822,
+      0.6007763900851756
+     ],
+     "low_n_flag": false,
+     "rounds_with_live_start": 265,
+     "avg_live_round_len_s": 63.287441037735846,
+     "median_live_round_len_s": 60.171875,
+     "rounds_bomb_ok": 265,
+     "planted_rounds": 119,
+     "plant_rate": 0.4490566037735849,
+     "plant_to_end_mean_s": 22.847820378151262,
+     "plant_to_end_median_s": 23.359375,
+     "kills_per_round_mean": 7.192452830188679,
+     "kills_per_round_median": 7,
+     "ct_kills_per_round": 3.7358490566037736,
+     "t_kills_per_round": 3.456603773584906,
+     "batch_split": {
+      "1008_rounds": 0,
+      "1008_ct_rate": null,
+      "other_days_rounds": 265,
+      "other_days_ct_rate": 0.5433962264150943
+     }
+    },
+    "cs_office": {
+     "matches": 4,
+     "rounds": 78,
+     "ct_wins": 34,
+     "ct_win_rate": 0.4358974358974359,
+     "ct_ci95_wilson": [
+      0.33143240541044916,
+      0.5463801342962424
+     ],
+     "ct_ci95_match_cluster_boot": [
+      0.40540540540540543,
+      0.4634146341463415
+     ],
+     "low_n_flag": true,
+     "rounds_with_live_start": 78,
+     "avg_live_round_len_s": 64.48477564102564,
+     "median_live_round_len_s": 60.5703125,
+     "rounds_bomb_ok": 0,
+     "planted_rounds": 0,
+     "plant_rate": null,
+     "plant_to_end_mean_s": null,
+     "plant_to_end_median_s": null,
+     "kills_per_round_mean": 7.32051282051282,
+     "kills_per_round_median": 8.0,
+     "ct_kills_per_round": 3.6025641025641026,
+     "t_kills_per_round": 3.717948717948718,
+     "batch_split": {
+      "1008_rounds": 20,
+      "1008_ct_rate": 0.45,
+      "other_days_rounds": 58,
+      "other_days_ct_rate": 0.43103448275862066
+     }
+    },
+    "de_boulder": {
+     "matches": 1,
+     "rounds": 22,
+     "ct_wins": 9,
+     "ct_win_rate": 0.4090909090909091,
+     "ct_ci95_wilson": [
+      0.2325581619647187,
+      0.6126518152368488
+     ],
+     "ct_ci95_match_cluster_boot": [
+      0.4090909090909091,
+      0.4090909090909091
+     ],
+     "low_n_flag": true,
+     "rounds_with_live_start": 22,
+     "avg_live_round_len_s": 71.8174715909091,
+     "median_live_round_len_s": 70.9765625,
+     "rounds_bomb_ok": 22,
+     "planted_rounds": 12,
+     "plant_rate": 0.5454545454545454,
+     "plant_to_end_mean_s": 21.638020833333332,
+     "plant_to_end_median_s": 21.2734375,
+     "kills_per_round_mean": 7.409090909090909,
+     "kills_per_round_median": 7.0,
+     "ct_kills_per_round": 3.727272727272727,
+     "t_kills_per_round": 3.6818181818181817,
+     "batch_split": {
+      "1008_rounds": 0,
+      "1008_ct_rate": null,
+      "other_days_rounds": 22,
+      "other_days_ct_rate": 0.4090909090909091
+     }
+    }
+   },
+   "all_maps": {
+    "matches": 1544,
+    "rounds": 31065,
+    "ct_wins": 16167,
+    "ct_win_rate": 0.5204249154997586,
+    "ct_ci95_wilson": [
+     0.5148672763893534,
+     0.5259775037960281
+    ],
+    "ct_ci95_match_cluster_boot": [
+     0.5129885109018326,
+     0.5273437291664629
+    ],
+    "low_n_flag": false,
+    "rounds_with_live_start": 31062,
+    "avg_live_round_len_s": 67.83542743142746,
+    "median_live_round_len_s": 64.90625,
+    "rounds_bomb_ok": 30910,
+    "planted_rounds": 15237,
+    "plant_rate": 0.4929472662568748,
+    "plant_to_end_mean_s": 23.363319961278467,
+    "plant_to_end_median_s": 22.90625,
+    "kills_per_round_mean": 7.1408473375828985,
+    "kills_per_round_median": 7.0,
+    "ct_kills_per_round": 3.724518704526431,
+    "t_kills_per_round": 3.4163286330564677
+   },
+   "dup_groups_sample": [
+    [
+     "csds/2026/10/01/m_5ca9c86175a823d178dbca54/csds",
+     "csds/2026/10/01/m_881e427e49ad091e4093ad3a/csds"
+    ],
+    [
+     "csds/2026/10/01/m_9ef0e39caa68b51b718bd2ee/csds",
+     "csds/2026/10/01/m_a1f87513892c7d076fad67b6/csds"
+    ],
+    [
+     "csds/2026/10/02/m_90c0434e0a078ce8aebbecb8/csds",
+     "csds/2026/10/02/m_f0d742f5b20293be9c774dee/csds"
+    ],
+    [
+     "csds/2026/10/02/m_70c0bb0c4ce8990743b6c7f9/csds",
+     "csds/2026/10/02/m_4fee927839a04774adc632ed/csds"
+    ],
+    [
+     "csds/2026/10/03/m_3414e65bf58b93613eb2fbc3/csds",
+     "csds/2026/10/03/m_69b53507ce0cbd1db6937b17/csds"
+    ]
+   ]
+  },
+  "2024": {
+   "diagnostics": {
+    "header_matches": 4435,
+    "header_unique_keys": 4435,
+    "dup_groups": 226,
+    "dup_members": 522,
+    "dup_removed": 296,
+    "dup_removed_by_map": {
+     "de_mirage": 35,
+     "de_nuke": 47,
+     "de_vertigo": 71,
+     "de_overpass": 30,
+     "de_ancient": 30,
+     "de_anubis": 33,
+     "de_dust2": 13,
+     "de_inferno": 14,
+     "cs_office": 23
+    },
+    "repeat_round_matches_dropped": 1,
+    "matches_after_dedupe": 4138,
+    "round_end_rows_after_dedupe": 77586,
+    "player_count_dist_after_dedupe": {
+     "18": 1820,
+     "4": 1,
+     "19": 119,
+     "17": 9,
+     "7": 3,
+     "6": 96,
+     "15": 3,
+     "12": 20,
+     "14": 40,
+     "5": 1,
+     "20": 72782,
+     "16": 198,
+     "8": 2494
+    },
+    "clean_rounds": 72782,
+    "clean_matches": 3924,
+    "clean_rounds_with_10_player_info_slots": 61889,
+    "clean_rounds_with_player_info_slots_checked": 72704,
+    "clean_rounds_no_live_start": 78,
+    "tick_rate_values": {
+     "64": 72782
+    },
+    "clean_matches_without_bomb_rows": 163,
+    "clean_rounds_in_matches_without_bomb_rows": 2447,
+    "planted_rows_total": 40072,
+    "planted_rows_in_clean_rounds": 35560,
+    "planted_rows_before_live": 0,
+    "planted_rows_after_end": 1317,
+    "rounds_with_2plus_planted_rows": 6,
+    "deaths_in_clean_rounds": 515683,
+    "deaths_in_live_window": 509298,
+    "kills_in_live_window": 480786,
+    "team_kills_in_live_window": 2652,
+    "self_kills_in_live_window": 1252,
+    "deaths_no_attacker_side_in_live_window": 24608
+   },
+   "maps": {
+    "de_mirage": {
+     "matches": 930,
+     "rounds": 17190,
+     "ct_wins": 8957,
+     "ct_win_rate": 0.5210587550901687,
+     "ct_ci95_wilson": [
+      0.51358704952653,
+      0.5285210507333209
+     ],
+     "ct_ci95_match_cluster_boot": [
+      0.5117646825496716,
+      0.530412017575769
+     ],
+     "low_n_flag": false,
+     "rounds_with_live_start": 17166,
+     "avg_live_round_len_s": 73.00615861295584,
+     "median_live_round_len_s": 69.625,
+     "rounds_bomb_ok": 17140,
+     "planted_rounds": 8102,
+     "plant_rate": 0.4726954492415403,
+     "plant_to_end_mean_s": 25.861980452357443,
+     "plant_to_end_median_s": 25.90625,
+     "kills_per_round_mean": 6.752883607130374,
+     "kills_per_round_median": 7.0,
+     "ct_kills_per_round": 3.4850285447978564,
+     "t_kills_per_round": 3.2678550623325178
+    },
+    "de_inferno": {
+     "matches": 641,
+     "rounds": 11685,
+     "ct_wins": 5817,
+     "ct_win_rate": 0.4978177150192555,
+     "ct_ci95_wilson": [
+      0.48875425837487974,
+      0.506882606050079
+     ],
+     "ct_ci95_match_cluster_boot": [
+      0.4861458782908934,
+      0.5090375257190811
+     ],
+     "low_n_flag": false,
+     "rounds_with_live_start": 11679,
+     "avg_live_round_len_s": 74.18762040842537,
+     "median_live_round_len_s": 73.390625,
+     "rounds_bomb_ok": 11526,
+     "planted_rounds": 5447,
+     "plant_rate": 0.4725837237549887,
+     "plant_to_end_mean_s": 26.552092895171654,
+     "plant_to_end_median_s": 26.984375,
+     "kills_per_round_mean": 6.359106087849987,
+     "kills_per_round_median": 7,
+     "ct_kills_per_round": 3.226132374347119,
+     "t_kills_per_round": 3.1329737135028686
+    },
+    "de_vertigo": {
+     "matches": 605,
+     "rounds": 11007,
+     "ct_wins": 5687,
+     "ct_win_rate": 0.5166712092304897,
+     "ct_ci95_wilson": [
+      0.5073314233343228,
+      0.5259993626344462
+     ],
+     "ct_ci95_match_cluster_boot": [
+      0.5055730585802872,
+      0.5278277836030904
+     ],
+     "low_n_flag": false,
+     "rounds_with_live_start": 10997,
+     "avg_live_round_len_s": 64.60279934300264,
+     "median_live_round_len_s": 61.859375,
+     "rounds_bomb_ok": 10610,
+     "planted_rounds": 4755,
+     "plant_rate": 0.4481621112158341,
+     "plant_to_end_mean_s": 23.370304284963197,
+     "plant_to_end_median_s": 23.046875,
+     "kills_per_round_mean": 6.224606710921161,
+     "kills_per_round_median": 7,
+     "ct_kills_per_round": 3.1591343093570976,
+     "t_kills_per_round": 3.065472401564063
+    },
+    "de_nuke": {
+     "matches": 487,
+     "rounds": 9024,
+     "ct_wins": 4665,
+     "ct_win_rate": 0.5169547872340425,
+     "ct_ci95_wilson": [
+      0.50663952534833,
+      0.5272556201740828
+     ],
+     "ct_ci95_match_cluster_boot": [
+      0.5041364265799655,
+      0.5305734033807533
+     ],
+     "low_n_flag": false,
+     "rounds_with_live_start": 9006,
+     "avg_live_round_len_s": 69.96163495169887,
+     "median_live_round_len_s": 67.0,
+     "rounds_bomb_ok": 8960,
+     "planted_rounds": 4272,
+     "plant_rate": 0.4767857142857143,
+     "plant_to_end_mean_s": 25.94706811797753,
+     "plant_to_end_median_s": 26.1171875,
+     "kills_per_round_mean": 6.724961137019765,
+     "kills_per_round_median": 7.0,
+     "ct_kills_per_round": 3.454585831667777,
+     "t_kills_per_round": 3.2703753053519877
+    },
+    "de_ancient": {
+     "matches": 325,
+     "rounds": 6323,
+     "ct_wins": 3228,
+     "ct_win_rate": 0.5105171595761505,
+     "ct_ci95_wilson": [
+      0.4981931034191994,
+      0.5228284443571519
+     ],
+     "ct_ci95_match_cluster_boot": [
+      0.49529156349997444,
+      0.5263929219044334
+     ],
+     "low_n_flag": false,
+     "rounds_with_live_start": 6321,
+     "avg_live_round_len_s": 68.5748249881348,
+     "median_live_round_len_s": 65.0625,
+     "rounds_bomb_ok": 6316,
+     "planted_rounds": 3504,
+     "plant_rate": 0.5547815072830906,
+     "plant_to_end_mean_s": 25.918254138127853,
+     "plant_to_end_median_s": 25.765625,
+     "kills_per_round_mean": 6.865369403575384,
+     "kills_per_round_median": 7,
+     "ct_kills_per_round": 3.497231450719823,
+     "t_kills_per_round": 3.3681379528555606
+    },
+    "de_overpass": {
+     "matches": 330,
+     "rounds": 6183,
+     "ct_wins": 3133,
+     "ct_win_rate": 0.5067119521267993,
+     "ct_ci95_wilson": [
+      0.4942498946075262,
+      0.5191656746376927
+     ],
+     "ct_ci95_match_cluster_boot": [
+      0.4913319422436618,
+      0.5210208547974831
+     ],
+     "low_n_flag": false,
+     "rounds_with_live_start": 6177,
+     "avg_live_round_len_s": 74.47466154686741,
+     "median_live_round_len_s": 72.0,
+     "rounds_bomb_ok": 6058,
+     "planted_rounds": 2994,
+     "plant_rate": 0.49422251568174314,
+     "plant_to_end_mean_s": 25.07315673012692,
+     "plant_to_end_median_s": 25.390625,
+     "kills_per_round_mean": 6.543953375424963,
+     "kills_per_round_median": 7,
+     "ct_kills_per_round": 3.317306135664562,
+     "t_kills_per_round": 3.2266472397604016
+    },
+    "de_anubis": {
+     "matches": 270,
+     "rounds": 5331,
+     "ct_wins": 2566,
+     "ct_win_rate": 0.48133558431813916,
+     "ct_ci95_wilson": [
+      0.46794130925235783,
+      0.49475673875224185
+     ],
+     "ct_ci95_match_cluster_boot": [
+      0.46342680347139564,
+      0.4989622059132268
+     ],
+     "low_n_flag": false,
+     "rounds_with_live_start": 5328,
+     "avg_live_round_len_s": 74.01434931024775,
+     "median_live_round_len_s": 71.2265625,
+     "rounds_bomb_ok": 5328,
+     "planted_rounds": 3016,
+     "plant_rate": 0.566066066066066,
+     "plant_to_end_mean_s": 26.327549941976127,
+     "plant_to_end_median_s": 26.1875,
+     "kills_per_round_mean": 6.778716216216216,
+     "kills_per_round_median": 7.0,
+     "ct_kills_per_round": 3.3856981981981984,
+     "t_kills_per_round": 3.393018018018018
+    },
+    "de_dust2": {
+     "matches": 246,
+     "rounds": 4356,
+     "ct_wins": 2152,
+     "ct_win_rate": 0.49403122130394855,
+     "ct_ci95_wilson": [
+      0.47919586783374407,
+      0.5088770929628474
+     ],
+     "ct_ci95_match_cluster_boot": [
+      0.47472772951871267,
+      0.5147299085004771
+     ],
+     "low_n_flag": false,
+     "rounds_with_live_start": 4350,
+     "avg_live_round_len_s": 69.73274425287356,
+     "median_live_round_len_s": 66.9140625,
+     "rounds_bomb_ok": 4331,
+     "planted_rounds": 2123,
+     "plant_rate": 0.4901870237820365,
+     "plant_to_end_mean_s": 25.363702602449365,
+     "plant_to_end_median_s": 25.6875,
+     "kills_per_round_mean": 6.8694252873563215,
+     "kills_per_round_median": 7.0,
+     "ct_kills_per_round": 3.4639080459770115,
+     "t_kills_per_round": 3.4055172413793104
+    },
+    "cs_office": {
+     "matches": 90,
+     "rounds": 1683,
+     "ct_wins": 707,
+     "ct_win_rate": 0.42008318478906714,
+     "ct_ci95_wilson": [
+      0.39671065120988885,
+      0.4438197088939803
+     ],
+     "ct_ci95_match_cluster_boot": [
+      0.3897494736265095,
+      0.44934578600456654
+     ],
+     "low_n_flag": false,
+     "rounds_with_live_start": 1680,
+     "avg_live_round_len_s": 72.25526413690476,
+     "median_live_round_len_s": 69.3515625,
+     "rounds_bomb_ok": 0,
+     "planted_rounds": 0,
+     "plant_rate": null,
+     "plant_to_end_mean_s": null,
+     "plant_to_end_median_s": null,
+     "kills_per_round_mean": 7.002380952380952,
+     "kills_per_round_median": 7.0,
+     "ct_kills_per_round": 3.279166666666667,
+     "t_kills_per_round": 3.7232142857142856
+    }
+   },
+   "all_maps": {
+    "matches": 3924,
+    "rounds": 72782,
+    "ct_wins": 36912,
+    "ct_win_rate": 0.507158363331593,
+    "ct_ci95_wilson": [
+     0.5035259496420149,
+     0.5107900214193285
+    ],
+    "ct_ci95_match_cluster_boot": [
+     0.5026163083418568,
+     0.511638724475083
+    ],
+    "low_n_flag": false,
+    "rounds_with_live_start": 72704,
+    "avg_live_round_len_s": 71.14792299942232,
+    "median_live_round_len_s": 68.359375,
+    "rounds_bomb_ok": 70269,
+    "planted_rounds": 34213,
+    "plant_rate": 0.48688610909504904,
+    "plant_to_end_mean_s": 25.58303313068132,
+    "plant_to_end_median_s": 25.640625,
+    "kills_per_round_mean": 6.61292363556338,
+    "kills_per_round_median": 7.0,
+    "ct_kills_per_round": 3.363886443661972,
+    "t_kills_per_round": 3.2490371919014085
+   },
+   "dup_groups_sample": [
+    [
+     "csds/2024/02/01/m_a46ff96bd9779c9a34249397/csds",
+     "csds/2024/02/01/m_bcedd4f6bb725856e7294703/csds"
+    ],
+    [
+     "csds/2024/02/01/m_c1c359aeaf39c5efda66a58b/csds",
+     "csds/2024/02/01/m_e04fbad3d94cd36f2d04c5b8/csds"
+    ],
+    [
+     "csds/2024/02/01/m_cd1a0de2b0802504a1d12ede/csds",
+     "csds/2024/02/01/m_6febd4aca842ee10ece9436e/csds"
+    ],
+    [
+     "csds/2024/02/01/m_7e5d5526c28f578a840338f9/csds",
+     "csds/2024/02/01/m_7fbf9540241e37a9b94b76a9/csds"
+    ],
+    [
+     "csds/2024/02/01/m_2d5ae1a349f569ff409bac1f/csds",
+     "csds/2024/02/01/m_5c9de798e53878c49c4106be/csds"
+    ]
+   ]
+  }
+ }
+}

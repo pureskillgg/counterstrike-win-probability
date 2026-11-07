@@ -1,0 +1,106 @@
+snapshot-0 player rows: 26729 | null equipment_value_calc: 0
+rounds rows: 2673 | duplicate (match_key, round): 0
+team-side orphans (no rounds row): CT 0 | T 0
+rounds with no CT snapshot-0 rows: 0 | no T snapshot-0 rows: 0
+rounds with alive_gap_snapshots > 0:
+shape: (1, 6)
+┌─────────────────────────────────┬───────┬─────────────────────┬──────────┬──────┬─────┐
+│ match_key                       ┆ round ┆ alive_gap_snapshots ┆ complete ┆ ct_n ┆ t_n │
+│ ---                             ┆ ---   ┆ ---                 ┆ ---      ┆ ---  ┆ --- │
+│ str                             ┆ i64   ┆ i32                 ┆ bool     ┆ i64  ┆ i64 │
+╞═════════════════════════════════╪═══════╪═════════════════════╪══════════╪══════╪═════╡
+│ csds/2026/10/07/m_partial… ┆ 16    ┆ 9                   ┆ false    ┆ 5    ┆ 4   │
+└─────────────────────────────────┴───────┴─────────────────────┴──────────┴──────┴─────┘
+rounds NOT complete at snapshot 0 (excluded from team-level analysis): 1
+clusters (matches): 150 | rounds: 2673 | CT win share all rounds: 0.533857
+
+====================================================================================================
+THRESHOLD full buy >= 17000 (both teams)
+====================================================================================================
+(1) full-vs-full: CT win 0.5470 [0.5107, 0.5826] n_rounds=1064 n_matches=148 boot_nan=0
+    all rounds: CT win 0.5339 [0.5049, 0.5603] n_rounds=2673
+    full-vs-full minus all: 0.0131 [-0.0093, 0.0359]
+    CI includes 0.5: False
+    by map (full-vs-full):
+      de_ancient: CT win 0.4957 [0.4205, 0.5608] n_rounds=117 n_matches=12 minus overall -0.0513 [-0.1234, 0.0178]
+      de_anubis: CT win 0.6339 [0.5116, 0.7381] n_rounds=112 n_matches=15 minus overall 0.0869 [-0.0255, 0.1929]
+      de_cache: CT win 0.4667 [0.3521, 0.5689] n_rounds=90 n_matches=14 minus overall -0.0803 [-0.1882, 0.0216]
+      de_dust2: CT win 0.5678 [0.4968, 0.6364] n_rounds=236 n_matches=32 minus overall 0.0208 [-0.0428, 0.0884]
+      de_inferno: CT win 0.5130 [0.4261, 0.5983] n_rounds=193 n_matches=26 minus overall -0.0340 [-0.1138, 0.0467]
+      de_mirage: CT win 0.5393 [0.4256, 0.6426] n_rounds=191 n_matches=29 minus overall -0.0077 [-0.1016, 0.0812]
+      de_nuke: CT win 0.6058 [0.4714, 0.7008] n_rounds=104 n_matches=15 minus overall 0.0588 [-0.0577, 0.1535]
+      de_train: n_rounds=21 n_matches=5 (n only)
+    quintiles of (CT eq - T eq) within full-vs-full:
+      Q1 diff [-11950.0, -3050.0] mean=-5618.8679: CT win 0.4670 [0.3991, 0.5354] n_rounds=212 n_matches=97
+      Q2 diff [-3000.0, 850.0] mean=-1049.5327: CT win 0.4720 [0.4074, 0.5353] n_rounds=214 n_matches=104
+      Q3 diff [900.0, 4250.0] mean=2537.2038: CT win 0.5640 [0.4914, 0.6312] n_rounds=211 n_matches=102
+      Q4 diff [4300.0, 7550.0] mean=6095.7346: CT win 0.5829 [0.5152, 0.6470] n_rounds=211 n_matches=109
+      Q5 diff [7600.0, 18700.0] mean=10196.9907: CT win 0.6481 [0.5817, 0.7078] n_rounds=216 n_matches=97
+    Spearman (avg ranks) diff vs CT win: rho=0.1366 [0.0706, 0.2022]
+    balanced (|diff| <= 3000): CT win 0.5099 [0.4556, 0.5637] n_rounds=353
+(4) |CT eq - T eq| > 3000 in full-vs-full: 0.6682 [0.6368, 0.6996] n_rounds=1064; CT higher by >3000: 0.4690; T higher by >3000: 0.1992; median |diff|=4750.0
+
+====================================================================================================
+THRESHOLD full buy >= 20000 (both teams)
+====================================================================================================
+(1) full-vs-full: CT win 0.5513 [0.5119, 0.5886] n_rounds=604 n_matches=138 boot_nan=0
+    all rounds: CT win 0.5339 [0.5049, 0.5603] n_rounds=2673
+    full-vs-full minus all: 0.0175 [-0.0145, 0.0486]
+    CI includes 0.5: False
+    by map (full-vs-full):
+      de_ancient: CT win 0.5270 [0.4502, 0.5758] n_rounds=74 n_matches=12 minus overall -0.0243 [-0.1035, 0.0350]
+      de_anubis: CT win 0.6349 [0.5000, 0.7980] n_rounds=63 n_matches=15 minus overall 0.0836 [-0.0416, 0.2425]
+      de_cache: CT win 0.5098 [0.4023, 0.6134] n_rounds=51 n_matches=13 minus overall -0.0415 [-0.1462, 0.0613]
+      de_dust2: CT win 0.5278 [0.4541, 0.6059] n_rounds=144 n_matches=30 minus overall -0.0235 [-0.0885, 0.0438]
+      de_inferno: CT win 0.5780 [0.4935, 0.6725] n_rounds=109 n_matches=24 minus overall 0.0267 [-0.0566, 0.1144]
+      de_mirage: CT win 0.5096 [0.3823, 0.6285] n_rounds=104 n_matches=27 minus overall -0.0417 [-0.1559, 0.0612]
+      de_nuke: CT win 0.6481 [0.4856, 0.7825] n_rounds=54 n_matches=14 minus overall 0.0968 [-0.0635, 0.2215]
+      de_train: n_rounds=5 n_matches=3 (n only)
+    quintiles of (CT eq - T eq) within full-vs-full:
+      Q1 diff [-9200.0, -1800.0] mean=-3918.7500: CT win 0.4750 [0.3924, 0.5511] n_rounds=120 n_matches=72
+      Q2 diff [-1750.0, 800.0] mean=-503.7190: CT win 0.4793 [0.3845, 0.5632] n_rounds=121 n_matches=76
+      Q3 diff [850.0, 3150.0] mean=2008.1897: CT win 0.5603 [0.4601, 0.6500] n_rounds=116 n_matches=77
+      Q4 diff [3250.0, 6400.0] mean=4846.4286: CT win 0.6032 [0.5057, 0.6975] n_rounds=126 n_matches=75
+      Q5 diff [6450.0, 13700.0] mean=8249.5868: CT win 0.6364 [0.5477, 0.7200] n_rounds=121 n_matches=67
+    Spearman (avg ranks) diff vs CT win: rho=0.1208 [0.0539, 0.1935]
+    balanced (|diff| <= 3000): CT win 0.5131 [0.4538, 0.5757] n_rounds=267
+(4) |CT eq - T eq| > 3000 in full-vs-full: 0.5579 [0.5139, 0.6040] n_rounds=604; CT higher by >3000: 0.4238; T higher by >3000: 0.1341; median |diff|=3400.0
+
+====================================================================================================
+THRESHOLD full buy >= 23000 (both teams)
+====================================================================================================
+(1) full-vs-full: CT win 0.5631 [0.4989, 0.6256] n_rounds=206 n_matches=88 boot_nan=0
+    all rounds: CT win 0.5339 [0.5049, 0.5603] n_rounds=2673
+    full-vs-full minus all: 0.0292 [-0.0283, 0.0898]
+    CI includes 0.5: True
+    by map (full-vs-full):
+      de_ancient: n_rounds=34 n_matches=8 (n only)
+      de_anubis: n_rounds=19 n_matches=10 (n only)
+      de_cache: n_rounds=16 n_matches=10 (n only)
+      de_dust2: CT win 0.5556 [0.4369, 0.6760] n_rounds=54 n_matches=24 minus overall -0.0076 [-0.1237, 0.1068]
+      de_inferno: CT win 0.5854 [0.3950, 0.7500] n_rounds=41 n_matches=15 minus overall 0.0223 [-0.1588, 0.1777]
+      de_mirage: n_rounds=30 n_matches=14 (n only)
+      de_nuke: n_rounds=9 n_matches=5 (n only)
+      de_train: n_rounds=3 n_matches=2 (n only)
+    quintiles of (CT eq - T eq) within full-vs-full:
+      Q1 diff [-9200.0, -900.0] mean=-2867.0732: CT win 0.5610 [0.4052, 0.7181] n_rounds=41 n_matches=33
+      Q2 diff [-850.0, 950.0] mean=74.3902: CT win 0.6098 [0.4776, 0.7564] n_rounds=41 n_matches=34
+      Q3 diff [1000.0, 2650.0] mean=2014.6341: CT win 0.6098 [0.4412, 0.7439] n_rounds=41 n_matches=32
+      Q4 diff [2750.0, 4850.0] mean=3658.5366: CT win 0.4634 [0.2949, 0.6425] n_rounds=41 n_matches=30
+      Q5 diff [4950.0, 10750.0] mean=6347.6190: CT win 0.5714 [0.4286, 0.7143] n_rounds=42 n_matches=31
+    Spearman (avg ranks) diff vs CT win: rho=-0.0370 [-0.1839, 0.1193]
+    balanced (|diff| <= 3000): CT win 0.6053 [0.5170, 0.6927] n_rounds=114
+(4) |CT eq - T eq| > 3000 in full-vs-full: 0.4466 [0.3744, 0.5131] n_rounds=206; CT higher by >3000: 0.3786; T higher by >3000: 0.0680; median |diff|=2625.0
+
+== cross-check vs round_buy_types ==
+{
+ "complete_rounds_checked": 2672,
+ "team_equipment_exact_match_with_round_buy_types": 2672,
+ "rounds_missing_in_round_buy_types": 1,
+ "ct_win_agree_with_rounds_all_rounds": 2672,
+ "full_vs_full_T20000_agree_with_round_buy_types_full_labels": 2672,
+ "full_vs_full_T20000_count_mine": 604,
+ "full_vs_full_count_round_buy_types_labels": 604
+}
+
+wrote G:\pureskill\csds-cs2\data\viz\N2_fullfull.json

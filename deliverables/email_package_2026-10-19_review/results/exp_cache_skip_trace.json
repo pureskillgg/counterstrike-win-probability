@@ -1,0 +1,76 @@
+{
+ "missing_matches": 10,
+ "matches": [
+  {
+   "match_key": "csds/2026/09/01/m_207c40e78d7a60cfc87f3d35/csds",
+   "rounds_in_grid": 2,
+   "rounds_after_roster_drop": 0,
+   "rounds_inconsistent": 0,
+   "rounds_left_after_both_drops": 0
+  },
+  {
+   "match_key": "csds/2026/09/01/m_3acd3f9cc73e7a76d9ab576a/csds",
+   "rounds_in_grid": 12,
+   "rounds_after_roster_drop": 0,
+   "rounds_inconsistent": 0,
+   "rounds_left_after_both_drops": 0
+  },
+  {
+   "match_key": "csds/2026/09/02/m_543b6b1d40ce2edb1697a072/csds",
+   "rounds_in_grid": 19,
+   "rounds_after_roster_drop": 0,
+   "rounds_inconsistent": 0,
+   "rounds_left_after_both_drops": 0
+  },
+  {
+   "match_key": "csds/2026/09/02/m_4c9a555b703632de53dc02b7/csds",
+   "rounds_in_grid": 11,
+   "rounds_after_roster_drop": 0,
+   "rounds_inconsistent": 0,
+   "rounds_left_after_both_drops": 0
+  },
+  {
+   "match_key": "csds/2026/09/05/m_dee2ce19e3c8453a563cd6c1/csds",
+   "rounds_in_grid": 18,
+   "rounds_after_roster_drop": 0,
+   "rounds_inconsistent": 0,
+   "rounds_left_after_both_drops": 0
+  },
+  {
+   "match_key": "csds/2026/09/05/m_0f7e2c99eb8bd4f5c0877856/csds",
+   "rounds_in_grid": 19,
+   "rounds_after_roster_drop": 0,
+   "rounds_inconsistent": 0,
+   "rounds_left_after_both_drops": 0
+  },
+  {
+   "match_key": "csds/2026/09/06/m_2443dd977a42b2e940f269fb/csds",
+   "rounds_in_grid": 16,
+   "rounds_after_roster_drop": 0,
+   "rounds_inconsistent": 0,
+   "rounds_left_after_both_drops": 0
+  },
+  {
+   "match_key": "csds/2026/09/06/m_41901db77d56500540c13171/csds",
+   "rounds_in_grid": 14,
+   "rounds_after_roster_drop": 0,
+   "rounds_inconsistent": 0,
+   "rounds_left_after_both_drops": 0
+  },
+  {
+   "match_key": "csds/2026/09/06/m_e8601638135b516c2fc331ec/csds",
+   "rounds_in_grid": 27,
+   "rounds_after_roster_drop": 0,
+   "rounds_inconsistent": 0,
+   "rounds_left_after_both_drops": 0
+  },
+  {
+   "match_key": "csds/2026/09/06/m_bc04ca7d7484e393931cd5f1/csds",
+   "rounds_in_grid": 8,
+   "rounds_after_roster_drop": 0,
+   "rounds_inconsistent": 0,
+   "rounds_left_after_both_drops": 0
+  }
+ ],
+ "all_rounds_removed_by_both_drops": 10
+}

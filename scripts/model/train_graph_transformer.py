@@ -38,6 +38,7 @@ prints the training row count and the step count before training starts. The pin
 """
 import argparse
 import json
+import os
 import math
 import sys
 import time
@@ -59,6 +60,7 @@ MAPS = T.MAPS
 CACHE = T.CACHE
 DATA, OUT = ttr.DATA, ttr.OUT
 TRAIN, VAL, TEST = ttr.TRAIN, ttr.VAL, ttr.TEST
+FROZEN_KEYS = os.environ.get("FROZEN_KEYS", "/mnt/g/pureskill/csds-cs2/data/benchmark/frozen_test_keys.json")
 LOOKBACK, N_SLOTS, FP, G_DIM, CHUNK = TA.LOOKBACK, TA.N_SLOTS, TA.FP, TA.G_DIM, TA.CHUNK
 N_MAPS = len(MAPS)
 EPS, N_BOOT = 1e-6, W.N_BOOT  # clip as in compare_paired_de_mirage.py:26 and train_thgnn_allmaps.py:273 (wp_common.EPS is 1e-15)
@@ -257,7 +259,10 @@ def main():
     ap.add_argument("--lr", type=float, default=1e-3)
     ap.add_argument("--eval_every", type=int, default=10000, help="validate every this many steps, and at the end")
     ap.add_argument("--test", action="store_true", help="also read the de_mirage test split once after training (default off: validation only)")
+    ap.add_argument("--test_frozen", action="store_true", help="read the frozen test matches on all seven maps once after training (implies --test)")
     a = ap.parse_args()
+    if a.test_frozen:
+        a.test = True
     if a.epochs < 1:
         raise SystemExit("--epochs must be at least 1")
     if a.steps < 0:
@@ -282,6 +287,10 @@ def main():
     train_rows = np.flatnonzero((D["split"] == TRAIN) & D["usable"])
     val_rows = np.flatnonzero((D["split"] == VAL) & D["usable"])
     test_rows = np.flatnonzero((D["split"] == TEST) & D["usable"] & (D["map_id"] == 0))  # de_mirage test only
+    if a.test_frozen:  # the frozen test matches on all seven maps; the split's other test matches are left out
+        frozen = set(json.load(open(FROZEN_KEYS)))
+        in_frozen = np.array([k in frozen for k in D["keys"]], dtype=bool)
+        test_rows = np.flatnonzero((D["split"] == TEST) & D["usable"] & in_frozen[D["match_idx"]])
     label_val = D["label"][val_rows]
     steps = a.steps if a.steps > 0 else a.epochs * -(-train_rows.size // a.batch)
     print(f"training rows {train_rows.size:,}; steps {steps:,} ({'--steps' if a.steps > 0 else '--epochs'}); "
@@ -373,16 +382,17 @@ def main():
     out_dir.mkdir(parents=True, exist_ok=True)
     n0 = D["n0"]
     if a.test:  # test outputs exist only when the test split was read
-        p_dm = np.zeros(n0, dtype=np.float32)  # de_mirage rows in the train_thgnn_allmaps.py layout
-        p_dm[test_rows] = p_test
-        np.savez(out_dir / f"{tag}_pred.npz", p=p_dm, split=D["split"][:n0], match_idx=D["match_idx"][:n0],
-                 round=D["round"][:n0], second=D["second"][:n0], match_keys=D["keys"][:int(D["match_idx"][:n0].max()) + 1])
+        if not a.test_frozen:  # the de_mirage layout of train_thgnn_allmaps.py
+            p_dm = np.zeros(n0, dtype=np.float32)
+            p_dm[test_rows] = p_test
+            np.savez(out_dir / f"{tag}_pred.npz", p=p_dm, split=D["split"][:n0], match_idx=D["match_idx"][:n0],
+                     round=D["round"][:n0], second=D["second"][:n0], match_keys=D["keys"][:int(D["match_idx"][:n0].max()) + 1])
         pl.DataFrame({"match_key": D["keys"][D["match_idx"][test_rows]], "round": D["round"][test_rows].astype(np.int64),
                       "second": D["second"][test_rows].astype(np.int64), "label": D["label"][test_rows].astype(np.int64),
                       "p": p_test.astype(np.float64)}).write_parquet(out_dir / f"{tag}_test_preds.parquet")
     torch.save(best_state, out_dir / f"{tag}.pt")
     metrics = {"tag": tag, "model": "graph transformer (player and round tokens, map-graph hop bias)", "graph": a.graph,
-               "seed": a.seed, "scope": "all seven maps (train, validation); de_mirage test", "epochs": a.epochs,
+               "seed": a.seed, "scope": "all seven maps (train, validation); " + ("frozen test, all seven maps" if a.test_frozen else "de_mirage test"), "epochs": a.epochs,
                "steps_budget": steps, "batch": a.batch, "lr": a.lr, "eval_every": a.eval_every,
                "architecture": {"d_model": D_MODEL, "heads": HEADS, "layers": LAYERS, "ffn": FFN, "max_hop": MAX_HOP,
                                 "map_nodes": K, "latent": LATENT, "gru_hidden": GRU_H},

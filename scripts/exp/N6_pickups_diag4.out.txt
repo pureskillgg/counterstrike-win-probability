@@ -1,0 +1,18 @@
+pickups total in clean 1942878 after end 531511
+after-end pickup offset in seconds pct 10/50/90/99: [7.0, 7.0, 7.0, 8.5]
+by item (top): [{'item': 'knife', 'n': 229580}, {'item': 'glock', 'n': 120537}, {'item': 'hkp2000', 'n': 111547}, {'item': 'c4', 'n': 31532}, {'item': 'ak47', 'n': 9955}, {'item': 'flashbang', 'n': 4823}, {'item': 'smokegrenade', 'n': 4133}, {'item': 'awp', 'n': 3433}, {'item': 'deagle', 'n': 2741}, {'item': 'm4a1', 'n': 2423}]
+pickups after end: sample rows
+shape: (5, 7)
+┌───────┬──────┬─────────┬───────────┬──────────┬──────┬───────┐
+│ round ┆ tick ┆ item    ┆ def_index ┆ end_tick ┆ midx ┆ after │
+│ ---   ┆ ---  ┆ ---     ┆ ---       ┆ ---      ┆ ---  ┆ ---   │
+│ i64   ┆ i64  ┆ str     ┆ i64       ┆ i64      ┆ u32  ┆ i64   │
+╞═══════╪══════╪═════════╪═══════════╪══════════╪══════╪═══════╡
+│ 1     ┆ 4423 ┆ hkp2000 ┆ 61        ┆ 4215     ┆ 0    ┆ 208   │
+│ 1     ┆ 4439 ┆ glock   ┆ 4         ┆ 4215     ┆ 0    ┆ 224   │
+│ 1     ┆ 4663 ┆ knife   ┆ 519       ┆ 4215     ┆ 0    ┆ 448   │
+│ 1     ┆ 4663 ┆ glock   ┆ 4         ┆ 4215     ┆ 0    ┆ 448   │
+│ 1     ┆ 4663 ┆ knife   ┆ 509       ┆ 4215     ┆ 0    ┆ 448   │
+└───────┴──────┴─────────┴───────────┴──────────┴──────┴───────┘
+max pickup tick minus end, seconds pct 50/90/99: [7.0, 7.0, 8.5]
+rounds total 32041

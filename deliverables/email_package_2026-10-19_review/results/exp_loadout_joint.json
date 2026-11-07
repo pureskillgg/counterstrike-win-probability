@@ -1,0 +1,93 @@
+{
+ "decision_rule": "adopt if validation delta < 0.0002",
+ "drop": [
+  "st_heavy_ct",
+  "st_heavy_t",
+  "st_rifle_ct",
+  "st_rifle_t",
+  "st_rifle_diff",
+  "st_ak_ct",
+  "st_ak_t",
+  "st_m4_ct",
+  "st_m4_t",
+  "st_awp_ct",
+  "st_awp_t",
+  "st_awp_diff",
+  "st_smg_ct",
+  "st_smg_t",
+  "st_smg_diff",
+  "st_sniper_other_ct",
+  "st_sniper_other_t",
+  "st_no_primary_ct",
+  "st_no_primary_t",
+  "st_flash_ct",
+  "st_flash_t",
+  "st_smoke_ct",
+  "st_smoke_t",
+  "st_he_ct",
+  "st_he_t",
+  "st_fire_ct",
+  "st_fire_t",
+  "st_decoy_ct",
+  "st_decoy_t",
+  "st_equip_ct",
+  "st_equip_t",
+  "st_equip_diff"
+ ],
+ "keep": [
+  "alive_ct",
+  "alive_t",
+  "ct_alive_minus_t",
+  "bomb_planted",
+  "seconds_since_round_live",
+  "seconds_since_plant",
+  "map_is_ancient",
+  "map_is_anubis",
+  "map_is_cache",
+  "map_is_dust2",
+  "map_is_inferno",
+  "map_is_mirage",
+  "map_is_nuke",
+  "st_hp_ct",
+  "st_armor_n_ct",
+  "st_armor_sum_ct",
+  "st_helmet_n_ct",
+  "st_kit_n_ct",
+  "st_defusing_ct",
+  "st_hp_t",
+  "st_armor_n_t",
+  "st_armor_sum_t",
+  "st_helmet_n_t",
+  "st_kit_n_t",
+  "st_defusing_t",
+  "st_hp_diff",
+  "st_armor_n_diff"
+ ],
+ "variants": [
+  {
+   "name": "control (all 59 inputs)",
+   "n_features": 59,
+   "best_iteration": 1059,
+   "test_logloss": 0.4564347047610735,
+   "validation_logloss": 0.4536432416972257
+  },
+  {
+   "name": "joint drop (27 inputs)",
+   "n_features": 27,
+   "best_iteration": 1001,
+   "test_logloss": 0.4592899233025969,
+   "validation_logloss": 0.45663910439358324,
+   "test_delta_vs_control": 0.002855218541523287,
+   "test_delta_ci95": [
+    0.0023291901199034314,
+    0.0033523191554825403
+   ],
+   "validation_delta_vs_control": 0.002995862696357484,
+   "validation_delta_ci95": [
+    0.0021247875633765103,
+    0.003911490946488658
+   ]
+  }
+ ],
+ "decision": "keep the 59-input model"
+}

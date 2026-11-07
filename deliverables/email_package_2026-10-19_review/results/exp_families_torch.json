@@ -1,0 +1,90 @@
+{
+ "inputs": 59,
+ "stride": 1,
+ "train_matches": 10577,
+ "val_matches": 1168,
+ "test_matches": 3059,
+ "train_rows": 13758901,
+ "val_rows": 1515228,
+ "test_rows": 3956374,
+ "models": {
+  "xgb": {
+   "logloss": 0.4564122947410805,
+   "logloss_ci95": [
+    0.453331906397478,
+    0.459139738758694
+   ],
+   "logloss_round_weighted": 0.4340308204647888,
+   "logloss_round_weighted_ci95": [
+    0.43135046089820595,
+    0.43645182228673146
+   ],
+   "auc": 0.8578198497324748,
+   "ece10": 0.003234437763420064,
+   "fit_seconds": 22,
+   "note": "winprob_v4, loaded from models/: best_iteration 1051, fitted on cuda",
+   "validation_logloss": 0.4536947144214568,
+   "rank_per_second": 1,
+   "rank_round_weighted": 1
+  },
+  "catboost_gpu": {
+   "logloss": 0.45681441489854346,
+   "logloss_ci95": [
+    0.45378861616704325,
+    0.4595555195060693
+   ],
+   "logloss_round_weighted": 0.43437574068844476,
+   "logloss_round_weighted_ci95": [
+    0.4317552110380782,
+    0.43679428338779447
+   ],
+   "auc": 0.8577604675589032,
+   "ece10": 0.0035502294087891464,
+   "fit_seconds": 59,
+   "note": "GPU, depth 6, lr 0.08, early stop on validation, NO monotone constraints (the GPU refused them), best_iteration 559",
+   "validation_logloss": 0.453544929437459,
+   "delta_vs_xgb": 0.0004021201574630081,
+   "delta_vs_xgb_ci95": [
+    0.00023066175231933533,
+    0.0005769844643147532
+   ],
+   "rank_per_second": 2,
+   "rank_round_weighted": 2
+  },
+  "mlp_torch_gpu": {
+   "logloss": 0.4625169408498078,
+   "logloss_ci95": [
+    0.4590910540456274,
+    0.46553277402584814
+   ],
+   "logloss_round_weighted": 0.4388531721930189,
+   "logloss_round_weighted_ci95": [
+    0.43594850743456975,
+    0.4414581214070303
+   ],
+   "auc": 0.8542271849292035,
+   "ece10": 0.015389177580145559,
+   "fit_seconds": 45,
+   "note": "PyTorch on GPU, 128-64 ReLU, Adam 1e-3, batch 4096, 10 epochs, fit on 25% of training rows (3,439,725)",
+   "validation_logloss": 0.45900173980482256,
+   "delta_vs_xgb": 0.006104646108727358,
+   "delta_vs_xgb_ci95": [
+    0.005394916061799928,
+    0.006821817624387601
+   ],
+   "rank_per_second": 3,
+   "rank_round_weighted": 3
+  }
+ },
+ "device": "gpu",
+ "ranking_per_second": [
+  "xgb",
+  "catboost_gpu",
+  "mlp_torch_gpu"
+ ],
+ "ranking_round_weighted": [
+  "xgb",
+  "catboost_gpu",
+  "mlp_torch_gpu"
+ ]
+}

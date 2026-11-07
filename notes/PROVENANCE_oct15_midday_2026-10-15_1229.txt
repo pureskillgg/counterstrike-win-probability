@@ -1,0 +1,66 @@
+Provenance oct15_midday 2026-10-15T12:29:02
+git f08b56a78f8e on main: Incremental tome driver + collection comparison, status page, RunPod provisioner, mutation report (24/24 caught)
+dirty tracked files: 3, untracked: 7
+{
+ "matches_in_store": 17957,
+ "matches_by_era": {
+  "2026": 13522,
+  "2024": 4435
+ },
+ "usable_rounds": 276491,
+ "usable_matches": 14868,
+ "grid_rows": 18965440,
+ "split_manifest": {
+  "sha256": "96df8c8a2590cfa200324b26bafa7f2f6c5224a77d8e53753f3eff8ba26bc6ba",
+  "history": [
+   {
+    "added": 6475,
+    "at": "2026-10-15T09:00:33",
+    "event": "freeze"
+   },
+   {
+    "added": 8393,
+    "at": "2026-10-15T09:11:31",
+    "event": "extend"
+   }
+  ],
+  "sizes": {
+   "train": 10663,
+   "val": 1156,
+   "test": 3049
+  }
+ },
+ "versions": {
+  "python": "3.12.15",
+  "polars": "2.0.0",
+  "numpy": "2.5.4",
+  "xgboost": "3.4.2"
+ }
+}
+
+?              0    models/_partial_killed_runs
+20163a91cefc2ebf        125,302  2026-10-15T09:55:18  models/golden_winprob_v1.json
+280d0d8e0a9b1fe1         17,157  2026-10-15T09:56:31  models/golden_winprob_v1_basic.json
+bff5f6797fe4fbb0      1,096,237  2026-10-14T04:29:07  models/winprob_test.json
+55a81399f9ffc053          1,421  2026-10-14T04:34:22  models/winprob_test.meta.json
+cbdea94243ac27e6      1,019,888  2026-10-14T05:23:39  models/winprob_v1.json
+4f7ddbab3f5a1655          3,182  2026-10-14T05:26:43  models/winprob_v1.meta.json
+37a0bfcb3278bae3        714,605  2026-10-14T05:16:09  models/winprob_v1_basic.json
+7a977ddcf492e30a          1,410  2026-10-14T05:19:39  models/winprob_v1_basic.meta.json
+b8f7c2278f2ceedc        599,074  2026-10-12T19:12:21  models/xgb_primary_seed0.json
+d7c596b815e62b94          2,411  2026-10-12T19:12:22  models/xgb_primary_seed0_meta.json
+8b0f42d2e601fc1c          3,700  2026-10-14T16:03:46  data/combined/e2e_winprob_v1.json
+abf74354343e0d09         12,525  2026-10-14T05:26:43  data/combined/export_winprob_v1.json
+4fa9b66daa41e5c8         12,016  2026-10-14T05:19:39  data/combined/export_winprob_v1_basic.json
+aa70e51b7ca1f3d7        387,303  2026-10-14T05:19:39  data/combined/export_winprob_v1_basic_test_sample.parquet
+4e5866026e76a936      1,006,328  2026-10-14T05:26:43  data/combined/export_winprob_v1_test_sample.parquet
+a1aff524830f692e         20,896  2026-10-15T11:41:07  data/combined/mutation_report.json
+51c33e12a906516b            275  2026-10-14T14:01:38  data/combined/parity_winprob_v1.json
+531fcec0ec50977c      1,050,836  2026-10-15T09:11:31  data/combined/split_manifest.json
+47f1fd8b2f72beaf          2,220  2026-10-14T15:46:10  data/combined/stress_winprob_v1.json
+c53864af56398cfe          2,165  2026-10-14T15:47:59  data/combined/stress_winprob_v1_basic.json
+0b67575492a39002      1,665,791  2026-10-15T09:07:34  data/combined/matches.parquet
+96e1cb3a0c1e2f95     13,388,848  2026-10-15T09:07:35  data/combined/rounds.parquet
+f552f4191535b83b     79,607,548  2026-10-15T09:10:11  data/combined/grid.parquet
+9f793fef9915540f     11,340,270  2026-10-15T09:07:35  data/combined/deaths.parquet
+1a2eac2b08bc50b8    146,992,529  2026-10-15T09:55:58  data/combined/cache_snapshot_2026.parquet

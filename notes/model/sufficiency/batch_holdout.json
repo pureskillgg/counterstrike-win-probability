@@ -1,0 +1,358 @@
+{
+ "check": "B batch holdout",
+ "status": "VERIFIED",
+ "seed": 0,
+ "batch_definition": "folder day DD of key path csds/2026/10/DD/<id>/csds",
+ "bakeoff_kept_check": {
+  "got": {
+   "channel_kept": 1709,
+   "dup_matches_removed": 47,
+   "rounds_in_kept_matches": 35502,
+   "kept_rounds": 28683,
+   "kept_matches": 1521,
+   "states": 234265
+  },
+  "expected": {
+   "channel_kept": 1709,
+   "dup_matches_removed": 47,
+   "rounds_in_kept_matches": 35502,
+   "kept_rounds": 28683,
+   "kept_matches": 1521,
+   "states": 234265
+  },
+  "status": "VERIFIED"
+ },
+ "header_rows": 1752,
+ "header_matches_by_day": {
+  "01": 67,
+  "02": 65,
+  "03": 100,
+  "04": 109,
+  "05": 83,
+  "06": 104,
+  "07": 89,
+  "08": 1135
+ },
+ "kept_matches_by_day": {
+  "01": 50,
+  "02": 48,
+  "03": 85,
+  "04": 78,
+  "05": 58,
+  "06": 77,
+  "07": 68,
+  "08": 1057
+ },
+ "header_date_agree": 1730,
+ "kept_date_disagree": 18,
+ "large_gap_threshold": 0.01,
+ "forward": {
+  "name": "forward",
+  "test_label": {
+   "in_batch": "random 20% of days 01-07",
+   "other": "all of day 08"
+  },
+  "device": "cpu",
+  "device_note": "cuda requested; xgboost reported no usable GPU and ran on cpu: [16:09:08] WARNING: D:\\bld\\xgboost-split_1789510239039\\work\\src\\context.cc:218: Device is changed from GPU to CPU as we couldn't find any available GPU on the system.",
+  "best_iteration": 159,
+  "fit_s": 51.5,
+  "sets": {
+   "train": {
+    "matches": 334,
+    "rounds": 5890,
+    "states": 48748,
+    "ct_win_share_states": 0.5151801099532288,
+    "days": {
+     "01": 38,
+     "02": 35,
+     "03": 61,
+     "04": 56,
+     "05": 38,
+     "06": 54,
+     "07": 52
+    },
+    "label": "train (pool minus in-batch minus validation)"
+   },
+   "val": {
+    "matches": 37,
+    "rounds": 588,
+    "states": 4845,
+    "ct_win_share_states": 0.5011351909184727,
+    "days": {
+     "01": 2,
+     "02": 4,
+     "03": 8,
+     "04": 5,
+     "05": 5,
+     "06": 9,
+     "07": 4
+    },
+    "label": "validation (match-level 10%, early stopping)"
+   },
+   "in_batch": {
+    "matches": 93,
+    "rounds": 1607,
+    "states": 13251,
+    "ct_win_share_states": 0.518904233642744,
+    "days": {
+     "01": 10,
+     "02": 9,
+     "03": 16,
+     "04": 17,
+     "05": 15,
+     "06": 14,
+     "07": 12
+    },
+    "label": "in-batch test (20%, held out)"
+   },
+   "other": {
+    "matches": 1057,
+    "rounds": 20598,
+    "states": 167421,
+    "ct_win_share_states": 0.5199825589382455,
+    "days": {
+     "08": 1057
+    },
+    "label": "out-of-batch test"
+   }
+  },
+  "validation_logloss_early_stop_set": 0.4436629294035552,
+  "metrics": {
+   "in_batch": {
+    "n": 13251,
+    "logloss": 0.43803119801459117,
+    "brier": 0.14621925361900845,
+    "auc": 0.8714025824407715,
+    "ece": 0.01534881277994458,
+    "acc": 0.7754886423666139
+   },
+   "other": {
+    "n": 167421,
+    "logloss": 0.4399872517126426,
+    "brier": 0.14763922432702484,
+    "auc": 0.8685241703381831,
+    "ece": 0.016753663335350964,
+    "acc": 0.7692224989696633
+   }
+  },
+  "constant_reference": {
+   "train_rate": 0.5151801099532288,
+   "in_batch": {
+    "n": 13251,
+    "logloss": 0.6924600383117671,
+    "brier": 0.24965649904763534,
+    "auc": 0.5,
+    "ece": 0.0037241236895151353,
+    "acc": 0.518904233642744
+   },
+   "other": {
+    "n": 167421,
+    "logloss": 0.6923945417969636,
+    "brier": 0.2496237608545332,
+    "auc": 0.5,
+    "ece": 0.004802448985016694,
+    "acc": 0.5199825589382455
+   }
+  },
+  "gap_other_minus_in_batch": {
+   "logloss": 0.0019560536980514076,
+   "brier": 0.0014199707080163881,
+   "auc": -0.0028784121025884346,
+   "ece": 0.001404850555406385
+  },
+  "bootstrap_95ci": {
+   "in_batch": {
+    "logloss": [
+     0.4242726142230853,
+     0.45210090670137415
+    ],
+    "brier": [
+     0.1410999247356163,
+     0.15150466849596475
+    ],
+    "auc": [
+     0.8618466158594497,
+     0.8807767063668978
+    ]
+   },
+   "other": {
+    "logloss": [
+     0.43598808320003235,
+     0.4440683873930992
+    ],
+    "brier": [
+     0.14608211637990592,
+     0.14920134995397663
+    ],
+    "auc": [
+     0.8656125045531075,
+     0.8712763396692985
+    ]
+   },
+   "gap": {
+    "logloss": [
+     -0.012688057752898293,
+     0.016226112545759657
+    ],
+    "brier": [
+     -0.004180245140964044,
+     0.006915275725714559
+    ],
+    "auc": [
+     -0.012918969767900445,
+     0.007357898055013483
+    ]
+   }
+  },
+  "verdict": "NOT LARGE batch dependence (forward): log loss gap +0.00196, 95% CI [-0.01269, +0.01623]; rule: LARGE if the CI excludes 0 and |gap| >= 0.01."
+ },
+ "reverse": {
+  "name": "reverse",
+  "test_label": {
+   "in_batch": "random 20% of day 08",
+   "other": "all of days 01-07"
+  },
+  "device": "cpu",
+  "device_note": "cuda requested; xgboost reported no usable GPU and ran on cpu: [16:09:08] WARNING: D:\\bld\\xgboost-split_1789510239039\\work\\src\\context.cc:218: Device is changed from GPU to CPU as we couldn't find any available GPU on the system.",
+  "best_iteration": 417,
+  "fit_s": 70.6,
+  "sets": {
+   "train": {
+    "matches": 761,
+    "rounds": 14859,
+    "states": 120750,
+    "ct_win_share_states": 0.519527950310559,
+    "days": {
+     "08": 761
+    },
+    "label": "train (pool minus in-batch minus validation)"
+   },
+   "val": {
+    "matches": 85,
+    "rounds": 1588,
+    "states": 12999,
+    "ct_win_share_states": 0.4894991922455573,
+    "days": {
+     "08": 85
+    },
+    "label": "validation (match-level 10%, early stopping)"
+   },
+   "in_batch": {
+    "matches": 211,
+    "rounds": 4151,
+    "states": 33672,
+    "ct_win_share_states": 0.5333808505583274,
+    "days": {
+     "08": 211
+    },
+    "label": "in-batch test (20%, held out)"
+   },
+   "other": {
+    "matches": 464,
+    "rounds": 8085,
+    "states": 66844,
+    "ct_win_share_states": 0.5149003650290228,
+    "days": {
+     "01": 50,
+     "02": 48,
+     "03": 85,
+     "04": 78,
+     "05": 58,
+     "06": 77,
+     "07": 68
+    },
+    "label": "out-of-batch test"
+   }
+  },
+  "validation_logloss_early_stop_set": 0.43594746373793053,
+  "metrics": {
+   "in_batch": {
+    "n": 33672,
+    "logloss": 0.42916760364953643,
+    "brier": 0.14366220193663445,
+    "auc": 0.8737274242319435,
+    "ece": 0.008549724531231831,
+    "acc": 0.7746792587312901
+   },
+   "other": {
+    "n": 66844,
+    "logloss": 0.44529332100417646,
+    "brier": 0.14920837541074955,
+    "auc": 0.8660842176577079,
+    "ece": 0.011501905491652375,
+    "acc": 0.770615163664652
+   }
+  },
+  "constant_reference": {
+   "train_rate": 0.519527950310559,
+   "in_batch": {
+    "n": 33672,
+    "logloss": 0.6913016791797056,
+    "brier": 0.24907762166127723,
+    "auc": 0.5,
+    "ece": 0.013852900247768307,
+    "acc": 0.5333808505583274
+   },
+   "other": {
+    "n": 66844,
+    "logloss": 0.6927459578411,
+    "brier": 0.2497993936675397,
+    "auc": 0.5,
+    "ece": 0.004627585281536395,
+    "acc": 0.5149003650290228
+   }
+  },
+  "gap_other_minus_in_batch": {
+   "logloss": 0.016125717354640023,
+   "brier": 0.005546173474115096,
+   "auc": -0.0076432065742355615,
+   "ece": 0.002952180960420544
+  },
+  "bootstrap_95ci": {
+   "in_batch": {
+    "logloss": [
+     0.4189338987739607,
+     0.4392592325123474
+    ],
+    "brier": [
+     0.13985015948414048,
+     0.14748202666337115
+    ],
+    "auc": [
+     0.8669069866200261,
+     0.8805169804775455
+    ]
+   },
+   "other": {
+    "logloss": [
+     0.43819206589166043,
+     0.45214125561490853
+    ],
+    "brier": [
+     0.14658782900296957,
+     0.151806918758405
+    ],
+    "auc": [
+     0.8613864688759543,
+     0.8706680772637212
+    ]
+   },
+   "gap": {
+    "logloss": [
+     0.0038421701998220983,
+     0.028325417049398963
+    ],
+    "brier": [
+     0.0008014570629818329,
+     0.010185919455022147
+    ],
+    "auc": [
+     -0.015771708870567162,
+     0.0007458298611110511
+    ]
+   }
+  },
+  "verdict": "LARGE batch dependence (reverse): log loss gap +0.01613, 95% CI [+0.00384, +0.02833]; rule: LARGE if the CI excludes 0 and |gap| >= 0.01."
+ },
+ "wall_s": 353.1
+}

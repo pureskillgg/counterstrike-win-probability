@@ -1,0 +1,37 @@
+{
+ "inputs": 13,
+ "validation_matches": 1383,
+ "test_matches": 3601,
+ "checks": {
+  "winprob_v4_basic": {
+   "best_iteration": 443,
+   "test_logloss_recomputed": 0.5021984902992287,
+   "test_logloss_meta": 0.5021984902254347
+  },
+  "winprob_v4_basic_nomono": {
+   "best_iteration": 681,
+   "test_logloss_recomputed": 0.501755405449197,
+   "test_logloss_meta": 0.5017554053900561
+  }
+ },
+ "difference": {
+  "validation": {
+   "no_constraints_minus_constraints": -0.00018830205181698893,
+   "ci95": [
+    -0.000357172032172053,
+    -1.771295183309456e-05
+   ],
+   "matches": 1383,
+   "rows": 1757999
+  },
+  "test": {
+   "no_constraints_minus_constraints": -0.00044308485003193677,
+   "ci95": [
+    -0.0005883209796071667,
+    -0.0003146783789583363
+   ],
+   "matches": 3601,
+   "rows": 4568043
+  }
+ }
+}

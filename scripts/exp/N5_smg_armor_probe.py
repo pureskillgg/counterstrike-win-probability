@@ -1,0 +1,36 @@
+import polars as pl
+P = r"G:/pureskill/csds-cs2/data/state_sample/players_1hz.parquet"
+R = r"G:/pureskill/csds-cs2/data/state_sample/rounds.parquet"
+B = r"G:/pureskill/csds-cs2/data/state_sample/round_buy_types.parquet"
+
+p = pl.scan_parquet(P)
+print("seconds_since_live distinct (head):")
+print(p.select(pl.col("seconds_since_live").min().alias("min"), pl.col("seconds_since_live").max().alias("max")).collect())
+print("split counts:")
+print(p.group_by("split").agg(pl.len().alias("n"), pl.col("match_key").n_unique().alias("matches")).collect())
+print("team_code values:")
+print(p.group_by("team_code").agg(pl.len().alias("n")).sort("team_code").collect())
+
+s0 = p.filter(pl.col("seconds_since_live") == 0)
+d0 = s0.collect()
+print("rows at sec0:", d0.height)
+print("dupes (match,round,player) at sec0:", d0.height - d0.unique(subset=["match_key","round","player_id"]).height)
+print("players per match-round at sec0 (value counts):")
+print(d0.group_by(["match_key","round"]).agg(pl.len().alias("n")).group_by("n").agg(pl.len().alias("rounds")).sort("n"))
+print("team_code at sec0:")
+print(d0.group_by("team_code").agg(pl.len().alias("n")))
+print("inv_primary value counts at sec0:")
+print(d0.group_by("inv_primary").agg(pl.len().alias("n")).sort("n", descending=True))
+print("weapon_code value counts at sec0 (top 30):")
+print(d0.group_by("weapon_code").agg(pl.len().alias("n")).sort("n", descending=True).head(30))
+print("inv_secondary value counts at sec0:")
+print(d0.group_by("inv_secondary").agg(pl.len().alias("n")).sort("n", descending=True))
+print("armor values at sec0:")
+print(d0.group_by("armor").agg(pl.len().alias("n")).sort("armor"))
+print("has_helmet at sec0:")
+print(d0.group_by("has_helmet").agg(pl.len().alias("n")))
+print("money describe at sec0:")
+print(d0.select(pl.col("money").describe()))
+print("round min max at sec0:", d0.select(pl.col("round").min(), pl.col("round").max()).row(0))
+print("sample rows at sec0:")
+print(d0.head(12).select(["match_key","round","tick","player_id","team_code","armor","has_helmet","money","inv_primary","inv_secondary","weapon_code","equipment_value_calc"]))

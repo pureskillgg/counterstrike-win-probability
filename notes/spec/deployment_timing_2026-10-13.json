@@ -1,0 +1,84 @@
+{
+  "created": "2026-10-13",
+  "python": "3.12.15",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "cpu_count": 16,
+  "xgboost_version": "3.4.2",
+  "numpy_version": "2.5.4",
+  "n_rows": 10000,
+  "predict_iteration_range": [
+    0,
+    262
+  ],
+  "model_file_bytes": 599074,
+  "features": [
+    "alive_ct",
+    "alive_t",
+    "ct_alive_minus_t",
+    "bomb_planted",
+    "seconds_since_round_live",
+    "seconds_since_plant",
+    "round_number",
+    "ct_score_minus_t_score",
+    "is_pistol_round",
+    "is_overtime"
+  ],
+  "tree_info": {
+    "trees_in_json": 362,
+    "trees_used": 262,
+    "max_nodes_per_tree_json": 31,
+    "max_depth_used": 4,
+    "base_score_raw": "[5.213736E-1]",
+    "base_margin": 0.0855465324672354
+  },
+  "parity": {
+    "max_abs_margin_diff": 7.182634393032572e-06,
+    "max_abs_prob_diff": 4.1015783247555504e-07,
+    "n_rows_compared": 10000
+  },
+  "nan_parity_max_abs_prob_diff": 5.4521399395213166e-08,
+  "timing_ms": {
+    "booster_batch10k_dmatrix_rebuilt_all_threads": {
+      "median_ms": 12.1926,
+      "p95_ms": 17.6719,
+      "min_ms": 9.0325,
+      "n": 30
+    },
+    "booster_batch10k_prebuilt_dmatrix_all_threads": {
+      "median_ms": 15.1635,
+      "p95_ms": 34.4605,
+      "min_ms": 9.0834,
+      "n": 30
+    },
+    "booster_batch10k_inplace_all_threads": {
+      "median_ms": 12.5106,
+      "p95_ms": 22.8417,
+      "min_ms": 8.8423,
+      "n": 30
+    },
+    "booster_single_row_inplace_1thread": {
+      "median_ms": 0.1819,
+      "p95_ms": 0.4677,
+      "min_ms": 0.1433,
+      "n": 2000
+    },
+    "booster_single_row_dmatrix_1thread": {
+      "median_ms": 0.6307,
+      "p95_ms": 1.111,
+      "min_ms": 0.4368,
+      "n": 500
+    },
+    "pure_python_batch10k_single_thread": {
+      "median_ms": 1864.0276,
+      "p95_ms": 2040.7998,
+      "min_ms": 1651.2894,
+      "n": 3
+    },
+    "pure_python_single_row_single_thread": {
+      "median_ms": 0.1326,
+      "p95_ms": 0.1698,
+      "min_ms": 0.1033,
+      "n": 2000
+    }
+  }
+}

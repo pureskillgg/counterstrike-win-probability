@@ -1,0 +1,66 @@
+"""D5 step 20: is the 8->9 side swap the halftime of a first-to-8 (MR15) format?
+
+For each match: boundaries classified side_swap (D5_14 rule), the first and last label with a round_end,
+the max label, and the final freeze-end score totals. Groups by swap8 and regime.
+Expected under MR15 (halves of 8 and 7 rounds; first to 8): swap at 8->9 and no swap at 12->13,
+max label typically 13..15 (OT beyond 15 is rare).
+Run: "G:\\pureskill\\csds-cs2\\.pixi\\envs\\default\\python.exe" -I -X utf8 scripts\\swarm2\\D5_20_format.py
+"""
+import sys
+from pathlib import Path
+
+import polars as pl
+
+sys.stdout.reconfigure(encoding="utf-8")
+pl.Config.set_tbl_rows(-1)
+pl.Config.set_tbl_cols(-1)
+
+SCR = Path(r"C:\Users\<user>\AppData\Local\Temp\claude\C--Users-<user>-Documents-pureskill"
+           r"\e0a18ad2-aa9e-4a3c-9946-29641b2cde82\scratchpad\D5")
+R = pl.read_parquet(SCR / "rounds.parquet").select(
+    ["match_key", "round", "fe_t_score", "fe_ct_score", "winner", "in_end", "n_round_announce_match_start"]).sort(
+    ["match_key", "round"])
+M = pl.read_parquet(SCR / "matches.parquet")
+LATE = [f"{d:02d}" for d in range(12, 26)]
+EARLY = [f"{d:02d}" for d in range(1, 8)]
+mk = R.group_by("match_key").agg(pl.col("n_round_announce_match_start").fill_null(0).sum().alias("mstart"))
+M = (M.join(mk, on="match_key", how="left")
+     .with_columns(regime=pl.when(pl.col("mstart") > 0).then(pl.lit("A")).otherwise(pl.lit("B")),
+                   grp=pl.when(pl.col("aff_r13")).then(pl.lit("aff_r13"))
+                   .when(pl.col("day").is_in(LATE)).then(pl.lit("ctrl_late"))
+                   .when(pl.col("day").is_in(EARLY)).then(pl.lit("early")).otherwise(pl.lit("other"))))
+
+N = R.with_columns(nt=pl.col("fe_t_score").shift(-1).over("match_key"),
+                   nct=pl.col("fe_ct_score").shift(-1).over("match_key"),
+                   nr=pl.col("round").shift(-1).over("match_key"))
+N = N.filter((pl.col("nr") == pl.col("round") + 1) & pl.col("fe_t_score").is_not_null() & pl.col("nt").is_not_null()
+             & pl.col("winner").is_not_null())
+a = pl.when(pl.col("winner") == 2).then(1).otherwise(0)
+b = pl.when(pl.col("winner") == 3).then(1).otherwise(0)
+N = N.with_columns(ns=(pl.col("nt") == pl.col("fe_t_score") + a) & (pl.col("nct") == pl.col("fe_ct_score") + b),
+                   sw=(pl.col("nt") == pl.col("fe_ct_score") + b) & (pl.col("nct") == pl.col("fe_t_score") + a))
+SW = N.filter(pl.col("sw") & ~pl.col("ns")).group_by("match_key").agg(
+    pl.col("round").sort().alias("swap_boundaries"))
+SW = SW.with_columns(swap_str=pl.col("swap_boundaries").cast(pl.List(pl.String)).list.join(","))
+EN = R.filter(pl.col("in_end")).group_by("match_key").agg(pl.col("round").max().alias("max_end_label"),
+                                                          pl.col("round").min().alias("min_end_label"),
+                                                          pl.len().alias("n_end_rows"))
+FE = R.filter(pl.col("fe_t_score").is_not_null()).sort(["match_key", "round"]).group_by("match_key").agg(
+    pl.col("fe_t_score").last().alias("last_fe_t"), pl.col("fe_ct_score").last().alias("last_fe_ct"),
+    pl.col("round").max().alias("last_fe_round"))
+X = M.select(["match_key", "grp", "regime"]).join(SW, on="match_key", how="left").join(EN, on="match_key", how="left").join(
+    FE, on="match_key", how="left")
+X = X.with_columns(swap8=pl.col("swap_str").fill_null("").str.contains(r"(^|,)8(,|$)"),
+                   swap12=pl.col("swap_str").fill_null("").str.contains(r"(^|,)12(,|$)"))
+print("== boundary sets among matches with a swap at 8 (swap8) vs others, by regime ==")
+print(X.group_by(["regime", "swap8", "swap12"]).agg(pl.len().alias("matches"),
+                                                   pl.col("max_end_label").mean().round(2).alias("mean_max_label"),
+                                                   pl.col("max_end_label").min().alias("min_max"),
+                                                   pl.col("max_end_label").max().alias("max_max")).sort(["regime", "swap8", "swap12"]))
+print("\n== max round_end label distribution for swap8 matches (regime A and B) ==")
+print(X.filter(pl.col("swap8")).group_by(["regime", "max_end_label"]).agg(pl.len().alias("matches")).sort(["regime", "max_end_label"]))
+print("\n== final freeze-end score sum (last fe) for swap8 matches: value counts of (last_fe_t + last_fe_ct) ==")
+print(X.filter(pl.col("swap8")).with_columns((pl.col("last_fe_t") + pl.col("last_fe_ct")).alias("fe_sum")).group_by(
+    ["regime", "fe_sum"]).agg(pl.len().alias("matches")).sort(["regime", "fe_sum"]))
+print("\nswap8 matches: the team at 8 wins? (fe scores at round 9 show 8 for either side)")
+print(X.filter(pl.col("swap8")).group_by(["regime", "last_fe_round"]).agg(pl.len().alias("matches")).sort(["regime", "last_fe_round"]))

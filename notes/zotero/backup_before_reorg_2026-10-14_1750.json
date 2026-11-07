@@ -1,0 +1,818 @@
+[
+ {
+  "key": "8I6HJKJE",
+  "version": 103,
+  "title": "Precision Under Fire: Analysis and Predictive Modeling in Counter-Strike: Global Offensive",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "5MHZCMEL",
+  "version": 100,
+  "title": "So, what changed? (Leetify rating upgrade)",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "7UKXKPJ2",
+  "version": 100,
+  "title": "Leetify Rating explained",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "K89GB5UU",
+  "version": 100,
+  "title": "CS:GO round modeling",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "K8H74J67",
+  "version": 100,
+  "title": "Counter-Strike 2 data",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "CULYQXSM",
+  "version": 100,
+  "title": "Game State widget launch",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "4QGVYYFN",
+  "version": 100,
+  "title": "Does the first kill win the round in CS2? Scope.gg analyzes Premier and FACEIT",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "P8RWKVDW",
+  "version": 100,
+  "title": "Flaws of win probability",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "N476MI4Y",
+  "version": 100,
+  "title": "What are the 80+ factors that a prediction model takes into account in esports?",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "6JXKCWXY",
+  "version": 100,
+  "title": "Riot Games and AWS bring win probability model to esports broadcasts",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "VKVAUS3N",
+  "version": 100,
+  "title": "catboost 1.2.10 package metadata (PyPI JSON API)",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "9F3C3XCG",
+  "version": 100,
+  "title": "catboost package metadata, latest version index (PyPI JSON API)",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "WQCM7CDW",
+  "version": 100,
+  "title": "Issue 2671: ``Numpy 2.0 support status?''",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "YI9IAT95",
+  "version": 100,
+  "title": "CatBoost documentation: parameter tuning",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "8DUM6WEQ",
+  "version": 100,
+  "title": "CatBoost documentation: common training parameters",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "GU6QZWYQ",
+  "version": 100,
+  "title": "CatBoost documentation: classification loss functions",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "3ZQJ9PWN",
+  "version": 100,
+  "title": "interpret package metadata (PyPI JSON API)",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "GS8XVEMB",
+  "version": 100,
+  "title": "interpret-core 0.7.8 package metadata (PyPI JSON API)",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "67KZ8R7Q",
+  "version": 100,
+  "title": "Explainable Boosting Machine (EBM) documentation",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "73HQ6GZA",
+  "version": 100,
+  "title": "EBM hyperparameters documentation",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "SVDPG27R",
+  "version": 100,
+  "title": "interpret-core \\texttt_ebm.py source, develop branch",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "PEAZRWXP",
+  "version": 100,
+  "title": "pyGAM documentation index",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "ECBDGHFN",
+  "version": 100,
+  "title": "pyGAM API reference: pygam.pygam module",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "8Y4HAVWL",
+  "version": 100,
+  "title": "pyGAM API reference: Term",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "AJHJMIBU",
+  "version": 100,
+  "title": "pyGAM repository README",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "3KMZ5SWT",
+  "version": 100,
+  "title": "pygam 0.12.0 package metadata (PyPI JSON API)",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "AKWLMKJT",
+  "version": 101,
+  "title": "Ensembles of trees: histogram-based gradient boosting, monotonic constraints",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "WNXFSKDG",
+  "version": 101,
+  "title": "Probability calibration",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "RPXYTQ4B",
+  "version": 101,
+  "title": "sklearn.preprocessing.SplineTransformer",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "JR5DI89J",
+  "version": 101,
+  "title": "Monotonic Constraints",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "8LV3S7XU",
+  "version": 101,
+  "title": "Valuing Player Actions in Counter-Strike: Global Offensive (full text, ar5iv render)",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "SV7FNNI6",
+  "version": 101,
+  "title": "nflWAR: A Reproducible Method for Offensive Player Evaluation in Football",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "WC3GESZQ",
+  "version": 101,
+  "title": "Obtaining Calibrated Probabilities from Boosting",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "BA2F6DMD",
+  "version": 101,
+  "title": "Interpretable Real-Time Win Prediction for Honor of Kings -- a Popular Mobile MOBA Esport",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "RPN3HD5H",
+  "version": 32,
+  "title": "Introducing TabFM: A zero-shot foundation model for tabular data",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "GF4J73GZ",
+  "version": 33,
+  "title": "TabFM: scikit-learn compatible zero-shot tabular foundation model",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "8BRGDSR9",
+  "version": 34,
+  "title": "Mitra Classifier (model card)",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "EEN7W9KS",
+  "version": 35,
+  "title": "Mitra model source: mitra_model.py",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "A9Q4D7FB",
+  "version": 36,
+  "title": "Mitra-v2 (title NOT RETRIEVED)",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "FI96HJT9",
+  "version": 37,
+  "title": "Mitra: Mixed Synthetic Priors for Enhancing Tabular Foundation Models",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "ZHQ52424",
+  "version": 38,
+  "title": "Layer6/TabDPT: model card",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "V8INEFTS",
+  "version": 39,
+  "title": "TabDPT-inference: inference interface for TabDPT",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "WM4HXMWA",
+  "version": 40,
+  "title": "TabDPT: Scaling Tabular Foundation Models on Real Data",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "U62G2XAQ",
+  "version": 41,
+  "title": "StableAI LimiX Non-Commercial License, Version 1.0",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "RN3DV3XQ",
+  "version": 42,
+  "title": "LimiX: repository with LimiX-2 inference code and weight links",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "TJV2MADJ",
+  "version": 43,
+  "title": "LimiX-2: A Contextual Mechanism Network Towards General Structured-Data Intelligence",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "NAQZ9NXX",
+  "version": 44,
+  "title": "LimiX: Unleashing Structured-Data Modeling Capability for Generalist Intelligence",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "6EBZH79Q",
+  "version": 45,
+  "title": "TabICLv2: A Better, Faster, Scalable, and Open Tabular Foundation Model",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "DTV6I2J3",
+  "version": 46,
+  "title": "TabICL: A Tabular Foundation Model for In-Context Learning on Large Data",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "GBWAZCNC",
+  "version": 47,
+  "title": "TabICL: tabular in-context learning (repository)",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "2T43T5N8",
+  "version": 48,
+  "title": "Prior Labs License, Version 1.1 (TabPFN-v2 weights)",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "TVFEKDPK",
+  "version": 49,
+  "title": "TABPFN-3.5 License v1.0",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "MZCA36IU",
+  "version": 50,
+  "title": "TabPFN-3.5: Technical Report",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "6VCHN5R5",
+  "version": 51,
+  "title": "TabPFN-3: Technical Report",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "BESX5U4H",
+  "version": 52,
+  "title": "TabPFN-2.5: Advancing the State of the Art in Tabular Foundation Models",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "QF68UH3P",
+  "version": 53,
+  "title": "Models: TabPFN model versions, limits and licences",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "WZ2P42GX",
+  "version": 54,
+  "title": "TabPFN: README (GitHub PriorLabs/TabPFN, main branch)",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "CH9BVP3J",
+  "version": 55,
+  "title": "Explainable e-sports win prediction through Machine Learning classification in streaming",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "K5Z3JBF4",
+  "version": 56,
+  "title": "GCN-WP: Semi-Supervised Graph Convolutional Networks for Win Prediction in Esports",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "6FR4AUGM",
+  "version": 57,
+  "title": "The Application of Machine Learning in Predicting the Results of Popular eSports Games: Win Rate Prediction in MOBA and FPS Games",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "ZJR4G6TC",
+  "version": 58,
+  "title": "Enabling Real-Time Prediction of In-game Deaths through Telemetry in Counter-Strike: Global Offensive",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "T7X5AQEA",
+  "version": 59,
+  "title": "Pre-game Paired-Comparison Modeling of Professional League of Legends Map Outcomes",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "Q4Z5H6AF",
+  "version": 60,
+  "title": "The Calibration-Leverage Tradeoff in Exactly Solvable Win-Probability Models",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "N3W2A4F8",
+  "version": 61,
+  "title": "Kelly Betting as Bayesian Model Evaluation: A Framework for Time-Updating Probabilistic Forecasts",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "UMMR4B4F",
+  "version": 62,
+  "title": "Boldness-Recalibration for Binary Event Predictions",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "U42PIUQ7",
+  "version": 63,
+  "title": "Evaluating Real-Time Probabilistic Forecasts with Application to National Basketball Association Outcome Prediction",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "8WHVNWZ8",
+  "version": 64,
+  "title": "A Bayesian Approach to In-Game Win Probability in Soccer",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "EECIF2SQ",
+  "version": 65,
+  "title": "Using Random Forests to Estimate Win Probability Before Each Play of an NFL Game",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "AX4SVPBT",
+  "version": 66,
+  "title": "iWinRNFL: A Simple, Interpretable & Well-Calibrated In-Game Win Probability Model for NFL",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "RN9DIBXP",
+  "version": 67,
+  "title": "Creating Well Calibrated and Refined Win Prediction Models",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "5ZT7MHTX",
+  "version": 68,
+  "title": "Win Prediction in Multiplayer Esports: Live Professional Match Prediction",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "TBW4JIGQ",
+  "version": 69,
+  "title": "Precision under Fire: Analysis and Predictive Modeling in Counter-Strike: Global Offensive",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "DKXSKMT9",
+  "version": 70,
+  "title": "Analyzing the Differences between Professional and Amateur Esports through Win Probability",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "AVZ94FUZ",
+  "version": 71,
+  "title": "Predicting Round and Game Winners in CSGO",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "TAAT8PJI",
+  "version": 72,
+  "title": "A Predictive Analysis of Valorant Esports: Win Probability Through Economy and Ultimate Ability",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "H86KMZEN",
+  "version": 73,
+  "title": "Match Outcome Prediction in FPS Games Reflecting Sequential Match Flow: Focusing on Valorant and the Seq2Seq LSTM Model",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "PEHTAI2E",
+  "version": 74,
+  "title": "Interpretable Real-Time Win Prediction for Honor of Kings, a Popular Mobile MOBA Esport",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "XX8CX7EK",
+  "version": 75,
+  "title": "League of Legends: Real-Time Result Prediction",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "99SEPXBR",
+  "version": 76,
+  "title": "Rethinking Evaluation Metric for Probability Estimation Models Using Esports Data",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "K8JGMTPH",
+  "version": 77,
+  "title": "ESTA: An Esports Trajectory and Action Dataset",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "B9A8RK7C",
+  "version": 78,
+  "title": "Optimal Team Economic Decisions in Counter-Strike",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "F3VT73IH",
+  "version": 79,
+  "title": "Valuing Player Actions in Counter-Strike: Global Offensive",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "BBZWCC4X",
+  "version": 80,
+  "title": "LightGBM: A Highly Efficient Gradient Boosting Decision Tree",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "3QNA47HG",
+  "version": 81,
+  "title": "XGBoost: A Scalable Tree Boosting System",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "CHGGV7GA",
+  "version": 82,
+  "title": "Predicting good probabilities with supervised learning",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "PQMHENEG",
+  "version": 83,
+  "title": "Accurate predictions on small data with a tabular foundation model",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "DSHEBT99",
+  "version": 84,
+  "title": "A Closer Look at Deep Learning Methods on Tabular Datasets",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "I3DV2MVE",
+  "version": 85,
+  "title": "TabArena: A Living Benchmark for Machine Learning on Tabular Data",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "HJBGV4AC",
+  "version": 86,
+  "title": "When Do Neural Nets Outperform Boosted Trees on Tabular Data?",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "K4IITC5S",
+  "version": 87,
+  "title": "Why do tree-based models still outperform deep learning on tabular data?",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "8IVWIEI8",
+  "version": 88,
+  "title": "pop_overtime.py (csgo-dsdk)",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "P8TD85IH",
+  "version": 89,
+  "title": "Data primer and field notes",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "8J2X7XX9",
+  "version": 90,
+  "title": "Datasheet (CS2 CSDS)",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "CPDVZEQ6",
+  "version": 91,
+  "title": "Revision Stats (CS2 CSDS)",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "TMNPJZNE",
+  "version": 92,
+  "title": "Getting the Data (CS2 CSDS)",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "RHCMZR5Q",
+  "version": 93,
+  "title": "CSDS Changelog by Channel (CS2)",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "RKEX8IHS",
+  "version": 94,
+  "title": "CSDS Changelog (CS2)",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "T984EVPF",
+  "version": 95,
+  "title": "Known Flaws (CS2 CSDS)",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "5JXSRB8P",
+  "version": 96,
+  "title": "How the Data Fits Together (CS2 CSDS)",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "BWV56F76",
+  "version": 97,
+  "title": "CS2 CSDS Enums",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "MBTQGCDI",
+  "version": 98,
+  "title": "CSDS Spec (CS2)",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ },
+ {
+  "key": "CBTDC9G9",
+  "version": 99,
+  "title": "Competitive Gameplay: CS2 CSDS index (section root)",
+  "collections": [
+   "EI4RCCRS"
+  ]
+ }
+]

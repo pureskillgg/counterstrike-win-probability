@@ -1,0 +1,95 @@
+{
+ "store": "combined",
+ "round_end_rows": 428604,
+ "round_end_duplicate_rows_dropped": 1,
+ "dup_groups_tolerant": 572,
+ "dup_groups_with_different_exact_signature": 4,
+ "matches": 20754,
+ "matches_by_era": {
+  "2024": 4435,
+  "2026": 16319
+ },
+ "scope_by_era": {
+  "2024|hostage": 113,
+  "2024|in_scope": 3082,
+  "2024|map_out_of_pool": 1032,
+  "2024|wingman": 208,
+  "2026|hostage": 70,
+  "2026|in_scope": 15183,
+  "2026|map_out_of_pool": 263,
+  "2026|wingman": 803
+ },
+ "wingman_flag_disagrees": 12,
+ "channels_incomplete_matches": 0,
+ "dup_groups": 572,
+ "dup_matches_removed": 667,
+ "rounds_total": 428604,
+ "round_status": {
+  "2024|disconnect or bot takeover": 6142,
+  "2024|label unresolved": 179,
+  "2024|no round_start": 181,
+  "2024|ok": 66981,
+  "2024|player_count != 10": 4931,
+  "2024|roster not 5v5": 5112,
+  "2026|disconnect or bot takeover": 17221,
+  "2026|more than 5 deaths on a side": 7,
+  "2026|ok": 294179,
+  "2026|player_count != 10": 28052,
+  "2026|roster not 5v5": 5619
+ },
+ "label_source_ok_rounds": {
+  "2024|bomb": 13213,
+  "2024|majority": 53452,
+  "2024|recorded_only": 316,
+  "2026|bomb": 60613,
+  "2026|majority": 233435,
+  "2026|recorded_only": 131
+ },
+ "final_differs_from_recorded_ok_rounds": {
+  "2024|9842": [
+   0,
+   28114
+  ],
+  "2024|9961": [
+   1986,
+   38867
+  ],
+  "2026|10847": [
+   0,
+   675
+  ],
+  "2026|10896": [
+   0,
+   203241
+  ],
+  "2026|10924": [
+   0,
+   90263
+  ]
+ },
+ "use_rounds": 329028,
+ "use_matches": 17563,
+ "use_by_era": {
+  "2024": [
+   2749,
+   46744
+  ],
+  "2026": [
+   14814,
+   282284
+  ]
+ },
+ "end_gap_ticks_ok_rounds": {
+  "2026": {
+   "median": 0.0,
+   "p90": 0.0,
+   "share_gt_64": 1.0197872723749825e-05
+  },
+  "2024": {
+   "median": 428.0,
+   "p90": 429.0,
+   "share_gt_64": 0.5399292336632776
+  }
+ },
+ "seconds": 13.0
+}

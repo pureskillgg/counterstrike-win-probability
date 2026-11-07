@@ -1,0 +1,36 @@
+ROUND-STATE CHECKS, de_mirage, LEARNED embedding (h3: set encoder, next-state prediction, 8 numbers)
+
+rows 4342609; embedding z shape (4342609, 8); z mean [-0.18700000643730164, 0.0430000014603138, 0.0010000000474974513, -0.13300000131130219, 0.27900001406669617, -0.04699999839067459, -0.11999999731779099, 0.11699999868869781]
+round winner known for 100.0000% of rows; winner codes [{'winner': 2, 'len': 2025557}, {'winner': 3, 'len': 2317052}]
+
+NEAREST NEIGHBOURS in z (same match excluded; 5 neighbours; Euclidean distance in z)
+  query row 1196904: CT alive 4, T alive 5, second 35, winner 2
+      nbr row 2945085: d=0.010, CT 4 T 2, second 67, winner 3
+      nbr row 2423688: d=0.010, CT 3 T 3, second 68, winner 2
+      nbr row 3852525: d=0.012, CT 3 T 5, second 28, winner 2
+      nbr row 1104454: d=0.012, CT 5 T 5, second 28, winner 3
+      nbr row 3085060: d=0.013, CT 2 T 4, second 33, winner 2
+    neighbours with the same alive counts: 0/5; same winner: 3/5
+  query row 2242316: CT alive 5, T alive 4, second 26, winner 3
+      nbr row 1160167: d=0.010, CT 4 T 4, second 41, winner 3
+      nbr row 1706714: d=0.011, CT 5 T 5, second 48, winner 2
+      nbr row 4286638: d=0.011, CT 5 T 3, second 48, winner 3
+      nbr row 866718: d=0.012, CT 5 T 4, second 18, winner 3
+      nbr row 1591782: d=0.012, CT 3 T 3, second 63, winner 3
+    neighbours with the same alive counts: 1/5; same winner: 4/5
+  query row 3728611: CT alive 5, T alive 4, second 16, winner 2
+      nbr row 2777101: d=0.007, CT 2 T 3, second 33, winner 2
+      nbr row 1927153: d=0.008, CT 2 T 4, second 43, winner 2
+      nbr row 1745552: d=0.009, CT 4 T 3, second 35, winner 2
+      nbr row 3396419: d=0.009, CT 2 T 3, second 53, winner 2
+      nbr row 814189: d=0.010, CT 3 T 3, second 39, winner 2
+    neighbours with the same alive counts: 0/5; same winner: 5/5
+  query row 2840521: CT alive 4, T alive 2, second 45, winner 3
+      nbr row 662274: d=0.015, CT 5 T 2, second 36, winner 3
+      nbr row 3224344: d=0.025, CT 3 T 2, second 45, winner 2
+      nbr row 1992830: d=0.025, CT 3 T 2, second 90, winner 3
+      nbr row 1176657: d=0.027, CT 5 T 2, second 23, winner 3
+      nbr row 4033921: d=0.027, CT 3 T 3, second 57, winner 2
+    neighbours with the same alive counts: 0/5; same winner: 3/5
+
+TRACED ROUND: test round with the most seconds: match_idx 180, round 20, 155 seconds

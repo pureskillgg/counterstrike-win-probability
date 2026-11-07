@@ -1,0 +1,26 @@
+import polars as pl
+import glob, os
+base = r"G:\pureskill\csds-cs2\tomes\combined_test\tome\csds"
+d = os.path.join(base, "basic_round_end.COMBINED")
+files = sorted(glob.glob(os.path.join(d, "dataframe_*")))
+re_ = pl.concat([pl.read_parquet(f) for f in files])
+re26 = re_.filter(pl.col("match_key").str.starts_with("csds/2026/"))
+print("2026 rows", re26.height, "distinct match", re26["match_key"].n_unique())
+print("2026 dup (match,round) rows:", re26.height - re26.select(["match_key","round"]).unique().height)
+print("2026 player_count dist:")
+print(re26.group_by("player_count").len().sort("player_count"))
+print("2026 player_count_norm dist:")
+print(re26.group_by("player_count_norm").len().sort("player_count_norm"))
+ten = re26.filter(pl.col("player_count") == 10)
+print("2026 ten rows", ten.height, "distinct (match,round)", ten.select(["match_key","round"]).unique().height, "matches", ten["match_key"].n_unique())
+print("reason x winner for 2026 ten:")
+print(ten.group_by(["win_reason_code","win_reason_message","winner_team_code"]).len().sort(["win_reason_code","winner_team_code"]))
+print("reason 12 rows in 2026 ten:", ten.filter(pl.col("win_reason_code")==12).height)
+print("reason 12 rows in 2026 all:", re26.filter(pl.col("win_reason_code")==12).height)
+print("reason 12 rows in 2026 ten where player_count null?", ten.filter(pl.col("win_reason_code")==12).select(pl.col("player_count").is_null().sum()).item())
+# check tick and second for reason 12
+print(ten.filter(pl.col("win_reason_code")==12).select(["round","tick","second","winner_team_code"]).head(8))
+print("winner_team_code dist ten:")
+print(ten.group_by("winner_team_code").len())
+print("legacy_code dist ten:")
+print(ten.group_by(["legacy_code"]).len().sort("legacy_code").head(20))

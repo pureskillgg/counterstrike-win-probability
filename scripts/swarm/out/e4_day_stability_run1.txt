@@ -1,0 +1,285 @@
+polars 2.0.0; chi2 backend scipy; bootstrap B=2000; seed=20261013
+
+
+==================== TOME 2026 ====================
+header matches 1752; key-path day == match_date day for 1730 (0.9874)
+
+## Tome 2026: dedupe ON (primary)
+- matches with >=1 round_end row: 1752; header matches with no round_end: 0
+- duplicate groups 47 sizes {2: 42, 3: 5}; dropped 52; kept 1700; dropped by day {'2026/10/01': 2, '2026/10/02': 2, '2026/10/03': 3, '2026/10/04': 2, '2026/10/05': 3, '2026/10/06': 3, '2026/10/08': 37}
+- round_end rows 35992; duplicate (match, round) rows 0; unique rounds kept (before dedupe) 35992
+- rounds without round_freeze_end (live start): 39 (0.0011); freeze_end rows 35953
+- bomb_planted rows 18306; planted rounds in window 16827
+- death rows 253480; kill rows 248308; attacker null or <=0: 1647
+- winner_team_code counts {2: 17127, 3: 18865}; 5v5 share by player_info (exactly 5 T and 5 CT) 0.9041; most common round_end.player_count [(10, 32041), (4, 1973), (9, 1380), (11, 217)]
+- round_state event types (first 40): ['announce_phase_end', 'begin_new_match', 'bomb_defused', 'bomb_exploded', 'bomb_planted', 'buytime_ended', 'cs_pre_restart', 'cs_round_final_beep', 'cs_round_start_beep', 'cs_win_panel_match', 'freezetime_ended_inferred', 'round_announce_final', 'round_announce_last_round_half', 'round_announce_match_point', 'round_announce_match_start', 'round_end', 'round_freeze_end', 'round_officially_ended', 'round_poststart', 'round_prestart', 'round_start']
+- bomb_state event types: ['bomb_defused', 'bomb_exploded', 'bomb_planted']
+
+### Per key-day, all rounds (95% CI: match-cluster bootstrap)
+| day | header matches | matches (kept) | rounds | CT win % [CI] | plant % [CI] | rounds/match [CI] | kills/round [CI] |
+|---|---|---|---|---|---|---|---|
+| 2026/10/01 | 67 | 65 | 1182 | 51.78 [48.37, 55.42] | 40.36 [36.10, 44.59] | 18.18 [17.28, 19.14] | 6.429 [6.023, 6.803] |
+| 2026/10/02 | 65 | 63 | 1207 | 52.69 [49.42, 56.03] | 42.67 [38.02, 46.79] | 19.16 [18.13, 20.19] | 6.419 [5.972, 6.814] |
+| 2026/10/03 | 100 | 97 | 1890 | 53.70 [50.11, 56.75] | 43.44 [40.42, 46.27] | 19.48 [18.58, 20.36] | 6.874 [6.667, 7.060] |
+| 2026/10/04 | 109 | 107 | 1964 | 52.44 [49.58, 55.35] | 41.85 [38.16, 45.42] | 18.36 [17.47, 19.22] | 6.381 [6.033, 6.705] |
+| 2026/10/05 | 83 | 80 | 1467 | 52.28 [48.89, 55.75] | 39.81 [35.49, 44.22] | 18.34 [17.36, 19.30] | 6.450 [6.052, 6.793] |
+| 2026/10/06 | 104 | 101 | 1875 | 51.52 [48.46, 54.60] | 41.55 [38.23, 44.57] | 18.56 [17.74, 19.43] | 6.423 [6.075, 6.719] |
+| 2026/10/07 | 89 | 89 | 1624 | 53.08 [49.85, 56.44] | 40.33 [36.16, 44.33] | 18.25 [17.21, 19.27] | 6.415 [6.062, 6.709] |
+| 2026/10/08 (batch) | 1135 | 1098 | 23697 | 52.26 [51.51, 53.06] | 49.18 [48.43, 50.00] | 21.58 [21.30, 21.88] | 7.087 [7.055, 7.116] |
+| POOLED (2026) | 1752 | 1700 | 34906 | 52.35 [51.70, 53.01] | 46.72 [46.02, 47.45] | 20.53 [20.30, 20.77] | 6.896 [6.849, 6.941] |
+
+### Per key-day, 5v5 rounds (exactly 5 T and 5 CT in player_info; analytic cluster-robust 95% CI)
+| day | 5v5 matches | 5v5 rounds | CT win % [CI] | plant % [CI] | rounds/match [CI] | kills/round [CI] |
+|---|---|---|---|---|---|---|
+| 2026/10/01 | 51 | 880 | 50.91 [46.51, 55.31] | 46.70 [42.90, 50.51] | 17.25 [15.57, 18.94] | 7.350 [7.267, 7.433] |
+| 2026/10/02 | 49 | 916 | 51.20 [47.19, 55.21] | 49.78 [46.28, 53.28] | 18.69 [17.15, 20.24] | 7.323 [7.246, 7.400] |
+| 2026/10/03 | 89 | 1647 | 54.22 [50.60, 57.84] | 45.78 [42.65, 48.91] | 18.51 [17.36, 19.65] | 7.240 [7.172, 7.307] |
+| 2026/10/04 | 79 | 1559 | 51.38 [48.31, 54.45] | 49.65 [46.65, 52.64] | 19.73 [18.76, 20.71] | 7.317 [7.254, 7.379] |
+| 2026/10/05 | 62 | 1167 | 51.93 [48.14, 55.72] | 45.93 [41.76, 50.10] | 18.82 [17.44, 20.21] | 7.325 [7.247, 7.402] |
+| 2026/10/06 | 80 | 1492 | 50.74 [47.37, 54.11] | 47.32 [44.70, 49.94] | 18.65 [17.53, 19.77] | 7.259 [7.190, 7.328] |
+| 2026/10/07 | 69 | 1264 | 52.22 [48.41, 56.02] | 47.23 [43.61, 50.85] | 18.32 [17.01, 19.62] | 7.246 [7.167, 7.325] |
+| 2026/10/08 | 1066 | 22622 | 52.26 [51.46, 53.07] | 49.80 [49.03, 50.57] | 21.22 [20.93, 21.52] | 7.160 [7.142, 7.178] |
+
+### Tome 2026 chi-square, all rounds, dedupe ON (primary) (days = 8)
+| metric | naive chi2 (df) | naive p | cluster-robust Q (df) | robust p | dispersion Q/df (robust) |
+|---|---|---|---|---|---|
+| all rounds CT win rate | 2.6 (7) | 0.923 | 1.3 (7) | 0.988 | 0.19 |
+| all rounds plant rate | 186.6 (7) | 8.02e-37 | 84.7 (7) | 1.5e-15 | 12.10 |
+| all rounds kills per round | 435.3 (7) | 6.33e-90 | 80.9 (7) | 9.22e-15 | 11.55 |
+| all rounds rounds per match | n/a | n/a | 163.4 (7) | 6.3e-32 | 23.34 |
+
+### Tome 2026 chi-square, 5v5 rounds, dedupe ON (primary) (days = 8)
+| metric | naive chi2 (df) | naive p | cluster-robust Q (df) | robust p | dispersion Q/df (robust) |
+|---|---|---|---|---|---|
+| 5v5 CT win rate | 5.4 (7) | 0.611 | 2.8 (7) | 0.904 | 0.40 |
+| 5v5 plant rate | 22.4 (7) | 0.00219 | 14.2 (7) | 0.0475 | 2.03 |
+| 5v5 kills per round | 16.5 (7) | 0.0208 | 70.3 (7) | 1.26e-12 | 10.05 |
+| 5v5 rounds per match | n/a | n/a | 83.2 (7) | 3.01e-15 | 11.89 |
+
+### Tome 2026 chi-square, all rounds, EXCLUDING batch 2026/10/08, dedupe ON (primary) (days = 7)
+| metric | naive chi2 (df) | naive p | cluster-robust Q (df) | robust p | dispersion Q/df (robust) |
+|---|---|---|---|---|---|
+| all rounds excl. batch CT win rate | 2.3 (6) | 0.887 | 1.2 (6) | 0.975 | 0.20 |
+| all rounds excl. batch plant rate | 7.0 (6) | 0.322 | 2.9 (6) | 0.818 | 0.49 |
+| all rounds excl. batch kills per round | 51.1 (6) | 2.88e-09 | 13.0 (6) | 0.043 | 2.17 |
+| all rounds excl. batch rounds per match | n/a | n/a | 6.3 (6) | 0.391 | 1.05 |
+
+### Tome 2026 chi-square, 5v5 rounds, EXCLUDING batch 2026/10/08, dedupe ON (primary) (days = 7)
+| metric | naive chi2 (df) | naive p | cluster-robust Q (df) | robust p | dispersion Q/df (robust) |
+|---|---|---|---|---|---|
+| 5v5 excl. batch CT win rate | 5.1 (6) | 0.531 | 2.5 (6) | 0.872 | 0.41 |
+| 5v5 excl. batch plant rate | 8.2 (6) | 0.226 | 5.5 (6) | 0.482 | 0.92 |
+| 5v5 excl. batch kills per round | 2.0 (6) | 0.918 | 8.3 (6) | 0.216 | 1.39 |
+| 5v5 excl. batch rounds per match | n/a | n/a | 7.6 (6) | 0.273 | 1.26 |
+
+### Batch 2026/10/08 vs other 2026 key-days (all rounds; cluster-robust Welch-type z)
+| metric | batch | rest | diff | z | p | batch matches | rest matches |
+|---|---|---|---|---|---|---|---|
+| CT win rate | 52.260 | 52.529 | -0.269 | -0.36 | 0.717 | 1098 | 602 |
+| plant rate | 49.179 | 41.511 | +7.668 | +9.09 | 9.7e-20 | 1098 | 602 |
+| kills per round | 7.087 | 6.494 | +0.592 | +8.93 | 4.24e-19 | 1098 | 602 |
+| rounds per match | 21.582 | 18.620 | +2.962 | +12.48 | 9.83e-36 | 1098 | 602 |
+
+### Batch 2026/10/08 vs other 2026 key-days (5v5; cluster-robust Welch-type z)
+| metric | batch | rest | diff | z | p | batch matches | rest matches |
+|---|---|---|---|---|---|---|---|
+| CT win rate | 52.263 | 51.922 | +0.342 | +0.41 | 0.679 | 1066 | 479 |
+| plant rate | 49.797 | 47.440 | +2.357 | +3.08 | 0.00207 | 1066 | 479 |
+| kills per round | 7.160 | 7.288 | -0.128 | -7.55 | 4.34e-14 | 1066 | 479 |
+| rounds per match | 21.221 | 18.633 | +2.589 | +8.99 | 2.51e-19 | 1066 | 479 |
+
+- other 2026 days used for the batch comparison: ['2026/10/01', '2026/10/02', '2026/10/03', '2026/10/04', '2026/10/05', '2026/10/06', '2026/10/07']
+- elapsed 10.1s
+
+## Tome 2026: dedupe OFF (sensitivity)
+- matches with >=1 round_end row: 1752; header matches with no round_end: 0
+- duplicate groups 0 sizes {}; dropped 0; kept 1752; dropped by day {}
+- round_end rows 35992; duplicate (match, round) rows 0; unique rounds kept (before dedupe) 35992
+
+### Tome 2026 chi-square, all rounds, dedupe OFF (sensitivity) (days = 8)
+| metric | naive chi2 (df) | naive p | cluster-robust Q (df) | robust p | dispersion Q/df (robust) |
+|---|---|---|---|---|---|
+| all rounds CT win rate | 2.3 (7) | 0.942 | 1.1 (7) | 0.992 | 0.16 |
+| all rounds plant rate | 186.6 (7) | 7.89e-37 | 86.2 (7) | 7.47e-16 | 12.31 |
+| all rounds kills per round | 430.3 (7) | 7.45e-89 | 81.7 (7) | 6.31e-15 | 11.67 |
+| all rounds rounds per match | n/a | n/a | 172.0 (7) | 9.55e-34 | 24.57 |
+
+### Tome 2026 chi-square, 5v5 rounds, dedupe OFF (sensitivity) (days = 8)
+| metric | naive chi2 (df) | naive p | cluster-robust Q (df) | robust p | dispersion Q/df (robust) |
+|---|---|---|---|---|---|
+| 5v5 CT win rate | 5.7 (7) | 0.57 | 2.9 (7) | 0.89 | 0.42 |
+| 5v5 plant rate | 22.7 (7) | 0.00192 | 15.0 (7) | 0.0362 | 2.14 |
+| 5v5 kills per round | 18.1 (7) | 0.0113 | 76.3 (7) | 7.92e-14 | 10.90 |
+| 5v5 rounds per match | n/a | n/a | 89.5 (7) | 1.58e-16 | 12.78 |
+
+### Tome 2026 chi-square, all rounds, EXCLUDING batch 2026/10/08, dedupe OFF (sensitivity) (days = 7)
+| metric | naive chi2 (df) | naive p | cluster-robust Q (df) | robust p | dispersion Q/df (robust) |
+|---|---|---|---|---|---|
+| all rounds excl. batch CT win rate | 2.2 (6) | 0.901 | 1.1 (6) | 0.982 | 0.18 |
+| all rounds excl. batch plant rate | 6.3 (6) | 0.388 | 2.6 (6) | 0.861 | 0.43 |
+| all rounds excl. batch kills per round | 42.0 (6) | 1.85e-07 | 10.0 (6) | 0.125 | 1.66 |
+| all rounds excl. batch rounds per match | n/a | n/a | 6.0 (6) | 0.42 | 1.00 |
+
+### Tome 2026 chi-square, 5v5 rounds, EXCLUDING batch 2026/10/08, dedupe OFF (sensitivity) (days = 7)
+| metric | naive chi2 (df) | naive p | cluster-robust Q (df) | robust p | dispersion Q/df (robust) |
+|---|---|---|---|---|---|
+| 5v5 excl. batch CT win rate | 5.4 (6) | 0.491 | 2.6 (6) | 0.861 | 0.43 |
+| 5v5 excl. batch plant rate | 9.0 (6) | 0.173 | 6.3 (6) | 0.388 | 1.05 |
+| 5v5 excl. batch kills per round | 2.4 (6) | 0.882 | 9.6 (6) | 0.141 | 1.61 |
+| 5v5 excl. batch rounds per match | n/a | n/a | 7.7 (6) | 0.261 | 1.28 |
+
+
+==================== TOME 2024 ====================
+header matches 4435; key-path day == match_date day for 1492 (0.3364)
+
+## Tome 2024: dedupe ON (primary)
+- matches with >=1 round_end row: 4435; header matches with no round_end: 0
+- duplicate groups 226 sizes {2: 178, 3: 28, 4: 18, 5: 2}; dropped 296; kept 4139; dropped by day {'2024/02/01': 9, '2024/02/02': 3, '2024/02/04': 2, '2024/02/06': 4, '2024/02/12': 72, '2024/02/13': 34, '2024/02/14': 27, '2024/02/15': 7, '2024/02/16': 14, '2024/02/17': 10, '2024/02/18': 6, '2024/02/19': 9, '2024/02/20': 33, '2024/02/21': 41, '2024/02/22': 8, '2024/02/23': 10, '2024/02/24': 3, '2024/02/25': 4}
+- round_end rows 83527; duplicate (match, round) rows 1; unique rounds kept (before dedupe) 83526
+- rounds without round_freeze_end (live start): 144 (0.0017); freeze_end rows 83383
+- bomb_planted rows 40072; planted rounds in window 38315
+- death rows 579124; kill rows 545628; attacker null or <=0: 28541
+- winner_team_code counts {2: 41106, 3: 42420}; 5v5 share by player_info (exactly 5 T and 5 CT) 0.8048; most common round_end.player_count [(20, 78595), (8, 2561), (18, 1874), (16, 199)]
+- round_state event types (first 40): ['announce_phase_end', 'begin_new_match', 'bomb_defused', 'bomb_exploded', 'bomb_planted', 'buytime_ended', 'cs_pre_restart', 'cs_round_final_beep', 'cs_round_start_beep', 'cs_win_panel_match', 'cs_win_panel_round', 'round_announce_final', 'round_announce_last_round_half', 'round_announce_match_point', 'round_announce_match_start', 'round_end', 'round_freeze_end', 'round_officially_ended', 'round_poststart', 'round_prestart', 'round_start']
+- bomb_state event types: ['bomb_defused', 'bomb_exploded', 'bomb_planted']
+
+### Per key-day, all rounds (95% CI: match-cluster bootstrap)
+| day | header matches | matches (kept) | rounds | CT win % [CI] | plant % [CI] | rounds/match [CI] | kills/round [CI] |
+|---|---|---|---|---|---|---|---|
+| 2024/02/01 | 230 | 221 | 4290 | 50.21 [48.29, 52.08] | 48.07 [46.11, 50.13] | 19.41 [18.80, 20.00] | 6.653 [6.412, 6.869] |
+| 2024/02/02 | 188 | 185 | 3258 | 53.01 [50.85, 55.19] | 43.52 [41.03, 45.84] | 17.61 [16.97, 18.29] | 6.238 [5.945, 6.516] |
+| 2024/02/03 | 158 | 158 | 2716 | 50.92 [48.34, 53.49] | 39.18 [36.00, 42.31] | 17.19 [16.50, 17.90] | 6.156 [5.846, 6.439] |
+| 2024/02/04 | 155 | 153 | 2743 | 49.00 [46.98, 51.04] | 39.77 [36.92, 42.80] | 17.93 [17.25, 18.61] | 6.197 [5.879, 6.494] |
+| 2024/02/05 | 122 | 122 | 2322 | 50.90 [48.49, 53.11] | 43.50 [40.32, 46.48] | 19.03 [18.22, 19.80] | 6.529 [6.253, 6.795] |
+| 2024/02/06 | 127 | 123 | 2312 | 51.95 [49.34, 54.55] | 45.24 [42.32, 48.09] | 18.80 [17.94, 19.62] | 6.439 [6.096, 6.739] |
+| 2024/02/07 | 4 | 4 | 62 | 62.90 [52.86, 80.77] | 32.26 [14.29, 47.06] | 15.50 [13.00, 17.50] | 7.000 [6.600, 7.375] |
+| 2024/02/12 (batch) | 1004 | 932 | 17980 | 49.78 [48.88, 50.68] | 47.61 [46.59, 48.68] | 19.29 [19.02, 19.59] | 6.697 [6.603, 6.790] |
+| 2024/02/13 | 219 | 185 | 3447 | 49.67 [47.56, 51.80] | 46.42 [43.82, 48.78] | 18.63 [18.01, 19.27] | 6.798 [6.596, 6.971] |
+| 2024/02/14 | 180 | 153 | 2858 | 49.97 [47.53, 52.53] | 47.94 [45.30, 50.75] | 18.68 [17.93, 19.36] | 6.583 [6.284, 6.845] |
+| 2024/02/15 | 114 | 107 | 2009 | 50.12 [47.85, 52.66] | 50.42 [47.36, 53.40] | 18.78 [17.93, 19.65] | 6.510 [6.187, 6.814] |
+| 2024/02/16 | 172 | 158 | 3043 | 50.31 [48.02, 52.59] | 48.14 [45.46, 50.77] | 19.26 [18.61, 19.98] | 6.752 [6.515, 6.980] |
+| 2024/02/17 | 110 | 100 | 1910 | 48.69 [45.58, 51.65] | 49.79 [46.43, 52.95] | 19.10 [18.31, 19.95] | 6.770 [6.436, 7.047] |
+| 2024/02/18 | 147 | 141 | 2692 | 51.30 [48.82, 53.89] | 47.44 [44.61, 50.09] | 19.09 [18.34, 19.90] | 6.754 [6.522, 6.960] |
+| 2024/02/19 | 207 | 198 | 3809 | 50.64 [48.47, 52.79] | 44.87 [41.96, 47.60] | 19.24 [18.59, 19.84] | 6.579 [6.329, 6.794] |
+| 2024/02/20 | 264 | 231 | 4303 | 51.89 [49.94, 53.76] | 43.88 [41.46, 46.36] | 18.63 [17.98, 19.27] | 6.264 [6.032, 6.491] |
+| 2024/02/21 | 246 | 205 | 3874 | 52.56 [50.40, 54.61] | 44.50 [41.86, 47.01] | 18.90 [18.20, 19.52] | 6.342 [6.044, 6.611] |
+| 2024/02/22 | 209 | 201 | 3804 | 53.00 [51.11, 54.96] | 45.50 [43.03, 47.78] | 18.93 [18.26, 19.58] | 6.515 [6.286, 6.721] |
+| 2024/02/23 | 157 | 147 | 2594 | 52.04 [49.43, 54.66] | 43.14 [39.51, 46.88] | 17.65 [16.88, 18.38] | 6.098 [5.771, 6.401] |
+| 2024/02/24 | 224 | 221 | 4016 | 51.52 [49.40, 53.60] | 43.28 [40.46, 45.91] | 18.17 [17.48, 18.88] | 6.343 [6.078, 6.580] |
+| 2024/02/25 | 198 | 194 | 3573 | 51.67 [49.52, 53.78] | 42.23 [39.49, 45.07] | 18.42 [17.71, 19.15] | 6.029 [5.744, 6.309] |
+| POOLED (2024) | 4435 | 4139 | 77615 | 50.83 [50.39, 51.28] | 45.57 [45.05, 46.09] | 18.75 [18.60, 18.89] | 6.502 [6.452, 6.554] |
+
+### Per key-day, 5v5 rounds (exactly 5 T and 5 CT in player_info; analytic cluster-robust 95% CI)
+| day | 5v5 matches | 5v5 rounds | CT win % [CI] | plant % [CI] | rounds/match [CI] | kills/round [CI] |
+|---|---|---|---|---|---|---|
+| 2024/02/01 | 203 | 3349 | 49.51 [47.47, 51.55] | 49.39 [47.38, 51.40] | 16.50 [15.58, 17.42] | 6.870 [6.622, 7.117] |
+| 2024/02/02 | 152 | 2255 | 53.53 [50.90, 56.15] | 46.87 [44.46, 49.29] | 14.84 [13.93, 15.74] | 6.916 [6.647, 7.185] |
+| 2024/02/03 | 122 | 1805 | 50.03 [46.84, 53.22] | 44.93 [41.81, 48.05] | 14.80 [13.63, 15.96] | 7.154 [6.964, 7.344] |
+| 2024/02/04 | 118 | 1815 | 49.31 [46.78, 51.84] | 44.52 [41.37, 47.66] | 15.38 [14.26, 16.50] | 7.006 [6.695, 7.316] |
+| 2024/02/05 | 102 | 1797 | 50.86 [48.02, 53.70] | 47.47 [44.55, 50.39] | 17.62 [16.45, 18.79] | 7.244 [7.180, 7.307] |
+| 2024/02/06 | 112 | 1760 | 51.70 [48.65, 54.76] | 47.33 [44.43, 50.23] | 15.71 [14.52, 16.91] | 6.769 [6.453, 7.085] |
+| 2024/02/07 | 4 | 62 | 62.90 [49.33, 76.48] | 32.26 [16.03, 48.49] | 15.50 [13.03, 17.97] | 7.000 [6.595, 7.405] |
+| 2024/02/12 | 851 | 14720 | 49.84 [48.84, 50.84] | 49.79 [48.73, 50.84] | 17.30 [16.87, 17.72] | 7.046 [6.965, 7.127] |
+| 2024/02/13 | 173 | 2923 | 49.02 [46.74, 51.31] | 48.85 [46.60, 51.10] | 16.90 [16.00, 17.79] | 7.159 [7.008, 7.310] |
+| 2024/02/14 | 143 | 2541 | 50.33 [47.73, 52.94] | 49.15 [46.26, 52.04] | 17.77 [16.92, 18.62] | 6.906 [6.652, 7.159] |
+| 2024/02/15 | 95 | 1609 | 51.09 [48.54, 53.64] | 52.95 [49.94, 55.96] | 16.94 [15.62, 18.25] | 6.987 [6.724, 7.249] |
+| 2024/02/16 | 142 | 2632 | 50.08 [47.64, 52.51] | 50.99 [48.45, 53.53] | 18.54 [17.68, 19.39] | 7.125 [6.921, 7.330] |
+| 2024/02/17 | 96 | 1701 | 47.62 [44.57, 50.67] | 52.09 [49.00, 55.17] | 17.72 [16.53, 18.91] | 7.011 [6.699, 7.323] |
+| 2024/02/18 | 126 | 2323 | 51.44 [48.81, 54.07] | 50.50 [47.82, 53.17] | 18.44 [17.42, 19.46] | 7.197 [7.101, 7.293] |
+| 2024/02/19 | 175 | 3274 | 50.98 [48.73, 53.23] | 47.53 [44.64, 50.41] | 18.71 [17.91, 19.51] | 7.005 [6.798, 7.212] |
+| 2024/02/20 | 182 | 3407 | 51.69 [49.53, 53.84] | 49.52 [47.28, 51.75] | 18.72 [17.83, 19.61] | 7.020 [6.867, 7.173] |
+| 2024/02/21 | 172 | 3258 | 52.39 [50.08, 54.71] | 47.85 [45.30, 50.41] | 18.94 [18.13, 19.76] | 6.889 [6.627, 7.150] |
+| 2024/02/22 | 173 | 3147 | 52.49 [50.38, 54.61] | 49.57 [47.28, 51.86] | 18.19 [17.29, 19.09] | 7.069 [6.894, 7.243] |
+| 2024/02/23 | 106 | 1883 | 50.13 [47.05, 53.22] | 50.77 [47.28, 54.26] | 17.76 [16.63, 18.90] | 7.175 [7.024, 7.326] |
+| 2024/02/24 | 174 | 3080 | 50.94 [48.53, 53.35] | 49.48 [46.84, 52.12] | 17.70 [16.74, 18.67] | 7.208 [7.077, 7.338] |
+| 2024/02/25 | 138 | 2580 | 49.96 [47.53, 52.40] | 49.84 [47.21, 52.48] | 18.70 [17.71, 19.69] | 7.060 [6.869, 7.251] |
+
+### Tome 2024 chi-square, all rounds, dedupe ON (primary) (days = 21)
+| metric | naive chi2 (df) | naive p | cluster-robust Q (df) | robust p | dispersion Q/df (robust) |
+|---|---|---|---|---|---|
+| all rounds CT win rate | 47.5 (20) | 0.000497 | 30.9 (20) | 0.0565 | 1.54 |
+| all rounds plant rate | 227.4 (20) | 3.89e-37 | 94.7 (20) | 1.11e-11 | 4.73 |
+| all rounds kills per round | 634.4 (20) | 1.57e-121 | 79.3 (20) | 5.11e-09 | 3.97 |
+| all rounds rounds per match | n/a | n/a | 78.5 (20) | 7.06e-09 | 3.92 |
+
+### Tome 2024 chi-square, 5v5 rounds, dedupe ON (primary) (days = 21)
+| metric | naive chi2 (df) | naive p | cluster-robust Q (df) | robust p | dispersion Q/df (robust) |
+|---|---|---|---|---|---|
+| 5v5 CT win rate | 40.2 (20) | 0.00473 | 26.0 (20) | 0.165 | 1.30 |
+| 5v5 plant rate | 76.2 (20) | 1.7e-08 | 43.5 (20) | 0.00178 | 2.17 |
+| 5v5 kills per round | 104.7 (20) | 1.83e-13 | 45.3 (20) | 0.00101 | 2.26 |
+| 5v5 rounds per match | n/a | n/a | 132.0 (20) | 1.66e-18 | 6.60 |
+
+### Tome 2024 chi-square, all rounds, EXCLUDING batch 2024/02/12, dedupe ON (primary) (days = 20)
+| metric | naive chi2 (df) | naive p | cluster-robust Q (df) | robust p | dispersion Q/df (robust) |
+|---|---|---|---|---|---|
+| all rounds excl. batch CT win rate | 37.2 (19) | 0.00739 | 24.6 (19) | 0.176 | 1.29 |
+| all rounds excl. batch plant rate | 188.3 (19) | 7.08e-30 | 80.4 (19) | 1.61e-09 | 4.23 |
+| all rounds excl. batch kills per round | 501.7 (19) | 2.48e-94 | 67.5 (19) | 2.4e-07 | 3.55 |
+| all rounds excl. batch rounds per match | n/a | n/a | 61.7 (19) | 2.08e-06 | 3.25 |
+
+### Tome 2024 chi-square, 5v5 rounds, EXCLUDING batch 2024/02/12, dedupe ON (primary) (days = 20)
+| metric | naive chi2 (df) | naive p | cluster-robust Q (df) | robust p | dispersion Q/df (robust) |
+|---|---|---|---|---|---|
+| 5v5 excl. batch CT win rate | 36.1 (19) | 0.0103 | 23.5 (19) | 0.217 | 1.24 |
+| 5v5 excl. batch plant rate | 72.9 (19) | 3.01e-08 | 41.7 (19) | 0.00197 | 2.19 |
+| 5v5 excl. batch kills per round | 104.6 (19) | 7.88e-14 | 40.8 (19) | 0.00254 | 2.15 |
+| 5v5 excl. batch rounds per match | n/a | n/a | 131.2 (19) | 8.67e-19 | 6.90 |
+
+### Batch 2024/02/12 vs other 2024 key-days (all rounds; cluster-robust Welch-type z)
+| metric | batch | rest | diff | z | p | batch matches | rest matches |
+|---|---|---|---|---|---|---|---|
+| CT win rate | 49.778 | 51.141 | -1.364 | -2.58 | 0.00999 | 932 | 3207 |
+| plant rate | 47.614 | 44.948 | +2.666 | +4.25 | 2.15e-05 | 932 | 3207 |
+| kills per round | 6.697 | 6.443 | +0.254 | +4.42 | 1.01e-05 | 932 | 3207 |
+| rounds per match | 19.292 | 18.595 | +0.697 | +4.13 | 3.65e-05 | 932 | 3207 |
+
+### Batch 2024/02/12 vs other 2024 key-days (5v5; cluster-robust Welch-type z)
+| metric | batch | rest | diff | z | p | batch matches | rest matches |
+|---|---|---|---|---|---|---|---|
+| CT win rate | 49.837 | 50.791 | -0.954 | -1.62 | 0.105 | 851 | 2708 |
+| plant rate | 49.789 | 48.927 | +0.862 | +1.38 | 0.168 | 851 | 2708 |
+| kills per round | 7.046 | 7.037 | +0.009 | +0.18 | 0.861 | 851 | 2708 |
+| rounds per match | 17.297 | 17.430 | -0.133 | -0.54 | 0.591 | 851 | 2708 |
+
+- other 2024 days used for the batch comparison: ['2024/02/01', '2024/02/02', '2024/02/03', '2024/02/04', '2024/02/05', '2024/02/06', '2024/02/07', '2024/02/13', '2024/02/14', '2024/02/15', '2024/02/16', '2024/02/17', '2024/02/18', '2024/02/19', '2024/02/20', '2024/02/21', '2024/02/22', '2024/02/23', '2024/02/24', '2024/02/25']
+- elapsed 31.1s
+
+## Tome 2024: dedupe OFF (sensitivity)
+- matches with >=1 round_end row: 4435; header matches with no round_end: 0
+- duplicate groups 0 sizes {}; dropped 0; kept 4435; dropped by day {}
+- round_end rows 83527; duplicate (match, round) rows 1; unique rounds kept (before dedupe) 83526
+
+### Tome 2024 chi-square, all rounds, dedupe OFF (sensitivity) (days = 21)
+| metric | naive chi2 (df) | naive p | cluster-robust Q (df) | robust p | dispersion Q/df (robust) |
+|---|---|---|---|---|---|
+| all rounds CT win rate | 44.5 (20) | 0.00127 | 29.0 (20) | 0.0884 | 1.45 |
+| all rounds plant rate | 289.9 (20) | 9.2e-50 | 118.4 (20) | 5.57e-16 | 5.92 |
+| all rounds kills per round | 695.4 (20) | 2.1e-134 | 89.0 (20) | 1.11e-10 | 4.45 |
+| all rounds rounds per match | n/a | n/a | 86.0 (20) | 3.75e-10 | 4.30 |
+
+### Tome 2024 chi-square, 5v5 rounds, dedupe OFF (sensitivity) (days = 21)
+| metric | naive chi2 (df) | naive p | cluster-robust Q (df) | robust p | dispersion Q/df (robust) |
+|---|---|---|---|---|---|
+| 5v5 CT win rate | 35.9 (20) | 0.0156 | 23.7 (20) | 0.255 | 1.19 |
+| 5v5 plant rate | 102.2 (20) | 5.08e-13 | 55.3 (20) | 3.76e-05 | 2.76 |
+| 5v5 kills per round | 112.4 (20) | 7.19e-15 | 44.2 (20) | 0.0014 | 2.21 |
+| 5v5 rounds per match | n/a | n/a | 143.4 (20) | 1.15e-20 | 7.17 |
+
+### Tome 2024 chi-square, all rounds, EXCLUDING batch 2024/02/12, dedupe OFF (sensitivity) (days = 20)
+| metric | naive chi2 (df) | naive p | cluster-robust Q (df) | robust p | dispersion Q/df (robust) |
+|---|---|---|---|---|---|
+| all rounds excl. batch CT win rate | 37.7 (19) | 0.00654 | 24.8 (19) | 0.168 | 1.30 |
+| all rounds excl. batch plant rate | 239.8 (19) | 3.61e-40 | 100.6 (19) | 4.21e-13 | 5.29 |
+| all rounds excl. batch kills per round | 551.0 (19) | 1.09e-104 | 76.2 (19) | 8.33e-09 | 4.01 |
+| all rounds excl. batch rounds per match | n/a | n/a | 71.3 (19) | 5.59e-08 | 3.75 |
+
+### Tome 2024 chi-square, 5v5 rounds, EXCLUDING batch 2024/02/12, dedupe OFF (sensitivity) (days = 20)
+| metric | naive chi2 (df) | naive p | cluster-robust Q (df) | robust p | dispersion Q/df (robust) |
+|---|---|---|---|---|---|
+| 5v5 excl. batch CT win rate | 33.9 (19) | 0.0189 | 22.5 (19) | 0.261 | 1.18 |
+| 5v5 excl. batch plant rate | 95.1 (19) | 4.16e-12 | 51.8 (19) | 7.13e-05 | 2.73 |
+| 5v5 excl. batch kills per round | 111.9 (19) | 3.5e-15 | 40.5 (19) | 0.00279 | 2.13 |
+| 5v5 excl. batch rounds per match | n/a | n/a | 142.4 (19) | 6.25e-21 | 7.50 |
+
+TOTAL elapsed 46.6s
