@@ -10,7 +10,7 @@ Deep sequence models (GRU, LSTM, TCN, transformer, minGRU, minLSTM, LRU, xLSTM v
 - `results/`: GDT pooled results, the seed-0 GDT summary, and `weights_manifest.csv` (47 final-step weight files with sizes and SHA-256).
 
 ## Not in git
-- Data (parquet caches, round-state arrays, prediction files) and model weights (`*.pt`, ignored by `.gitignore`). Weights are on S3 at `models/gdt_objective/` and in the local models folder.
+- Data (parquet caches, round-state arrays, prediction files) is not in git. Model weights (`*.pt`) are tracked under `models/` (`models/seq_gdt_weights/`, `models/temporal/`), and are also on S3 at `models/gdt_objective/` and in the local models folder.
 - Paths in the scripts assume the local data tree `G:\pureskill\csds-cs2` and the RunPod volume.
 
 ## Key settings
@@ -43,9 +43,9 @@ Final-step log loss, five seeds, 1,515,228 validation seconds. Source: `notes/RE
 
 **Failure analysis (GDT-trained proxy rows, 297 matches, validation only; `analysis/seg_check.py`).** Across the 12 segments with at least 20,000 seconds, no arm fails to beat the lookup table. The spread between five-seed GDT arms, measured against the GRU, has a median of 0.0011 and a widest value of 0.0016 (planted = 1).
 
-**Weights.** 47 GDT-objective arm-seeds have weights. They are in S3 under `results/weights_b1`–`weights_b8` and `weights_x1`–`weights_x3`, and under `models/gdt_objective/`. All three copies match by SHA-256 (`results/weights_manifest.csv`). The four extra TCN weights (`results/weights_tcnr0`, `tcnr1`, `tcnr3`, `tcnr4`) are in S3 only. The log-loss runs and the regularisation runs saved no weights. The 83-input XGBoost model is `models/winprob_xgb83_final.json` (CPU refit, 5 Nov 2026). The pins inventory records the served model as `winprob_v7_basic_scorelead` (14 inputs) and the 58-input v8 ensemble as not yet servable, so which model ships needs confirming.
+**Weights.** 47 GDT-objective arm-seeds have weights. They are in S3 under `results/weights_b1`–`weights_b8` and `weights_x1`–`weights_x3`, and under `models/gdt_objective/`. All three copies match by SHA-256 (`results/weights_manifest.csv`). The four extra TCN weights (`results/weights_tcnr0`, `tcnr1`, `tcnr3`, `tcnr4`) are in S3 only. The log-loss runs and the regularisation runs saved no weights. The 83-input XGBoost model is `models/winprob_xgb83_final.json` (CPU refit, 5 Nov 2026). The served model is `winprob_v6_drop_heavy` (pin aaecad58, 20 Oct 2026); see [models/README.md](../models/README.md).
 
-**Open.** PII review of the dataset is pending and the dataset is not cleared. The holdout read (pin 0d97f8f6) is on hold: no candidate passes the pinned rules. GDT is the agreed objective (confirmed with the project owner in chat on 7 Nov 2026). Match population: 295 in the explainability deck, 297 in the 6 November report; to reconcile. A 25k-step re-run of all arms is proposed and needs a new pin before any run.
+**Open.** The dataset is not proven clear of personal data: the 6 Nov automated audit found no direct identifiers, but the data is pseudonymous and the raw tomes and the E: drive are not fully screened (see [DATA.md](../DATA.md)). The holdout read (pin 0d97f8f6) is on hold: no candidate passes the pinned rules. GDT is the agreed objective (confirmed with the project owner in chat on 7 Nov 2026). Match population: 295 in the explainability deck, 297 in the 6 November report; to reconcile. A 25k-step re-run of all arms is proposed and needs a new pin before any run.
 
 ## Pins
 064d46c76 (GDT objective), 079f7189 (amendment), c807884d (GDT selection on log-loss runs), 28527ac3 (GDT-trained results), 51a86c98 (round-2 log-loss result), c1f31a9d (regularisation test), 0d97f8f6 (holdout candidate, not run).

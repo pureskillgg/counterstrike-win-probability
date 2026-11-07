@@ -16,7 +16,7 @@ python scripts/explain/feature_curves.py
 python scripts/explain/feature_curve_figs.py
 python scripts/explain/xgb83_local.py                     # waterfalls, contrasts, interactions; about 5 seconds
 python scripts/explain/xgb57_explain.py                  # the 57-input submission model on the same seconds
-python scripts/explain/xgb83_calibration.py               # shipped booster on all validation seconds; calibration tables
+python scripts/explain/xgb83_calibration.py               # final booster on all validation seconds; calibration tables
 python3 scripts/explain/xgb83_drop_ablation.py --matrix /home/<user>/sprint/matrix_trainctr --out /mnt/c/Users/<user>/sprint/explain83_ablation --device cuda   # WSL GPU; about 40 min
 python scripts/explain/xgb83_gdt.py --sets full minus_alive round_state_only loadout_only minus_round_state minus_blind minus_view minus_armor_sums minus_bomb_geo no_position checklist_77 --seeds 0 1 2   # GDT with the team's scorer
 python scripts/explain/gdt_examples.py                    # example matches and GDT by alive count (after xgb83_gdt.py)
@@ -46,7 +46,7 @@ To rebuild the Word report, run `scripts/explain/docx/prep_docx_data.py`, then `
 2. **Frozen test keys.** `data/benchmark/frozen_test_keys.json` in this repo holds them with pseudonymised keys. Restore the real keys (see [TRAINING.md](../../TRAINING.md)) before `sprint_prepare.py` reads it.
 3. **Builder of `cache_pos_2026_trainctr.parquet`.** `scripts/data/make_pos_features.py` with `--centre_keys data/benchmark/centre_fit_train_keys.json` writes it (see [TRAINING.agents.md](../../TRAINING.agents.md)).
 4. **Reconcile Oct 9–10.** The handoff (Nov 4) says these days are unreconciled and gives 2,598 matches. The training cache has 4,856 matches on those two days. Decide which count is right and whether these days stay in the pool.
-5. **GPU retrain ablations: done.** Results and GDT are in `docs/explainability/README.md` ("Drop-group ablations"). Armour sums and blind add nothing on GDT. View and bomb geometry add about 0.0005 each.
+5. **GPU retrain ablations: done.** Results and GDT are in `docs/explainability/REPORT.md` ("Drop-group ablations"). Armour sums and blind add nothing on GDT. View and bomb geometry add about 0.0005 each.
 6. **Alive-count question: done.** Dropping the alive counts costs nothing on GDT (+0.0002). Loadout only scores GDT 0.0098, round state only −0.0164. The loadout inputs carry the signal.
 7. **1-versus-5 calibration: done, per round.** Across the full validation set, the 1-versus-5 states give 1.48 expected CT-win rounds against 1 observed (all states). The bomb-planted state gives 0.59 against 1. The one win is the largest miss's round, so the earlier "3 wins in 426 seconds" was the same round. Table: `docs/explainability/tables/calibration_1v5_shipped.csv`.
 8. **Feature fixes from the team notes:** rebuild VIEW (sees-enemy and exposed), BLIND (from player blind events) and defuse slack (time to reach and defuse). Drop the armor sums. Heavy weapons are already dropped in v6. Then rerun the explanation.

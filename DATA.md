@@ -55,4 +55,5 @@ To use a key file with the real data, restore the real keys first with `scripts/
 - **Protected batch:** 2,848 matches uploaded 21 to 25 Oct needed owner sign-off before training use. The restriction was lifted on 5 Nov by a chat decision; written sign-off isn't on file. 84 of them, all from 21 Oct, are in the sequence training data. None are in the XGBoost training data.
 - **Export labels:** a review found that `export_clean_v2` labels some frozen-test matches as training, and its split codes disagree with the split manifest. See [docs/data/EXPORT_REVIEW.md](docs/data/EXPORT_REVIEW.md).
 - **Split drift:** the split manifest on the laptop was extended on 4 Nov with a different rule. Use the one the models recorded; see [TRAINING.md](TRAINING.md).
+- **Validation count:** the XGBoost split has 1,168 validation matches and the round-state arrays 1,169, for the same 1,515,228 seconds. The one-match gap hasn't been traced.
 - **9 and 10 Oct:** match counts for those days are unreconciled (see `HANDOFF.md`).
