@@ -1,0 +1,88 @@
+{
+ "version": "winprob_v2_basic",
+ "created": "2026-10-15T17:09:43",
+ "features": [
+  "alive_ct",
+  "alive_t",
+  "ct_alive_minus_t",
+  "bomb_planted",
+  "seconds_since_round_live",
+  "seconds_since_plant",
+  "map_is_ancient",
+  "map_is_anubis",
+  "map_is_cache",
+  "map_is_dust2",
+  "map_is_inferno",
+  "map_is_mirage",
+  "map_is_nuke"
+ ],
+ "best_iteration": 383,
+ "monotone_constraints": {
+  "alive_ct": 1,
+  "alive_t": -1,
+  "ct_alive_minus_t": 1,
+  "bomb_planted": 0,
+  "seconds_since_round_live": 0,
+  "seconds_since_plant": 0,
+  "map_is_ancient": 0,
+  "map_is_anubis": 0,
+  "map_is_cache": 0,
+  "map_is_dust2": 0,
+  "map_is_inferno": 0,
+  "map_is_mirage": 0,
+  "map_is_nuke": 0
+ },
+ "prior_ct_win": 0.5122236399523487,
+ "scope": {
+  "maps": [
+   "de_ancient",
+   "de_anubis",
+   "de_cache",
+   "de_dust2",
+   "de_inferno",
+   "de_mirage",
+   "de_nuke"
+  ],
+  "maps_expected": [
+   "de_ancient",
+   "de_anubis",
+   "de_cache",
+   "de_dust2",
+   "de_inferno",
+   "de_mirage",
+   "de_nuke"
+  ],
+  "modes": [
+   "competitive"
+  ],
+  "excluded": [
+   "wingman",
+   "hostage",
+   "other maps"
+  ]
+ },
+ "training": {
+  "matches": 10663,
+  "val_matches": 1156,
+  "rows": 6849760,
+  "stride": 2,
+  "split": "random",
+  "eras": {
+   "2024": 2365711,
+   "2026": 11233735
+  }
+ },
+ "xgboost": "3.2.0",
+ "seed": 0,
+ "main_fit_device": "cuda",
+ "grid_file_sha256": "f552f4191535b83bafe44099ed62f0e229fbd13f403342771594571f5ba3f430",
+ "matches_file_sha256": "0b67575492a39002ddf70a65ded7ef2a4aa3b67862e12722d48e0cb9f9dc8ddb",
+ "rounds_file_sha256": "96e1cb3a0c1e2f9546fd97cc52102a9e7745e595b22577fb1ee3c68503676c43",
+ "split_manifest_sha256": "96df8c8a2590cfa200324b26bafa7f2f6c5224a77d8e53753f3eff8ba26bc6ba",
+ "split": "random",
+ "test_logloss": 0.504092266317996,
+ "test_logloss_ci95": [
+  0.5012916632328281,
+  0.5067613376202668
+ ]
+}

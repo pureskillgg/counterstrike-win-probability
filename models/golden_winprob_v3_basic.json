@@ -1,0 +1,759 @@
+{
+ "model": "winprob_v3_basic",
+ "model_sha256": "2c86590c24eed7d90c75dc7dfca665133f35713db002805c97503b27f6b65954",
+ "meta_sha256": "e0cf43ccabbcdc3470b497311a11029efa1aed3d1fe461cb28124ad0a654e419",
+ "fallback_sha256": null,
+ "xgboost": "3.2.0",
+ "written": "2026-10-15T20:54:38",
+ "n_cases": 40,
+ "cases": [
+  {
+   "name": "valid_unplanted_0",
+   "state": {
+    "bomb_planted": 0,
+    "seconds_since_round_live": 4.291995712841208,
+    "seconds_since_plant": -1.0,
+    "map_name": "de_mirage",
+    "mode": "competitive",
+    "alive_ct": 4,
+    "alive_t": 3
+   },
+   "expected": {
+    "p_ct_win": 0.7383237481117249,
+    "status": "ok",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "valid_unplanted_1",
+   "state": {
+    "bomb_planted": 0,
+    "seconds_since_round_live": 11.678814904590274,
+    "seconds_since_plant": -1.0,
+    "map_name": "de_inferno",
+    "mode": "competitive",
+    "alive_ct": 2,
+    "alive_t": 1
+   },
+   "expected": {
+    "p_ct_win": 0.8011273741722107,
+    "status": "ok",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "valid_unplanted_2",
+   "state": {
+    "bomb_planted": 0,
+    "seconds_since_round_live": 19.055126376539604,
+    "seconds_since_plant": -1.0,
+    "map_name": "de_inferno",
+    "mode": "competitive",
+    "alive_ct": 1,
+    "alive_t": 2
+   },
+   "expected": {
+    "p_ct_win": 0.12389762699604034,
+    "status": "ok",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "valid_unplanted_3",
+   "state": {
+    "bomb_planted": 0,
+    "seconds_since_round_live": 57.88316610507346,
+    "seconds_since_plant": -1.0,
+    "map_name": "de_cache",
+    "mode": "competitive",
+    "alive_ct": 4,
+    "alive_t": 1
+   },
+   "expected": {
+    "p_ct_win": 0.9900068044662476,
+    "status": "ok",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "valid_unplanted_4",
+   "state": {
+    "bomb_planted": 0,
+    "seconds_since_round_live": 110.3430054511712,
+    "seconds_since_plant": -1.0,
+    "map_name": "de_inferno",
+    "mode": "competitive",
+    "alive_ct": 5,
+    "alive_t": 4
+   },
+   "expected": {
+    "p_ct_win": 0.9488206505775452,
+    "status": "ok",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "valid_unplanted_5",
+   "state": {
+    "bomb_planted": 0,
+    "seconds_since_round_live": 86.81050663806285,
+    "seconds_since_plant": -1.0,
+    "map_name": "de_nuke",
+    "mode": "competitive",
+    "alive_ct": 3,
+    "alive_t": 1
+   },
+   "expected": {
+    "p_ct_win": 0.9740080237388611,
+    "status": "ok",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "valid_unplanted_6",
+   "state": {
+    "bomb_planted": 0,
+    "seconds_since_round_live": 84.90301673398069,
+    "seconds_since_plant": -1.0,
+    "map_name": "de_ancient",
+    "mode": "competitive",
+    "alive_ct": 4,
+    "alive_t": 2
+   },
+   "expected": {
+    "p_ct_win": 0.9385445713996887,
+    "status": "ok",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "valid_unplanted_7",
+   "state": {
+    "bomb_planted": 0,
+    "seconds_since_round_live": 100.91898979291254,
+    "seconds_since_plant": -1.0,
+    "map_name": "de_anubis",
+    "mode": "competitive",
+    "alive_ct": 2,
+    "alive_t": 3
+   },
+   "expected": {
+    "p_ct_win": 0.2753143906593323,
+    "status": "ok",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "valid_unplanted_8",
+   "state": {
+    "bomb_planted": 0,
+    "seconds_since_round_live": 20.950526218216133,
+    "seconds_since_plant": -1.0,
+    "map_name": "de_ancient",
+    "mode": "competitive",
+    "alive_ct": 2,
+    "alive_t": 4
+   },
+   "expected": {
+    "p_ct_win": 0.07914824783802032,
+    "status": "ok",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "valid_unplanted_9",
+   "state": {
+    "bomb_planted": 0,
+    "seconds_since_round_live": 57.96913730989268,
+    "seconds_since_plant": -1.0,
+    "map_name": "de_anubis",
+    "mode": "competitive",
+    "alive_ct": 4,
+    "alive_t": 1
+   },
+   "expected": {
+    "p_ct_win": 0.9886569380760193,
+    "status": "ok",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "valid_planted_0",
+   "state": {
+    "bomb_planted": 1,
+    "seconds_since_round_live": 41.58750704095433,
+    "seconds_since_plant": 4.511307457954206,
+    "map_name": "de_inferno",
+    "mode": "competitive",
+    "alive_ct": 4,
+    "alive_t": 1
+   },
+   "expected": {
+    "p_ct_win": 0.9801984429359436,
+    "status": "ok",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "valid_planted_1",
+   "state": {
+    "bomb_planted": 1,
+    "seconds_since_round_live": 71.09623424410042,
+    "seconds_since_plant": 0.7588048695212146,
+    "map_name": "de_mirage",
+    "mode": "competitive",
+    "alive_ct": 5,
+    "alive_t": 1
+   },
+   "expected": {
+    "p_ct_win": 0.9941473007202148,
+    "status": "ok",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "valid_planted_2",
+   "state": {
+    "bomb_planted": 1,
+    "seconds_since_round_live": 89.229732202277,
+    "seconds_since_plant": 15.994450608029362,
+    "map_name": "de_dust2",
+    "mode": "competitive",
+    "alive_ct": 4,
+    "alive_t": 5
+   },
+   "expected": {
+    "p_ct_win": 0.05690053477883339,
+    "status": "ok",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "valid_planted_3",
+   "state": {
+    "bomb_planted": 1,
+    "seconds_since_round_live": 41.30851082982332,
+    "seconds_since_plant": 6.302444032494416,
+    "map_name": "de_mirage",
+    "mode": "competitive",
+    "alive_ct": 4,
+    "alive_t": 4
+   },
+   "expected": {
+    "p_ct_win": 0.2843986749649048,
+    "status": "ok",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "valid_planted_4",
+   "state": {
+    "bomb_planted": 1,
+    "seconds_since_round_live": 125.59241219149895,
+    "seconds_since_plant": 18.271435413352638,
+    "map_name": "de_ancient",
+    "mode": "competitive",
+    "alive_ct": 4,
+    "alive_t": 1
+   },
+   "expected": {
+    "p_ct_win": 0.9949737787246704,
+    "status": "ok",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "valid_planted_5",
+   "state": {
+    "bomb_planted": 1,
+    "seconds_since_round_live": 80.77221766066828,
+    "seconds_since_plant": 24.05061401660984,
+    "map_name": "de_mirage",
+    "mode": "competitive",
+    "alive_ct": 1,
+    "alive_t": 4
+   },
+   "expected": {
+    "p_ct_win": 0.002908729948103428,
+    "status": "ok",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "valid_planted_6",
+   "state": {
+    "bomb_planted": 1,
+    "seconds_since_round_live": 117.48828657326989,
+    "seconds_since_plant": 38.30976736061277,
+    "map_name": "de_mirage",
+    "mode": "competitive",
+    "alive_ct": 1,
+    "alive_t": 2
+   },
+   "expected": {
+    "p_ct_win": 0.0030731267761439085,
+    "status": "ok",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "valid_planted_7",
+   "state": {
+    "bomb_planted": 1,
+    "seconds_since_round_live": 36.44919834801232,
+    "seconds_since_plant": 0.7752900090008863,
+    "map_name": "de_dust2",
+    "mode": "competitive",
+    "alive_ct": 4,
+    "alive_t": 4
+   },
+   "expected": {
+    "p_ct_win": 0.3021226227283478,
+    "status": "ok",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "valid_planted_8",
+   "state": {
+    "bomb_planted": 1,
+    "seconds_since_round_live": 137.29001844374423,
+    "seconds_since_plant": 30.20806444415217,
+    "map_name": "de_cache",
+    "mode": "competitive",
+    "alive_ct": 2,
+    "alive_t": 1
+   },
+   "expected": {
+    "p_ct_win": 0.5342513918876648,
+    "status": "ok",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "valid_planted_9",
+   "state": {
+    "bomb_planted": 1,
+    "seconds_since_round_live": 42.551290758982304,
+    "seconds_since_plant": 15.254942314738704,
+    "map_name": "de_inferno",
+    "mode": "competitive",
+    "alive_ct": 2,
+    "alive_t": 3
+   },
+   "expected": {
+    "p_ct_win": 0.06444800645112991,
+    "status": "ok",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "ct_dead",
+   "state": {
+    "seconds_since_round_live": 60.0,
+    "bomb_planted": 0,
+    "seconds_since_plant": -1.0,
+    "map_name": "de_ancient",
+    "mode": "competitive",
+    "alive_ct": 0,
+    "alive_t": 3
+   },
+   "expected": {
+    "p_ct_win": 0.0,
+    "status": "terminal",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "t_dead_unplanted",
+   "state": {
+    "seconds_since_round_live": 60.0,
+    "bomb_planted": 0,
+    "seconds_since_plant": -1.0,
+    "map_name": "de_ancient",
+    "mode": "competitive",
+    "alive_ct": 3,
+    "alive_t": 0
+   },
+   "expected": {
+    "p_ct_win": 1.0,
+    "status": "terminal",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "t_dead_planted_10s",
+   "state": {
+    "seconds_since_round_live": 60.0,
+    "bomb_planted": 1,
+    "seconds_since_plant": 10.0,
+    "map_name": "de_ancient",
+    "mode": "competitive",
+    "alive_ct": 3,
+    "alive_t": 0
+   },
+   "expected": {
+    "p_ct_win": 0.9998865127563477,
+    "status": "ok",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "t_dead_planted_45s",
+   "state": {
+    "seconds_since_round_live": 90.0,
+    "bomb_planted": 1,
+    "seconds_since_plant": 45.0,
+    "map_name": "de_ancient",
+    "mode": "competitive",
+    "alive_ct": 3,
+    "alive_t": 0
+   },
+   "expected": {
+    "p_ct_win": 0.0,
+    "status": "terminal",
+    "reliable": true,
+    "warnings": [
+     "bomb planted 41 s ago or more: the round is already decided (T win)"
+    ]
+   }
+  },
+  {
+   "name": "clock_114_9",
+   "state": {
+    "seconds_since_round_live": 114.9,
+    "bomb_planted": 0,
+    "seconds_since_plant": -1.0,
+    "map_name": "de_ancient",
+    "mode": "competitive",
+    "alive_ct": 3,
+    "alive_t": 3
+   },
+   "expected": {
+    "p_ct_win": 0.9364076852798462,
+    "status": "ok",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "clock_115",
+   "state": {
+    "seconds_since_round_live": 115.0,
+    "bomb_planted": 0,
+    "seconds_since_plant": -1.0,
+    "map_name": "de_ancient",
+    "mode": "competitive",
+    "alive_ct": 3,
+    "alive_t": 3
+   },
+   "expected": {
+    "p_ct_win": 1.0,
+    "status": "terminal",
+    "reliable": true,
+    "warnings": [
+     "round clock at 115 s or more with no plant: the round is already decided (CT win)"
+    ]
+   }
+  },
+  {
+   "name": "plant_40_9",
+   "state": {
+    "seconds_since_round_live": 90.0,
+    "bomb_planted": 1,
+    "seconds_since_plant": 40.9,
+    "map_name": "de_ancient",
+    "mode": "competitive",
+    "alive_ct": 3,
+    "alive_t": 3
+   },
+   "expected": {
+    "p_ct_win": 0.0003386425378266722,
+    "status": "ok",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "plant_41",
+   "state": {
+    "seconds_since_round_live": 90.0,
+    "bomb_planted": 1,
+    "seconds_since_plant": 41.0,
+    "map_name": "de_ancient",
+    "mode": "competitive",
+    "alive_ct": 3,
+    "alive_t": 3
+   },
+   "expected": {
+    "p_ct_win": 0.0,
+    "status": "terminal",
+    "reliable": true,
+    "warnings": [
+     "bomb planted 41 s ago or more: the round is already decided (T win)"
+    ]
+   }
+  },
+  {
+   "name": "flag_false_text",
+   "state": {
+    "seconds_since_round_live": 100.0,
+    "bomb_planted": "false",
+    "seconds_since_plant": 10.0,
+    "map_name": "de_ancient",
+    "mode": "competitive",
+    "alive_ct": 4,
+    "alive_t": 4
+   },
+   "expected": {
+    "p_ct_win": 0.6899899244308472,
+    "status": "ok",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "flag_yes_text",
+   "state": {
+    "seconds_since_round_live": 100.0,
+    "bomb_planted": "yes",
+    "seconds_since_plant": 20.0,
+    "map_name": "de_ancient",
+    "mode": "competitive",
+    "alive_ct": 4,
+    "alive_t": 4
+   },
+   "expected": {
+    "p_ct_win": 0.21955282986164093,
+    "status": "ok",
+    "reliable": true,
+    "warnings": []
+   }
+  },
+  {
+   "name": "flag_maybe",
+   "state": {
+    "seconds_since_round_live": 60.0,
+    "bomb_planted": "maybe",
+    "seconds_since_plant": 10.0,
+    "map_name": "de_ancient",
+    "mode": "competitive",
+    "alive_ct": 4,
+    "alive_t": 4
+   },
+   "expected": {
+    "p_ct_win": 0.5117204383228751,
+    "status": "invalid_input",
+    "reliable": false,
+    "warnings": [
+     "bomb_planted must be 0/1 or true/false"
+    ]
+   }
+  },
+  {
+   "name": "defused",
+   "state": {
+    "seconds_since_round_live": 70.0,
+    "bomb_planted": 1,
+    "seconds_since_plant": 10.0,
+    "map_name": "de_ancient",
+    "mode": "competitive",
+    "alive_ct": 2,
+    "alive_t": 2,
+    "bomb_defused": "true"
+   },
+   "expected": {
+    "p_ct_win": 1.0,
+    "status": "terminal",
+    "reliable": true,
+    "warnings": [
+     "bomb defused: the round is already decided (CT win)"
+    ]
+   }
+  },
+  {
+   "name": "oos_map",
+   "state": {
+    "seconds_since_round_live": 60.0,
+    "bomb_planted": 0,
+    "seconds_since_plant": -1.0,
+    "map_name": "de_not_a_real_map",
+    "mode": "competitive",
+    "alive_ct": 5,
+    "alive_t": 5
+   },
+   "expected": {
+    "p_ct_win": 0.557990550994873,
+    "status": "out_of_scope",
+    "reliable": false,
+    "warnings": [
+     "map 'de_not_a_real_map' is outside the 7 trained maps"
+    ]
+   }
+  },
+  {
+   "name": "oos_mode",
+   "state": {
+    "seconds_since_round_live": 60.0,
+    "bomb_planted": 0,
+    "seconds_since_plant": -1.0,
+    "map_name": "de_ancient",
+    "mode": "wingman",
+    "alive_ct": 5,
+    "alive_t": 5
+   },
+   "expected": {
+    "p_ct_win": 0.5582361817359924,
+    "status": "out_of_scope",
+    "reliable": false,
+    "warnings": [
+     "mode 'wingman' is outside the competitive 5v5 scope"
+    ]
+   }
+  },
+  {
+   "name": "blank_map",
+   "state": {
+    "seconds_since_round_live": 60.0,
+    "bomb_planted": 0,
+    "seconds_since_plant": -1.0,
+    "map_name": "",
+    "mode": "competitive",
+    "alive_ct": 5,
+    "alive_t": 5
+   },
+   "expected": {
+    "p_ct_win": 0.557990550994873,
+    "status": "out_of_scope",
+    "reliable": false,
+    "warnings": [
+     "map not given: the map one-hot is all zeros, a row never seen in training"
+    ]
+   }
+  },
+  {
+   "name": "ticks",
+   "state": {
+    "seconds_since_round_live": 3840.0,
+    "bomb_planted": 0,
+    "seconds_since_plant": -1.0,
+    "map_name": "de_ancient",
+    "mode": "competitive",
+    "alive_ct": 5,
+    "alive_t": 5
+   },
+   "expected": {
+    "p_ct_win": 0.5117204383228751,
+    "status": "invalid_input",
+    "reliable": false,
+    "warnings": [
+     "seconds_since_round_live 3840 is beyond +-200 s: not seconds (ticks or milliseconds? see seconds_from_ticks)"
+    ]
+   }
+  },
+  {
+   "name": "impossible_clock",
+   "state": {
+    "seconds_since_round_live": 5.0,
+    "bomb_planted": 1,
+    "seconds_since_plant": 30.0,
+    "map_name": "de_ancient",
+    "mode": "competitive",
+    "alive_ct": 5,
+    "alive_t": 5
+   },
+   "expected": {
+    "p_ct_win": 0.5117204383228751,
+    "status": "invalid_input",
+    "reliable": false,
+    "warnings": [
+     "impossible clock: bomb planted 30 s ago on a round clock of 5 s (plant before the round started or after it ended)"
+    ]
+   }
+  },
+  {
+   "name": "text_counts",
+   "state": {
+    "seconds_since_round_live": 60.0,
+    "bomb_planted": 0,
+    "seconds_since_plant": -1.0,
+    "map_name": "de_ancient",
+    "mode": "competitive",
+    "alive_ct": "3",
+    "alive_t": "2"
+   },
+   "expected": {
+    "p_ct_win": 0.7762937545776367,
+    "status": "ok",
+    "reliable": true,
+    "warnings": [
+     "alive_ct was given as text; converted to a number",
+     "alive_t was given as text; converted to a number"
+    ]
+   }
+  },
+  {
+   "name": "nan_seconds",
+   "state": {
+    "seconds_since_round_live": NaN,
+    "bomb_planted": 0,
+    "seconds_since_plant": -1.0,
+    "map_name": "de_ancient",
+    "mode": "competitive",
+    "alive_ct": 5,
+    "alive_t": 5
+   },
+   "expected": {
+    "p_ct_win": 0.5117204383228751,
+    "status": "invalid_input",
+    "reliable": false,
+    "warnings": [
+     "seconds_since_round_live is a required number"
+    ]
+   }
+  },
+  {
+   "name": "bool_seconds",
+   "state": {
+    "seconds_since_round_live": true,
+    "bomb_planted": 0,
+    "seconds_since_plant": -1.0,
+    "map_name": "de_ancient",
+    "mode": "competitive",
+    "alive_ct": 5,
+    "alive_t": 5
+   },
+   "expected": {
+    "p_ct_win": 0.5117204383228751,
+    "status": "invalid_input",
+    "reliable": false,
+    "warnings": [
+     "seconds_since_round_live is a required number"
+    ]
+   }
+  }
+ ]
+}
