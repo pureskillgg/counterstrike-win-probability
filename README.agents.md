@@ -6,6 +6,7 @@ Human front page: [README.md](README.md). Detail docs: [TRAINING.agents.md](TRAI
 
 - Never use frozen-test (`data/benchmark/frozen_test_keys.json`), holdout B (`data/benchmark/holdout_22_25_test_keys.json`) or October 26-31 rows for any training, early stopping, selection or tuning. Score them once, after the choice is pinned.
 - Restore the split manifest a model recorded before retraining it (`data/benchmark/split_manifest_a17f219b.json` for XGBoost v4-v8 and xgb83).
+- Match keys in this repo are pseudonyms (`csds/YYYY/MM/DD/m_<24 hex>/csds`). Run `scripts/data/restore_match_keys.py --keys <CS2_ROOT>/data/combined/grid.parquet <file>` on a copy of any key file before a script reads it. Never commit raw match keys, emails, user-name paths, IPs or account numbers; `scripts/data/check_repo_privacy.py` scans the tree for them.
 - Do not commit data: `*.parquet`, `*.npy`, `*.npz`, raw tomes, prediction files, credentials. `.pt` is allowed only under `models/`.
 - Credentials (RunPod key, S3 keys, AWS profiles) live in local files outside the repo. Never print or commit them.
 - Doc convention: `X.md` for people (short, readable); `X.agents.md` for agents (paths, commands, evidence).

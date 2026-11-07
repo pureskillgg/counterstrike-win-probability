@@ -38,9 +38,17 @@ An automated audit on 6 November screened 1,353 processed parquet files. It foun
 
 - Each row carries a per-match player number and a match key. The match key points back to the raw files on E:.
 - The raw tomes hold personal tables (redacted), two free-text header fields, and install paths that include usernames. These weren't fully screened. The E: drive was only sample-checked (20 matches).
-- This repo contains an author email (`pixi.toml`), the Windows account name and user paths in many scripts, match-key lists, and one Steam64-shaped number in a test fixture in the git history.
-
 Treat the data as pseudonymous. Review the raw tomes before sharing anything beyond the processed tables.
+
+## Match keys in this repo
+
+The repo was scrubbed on 7 November 2026, before it was shared. The git history was rewritten to match.
+
+- Every match key is a pseudonym: `csds/YYYY/MM/DD/m_<24 hex>/csds`. The hex is the start of the SHA-256 of the match's lowercase UUID. The upload date stays visible, so the day lists still work.
+- The Windows account name in paths is now `<user>`. Author emails, pod IP addresses and the AWS account number are removed too.
+- The one Steam64-shaped number the audit found is a synthetic base value in the stress-test generator `scripts/model/stress_test_winprob.py`. It is not a real ID.
+
+To use a key file with the real data, restore the real keys first with `scripts/data/restore_match_keys.py`. It needs real keys to work from, such as the `match_key` column of `<CS2_ROOT>/data/combined/grid.parquet`, which covers every match in the 17,563-key split manifest. [TRAINING.md](TRAINING.md) has the exact command. A table that maps every pseudonym back to its key is kept outside the repo.
 
 ## Open issues
 

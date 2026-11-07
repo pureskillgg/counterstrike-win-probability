@@ -18,6 +18,8 @@ Conventions used below:
 | (missing) | `2088a5a6…` | winprob_v3 |
 | (missing) | `96df8c8a…` (internal key) | winprob_v2 |
 
+Keys in these files are pseudonymised (`csds/YYYY/MM/DD/m_<24 hex>/csds`; hex = first 24 chars of sha256 of the lowercase match uuid). Restore on a copy: `<py> scripts/data/restore_match_keys.py --keys <CS2_ROOT>/data/combined/grid.parquet [--check-sha256 a17f219b] <copy of the file>`. `grid.parquet` has `match_key` for all 17,563 manifest keys and 33,200 matches in all. The restored manifest should hash to `a17f219b…`. The same step applies to `frozen_test_keys.json`, `holdout_22_25_test_keys.json`, `centre_fit_train_keys.json` and any key list under `docs/` or `data/manifests/`.
+
 Check: `cache_snapshot_2026` keys under the a17f219b manifest give train 10,577 / val 1,168 / test 3,059, equal to the v4-v8 metadata. Restore it as `<CS2_ROOT>/data/combined/split_manifest.json` before any XGBoost retrain. Rule (`wp_common.py` lines 67-75): `u = sha256(seed:match_key)[:12] / 16^12`; test if u < 0.20, validation if u < 0.28, else train. Early stopping inside sprint runs: `crc32("es:"+key) % 100 < 10`.
 
 ## XGBoost
