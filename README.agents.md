@@ -38,7 +38,7 @@ Human front page: [README.md](README.md). Detail docs: [TRAINING.agents.md](TRAI
 
 ## Known inconsistencies (do not "fix" silently)
 
-- Serving default is v6 in code; v7 and v8 metadata say `served: true` (hand-edited).
+- Served flags were reconciled on 7 Nov 2026: v6 is `served: true`; v7 and v8 were hand-edited to `served: true` before and are now `served: false`.
 - `models/README.md` lists models left out of git (v4 tuning variants, `*valpreds.pt`).
 - The sequence position folder `_grid` builder version was not saved.
 - The 295 vs 297 match count for the GDT proxy differs between the explainability deck and the 6 Nov report.

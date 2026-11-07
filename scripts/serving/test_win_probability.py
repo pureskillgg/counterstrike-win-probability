@@ -56,7 +56,7 @@ def read_player_status(match_key):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--matches", type=int, default=0, help="number of tome test matches to check (0 = all of them)")
-    ap.add_argument("--model", default="winprob_v8_ensemble", choices=sorted(EXPORTS))
+    ap.add_argument("--model", default="winprob_v6_drop_heavy", choices=sorted(EXPORTS))
     a = ap.parse_args()
     grid = pl.read_parquet(os.path.join(ROOT, "data", "combined", EXPORTS[a.model]), columns=["match_key", "round", "tick", "p"])
     # the tome holds 1-8 October only: keep test matches that are in it

@@ -172,8 +172,8 @@
   -2.329329269990488e-05
  ],
  "selection": "validation log loss (settings chosen on validation; test scored once)",
- "served": true,
- "note": "production model: 58 inputs, mean of five seeds; needs per-tick player status in the tome",
+ "served": false,
+ "note": "named production on 19 Oct 2026 (pin 4b699f9d), superseded on 20 Oct by the v6 submission (pin aaecad58)",
  "serving": {
   "function": "scripts/serving/win_probability.py (default model_name)",
   "parity_test": "scripts/serving/test_win_probability.py",

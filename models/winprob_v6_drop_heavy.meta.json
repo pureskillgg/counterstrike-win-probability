@@ -145,6 +145,6 @@
  },
  "validation_logloss": 0.45355674869013596,
  "test_logloss": 0.4564107438146608,
- "served": false,
- "note": "59-input model without the heavy group; needs per-tick player status to serve, so not the served default"
+ "served": true,
+ "note": "served default since the 20 Oct 2026 decision (pin aaecad58): 57 inputs, one XGBoost model, needs per-tick player status in the tome"
 }

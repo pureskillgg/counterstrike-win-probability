@@ -6,13 +6,13 @@ Every model file kept in git. Each XGBoost model is a JSON booster. Most have a 
 
 The serving code, `scripts/serving/win_probability.py`, uses **`winprob_v6_drop_heavy`** (57 inputs) by default. It describes that model as "the submission, decided 19 October".
 
-Two metadata files also say `served: true`: `winprob_v7_basic_scorelead` and `winprob_v8_ensemble`. Those flags were edited by hand after the runs; rerunning the scripts writes `served: false`. They conflict with the serving code. Treat the serving code as the record until the owner confirms.
+Served model: winprob_v6_drop_heavy (pin aaecad58, 20 Oct 2026; the serving code default). v8 was named production on 19 Oct and v7 was served earlier; both are superseded and their metadata now says served: false. The 83-input model is more accurate but is not servable by win_probability.py and was never pinned as the submission.
 
 ## XGBoost models
 
 | File | Inputs | Created | What it is |
 |---|---|---|---|
-| `winprob_v6_drop_heavy` | 57 | Oct 2026 | Serving default in code. The 59 snapshot inputs without the two heavy-weapon inputs. Its metadata says `served: false`. |
+| `winprob_v6_drop_heavy` | 57 | Oct 2026 | Served model and serving default in code. The 59 snapshot inputs without the two heavy-weapon inputs. Its metadata says `served: true`. |
 | `winprob_v8_seed0` to `seed4` (+ `winprob_v8_ensemble.meta.json`) | 58 | Oct 2026 | Mean of five seeds: v6's inputs plus the score lead. |
 | `winprob_v8_tuned` | 58 | Oct 2026 | The same booster as `winprob_v8_seed0`: the hyperparameter search picked the baseline settings. |
 | `winprob_v7_basic_scorelead` | 14 | Oct 2026 | Event channels only, plus the score lead. |

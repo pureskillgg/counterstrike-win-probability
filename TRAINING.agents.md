@@ -109,5 +109,5 @@ Round-state arrays: `scripts/model/build_round_state_map.py --map <map>` (split 
 - Manifests for v2 and v3 are lost; v1, v1_basic and winprob_test use an older meta schema.
 - The `_grid` sequence position folder's exact builder version is not saved (see above).
 - The xgb83 refit-to-`models/` copy is manual; the GPU sprint launch command was reconstructed from `make_queues.py`.
-- `served` flags in `winprob_v7_basic_scorelead.meta.json` and `winprob_v8_ensemble.meta.json` were hand-edited; the serving default in code is `winprob_v6_drop_heavy`.
+- `served` flags were reconciled by hand on 7 Nov 2026: `winprob_v6_drop_heavy` is true; `winprob_v7_basic_scorelead` and `winprob_v8_ensemble` are false. Rerunning the save scripts writes `served: false`, so re-check v6 after a rerun. The serving default in code is `winprob_v6_drop_heavy`.
 - The THGNN all-maps trainer (`train_thgnn_allmaps.py`) and `train_graph_transformer.py` have no saved run.

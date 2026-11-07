@@ -51,7 +51,8 @@
  "test": {
   "rows": 4568043
  },
- "served": true,
+ "served": false,
+ "note": "served default before 19 Oct 2026; superseded by winprob_v6_drop_heavy (pin aaecad58, 20 Oct 2026)",
  "serving": {"function": "scripts/serving/win_probability.py (default model_name)", "parity_test": "scripts/serving/test_win_probability.py",
              "parity_result": "294 of 294 tome test matches, 374,541 seconds: max gap 0.0001 pp, mean 0.00002 pp, 100% within 0.01 pp; score lead equals the grid in 5,431 of 5,431 tome rounds",
              "parity_log": "logs/test_win_probability_scorelead.log"},
