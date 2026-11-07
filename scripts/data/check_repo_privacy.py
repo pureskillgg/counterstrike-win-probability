@@ -73,10 +73,13 @@ def main(argv):
     root = argv[1] if len(argv) > 1 else os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
     total = Counter()
     per_file = {}
+    self_path = os.path.abspath(__file__)
     for dirpath, dirnames, filenames in os.walk(root):
         dirnames[:] = [d for d in dirnames if d != ".git"]
         for name in filenames:
             path = os.path.join(dirpath, name)
+            if os.path.abspath(path) == self_path:  # its own patterns would match themselves
+                continue
             c = Counter()
             try:
                 with open(path, "rb") as f:
