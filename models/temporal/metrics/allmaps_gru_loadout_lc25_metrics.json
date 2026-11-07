@@ -1,0 +1,47 @@
+{
+ "tag": "allmaps_gru_loadout_lc25",
+ "maps": [
+  "de_mirage",
+  "de_dust2",
+  "de_ancient",
+  "de_anubis",
+  "de_inferno",
+  "de_nuke",
+  "de_cache"
+ ],
+ "scope": "all maps (train, validation); de_mirage test",
+ "seed": 0,
+ "lookback_s": 20,
+ "epochs": 3,
+ "selected_epoch": 1,
+ "history": [
+  {
+   "epoch": 1,
+   "train_loss": 0.4586312779448403,
+   "val_log_loss": 0.45459040999412537,
+   "seconds": 5709.4
+  },
+  {
+   "epoch": 2,
+   "train_loss": 0.4539510355249775,
+   "val_log_loss": 0.4547307789325714,
+   "seconds": 5856.0
+  },
+  {
+   "epoch": 3,
+   "train_loss": 0.45199444253939036,
+   "val_log_loss": 0.4548930525779724,
+   "seconds": 5998.4
+  }
+ ],
+ "test_log_loss": null,
+ "test_rows": null,
+ "test_matches": null,
+ "device": "cuda",
+ "train_rows": 6360075,
+ "val_rows": 1515228,
+ "match_fraction": 0.25,
+ "subset_seed": 0,
+ "train_matches": 19478,
+ "no_test": true
+}

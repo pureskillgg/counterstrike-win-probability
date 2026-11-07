@@ -1,0 +1,53 @@
+{
+ "map": "de_mirage",
+ "stem": "de_mirage",
+ "cache": "cache_snapshot_2026.parquet",
+ "lookback_s": 20,
+ "epochs": 6,
+ "history": [
+  {
+   "epoch": 1,
+   "train_loss": 0.46150603864345824,
+   "val_log_loss": 0.45345988869667053,
+   "seconds": 36.0
+  },
+  {
+   "epoch": 2,
+   "train_loss": 0.45467781015849834,
+   "val_log_loss": 0.4547092318534851,
+   "seconds": 58.7
+  },
+  {
+   "epoch": 3,
+   "train_loss": 0.4518887751082788,
+   "val_log_loss": 0.4543314278125763,
+   "seconds": 81.8
+  },
+  {
+   "epoch": 4,
+   "train_loss": 0.4476670996456505,
+   "val_log_loss": 0.46043089032173157,
+   "seconds": 103.8
+  },
+  {
+   "epoch": 5,
+   "train_loss": 0.4436479348966873,
+   "val_log_loss": 0.45815035700798035,
+   "seconds": 125.9
+  },
+  {
+   "epoch": 6,
+   "train_loss": 0.43947498262070833,
+   "val_log_loss": 0.45812103152275085,
+   "seconds": 148.1
+  }
+ ],
+ "test_log_loss": 0.4524298906326294,
+ "test_ci95_match_bootstrap": [
+  0.4468133294055714,
+  0.4584112461088166
+ ],
+ "test_rows": 865974,
+ "test_matches": 687,
+ "device": "cuda"
+}

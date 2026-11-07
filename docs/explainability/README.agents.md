@@ -1,6 +1,6 @@
 # Agent notes: explainability for the 83-input model
 
-As of Nov 6, 2026. Same results as [README.md](README.md), in the form an agent needs. Read README.md for the findings and caveats.
+As of Nov 6, 2026. Same results as [REPORT.md](REPORT.md) (the full write-up; [README.md](README.md) is the short human summary), in the form an agent needs. Read REPORT.md for the findings and caveats.
 
 ## File map
 

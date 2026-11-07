@@ -1,0 +1,35 @@
+{
+ "map": "de_mirage",
+ "model": "THGNN-lite (data-driven map graph, 20 s window at 1 Hz)",
+ "epochs": 3,
+ "selected_epoch": 2,
+ "selection": "lowest validation log loss",
+ "history": [
+  {
+   "epoch": 1,
+   "train_loss": 0.5024237910151435,
+   "val_log_loss": 0.4555701017379761,
+   "seconds": 289.5
+  },
+  {
+   "epoch": 2,
+   "train_loss": 0.49305988646297516,
+   "val_log_loss": 0.45392051339149475,
+   "seconds": 580.5
+  },
+  {
+   "epoch": 3,
+   "train_loss": 0.4848168724384281,
+   "val_log_loss": 0.46705275774002075,
+   "seconds": 878.1
+  }
+ ],
+ "test_log_loss": 0.45530053973197937,
+ "test_ci95_match_bootstrap": [
+  0.4489514242669883,
+  0.4618701677929026
+ ],
+ "test_rows": 865974,
+ "test_matches": 687,
+ "device": "cuda"
+}

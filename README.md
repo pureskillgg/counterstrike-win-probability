@@ -1,35 +1,43 @@
-# counterstrike-win-probability
+# CS2 round win probability
 
-Work on the CS2 round win-probability model: how we evaluate it, and the experiments run on top of the shipped model (v6, `winprob_v6_drop_heavy`).
+Models that estimate, second by second, the probability that the CT side wins a Counter-Strike 2 round. This repo holds the code, the trained models, the documentation and the working notes from October and November 2026.
 
-## Layout
+## Start here
 
-- `evaluation/intern_gdt/`: the intern's grader (README, `score_gdt.py`, `table.csv`), copied unchanged. It grades a model by its gain over a fixed situation table (GDT, with a per-situation GDT_sit).
-- `evaluation/build_gdt_rows.py`: builds the grader's per-second rows. Not yet runnable on our data; see `docs/RESULTS.md`.
-- `analysis/`: loss by seconds into the round, and the split and upload-day check.
-- `experiments/`: snapshots of the scripts behind each experiment (lag, money, GRU, E1 money and equipment, diagnostics, the pipeline runner, the retrain and the frozen-test guard). Paths still point at the local data tree; see below.
-- `docs/EVALUATION.md`: the round-quality evaluation protocol. Read this first; it sets the headline metric, the windows and the rules.
-- `evaluation/evaluate.py`: one entry point for the protocol. It writes a report to `docs/eval_reports/`.
-- `docs/RESULTS.md`: recorded results with their sources, the grading status, and corrections.
-- `scripts/data/` and `scripts/model/`: the pipeline and experiment code, copied from the project folder `G:\pureskill\csds-cs2`. The folder layout is kept, so imports between scripts still work. The model helpers read `CS2_ROOT` (default `G:\pureskill\csds-cs2`). Experiments that aren't used for the current results are kept as a record.
-- `models/`: the v4 and v6 models and their metadata.
-- `data/benchmark/`: the frozen test keys and the split manifest that every result depends on.
-- Not in git: the data, the parquet caches, the prediction files and the experiment outputs in the scratchpad.
+- **[models/README.md](models/README.md)**: which model file is which. The serving code uses `winprob_v6_drop_heavy` (XGBoost, 57 inputs).
+- **[TRAINING.md](TRAINING.md)**: how to retrain any model, and which days of data each one used.
+- **[DATA.md](DATA.md)**: where the data lives, how it was built, and what's known about personal data.
+- **[sequence/README.md](sequence/README.md)**: the sequence-model screen (GRU, LSTM, transformers, xLSTM and others) against XGBoost.
+- **[docs/explainability/README.md](docs/explainability/README.md)**: what drives the 83-input XGBoost model.
+- **[evaluation/intern_gdt/README.md](evaluation/intern_gdt/README.md)**: GDT, the team's metric, which is the gain over a fixed lookup table.
 
-## Data (not in git)
+## Results in brief
 
-- Data root: `G:\pureskill\csds-cs2` (tomes, the combined store, caches, models, predictions).
-- Frozen benchmark: 3,059 test matches listed in the session scratchpad's `frozen_test_keys.json`. Never change it.
-- Frozen cache: `data/combined/cache_snapshot_2026.parquet`. Never overwrite it; new caches get their own file name.
+All numbers are validation results unless marked. Lower log loss is better; higher GDT is better.
 
-## Running
+- **Served XGBoost (v6, 57 inputs):** validation log loss 0.4536; frozen-test log loss 0.4564.
+- **XGBoost with positions (83 inputs):** validation log loss 0.4503, the mean of three seeds. GDT 0.0254 on the 297-match validation proxy. October 26 to 31 holdout, read once: 0.4523.
+- **Sequence models:** none beats the GRU control on GDT by the pre-registered bar. Stopping the GRU at 25,000 steps instead of 30,000 lowered its log loss on all five seeds, by 0.0011 on average.
 
-- Python: the pixi environment at `G:\pureskill\csds-cs2\.pixi\envs\default\python.exe` (XGBoost, CPU).
-- GPU jobs run in WSL with `~/venvs/csds` (CUDA XGBoost). On Windows, `device="cuda"` silently falls back to CPU.
-- The scripts in `experiments/` hard-code the local data and scratch paths. Moving them behind a shared path config is a follow-up.
+## What's where
+
+| Folder | Contents |
+|---|---|
+| `scripts/data/` | building the data: tomes, match tables, per-second grid, player status and positions |
+| `scripts/model/` | training and experiments for every model family |
+| `scripts/serving/` | the serving function and its parity test |
+| `experiments/sprint/` | the 83-input XGBoost sprint, with its run records |
+| `sequence/` | the sequence-model screen: trainer, pod scripts, analysis, notes |
+| `evaluation/`, `analysis/` | the GDT grader and analysis scripts |
+| `models/` | trained models (XGBoost JSON, PyTorch weights) |
+| `data/benchmark/`, `data/manifests/` | test keys, split manifests, per-day match counts |
+| `notes/`, `docs/`, `deliverables/` | reports, research notes, earlier review packages |
+| `scratch/` | working scripts from the analysis sessions |
 
 ## Conventions
 
-- Compare models on the same rows and the same seed (a paired comparison).
-- Report log loss and AUC together for any new model.
-- Report per-situation results next to the pooled number, with the situations named in advance.
+- Each `DOCUMENT.md` is for people. An optional `DOCUMENT.agents.md` next to it carries the detail an agent needs.
+- Choices are made on validation data only. The frozen test and the holdouts are read once, after a choice is fixed.
+- Models are compared on the same rows and the same seed.
+
+The code is under the MIT License, © FPS Critic, Inc.

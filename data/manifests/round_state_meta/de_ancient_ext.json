@@ -1,0 +1,108 @@
+{
+ "map": "de_ancient",
+ "split_codes": {
+  "train": 0,
+  "val": 1,
+  "test": 2
+ },
+ "window": {
+  "xy_min": -2531.07421875,
+  "xy_max": 1771.97265625,
+  "z_min": -176.9766845703125,
+  "z_max": 314.8125,
+  "n_train_rows": 25112059
+ },
+ "window_train_rows_by_day": {
+  "2026-09-01.parquet": 51957,
+  "2026-09-02.parquet": 42763,
+  "2026-09-03.parquet": 49939,
+  "2026-09-04.parquet": 15615,
+  "2026-09-05.parquet": 49987,
+  "2026-09-06.parquet": 73871,
+  "2026-09-07.parquet": 54710,
+  "2026-09-08.parquet": 28282,
+  "2026-09-09.parquet": 76220,
+  "2026-09-10.parquet": 34274,
+  "2026-09-11.parquet": 27988,
+  "2026-09-12.parquet": 44571,
+  "2026-09-13.parquet": 44384,
+  "2026-09-14.parquet": 7817,
+  "2026-09-15.parquet": 30561,
+  "2026-09-16.parquet": 24581,
+  "2026-09-17.parquet": 29007,
+  "2026-09-18.parquet": 14358,
+  "2026-09-19.parquet": 21963,
+  "2026-09-20.parquet": 55015,
+  "2026-09-21.parquet": 17090,
+  "2026-09-22.parquet": 34411,
+  "2026-09-23.parquet": 62617,
+  "2026-09-24.parquet": 49318,
+  "2026-09-25.parquet": 34010,
+  "2026-09-26.parquet": 31459,
+  "2026-09-27.parquet": 55726,
+  "2026-09-28.parquet": 6970,
+  "2026-09-29.parquet": 30834,
+  "2026-09-30.parquet": 27667,
+  "2026-10-01.parquet": 18969,
+  "2026-10-02.parquet": 15368,
+  "2026-10-03.parquet": 33124,
+  "2026-10-04.parquet": 42149,
+  "2026-10-05.parquet": 5848,
+  "2026-10-06.parquet": 73807,
+  "2026-10-07.parquet": 18026,
+  "2026-10-08.parquet": 1134818,
+  "2026-10-09.parquet": 2451737,
+  "2026-10-10.parquet": 2412678,
+  "2026-10-11.parquet": 3152653,
+  "2026-10-12.parquet": 207616,
+  "2026-10-13.parquet": 2616929,
+  "2026-10-14.parquet": 1195838,
+  "2026-10-15.parquet": 1167858,
+  "2026-10-16.parquet": 1435111,
+  "2026-10-17.parquet": 2651236,
+  "2026-10-18.parquet": 2481363,
+  "2026-10-19.parquet": 1837978,
+  "2026-10-20.parquet": 1010091,
+  "2026-10-21.parquet": 20897
+ },
+ "days_built": 51,
+ "days_skipped": {},
+ "stats": {
+  "position_rows_in_map": 30362156,
+  "position_rows_unmapped_match_key": 0,
+  "rows_dropped_sentinel_pid": 0,
+  "rows_player_id_0_kept": 2943378,
+  "rows_dropped_bad_coordinates": 254,
+  "rows_dropped_roster_overflow": 0,
+  "rows_dropped_unlabelled": 0,
+  "n_rows": 4376026,
+  "rounds_gapped": 0,
+  "frac_alive_slots": 0.6938236355781555,
+  "rows_per_split": {
+   "train": 3620436,
+   "val": 231750,
+   "test": 523840
+  },
+  "matches_per_split": {
+   "train": 2908,
+   "val": 194,
+   "test": 428
+  },
+  "frac_alive_coords_outside_window": {
+   "train": 0.0,
+   "val": 0.0,
+   "test": 0.0
+  }
+ },
+ "X_shape": [
+  4376026,
+  10,
+  6
+ ],
+ "elapsed_s": 57.9,
+ "day_dirs": [
+  "G:\\pureskill\\csds-cs2\\data\\positions_1hz"
+ ],
+ "maps_from": "catalog",
+ "fixed_window": false
+}

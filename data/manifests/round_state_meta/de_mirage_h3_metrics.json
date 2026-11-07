@@ -1,0 +1,64 @@
+{
+ "map": "de_mirage",
+ "horizon_s": 3,
+ "latent": 8,
+ "epochs": 5,
+ "history": [
+  {
+   "epoch": 1,
+   "train_mse": 0.01649516223307731,
+   "val_mse": 0.015424543213827102,
+   "val_persistence_mse": 0.02025602569990133,
+   "val_rmse_world": 315.68253257667425,
+   "seconds": 4.0
+  },
+  {
+   "epoch": 2,
+   "train_mse": 0.015220763517069602,
+   "val_mse": 0.015243421379116375,
+   "val_persistence_mse": 0.02025602569990133,
+   "val_rmse_world": 314.1417527001103,
+   "seconds": 7.6
+  },
+  {
+   "epoch": 3,
+   "train_mse": 0.015061940252672322,
+   "val_mse": 0.015092221280618701,
+   "val_persistence_mse": 0.02025602569990133,
+   "val_rmse_world": 313.00923302329437,
+   "seconds": 11.1
+  },
+  {
+   "epoch": 4,
+   "train_mse": 0.01497347185901984,
+   "val_mse": 0.015062518799908815,
+   "val_persistence_mse": 0.02025602569990133,
+   "val_rmse_world": 312.55966005585145,
+   "seconds": 14.5
+  },
+  {
+   "epoch": 5,
+   "train_mse": 0.014918485208050138,
+   "val_mse": 0.014984362074848948,
+   "val_persistence_mse": 0.02025602569990133,
+   "val_rmse_world": 312.2178713477088,
+   "seconds": 17.9
+  }
+ ],
+ "final_val": {
+  "epoch": 5,
+  "train_mse": 0.014918485208050138,
+  "val_mse": 0.014984362074848948,
+  "val_persistence_mse": 0.02025602569990133,
+  "val_rmse_world": 312.2178713477088,
+  "seconds": 17.9
+ },
+ "device": "cuda",
+ "window": {
+  "xy_min": -2655.97265625,
+  "xy_max": 1455.9708251953125,
+  "z_min": -367.96875,
+  "z_max": 68.09468078613281,
+  "n_train_rows": 21886862
+ }
+}

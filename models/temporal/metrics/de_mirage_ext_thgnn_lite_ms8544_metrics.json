@@ -1,0 +1,130 @@
+{
+ "map": "de_mirage",
+ "stem": "de_mirage_ext",
+ "cache": "cache_snapshot_2026_ext.parquet",
+ "model": "THGNN-lite (data-driven map graph, 20 s window at 1 Hz)",
+ "epochs": 6,
+ "max_steps": 8544,
+ "eval_every": 500,
+ "steps_run": 8544,
+ "selected_epoch": 1,
+ "selection": "lowest validation log loss",
+ "history": [
+  {
+   "epoch": 1,
+   "step": 500,
+   "val_log_loss": 0.4591706693172455,
+   "seconds": 35.5
+  },
+  {
+   "epoch": 1,
+   "step": 1000,
+   "val_log_loss": 0.4571554660797119,
+   "seconds": 68.8
+  },
+  {
+   "epoch": 1,
+   "step": 1500,
+   "val_log_loss": 0.4563133418560028,
+   "seconds": 101.9
+  },
+  {
+   "epoch": 1,
+   "step": 2000,
+   "val_log_loss": 0.4578095078468323,
+   "seconds": 135.1
+  },
+  {
+   "epoch": 1,
+   "step": 2500,
+   "val_log_loss": 0.4562634229660034,
+   "seconds": 168.2
+  },
+  {
+   "epoch": 1,
+   "step": 3000,
+   "val_log_loss": 0.45800453424453735,
+   "seconds": 201.3
+  },
+  {
+   "epoch": 1,
+   "step": 3500,
+   "val_log_loss": 0.455809086561203,
+   "seconds": 234.6
+  },
+  {
+   "epoch": 1,
+   "step": 4000,
+   "val_log_loss": 0.4582911729812622,
+   "seconds": 267.7
+  },
+  {
+   "epoch": 1,
+   "step": 4500,
+   "val_log_loss": 0.4594413936138153,
+   "seconds": 300.8
+  },
+  {
+   "epoch": 1,
+   "step": 5000,
+   "val_log_loss": 0.4582884609699249,
+   "seconds": 333.9
+  },
+  {
+   "epoch": 1,
+   "step": 5500,
+   "val_log_loss": 0.45593956112861633,
+   "seconds": 367.0
+  },
+  {
+   "epoch": 1,
+   "step": 6000,
+   "val_log_loss": 0.4596971571445465,
+   "seconds": 400.2
+  },
+  {
+   "epoch": 1,
+   "step": 6500,
+   "val_log_loss": 0.4517225921154022,
+   "seconds": 433.4
+  },
+  {
+   "epoch": 1,
+   "step": 7000,
+   "val_log_loss": 0.45144525170326233,
+   "seconds": 466.6
+  },
+  {
+   "epoch": 1,
+   "step": 7500,
+   "val_log_loss": 0.45307132601737976,
+   "seconds": 499.7
+  },
+  {
+   "epoch": 1,
+   "step": 8000,
+   "val_log_loss": 0.45094308257102966,
+   "seconds": 533.0
+  },
+  {
+   "epoch": 1,
+   "step": 8500,
+   "val_log_loss": 0.45124855637550354,
+   "seconds": 566.2
+  },
+  {
+   "epoch": 1,
+   "step": 8544,
+   "val_log_loss": 0.45325180888175964,
+   "seconds": 578.3
+  }
+ ],
+ "test_log_loss": 0.44960421323776245,
+ "test_ci95_match_bootstrap": [
+  0.44376047320734047,
+  0.4559202815893137
+ ],
+ "test_rows": 865974,
+ "test_matches": 687,
+ "device": "cuda"
+}
