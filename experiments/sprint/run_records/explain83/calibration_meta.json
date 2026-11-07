@@ -1,0 +1,7 @@
+{
+ "shipped_validation_logloss": 0.45020979367523917,
+ "n_validation": 1515228,
+ "best_iteration": 2695,
+ "decile_table": "calibration_deciles_shipped.csv",
+ "state_table": "calibration_1v5_shipped.csv"
+}

@@ -93,7 +93,9 @@ def feats_for_day(pos, sta, G, planted_xy, sites, every, ev=None):
         s = j.filter(pl.col("side") == sd).with_columns(pl.col("has_defuser").cast(pl.Float32).fill_null(0.0), pl.col("is_defusing").cast(pl.Float32).fill_null(0.0))
         A[nm] = {c: scatter(s, "kid", "slot", c, n) for c in ("x", "y", "yaw", "has_defuser", "blind_rem")}
     KG = K.join(G, on=["match_key", "round", "tick"], how="left")
-    KB = KG.join(planted_xy, on=["match_key", "round"], how="left")
+    # bomb position per tick: the latest bomb_begin_plant of the same round at or before that tick (null before the first one).
+    # Backward asof on the tick, so a later plant can never reach an earlier second.
+    KB = K.sort("tick").join_asof(planted_xy.sort("tick"), on="tick", by=["match_key", "round"], strategy="backward").sort("kid")
     sp = KG["seconds_since_plant"].fill_null(0).to_numpy().astype("float32")
     planted = (KG["bomb_planted"].fill_null(0).to_numpy() == 1)
     mp = KG["map_name"].to_list()
@@ -153,13 +155,24 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--store", default="combined")
     ap.add_argument("--every", type=int, default=2)
+    ap.add_argument("--centre_keys", default=None, help="json list of match keys: fit the site centres on these matches only (writes *_trainctr outputs in their own folders)")
     a = ap.parse_args()
     d = os.path.join(ROOT, "data", a.store)
+    tag = ""
+    centre_keys = None
+    if a.centre_keys:
+        import json
+        centre_keys = json.load(open(a.centre_keys))
+        tag = "_trainctr"
+        print(f"site centres from {len(centre_keys)} matches in {a.centre_keys}", flush=True)
     print("site centres:", flush=True)
-    sites = site_centres(a.store)
+    sites = site_centres(a.store, centre_keys)
     G = pl.read_parquet(os.path.join(d, "grid.parquet"), columns=["match_key", "round", "tick", "bomb_planted", "seconds_since_plant", "map_name", "era", "second"]).filter(pl.col("era") == "2026")
     PL = pl.concat([pl.read_parquet(f) for f in sorted(glob.glob(os.path.join(ROOT, "data", "positions_1hz", "_plants", "*.parquet")))], how="vertical_relaxed")
-    planted_xy = PL.sort("tick").group_by("match_key", "round", maintain_order=True).agg(pl.col("x").last().alias("bx"), pl.col("y").last().alias("by")).with_columns(pl.col("round").cast(pl.Int64))
+    # one row per bomb_begin_plant event (tick, position), not one per round: the per-tick lookup in feats_for_day needs the tick
+    planted_xy = (PL.with_columns(pl.col("round").cast(pl.Int64), pl.col("tick").cast(pl.Int64)).sort("tick", maintain_order=True)
+                  .unique(["match_key", "round", "tick"], keep="last", maintain_order=True)
+                  .select("match_key", "round", "tick", pl.col("x").alias("bx"), pl.col("y").alias("by")))
     parts = []
     for fp in sorted(glob.glob(os.path.join(ROOT, "data", "positions_1hz", "2026-*.parquet"))):
         day = os.path.basename(fp)
@@ -168,7 +181,7 @@ def main():
             print("skip (no status)", day)
             continue
         fb = os.path.join(ROOT, "data", "blind_events", day)
-        fd = os.path.join(ROOT, "data", "pos_features_1hz", f"every{a.every}", day)
+        fd = os.path.join(ROOT, "data", "pos_features_1hz", f"every{a.every}{tag}", day)
         os.makedirs(os.path.dirname(fd), exist_ok=True)
         newest_in = max(os.path.getmtime(x) for x in (fp, fs, fb, os.path.join(ROOT, "scripts", "data", "make_pos_features.py")) if os.path.exists(x))
         if os.path.exists(fd) and os.path.getmtime(fd) >= newest_in:  # nothing this day depends on changed: reuse its feature file (a new match changes the day's input files)
@@ -195,7 +208,7 @@ def main():
         parts.append(f)
         print(f"{day}: {f.height:,} rows, {len(mk)} matches", flush=True)
     out = pl.concat(parts, how="vertical_relaxed").with_columns(pl.col("round").cast(pl.Int64), pl.col("tick").cast(pl.Int64))
-    fn = os.path.join(d, "cache_pos_2026.parquet")
+    fn = os.path.join(d, f"cache_pos_2026{tag}.parquet")
     out.write_parquet(fn + ".tmp", compression="zstd")
     os.replace(fn + ".tmp", fn)
     print(f"-> {fn}: {out.height:,} rows x {out.width} columns")

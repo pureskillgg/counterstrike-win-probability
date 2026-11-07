@@ -1,0 +1,23 @@
+{
+  "best_iteration": 130,
+  "val_logloss": 0.45413326826464473,
+  "fit_seconds": 9.2,
+  "quantise_seconds": 67.9,
+  "n_features": 59,
+  "n_fit": 12355820,
+  "n_early_stop": 1403081,
+  "n_validation": 1515228,
+  "pred_file": "/mnt/g/pureskill/csds-cs2/data/sprint/run/gpu_fast/preds/base_d6_e0.1_m20_s1.parquet",
+  "fit_path": "xgb.train on a QuantileDMatrix quantised once per feature set (max_bin 256); early stopping 100 on the early-stop set; 3000-round cap",
+  "status": "ok",
+  "id": "base_d6_e0.1_m20_s1",
+  "set": "base",
+  "depth": 6,
+  "eta": 0.1,
+  "mcw": 20,
+  "seed": 1,
+  "device": "cuda",
+  "pos": "cache_pos_2026_trainctr.parquet",
+  "started": "2026-11-03 10:50:49",
+  "finished": "2026-11-03 10:50:59"
+}

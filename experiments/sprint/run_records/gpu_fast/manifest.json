@@ -1,0 +1,13 @@
+{
+  "device": "cuda",
+  "definitions": "88c2332fbe7e7b127d05753b805b179a8d2fa1c79fe2c50eb895c578a67c760c",
+  "pos": "cache_pos_2026_trainctr.parquet",
+  "pos_bytes": 1250708888,
+  "cache": "cache_snapshot_2026.parquet",
+  "cache_bytes": 182283341,
+  "frozen": "frozen_test_keys.json",
+  "rows": 15274129,
+  "mono_extra": "0",
+  "split_env": "default",
+  "fit_path": "xgb.train on a QuantileDMatrix quantised once per feature set (max_bin 256); early stopping 100 on the early-stop set; 3000-round cap"
+}

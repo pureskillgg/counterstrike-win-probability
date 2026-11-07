@@ -1,0 +1,23 @@
+{
+  "best_iteration": 992,
+  "val_logloss": 0.45380520516841616,
+  "fit_seconds": 45.8,
+  "quantise_seconds": 113.3,
+  "n_features": 63,
+  "n_fit": 12355820,
+  "n_early_stop": 1403081,
+  "n_validation": 1515228,
+  "pred_file": "/mnt/g/pureskill/csds-cs2/data/sprint/run/gpu_fast/preds/base-BLIND_d4_e0.05_m20_s2.parquet",
+  "fit_path": "xgb.train on a QuantileDMatrix quantised once per feature set (max_bin 256); early stopping 100 on the early-stop set; 3000-round cap",
+  "status": "ok",
+  "id": "base-BLIND_d4_e0.05_m20_s2",
+  "set": "base+BLIND",
+  "depth": 4,
+  "eta": 0.05,
+  "mcw": 20,
+  "seed": 2,
+  "device": "cuda",
+  "pos": "cache_pos_2026_trainctr.parquet",
+  "started": "2026-11-03 11:57:51",
+  "finished": "2026-11-03 11:58:37"
+}
