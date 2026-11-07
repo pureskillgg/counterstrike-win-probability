@@ -1,0 +1,105 @@
+[
+ {
+  "table": "cache_snapshot_2026",
+  "split_source": "export_clean split (match_split.npy)",
+  "note": "XGBoost base inputs (57/58/59/83-input models)",
+  "matches": 14804,
+  "days": 43,
+  "first_day": "2026-09-01",
+  "last_day": "2026-10-13",
+  "by_split": {
+   "train": 10576,
+   "not_in_export_split": 688,
+   "test": 2372,
+   "validation": 1168
+  }
+ },
+ {
+  "table": "cache_snapshot_2026_ext",
+  "split_source": "export_clean split (match_split.npy)",
+  "note": "sequence-model state inputs (train_phase1_pos24)",
+  "matches": 23708,
+  "days": 51,
+  "first_day": "2026-09-01",
+  "last_day": "2026-10-21",
+  "by_split": {
+   "train": 19479,
+   "test": 2372,
+   "not_in_export_split": 689,
+   "validation": 1168
+  }
+ },
+ {
+  "table": "cache_pos_2026_trainctr",
+  "split_source": "export_clean split (match_split.npy)",
+  "note": "XGBoost 83-input position inputs",
+  "matches": 30451,
+  "days": 61,
+  "first_day": "2026-09-01",
+  "last_day": "2026-10-31",
+  "by_split": {
+   "train": 21953,
+   "not_in_export_split": 4658,
+   "validation": 1467,
+   "test": 2373
+  }
+ },
+ {
+  "table": "matches",
+  "split_source": "export_clean split (match_split.npy)",
+  "note": "all matches in the combined store",
+  "matches": 37119,
+  "days": 82,
+  "first_day": "2024-02-01",
+  "last_day": "2026-10-31",
+  "by_split": {
+   "train": 23930,
+   "not_in_export_split": 8769,
+   "test": 2733,
+   "validation": 1687
+  }
+ },
+ {
+  "table": "allmaps_pos24_trainsites_grid",
+  "split_source": "export_clean split (match_split.npy)",
+  "note": "sequence-model position inputs (per-map site grid)",
+  "matches": 30451,
+  "days": 61,
+  "first_day": "2026-09-01",
+  "last_day": "2026-10-31",
+  "by_split": {
+   "train": 21953,
+   "test": 2373,
+   "validation": 1467,
+   "not_in_export_split": 4658
+  }
+ },
+ {
+  "table": "round_state",
+  "split_source": "npz 'split' array (first row of each match)",
+  "note": "earlier temporal round models",
+  "matches": 23716,
+  "days": 51,
+  "first_day": "2026-09-01",
+  "last_day": "2026-10-21",
+  "by_split": {
+   "train": 19486,
+   "test": 3061,
+   "validation": 1169
+  }
+ },
+ {
+  "table": "export_clean_v4",
+  "split_source": "export_clean match_split.npy",
+  "note": "57,811-match training export (not used by the reported runs)",
+  "matches": 57811,
+  "days": 419,
+  "first_day": "2023-11-23",
+  "last_day": "2026-10-25",
+  "by_split": {
+   "train": 47501,
+   "validation": 4633,
+   "test": 5677
+  }
+ }
+]

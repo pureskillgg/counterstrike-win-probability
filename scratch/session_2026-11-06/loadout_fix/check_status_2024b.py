@@ -1,0 +1,16 @@
+import polars as pl
+P = "G:/pureskill/csds-cs2/data/status_1hz_2024/2024-02-01.parquet"
+df = pl.read_parquet(P)
+pc = df.group_by(["match_key", "round", "tick", "side"]).agg(pl.len().alias("n"))
+print("players per (match,round,tick,side): min", pc["n"].min(), "max", pc["n"].max(), "mean", round(pc["n"].mean(), 3))
+print("count of (match,round,tick,side) groups with n>5:", pc.filter(pl.col("n") > 5).height, "of", pc.height)
+print("inv_primary null rows", df.filter(pl.col("inv_primary").is_null()).height)
+print("armor null rows", df.filter(pl.col("armor").is_null()).height)
+print("has_helmet null rows", df.filter(pl.col("has_helmet").is_null()).height)
+print("equipment_value_calc null rows", df.filter(pl.col("equipment_value_calc").is_null()).height)
+sec = df.group_by(["match_key", "round"]).agg(pl.col("second").min().alias("smin"), pl.col("second").max().alias("smax"), pl.col("tick").min().alias("tmin"))
+print("second min value counts:", sec["smin"].value_counts().sort("smin").head(5))
+print("sample round:")
+print(sec.head(3))
+print("inv_primary value counts (top 12):")
+print(df["inv_primary"].value_counts().sort("count", descending=True).head(12))

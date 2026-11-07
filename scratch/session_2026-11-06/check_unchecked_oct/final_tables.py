@@ -1,0 +1,15 @@
+import polars as pl, json, csv
+S='C:/Users/<user>/AppData/Local/Temp/claude/44708acea14da7d4/047ee5fa-b35b-4b25-97b1-beaf96834ff2/scratchpad/check_unchecked_oct'
+pm=pl.read_csv(f'{S}/batch_v4_per_match.csv', schema_overrides={'match_key':pl.Utf8,'date':pl.Utf8})
+pm=pm.with_columns(pl.when(pl.col('match_split')==0).then(pl.lit('train')).otherwise(pl.lit('validation')).alias('split'))
+tab=pm.group_by(['split','date']).agg([pl.len().alias('matches'), pl.col('n_rounds').sum().alias('rounds'), pl.col('n_seconds').sum().alias('seconds')]).sort(['split','date'])
+print(tab)
+tot=pm.group_by('split').agg([pl.len().alias('matches'), pl.col('n_rounds').sum().alias('rounds'), pl.col('n_seconds').sum().alias('seconds')]).sort('split')
+print(tot)
+print('total', pm.height, pm['n_rounds'].sum(), pm['n_seconds'].sum())
+miss=pm.filter(pl.col('match_key').str.contains('m_fa2b16eb'))
+print(miss)
+ex=pl.read_csv(f'{S}/s3_extra_oct21_25_keys.csv', schema_overrides={'match_key':pl.Utf8})
+print('extras by date', ex.with_columns(pl.col('match_key').str.slice(5,10).alias('d')).group_by('d').agg(pl.len()).sort('d'))
+tab.write_csv(f'{S}/oct21_25_split_date_table.csv')
+json.dump({'split_date': tab.to_dicts(), 'split': tot.to_dicts(), 'missing_from_derived': miss.to_dicts()}, open(f'{S}/oct21_25_tables.json','w'), indent=1, default=str)

@@ -1,0 +1,11 @@
+import json, sys, collections
+m = json.load(open(sys.argv[1], encoding="utf-8"))
+labels = collections.Counter(str(v) for v in m["assign"].values())
+print("split labels (count only):", dict(labels))
+print("n assign entries:", len(m["assign"]))
+print("frozen_from n_matches:", m["frozen_from"]["n_matches"])
+print("rule length chars:", len(m["rule"]))
+mm = json.load(open(sys.argv[2], encoding="utf-8"))
+print("matrix_meta pos file:", mm["pos"], "| cache file:", mm["cache"], "| frozen file:", mm["frozen"])
+print("feats_all (names):", mm["feats_all"])
+print("base (names):", mm["base"])

@@ -1,0 +1,220 @@
+"""Bucket chunk tomes -> rounds on the space, using the laptop build scripts unchanged except for the root path.
+
+Run on adam-gpu from ~/adam/builder with ~/venv-dsdk/bin/python:
+  build_bucket.py ranges                 list each chunk's date range (S3 listing only)
+  build_bucket.py fetch  [--chunks ...]  copy each chunk's tome/csds from S3 to ~/adam/builder/chunks (GET only)
+  build_bucket.py build  [--chunks ...]  per chunk: build_combined.build_channel -> tomes/cNNN, then prepare.main -> data/cNNN
+  build_bucket.py merge                  global duplicate pass -> final/bucket_matches.parquet, final/bucket_rounds.parquet
+  build_bucket.py check                  compare final rounds with the existing laptop-built rounds (overlapping matches)
+Writes nothing to S3.
+"""
+import argparse
+import glob
+import json
+import os
+import re
+import shutil
+import sys
+import time
+import traceback
+from concurrent.futures import ThreadPoolExecutor
+
+import boto3
+import polars as pl
+from botocore.config import Config
+
+WORK = os.path.expanduser("~/adam/builder")
+EXISTING = os.path.expanduser("~/adam/status/data/combined/rounds.parquet")
+BUCKET = "pureskillgg-csgo-production-sagemaker-0"
+PREFIX = "adam/tomes/chunks"
+MONTH = r"(\d{4}/\d{2})/\d{2}"
+sys.path.insert(0, WORK)
+
+
+def client():
+    return boto3.client("s3", config=Config(max_pool_connections=32, retries={"max_attempts": 8}))
+
+
+def all_chunks():
+    out = []
+    for page in client().get_paginator("list_objects_v2").paginate(Bucket=BUCKET, Prefix=PREFIX + "/", Delimiter="/"):
+        out += [p["Prefix"].rstrip("/").split("/")[-1] for p in page.get("CommonPrefixes", [])]
+    return sorted(out)
+
+
+def ranges(c):
+    cli = client()
+    names = []
+    for page in cli.get_paginator("list_objects_v2").paginate(Bucket=BUCKET, Prefix=f"{PREFIX}/{c}/tome/csds/", Delimiter="/"):
+        names += [p["Prefix"].rstrip("/").split("/")[-1] for p in page.get("CommonPrefixes", [])]
+    rr = [n for n in names if n.startswith("basic_round_end.")]
+    return c, (rr[0].split(".", 1)[1] if rr else "no round_end"), len(names)
+
+
+def fetch_chunk(c):
+    cli = client()
+    keys = []
+    for page in cli.get_paginator("list_objects_v2").paginate(Bucket=BUCKET, Prefix=f"{PREFIX}/{c}/tome/csds/"):
+        keys += [o["Key"] for o in page.get("Contents", [])]
+    for k in keys:
+        dst = os.path.join(WORK, "chunks", c, k[len(f"{PREFIX}/{c}/"):])
+        if os.path.exists(dst):
+            continue
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        body = cli.get_object(Bucket=BUCKET, Key=k)["Body"].read()
+        with open(dst + ".part", "wb") as f:
+            f.write(body)
+        os.replace(dst + ".part", dst)
+    return c, len(keys)
+
+
+# Header columns that prepare.py reads. Older chunks carry only part of the header (no is_wingman, no max_rounds);
+# the laptop combined store fills a column missing in a source with nulls of the canonical type, so do the same here.
+HEADER_REQ = {"build_num": pl.Int64, "map_name": pl.String, "match_date": pl.String, "match_type": pl.String,
+              "is_wingman": pl.Boolean, "max_rounds": pl.Int64, "t_starters_avg_rank": pl.Float64,
+              "ct_starters_avg_rank": pl.Float64, "t_starters_score_final": pl.Int64, "ct_starters_score_final": pl.Int64}
+# Channels prepare.py scans. A chunk with no page for one (e.g. no bot takeovers in 2023) gets an empty page with the
+# same key columns, so the join and concat in prepare.py see a zero-row channel instead of a missing one.
+PREPARE_CH = ["round_end", "round_state", "round_start", "player_info", "player_death", "player_disconnect",
+              "bot_takeover", "bomb_state"]
+DENSE_CH = ["round_end", "round_start", "round_state", "player_death", "player_info", "bomb_state"]
+
+
+def pad_header(folder):
+    for f in sorted(glob.glob(os.path.join(folder, "dataframe_*"))):
+        df = pl.read_parquet(f)
+        missing = [c for c in HEADER_REQ if c not in df.columns]
+        if missing:
+            df = df.with_columns([pl.lit(None, dtype=HEADER_REQ[c]).alias(c) for c in missing])
+            df.write_parquet(f + ".tmp", compression="zstd")
+            os.replace(f + ".tmp", f)
+
+
+def ensure_channels(base):
+    import build_combined as bc
+    ref_folder = os.path.join(base, f"basic_player_disconnect{bc.SUFFIX}")
+    ref = pl.read_parquet(sorted(glob.glob(os.path.join(ref_folder, "dataframe_*")))[0]).select("match_key", "round").clear()
+    for ch in PREPARE_CH:
+        folder = os.path.join(base, f"basic_{ch}{bc.SUFFIX}")
+        if os.path.isdir(folder):
+            continue
+        if ch in DENSE_CH:
+            raise SystemExit(f"{base}: required dense channel {ch} is missing; this chunk cannot be built")
+        os.makedirs(folder)
+        ref.write_parquet(os.path.join(folder, "dataframe_00000"), compression="zstd")
+        pl.DataFrame({"_": pl.Series([], dtype=pl.String)}).write_parquet(os.path.join(folder, "keyset_00000"), compression="zstd")
+
+
+def build_chunk(c):
+    import build_combined as bc
+    import prepare as pp
+
+    if os.path.exists(os.path.join(WORK, "data", c, "rounds.parquet")):
+        return c, "exists", 0
+    t0 = time.time()
+    tome_root = os.path.join(WORK, "tomes", c)
+    shutil.rmtree(tome_root, ignore_errors=True)
+    base = os.path.join(tome_root, "tome", "csds")
+    os.makedirs(base)
+    bc.TOMES = os.path.join(WORK, "chunks")  # list_channels reads TOMES/<chunk>/tome/csds
+    per = {c: bc.list_channels(c)}
+    sources = [(c, "2026")]  # era is taken from match_key inside prepare, this value is unused there
+    for ch in sorted(per[c]):
+        folder = os.path.join(base, "header" if ch == "header" else f"basic_{ch}{bc.SUFFIX}")
+        bc.build_channel(ch, sources, per, folder)
+    pad_header(os.path.join(base, "header"))
+    ensure_channels(base)
+    pp.ROOT = WORK  # prepare reads WORK/tomes/<store>/tome/csds and writes WORK/data/<store>
+    sys.argv = ["prepare.py", "--store", c]
+    pp.main()
+    shutil.rmtree(tome_root, ignore_errors=True)
+    return c, "built", round(time.time() - t0)
+
+
+def merge():
+    os.makedirs(os.path.join(WORK, "final"), exist_ok=True)
+    dirs = sorted(glob.glob(os.path.join(WORK, "data", "c[0-9][0-9][0-9]")))
+    M = pl.concat([pl.read_parquet(os.path.join(d, "matches.parquet")) for d in dirs], how="diagonal_relaxed")
+    R = pl.concat([pl.read_parquet(os.path.join(d, "rounds.parquet")) for d in dirs], how="diagonal_relaxed")
+    print("chunks:", len(dirs), "match rows:", M.height, "distinct match_key:", M["match_key"].n_unique(),
+          "round rows:", R.height, flush=True)
+    M = M.unique("match_key", keep="first", maintain_order=True)
+    M = M.sort(["dup_key", "n_ok_rounds", "match_key"], descending=[False, True, False], maintain_order=True)
+    M = M.with_columns(
+        pl.len().over("dup_key").alias("g_group_size"),
+        (pl.int_range(pl.len()).over("dup_key") == 0).alias("g_keeper"),
+    )
+    print("global duplicate groups:", M.filter(pl.col("g_group_size") > 1)["dup_key"].n_unique(),
+          "matches not kept:", M.filter(~pl.col("g_keeper")).height, flush=True)
+    R = R.drop([c for c in ["dup_keeper", "dup_group_size", "channels_complete", "in_scope", "use"] if c in R.columns])
+    R = R.join(M.select("match_key", "g_keeper", "g_group_size", "channels_complete", "in_scope"), on="match_key", how="left")
+    R = R.rename({"g_keeper": "dup_keeper", "g_group_size": "dup_group_size"})
+    R = R.with_columns((pl.col("round_status").eq("ok") & pl.col("in_scope") & pl.col("dup_keeper")
+                        & pl.col("channels_complete")).alias("use"))
+    M = M.rename({"g_keeper": "dup_keeper", "g_group_size": "dup_group_size"})
+    M.write_parquet(os.path.join(WORK, "final", "bucket_matches.parquet"))
+    R.write_parquet(os.path.join(WORK, "final", "bucket_rounds.parquet"))
+    S = (R.with_columns(pl.col("match_key").str.extract(MONTH, 1).alias("month"))
+         .group_by("month").agg(pl.col("match_key").n_unique().alias("matches"),
+                                pl.col("match_key").filter(pl.col("use")).n_unique().alias("use_matches"),
+                                pl.len().alias("rounds"), pl.col("use").sum().alias("use_rounds")).sort("month"))
+    print(S, flush=True)
+    print("TOTAL use matches:", R.filter(pl.col("use"))["match_key"].n_unique(),
+          "use rounds:", int(R["use"].sum()), flush=True)
+
+
+def check():
+    cols = ["match_key", "round", "round_status", "final", "freeze", "end_eff", "use", "dup_keeper"]
+    old = pl.read_parquet(EXISTING, columns=cols)
+    new = pl.read_parquet(os.path.join(WORK, "final", "bucket_rounds.parquet"), columns=cols)
+    both = set(old["match_key"].unique().to_list()) & set(new["match_key"].unique().to_list())
+    print("matches in both (old laptop build, new bucket build):", len(both), flush=True)
+    o = old.filter(pl.col("match_key").is_in(list(both)))
+    n = new.filter(pl.col("match_key").is_in(list(both)))
+    j = o.join(n, on=["match_key", "round"], how="full", suffix="_new", coalesce=True)
+    print("rounds old-only:", j.filter(pl.col("round_status_new").is_null()).height,
+          "new-only:", j.filter(pl.col("round_status").is_null()).height, flush=True)
+    jj = j.filter(pl.col("round_status").is_not_null() & pl.col("round_status_new").is_not_null())
+    print("rounds in both:", jj.height, flush=True)
+    for c in ["round_status", "final", "freeze", "end_eff", "use", "dup_keeper"]:
+        bad = jj.filter(~pl.col(c).eq_missing(pl.col(c + "_new")))
+        print(f"mismatch {c}: {bad.height}", flush=True)
+        if bad.height:
+            print(bad.select("match_key", "round", c, c + "_new").head(5), flush=True)
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("stage", choices=["ranges", "fetch", "build", "merge", "check"])
+    ap.add_argument("--chunks", default="")
+    a = ap.parse_args()
+    chunks = [c for c in a.chunks.split(",") if c] or all_chunks()
+    errors = {}
+    if a.stage == "ranges":
+        with ThreadPoolExecutor(16) as ex:
+            for c, rng, n in ex.map(ranges, chunks):
+                print(c, rng, "channels:", n, flush=True)
+    elif a.stage == "fetch":
+        t0 = time.time()
+        with ThreadPoolExecutor(6) as ex:
+            for c, n in ex.map(fetch_chunk, chunks):
+                print("fetched", c, "objects", n, f"secs={time.time() - t0:.0f}", flush=True)
+    elif a.stage == "build":
+        for c in chunks:
+            try:
+                print(*build_chunk(c), flush=True)
+            except BaseException as e:  # keep going; failures are listed at the end
+                errors[c] = repr(e)[:400]
+                print("FAILED", c, repr(e)[:400], flush=True)
+                traceback.print_exc()
+        with open(os.path.join(WORK, "build_errors.json"), "w") as f:
+            json.dump(errors, f, indent=1)
+        print("build finished, failures:", len(errors), flush=True)
+    elif a.stage == "merge":
+        merge()
+    elif a.stage == "check":
+        check()
+
+
+if __name__ == "__main__":
+    main()
