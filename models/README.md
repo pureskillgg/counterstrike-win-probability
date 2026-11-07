@@ -1,6 +1,6 @@
 # Models
 
-Every model file kept in git. Each XGBoost model is a JSON booster. Most have a `.meta.json` next to them listing inputs and training settings. The five `winprob_v8_seed` files share `winprob_v8_ensemble.meta.json`, and `xgb_primary_seed0` uses `xgb_primary_seed0_meta.json`. To retrain them, see [TRAINING.md](../TRAINING.md); v1 to v3 can only be approximated.
+Almost every model file is kept in git; the exceptions are listed lower on this page. Each XGBoost model is a JSON booster. Most have a `.meta.json` next to them listing inputs and training settings. The five `winprob_v8_seed` files share `winprob_v8_ensemble.meta.json`, and `xgb_primary_seed0` uses `xgb_primary_seed0_meta.json`. To retrain them, see [TRAINING.md](../TRAINING.md); v1 to v3 can only be approximated.
 
 ## Which model is served
 

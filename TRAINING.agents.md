@@ -10,7 +10,7 @@ Conventions used below:
 
 ## Split manifests (read first)
 
-| File | sha256 (file bytes) | Used by |
+| File | sha256 of the restored file | Used by |
 |---|---|---|
 | `data/benchmark/split_manifest_a17f219b.json` | `a17f219b5287ff1e…` | XGBoost v4, v4_basic, v5, v6_drop_heavy, v6_selected, v7 (both), v8 seeds/tuned/ensemble; xgb83 inherits it through `make_split` |
 | `data/benchmark/split_manifest.json` | `7fa526c3…` | the v1-archive manifest (29,885 entries, digest 6a37070a); not the one any shipped model recorded |

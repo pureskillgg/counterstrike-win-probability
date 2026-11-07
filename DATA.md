@@ -48,7 +48,7 @@ The repo was scrubbed on 7 November 2026, before it was shared. The git history 
 - The Windows account name in paths is now `<user>`. Author emails, pod IP addresses and the AWS account number are removed too.
 - The one Steam64-shaped number the audit found is a synthetic base value in the stress-test generator `scripts/model/stress_test_winprob.py`. It is not a real ID.
 
-To use a key file with the real data, restore the real keys first with `scripts/data/restore_match_keys.py`. It needs real keys to work from, such as the `match_key` column of `<CS2_ROOT>/data/combined/grid.parquet`, which covers every match in the 17,563-key split manifest. [TRAINING.md](TRAINING.md) has the exact command. A table that maps every pseudonym back to its key is kept outside the repo.
+To use a key file with the real data, restore the real keys first with `scripts/data/restore_match_keys.py`. It needs real keys to work from, such as the `match_key` column of `<CS2_ROOT>/data/combined/grid.parquet`, which covers every match in the 17,563-key split manifest. [TRAINING.md](TRAINING.md) has the exact command. A table that maps every pseudonym back to its key is kept outside the repo. The pseudonym is an unkeyed hash, so anyone who already holds a match's UUID can check whether it appears here. A keyed hash would remove that; say if you want it.
 
 ## Open issues
 

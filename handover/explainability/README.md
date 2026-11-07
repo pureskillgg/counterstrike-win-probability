@@ -31,21 +31,21 @@ To rebuild the Word report, run `scripts/explain/docx/prep_docx_data.py`, then `
 | Input | Where | Size | Note |
 |---|---|---|---|
 | Design matrix `X.npy`, `y.npy`, `meta.json`, `val_keys.parquet` | `C:/Users/<user>/sprint/matrix_trainctr/` | 5.1 GB + 0.1 GB | Written by `experiments/sprint/sprint_prepare.py` on Nov 3, 2026. A copy is at `/home/<user>/sprint/matrix_trainctr/` in WSL, which the ablation reads |
-| Training cache `cache_snapshot_2026.parquet` | `G:/pureskill/csds-cs2/data/combined/` | 182 MB | 14,804 matches, Aug 2 to Oct 13, 2026 |
-| Position table `cache_pos_2026_trainctr.parquet` | `G:/pureskill/csds-cs2/data/combined/` | 1.25 GB | Input to `sprint_prepare.py`. Builder not identified (see open items) |
+| Training cache `cache_snapshot_2026.parquet` | `G:/pureskill/csds-cs2/data/combined/` | 182 MB | 14,804 matches, 1 Sep to 13 Oct 2026 |
+| Position table `cache_pos_2026_trainctr.parquet` | `G:/pureskill/csds-cs2/data/combined/` | 1.25 GB | Input to `sprint_prepare.py`. Built by `scripts/data/make_pos_features.py` with `--centre_keys` (see TRAINING.agents.md) |
 | Holdout-B keys `holdout_22_25_test_keys.json` | `G:/pureskill/csds-cs2/data/combined/` | 42 KB | Excluded by `sprint_prepare.py` |
-| Frozen test keys `frozen_test_keys.json` | not located | | Input to `sprint_prepare.py` (see open items) |
+| Frozen test keys `frozen_test_keys.json` | in this repo, `data/benchmark/frozen_test_keys.json`, with pseudonymised keys; restore the real keys with `scripts/data/restore_match_keys.py` | | Input to `sprint_prepare.py` (see open items) |
 | Sprint predictions and results | `G:/pureskill/csds-cs2/data/sprint/run/gpu_fast/` | | Used by `train` to check the refit |
 | Oct 26–31 holdout keys | `C:/Users/<user>/sprint/holdout_oct26_31/keys.parquet` | | Do not score without a pin and a go-ahead (see below) |
-| Booster | `models/winprob_xgb83_final.json` (in git) | 5.7 MB | Byte-identical to `explain83/xgb83_s0.json`; committed by Adam in `3936180` |
+| Booster | `models/winprob_xgb83_final.json` (in git) | 5.7 MB | Byte-identical to `explain83/xgb83_s0.json`; committed by Adam on 5 Nov 2026 ("Add the final XGBoost model: 83 inputs, validation-selected"; the commit id changed when the history was rewritten) |
 | Shap sample, sampled features | `C:/Users/<user>/sprint/explain83/` | 35 MB sample, 33 MB features | Written by `explain`. Not in git |
 
 ## Open items
 
 1. **Reproduce the matrix.** `sprint_prepare.py` has not been rerun on the raw data. Rebuild it into a new directory and check its `meta.json` against the existing one (rows 15,274,129; 83 inputs; n_fit 12,355,820; n_es 1,403,081; n_val 1,515,228).
-2. **Find `frozen_test_keys.json`.** It is not under `G:/pureskill/csds-cs2` to depth 5. `sprint_prepare.py` needs it.
-3. **Identify the builder of `cache_pos_2026_trainctr.parquet`.** Its name suggests the train-centre table used by the validation runs. Not confirmed in this session.
-4. **Reconcile Oct 9–10.** The handoff (Nov 4) says these days are unreconciled and gives 2,598 matches. The training cache has 4,865 matches on those two days. Decide which count is right and whether these days stay in the pool.
+2. **Frozen test keys.** `data/benchmark/frozen_test_keys.json` in this repo holds them with pseudonymised keys. Restore the real keys (see [TRAINING.md](../../TRAINING.md)) before `sprint_prepare.py` reads it.
+3. **Builder of `cache_pos_2026_trainctr.parquet`.** `scripts/data/make_pos_features.py` with `--centre_keys data/benchmark/centre_fit_train_keys.json` writes it (see [TRAINING.agents.md](../../TRAINING.agents.md)).
+4. **Reconcile Oct 9–10.** The handoff (Nov 4) says these days are unreconciled and gives 2,598 matches. The training cache has 4,856 matches on those two days. Decide which count is right and whether these days stay in the pool.
 5. **GPU retrain ablations: done.** Results and GDT are in `docs/explainability/README.md` ("Drop-group ablations"). Armour sums and blind add nothing on GDT. View and bomb geometry add about 0.0005 each.
 6. **Alive-count question: done.** Dropping the alive counts costs nothing on GDT (+0.0002). Loadout only scores GDT 0.0098, round state only −0.0164. The loadout inputs carry the signal.
 7. **1-versus-5 calibration: done, per round.** Across the full validation set, the 1-versus-5 states give 1.48 expected CT-win rounds against 1 observed (all states). The bomb-planted state gives 0.59 against 1. The one win is the largest miss's round, so the earlier "3 wins in 426 seconds" was the same round. Table: `docs/explainability/tables/calibration_1v5_shipped.csv`.
