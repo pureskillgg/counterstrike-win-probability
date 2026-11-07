@@ -1,0 +1,20 @@
+import polars as pl, numpy as np
+base = "G:/pureskill/csds-cs2/data"
+pt = pl.read_parquet(f"{base}/viz/per_tick_states.parquet")
+pr = pl.read_parquet(f"{base}/viz/per_tick_test_preds.parquet")
+rd = pl.read_parquet(f"{base}/state_sample/rounds.parquet")
+print("grid matches:", pt["match_key"].n_unique(), "rounds:", pt.select(["match_key","round"]).unique().height)
+print("test preds matches:", pr["match_key"].n_unique(), "rounds:", pr.select(["match_key","round"]).unique().height, "rows:", pr.height)
+print("rounds.parquet matches:", rd["match_key"].n_unique(), "split counts:")
+print(rd.group_by("split").agg(pl.len(), pl.col("match_key").n_unique()))
+print(pt.head(12))
+print(pr.head(12))
+print(rd.head(5))
+print("grid label dist:", pt["label_ct_win"].value_counts())
+print("grid tick range:", pt.select(pl.col("tick").min(), pl.col("tick").max()))
+print("grid seconds_since_round_live:", pt.select(pl.col("seconds_since_round_live").min(), pl.col("seconds_since_round_live").max()))
+print("n_pts/w_round sample:", pt.select(pl.col("n_pts").describe() if False else pl.col("n_pts").min(), pl.col("n_pts").max(), pl.col("w_round").min(), pl.col("w_round").max()))
+# is per_tick_states tick a multiple of 64?
+print("tick mod 64 counts:", pt.select((pl.col("tick") % 64).value_counts()).head())
+print("pt rows per (match,round) median:", pt.group_by(["match_key","round"]).agg(pl.len().alias("n")).select(pl.col("n").median()).item())
+print("preds rows per (match,round) median:", pr.group_by(["match_key","round"]).agg(pl.len().alias("n")).select(pl.col("n").median()).item())

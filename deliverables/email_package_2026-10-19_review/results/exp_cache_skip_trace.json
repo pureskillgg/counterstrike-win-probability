@@ -1,0 +1,76 @@
+{
+ "missing_matches": 10,
+ "matches": [
+  {
+   "match_key": "csds/2026/09/01/19e00bc2-680b-4855-a5fb-f80170dea5ee/csds",
+   "rounds_in_grid": 2,
+   "rounds_after_roster_drop": 0,
+   "rounds_inconsistent": 0,
+   "rounds_left_after_both_drops": 0
+  },
+  {
+   "match_key": "csds/2026/09/01/49b0671c-fb1b-4a4c-9323-e594fde0f998/csds",
+   "rounds_in_grid": 12,
+   "rounds_after_roster_drop": 0,
+   "rounds_inconsistent": 0,
+   "rounds_left_after_both_drops": 0
+  },
+  {
+   "match_key": "csds/2026/09/02/e50afd0d-e47e-4ada-af2d-0c0668fc789d/csds",
+   "rounds_in_grid": 19,
+   "rounds_after_roster_drop": 0,
+   "rounds_inconsistent": 0,
+   "rounds_left_after_both_drops": 0
+  },
+  {
+   "match_key": "csds/2026/09/02/ef278823-eefd-4695-bb3d-73b36a9e3a4a/csds",
+   "rounds_in_grid": 11,
+   "rounds_after_roster_drop": 0,
+   "rounds_inconsistent": 0,
+   "rounds_left_after_both_drops": 0
+  },
+  {
+   "match_key": "csds/2026/09/05/21fecfd0-aceb-4c0d-8222-d70f6d223602/csds",
+   "rounds_in_grid": 18,
+   "rounds_after_roster_drop": 0,
+   "rounds_inconsistent": 0,
+   "rounds_left_after_both_drops": 0
+  },
+  {
+   "match_key": "csds/2026/09/05/4509258e-d023-4bdc-b878-47aac0990029/csds",
+   "rounds_in_grid": 19,
+   "rounds_after_roster_drop": 0,
+   "rounds_inconsistent": 0,
+   "rounds_left_after_both_drops": 0
+  },
+  {
+   "match_key": "csds/2026/09/06/3bd7cfd7-e709-4eea-b0e9-97dbd801e8fa/csds",
+   "rounds_in_grid": 16,
+   "rounds_after_roster_drop": 0,
+   "rounds_inconsistent": 0,
+   "rounds_left_after_both_drops": 0
+  },
+  {
+   "match_key": "csds/2026/09/06/b8309df8-9aaa-4fb5-b7d6-e8ae83d01bcc/csds",
+   "rounds_in_grid": 14,
+   "rounds_after_roster_drop": 0,
+   "rounds_inconsistent": 0,
+   "rounds_left_after_both_drops": 0
+  },
+  {
+   "match_key": "csds/2026/09/06/db1dc982-93cc-4608-9865-4e77793802a3/csds",
+   "rounds_in_grid": 27,
+   "rounds_after_roster_drop": 0,
+   "rounds_inconsistent": 0,
+   "rounds_left_after_both_drops": 0
+  },
+  {
+   "match_key": "csds/2026/09/06/f6348c14-d59e-4296-a4f5-db4e05465aff/csds",
+   "rounds_in_grid": 8,
+   "rounds_after_roster_drop": 0,
+   "rounds_inconsistent": 0,
+   "rounds_left_after_both_drops": 0
+  }
+ ],
+ "all_rounds_removed_by_both_drops": 10
+}

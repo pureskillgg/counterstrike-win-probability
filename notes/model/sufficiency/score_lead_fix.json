@@ -1,0 +1,139 @@
+{
+ "kept_counts": {
+  "channel_kept": 1709,
+  "dup_matches_removed": 47,
+  "rounds_in_kept_matches": 35502,
+  "kept_rounds": 28683,
+  "kept_matches": 1521,
+  "states": 234265
+ },
+ "derived": {
+  "rounds": 35502,
+  "header_check": {
+   "complete_matches": 1630,
+   "A_B_equal_header_T_CT": 1621,
+   "matches_round_count_not_header_total": 79,
+   "A_B_equal_header_swapped": 9
+  },
+  "diagnostics": {
+   "swaps_applied": 1924
+  }
+ },
+ "agreement": {
+  "all_rounds": {
+   "agree": 35486,
+   "no_live_start": 16
+  },
+  "kept_rounds": {
+   "agree": 28683
+  },
+  "matches_any_disagree_all": 0,
+  "matches_any_disagree_kept": 0
+ },
+ "agreement_by_phase": {
+  "half_1": {
+   "rounds": 19981,
+   "agree": 19981,
+   "sign_flip": 0
+  },
+  "half_2": {
+   "rounds": 14340,
+   "agree": 14340,
+   "sign_flip": 0
+  },
+  "overtime": {
+   "rounds": 1165,
+   "agree": 1165,
+   "sign_flip": 0
+  }
+ },
+ "features": {
+  "states": 234265,
+  "states_differ": 0,
+  "matches_differ": 0,
+  "test_matches_differ": 0
+ },
+ "xgboost": {
+  "old_round_state|cuda": {
+   "device": "cpu (cuda requested; XGBoost used CPU)",
+   "best_iteration": 261,
+   "fit_s": 58.2,
+   "test": {
+    "n": 47716,
+    "logloss": 0.4365987668076211,
+    "brier": 0.1463668231836436,
+    "auc": 0.870336692355569,
+    "ece": 0.008942104794085493
+   }
+  },
+  "old_round_state|cpu": {
+   "device": "cpu",
+   "best_iteration": 261,
+   "fit_s": 59.9,
+   "test": {
+    "n": 47716,
+    "logloss": 0.4365987668076211,
+    "brier": 0.1463668231836436,
+    "auc": 0.870336692355569,
+    "ece": 0.008942104794085493
+   }
+  },
+  "derived_lead|cuda": {
+   "device": "cpu (cuda requested; XGBoost used CPU)",
+   "best_iteration": 261,
+   "fit_s": 128.4,
+   "test": {
+    "n": 47716,
+    "logloss": 0.4365987668076211,
+    "brier": 0.1463668231836436,
+    "auc": 0.870336692355569,
+    "ece": 0.008942104794085493
+   }
+  },
+  "derived_lead|cpu": {
+   "device": "cpu",
+   "best_iteration": 261,
+   "fit_s": 34.7,
+   "test": {
+    "n": 47716,
+    "logloss": 0.4365987668076211,
+    "brier": 0.1463668231836436,
+    "auc": 0.870336692355569,
+    "ece": 0.008942104794085493
+   }
+  }
+ },
+ "difference": {
+  "cuda": {
+   "logloss_new_minus_old": 0.0,
+   "brier_new_minus_old": 0.0,
+   "paired_logloss_bootstrap": {
+    "delta": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "share_resamples_below_0": 0.0
+   },
+   "max_abs_prob_diff": 0.0
+  },
+  "cpu": {
+   "logloss_new_minus_old": 0.0,
+   "brier_new_minus_old": 0.0,
+   "paired_logloss_bootstrap": {
+    "delta": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "share_resamples_below_0": 0.0
+   },
+   "max_abs_prob_diff": 0.0
+  }
+ },
+ "bakeoff_log_reference": {
+  "logloss": 0.4366,
+  "brier": 0.14637
+ },
+ "run_seconds": 298.7
+}

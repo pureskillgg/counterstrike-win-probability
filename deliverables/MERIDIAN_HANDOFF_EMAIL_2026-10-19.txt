@@ -1,0 +1,97 @@
+=== MERIDIAN HANDOFF: CS2 round win-probability email ===
+Date: 2026-10-19
+Project folder: G:\pureskill\csds-cs2
+Status: DRAFT READY. NOT SENT. Nothing has been uploaded or shared.
+
+=== HANDOFF READINESS ===
+OK  Submission model winprob_v6_drop_heavy (57 inputs): results match data/combined/exp_submission_57.json
+OK  Serving parity on 294 October test matches (1 to 8 October tome): max gap 0.0001 pp, 100% of seconds within 0.01 pp
+      log: logs/test_win_probability_v6_drop_heavy_2026-10-19.log
+OK  Draft numbers checked against the saved JSON files
+OK  Scoring function default is winprob_v6_drop_heavy (57); winprob_v8_ensemble (58) is passed by name
+OK  Report renders (repository render check: rendered); slides: 19; chart images: 11
+OK  Recipient: Bill Freeman. Sender: Adam.
+!!  Owner must confirm the reason for leaving the score lead out (draft has a bracketed placeholder)
+!!  Live Slides link SFAnn4viMQ5DEieNVvdQEv is stale: republish before sending, or drop the link
+!!  Links not created yet: the three files are local until uploaded
+
+=== 1. WHAT TO SEND ===
+- Report (Word)
+    file:   G:\pureskill\csds-cs2\deliverables\word\CS2_win_probability_full_document_2026-10-19.docx
+    size:   119,345 bytes
+    sha256: 7d44c2d93293f7c78e718bf1842e7b24146772d3f940e2a5b74da066c35da374
+- Slides (PowerPoint)
+    file:   G:\pureskill\csds-cs2\deliverables\presentation\CS2_win_probability_presentation_2026-10-19.pptx
+    size:   469,282 bytes
+    sha256: 2e78be835d87b7564f78d49168be061737e429de98d0131dfa51c962cd6f26ad
+- Package (zip)
+    file:   G:\pureskill\csds-cs2\deliverables\email_package_2026-10-19.zip
+    size:   4,776,333 bytes
+    sha256: ec35dfc58d3ec866463d4768cecb5cc9e03c21b91cffc273a438afd390c557f4
+
+=== 2. LINKS TO ADD TO THE EMAIL ===
+Upload each file to the shared location you use, then paste its link in place of the bracket in the draft:
+  [LINK: report]  <- the report file above
+  [LINK: slides]  <- the slides file above
+  [LINK: zip]     <- the zip file above
+
+=== 3. EMAIL DRAFT (copy from here; brackets are placeholders to fill or delete) ===
+Draft email: CS2 round win-probability models (NOT SENT)
+
+Status: draft only. Sending needs an explicit yes for this send from the project owner.
+To: Bill Freeman
+Subject: CS2 round win-probability models: final package, 19 October 2026
+
+Hi,
+
+The round win-probability package is ready: the submission model, the score-lead comparison model, one Word report (wrap-up, methodology, deliverable summary, experiment register and presentation list), the slides, and the scoring function with the model files.
+
+Submission model (test: 3,059 matches, 3,956,374 seconds, 2026): 57 inputs (59 minus the heavy-weapon group), no score lead, all round types, one seed. Per-second log loss 0.456411 [0.453311, 0.459138]; validation 0.453557. It needs per-tick player status. Serving parity: the scoring function reproduces the grid's predictions on 294 October test matches (374,500 seconds) with a maximum gap of 0.0001 percentage points.
+
+Comparison (same test seconds): the score-lead comparison model, 58 inputs, mean of five seeds, scores 0.455605. The submission is worse by +0.000806 [+0.000508, +0.001105], which is the cost of leaving out the score lead.
+- Event-only model, 14 inputs, for tomes without per-tick player status: 0.498695 on the same seconds. The paired gap is +0.043090 [+0.041449, +0.044884].
+
+Score lead, 2026 data: the score lead changes in every one of the 259,948 consecutive round pairs (282,284 rounds, 14,814 matches). In the 245,136 pairs with no side swap, the change equals the previous round's CT-win sign in every pair; the current round's share there (62.91%) equals how often the same side wins two rounds in a row. Over all pairs, the previous-round share is 96.79% and the current-round share is 62.22%. The earlier quick-check figures (95.13%, 0.37%, 59.93%, 35.58%) did not reproduce and are withdrawn. This is consistent with the score lead being the running score of earlier rounds; it does not show that the score lead contains the current round's result. The reason given for leaving it out was round leakage. [Owner to confirm that reason before this is sent.] Sources: data/combined/exp_scorelead_leak.json and scripts/model/exp_scorelead_leak.py.
+
+Files (links, add before sending):
+- Report (Word, with a contents list and links): [LINK: report]
+- Slides (PowerPoint, 19 slides with speaker notes): [LINK: slides]
+- Package (zip with the models, results, scripts and the parity log): [LINK: zip]
+
+What is in the zip:
+- scripts/serving/win_probability.py: the scoring function (needs xgboost, polars and numpy). Call it as win_probability(data, team="CT"); the default is the submission (winprob_v6_drop_heavy). It returns {tick: percent}.
+- models/: the submission (.json and .meta.json), the five score-lead seeds, the ensemble metadata, and the event-only model with its metadata.
+- results/: the split manifest, the data report, the key experiment result files, the score-lead check and the serving parity log.
+- The live presentation is at https://claude.ai/artifact/SFAnn4viMQ5DEieNVvdQEv (private); the slides link above has the current slides. [Republish the artifact before sending so the link shows the current deck.]
+
+Open items, stated plainly:
+1. Monotone constraints: the submission keeps them. On the 59-input model it comes from (no score lead, before the heavy-weapon group was dropped), removing them changes test log loss by +0.000092 [+0.000009, +0.000176] (3,059 test matches) and validation log loss by -0.000064 [-0.000183, +0.000066] (1,168 validation matches). A positive test change means removing them makes the test loss worse (data/combined/exp_59_nomono.json). The older 13-input event-only model (winprob_v4_basic, no score lead) had its loss lowered on both splits by removing them (test -0.000443, validation -0.000188; data/combined/exp_mono_paired.json). The 14-input event-only model has not been tested without them.
+2. The split (72/8/20) is the first training code's default, not a named standard; no fraction sweep was run.
+3. CatBoost on CPU and logistic regression at stride 3 were not run; their full-set versions are in the record.
+4. Map pool: the seven maps are the pool from 6 July 2026 (Wikipedia; a season tracker on 18 October); no Valve notice was found.
+5. Days 14 and 15 of October are not in the built store (tomes/). Raw match folders for both days exist on the E: drive (950 and 835 match folders, each with a sibling zip); their origin and completeness are not verified, and they are not used in any result.
+6. Confirm the origin of the day 14 and 15 folders on the E: drive before anyone relies on them.
+7. The scoring function's default is the submission (winprob_v6_drop_heavy, 57 inputs). The score-lead comparison (winprob_v8_ensemble, 58 inputs) is passed by name: model_name="winprob_v8_ensemble".
+
+Regards,
+Adam
+
+=== 4. DECISIONS BEFORE SENDING ===
+1. Recipient is Bill Freeman; sender is Adam. Check the To and sign-off lines before sending.
+2. Score-lead reason: confirm it, or reword the bracketed sentence in the score-lead paragraph.
+3. Live link: republish the Slides artifact so it matches the slides, or remove the live-link line.
+4. Done 19 October: the scoring function's default is the 57 submission (winprob_v6_drop_heavy); the 58 is passed by name.
+5. Days 14 and 15: confirm the origin of the E: drive folders, or keep 'not used in any result' as written.
+6. Explicit yes to send. Nothing has been sent.
+
+=== 5. VERIFIED ===
+- Draft numbers: submission 0.456411 [0.453311, 0.459138] and validation 0.453557; comparison 0.455605;
+  paired +0.000806 [+0.000508, +0.001105]; event-only 0.498695 and +0.043090; monotone figures; score-lead counts.
+- Package: the zip holds models/, results/ and scripts/ only; the report, slides and chart PNGs are not in it.
+- Parity test log and the reference export both produced in this run.
+
+=== 6. KNOWN ISSUES (visible in the materials; not blocking the email) ===
+- notes/PRESENTATION_NOTES.md links to Q3wq55... (a 16 October 'findings' deck), not the current deck.
+- Charts are not embedded in the report (the image insert failed the render check); they are in the slides.
+- The zip includes results/split_manifest.json, which lists match keys. Check the sharing policy before sharing outside the team.
+

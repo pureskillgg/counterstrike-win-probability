@@ -1,0 +1,113 @@
+sec0 player rows: 26729 | matches: 150 | rounds: 2673
+rounds not clean 5v5 at sec0: 1
+   excluded: csds/2026/10/07/22e9c3e7-a333-4ebc-a51c-19ebbcc13ef1/csds round 16 players 9 T 4 CT 5
+clean rounds: 2672 of 2673 | clean player-rounds: 26720
+pistol flag check (round in {1,13} vs round_buy_types.is_pistol): 2672 agree of 2672 | rounds missing from round_buy_types: 0
+nonzero inv_primary codes at sec0: [7, 8, 9, 10, 11, 13, 14, 16, 17, 19, 23, 24, 25, 26, 27, 28, 29, 33, 34, 35, 38, 39, 40, 60]
+code map (inv_primary code -> weapon_fire name, purity, class, source):
+     7 ak47             purity=0.9998 n_fire=1673258 class=rifle | item_equip weapon_type_code=3 (rifle) for item 'ak47'
+     8 aug              purity=1.0 n_fire=10453 class=rifle | item_equip weapon_type_code=3 (rifle) for item 'aug'
+     9 awp              purity=0.9977 n_fire=63574 class=sniper | item_equip weapon_type_code=5 (sniper) for item 'awp'
+    10 famas            purity=0.9998 n_fire=79212 class=rifle | item_equip weapon_type_code=3 (rifle) for item 'famas'
+    11 g3sg1            purity=0.9993 n_fire=1424 class=sniper | item_equip weapon_type_code=5 (sniper) for item 'g3sg1'
+    13 galilar          purity=0.9998 n_fire=200350 class=rifle | item_equip weapon_type_code=3 (rifle) for item 'galilar'
+    14 m249             purity=1.0 n_fire=981 class=shotgun/MG | item_equip weapon_type_code=6 (MG) for item 'm249'
+    16 m4a1             purity=0.9998 n_fire=353588 class=rifle | item_equip weapon_type_code=3 (rifle) for item 'm4a1'
+    17 mac10            purity=0.9999 n_fire=208915 class=SMG | item_equip weapon_type_code=2 (SMG) for item 'mac10'
+    19 p90              purity=0.9999 n_fire=38226 class=SMG | item_equip weapon_type_code=2 (SMG) for item 'p90'
+    23 mp5sd            purity=1.0 n_fire=24132 class=SMG | ASSUMPTION: 'mp5sd' absent from 2026 item_equip; treated as SMG (game category)
+    24 ump45            purity=1.0 n_fire=6903 class=SMG | item_equip weapon_type_code=2 (SMG) for item 'ump45'
+    25 xm1014           purity=0.9998 n_fire=9654 class=shotgun/MG | item_equip weapon_type_code=4 (shotgun) for item 'xm1014'
+    26 bizon            purity=1.0 n_fire=14414 class=SMG | item_equip weapon_type_code=2 (SMG) for item 'bizon'
+    27 mag7             purity=0.9993 n_fire=2956 class=shotgun/MG | item_equip weapon_type_code=4 (shotgun) for item 'mag7'
+    28 negev            purity=1.0 n_fire=45575 class=shotgun/MG | item_equip weapon_type_code=6 (MG) for item 'negev'
+    29 sawedoff         purity=1.0 n_fire=300 class=shotgun/MG | item_equip weapon_type_code=4 (shotgun) for item 'sawedoff'
+    33 mp7              purity=1.0 n_fire=81877 class=SMG | item_equip weapon_type_code=2 (SMG) for item 'mp7'
+    34 mp9              purity=0.9999 n_fire=183014 class=SMG | item_equip weapon_type_code=2 (SMG) for item 'mp9'
+    35 nova             purity=0.999 n_fire=1905 class=shotgun/MG | item_equip weapon_type_code=4 (shotgun) for item 'nova'
+    38 scar20           purity=1.0 n_fire=2884 class=sniper | item_equip weapon_type_code=5 (sniper) for item 'scar20'
+    39 sg556            purity=1.0 n_fire=8981 class=rifle | item_equip weapon_type_code=3 (rifle) for item 'sg556'
+    40 ssg08            purity=0.9987 n_fire=21619 class=sniper | item_equip weapon_type_code=5 (sniper) for item 'ssg08'
+    60 m4a1_silencer    purity=0.9998 n_fire=712046 class=rifle | item_equip weapon_type_code=3 (rifle) for item 'm4a1'
+primary class counts (all clean player-rounds at sec0):
+shape: (5, 2)
+┌────────────┬───────┐
+│ pclass     ┆ n     │
+│ ---        ┆ ---   │
+│ str        ┆ u32   │
+╞════════════╪═══════╡
+│ SMG        ┆ 2694  │
+│ none       ┆ 6962  │
+│ rifle      ┆ 13566 │
+│ shotgun/MG ┆ 668   │
+│ sniper     ┆ 2830  │
+└────────────┴───────┘
+matches (clusters): 150 | player-rounds: 26720
+
+=== table: all_rounds ===
+side class          n_pr  n_rd  n_m  armor>=1                  CI95   helmet                  CI95  m_armor  m_money
+T    rifle          7052  2186  149    0.9705  [0.9630,0.9765]   0.9180  [0.9034,0.9324]    95.73   2235.6
+T    SMG            1336   899  147    0.9543  [0.9412,0.9669]   0.8293  [0.7970,0.8607]    94.65   1505.4
+T    sniper         1159   946  146    0.9189  [0.8979,0.9391]   0.8533  [0.8270,0.8799]    90.66   2722.7
+T    shotgun/MG      196   173   61    0.8724  [0.7937,0.9294]   0.8367  [0.7425,0.9008]    87.17   1375.3
+T    none           3617  1457  150    0.4189  [0.3951,0.4433]   0.1988  [0.1828,0.2156]    41.80   1845.9
+CT   rifle          6514  2135  150    0.9739  [0.9675,0.9802]   0.8436  [0.8228,0.8626]    96.16   2823.8
+CT   SMG            1358   901  147    0.9396  [0.9237,0.9556]   0.7518  [0.7210,0.7848]    93.56   1273.9
+CT   sniper         1671  1262  148    0.9282  [0.9113,0.9426]   0.8270  [0.8023,0.8551]    91.94   3193.2
+CT   shotgun/MG      472   402  118    0.9237  [0.8939,0.9512]   0.7966  [0.7421,0.8517]    91.72   1741.3
+CT   none           3345  1306  150    0.4203  [0.3994,0.4406]   0.1677  [0.1513,0.1865]    41.97   1806.7
+ALL  rifle         13566  2377  150    0.9721  [0.9663,0.9771]   0.8823  [0.8689,0.8946]    95.94   2518.0
+ALL  SMG            2694  1439  149    0.9469  [0.9351,0.9592]   0.7903  [0.7603,0.8176]    94.10   1388.7
+ALL  sniper         2830  1666  149    0.9244  [0.9095,0.9367]   0.8378  [0.8177,0.8573]    91.41   3000.5
+ALL  shotgun/MG      668   544  124    0.9087  [0.8756,0.9375]   0.8084  [0.7585,0.8551]    90.39   1633.9
+ALL  none           6962  2043  150    0.4196  [0.4005,0.4376]   0.1839  [0.1708,0.1995]    41.88   1827.1
+
+=== table: excl_pistol_rounds ===
+side class          n_pr  n_rd  n_m  armor>=1                  CI95   helmet                  CI95  m_armor  m_money
+T    rifle          7052  2186  149    0.9705  [0.9630,0.9765]   0.9180  [0.9034,0.9324]    95.73   2235.6
+T    SMG            1336   899  147    0.9543  [0.9412,0.9669]   0.8293  [0.7970,0.8607]    94.65   1505.4
+T    sniper         1159   946  146    0.9189  [0.8979,0.9391]   0.8533  [0.8270,0.8799]    90.66   2722.7
+T    shotgun/MG      196   173   61    0.8724  [0.7937,0.9294]   0.8367  [0.7425,0.9008]    87.17   1375.3
+T    none           2267  1187  150    0.3979  [0.3723,0.4263]   0.3172  [0.2919,0.3442]    39.66   2741.5
+CT   rifle          6514  2135  150    0.9739  [0.9675,0.9802]   0.8436  [0.8228,0.8626]    96.16   2823.8
+CT   SMG            1358   901  147    0.9396  [0.9237,0.9556]   0.7518  [0.7210,0.7848]    93.56   1273.9
+CT   sniper         1671  1262  148    0.9282  [0.9113,0.9426]   0.8270  [0.8023,0.8551]    91.94   3193.2
+CT   shotgun/MG      472   402  118    0.9237  [0.8939,0.9512]   0.7966  [0.7421,0.8517]    91.72   1741.3
+CT   none           1995  1036  150    0.4010  [0.3722,0.4315]   0.2812  [0.2527,0.3129]    39.99   2816.9
+ALL  rifle         13566  2377  150    0.9721  [0.9663,0.9771]   0.8823  [0.8689,0.8946]    95.94   2518.0
+ALL  SMG            2694  1439  149    0.9469  [0.9351,0.9592]   0.7903  [0.7603,0.8176]    94.10   1388.7
+ALL  sniper         2830  1666  149    0.9244  [0.9095,0.9367]   0.8378  [0.8177,0.8573]    91.41   3000.5
+ALL  shotgun/MG      668   544  124    0.9087  [0.8756,0.9375]   0.8084  [0.7585,0.8551]    90.39   1633.9
+ALL  none           4262  1773  150    0.3993  [0.3776,0.4229]   0.3003  [0.2783,0.3260]    39.81   2776.8
+all_rounds T: SMG n=1336 armor=0.9543 | rifle n=7052 armor=0.9705 | diff(SMG-rifle)=-0.0162 CI95 [-0.0286,-0.0041] | helmet diff=-0.0887 CI95 [-0.1168,-0.0574]
+all_rounds CT: SMG n=1358 armor=0.9396 | rifle n=6514 armor=0.9739 | diff(SMG-rifle)=-0.0343 CI95 [-0.0514,-0.0177] | helmet diff=-0.0917 CI95 [-0.1209,-0.0599]
+all_rounds ALL: SMG n=2694 armor=0.9469 | rifle n=13566 armor=0.9721 | diff(SMG-rifle)=-0.0252 CI95 [-0.0362,-0.0145] | helmet diff=-0.0920 CI95 [-0.1158,-0.0674]
+excl_pistol_rounds T: SMG n=1336 armor=0.9543 | rifle n=7052 armor=0.9705 | diff(SMG-rifle)=-0.0162 CI95 [-0.0286,-0.0041] | helmet diff=-0.0887 CI95 [-0.1168,-0.0574]
+excl_pistol_rounds CT: SMG n=1358 armor=0.9396 | rifle n=6514 armor=0.9739 | diff(SMG-rifle)=-0.0343 CI95 [-0.0514,-0.0177] | helmet diff=-0.0917 CI95 [-0.1209,-0.0599]
+excl_pistol_rounds ALL: SMG n=2694 armor=0.9469 | rifle n=13566 armor=0.9721 | diff(SMG-rifle)=-0.0252 CI95 [-0.0362,-0.0145] | helmet diff=-0.0920 CI95 [-0.1158,-0.0674]
+sensitivity (all rounds, ALL sides) SMG without mp5sd vs rifle: n=2502 armor=0.9532 diff=-0.0189 CI95 [-0.0285,-0.0099]
+
+pistol rounds (round 1 and 13) in clean set: 270 rounds, 2700 player-rounds
+per-round money and armor at sec0 (rounds 1,2,12-14,24-29):
+shape: (11, 4)
+┌───────┬───────────────┬─────────────────┬─────────────────┐
+│ round ┆ player_rounds ┆ mean_money_left ┆ armor_ge1_share │
+│ ---   ┆ ---           ┆ ---             ┆ ---             │
+│ i32   ┆ u32           ┆ f64             ┆ f64             │
+╞═══════╪═══════════════╪═════════════════╪═════════════════╡
+│ 1     ┆ 1440          ┆ 350.9375        ┆ 0.439583        │
+│ 2     ┆ 1390          ┆ 1346.258993     ┆ 0.640288        │
+│ 12    ┆ 1320          ┆ 2440.643939     ┆ 0.929545        │
+│ 13    ┆ 1260          ┆ 301.547619      ┆ 0.465079        │
+│ 14    ┆ 1230          ┆ 1165.813008     ┆ 0.671545        │
+│ …     ┆ …             ┆ …               ┆ …               │
+│ 25    ┆ 110           ┆ 5133.636364     ┆ 0.945455        │
+│ 26    ┆ 110           ┆ 3750.909091     ┆ 0.972727        │
+│ 27    ┆ 110           ┆ 2513.636364     ┆ 0.981818        │
+│ 28    ┆ 90            ┆ 5140.0          ┆ 0.955556        │
+│ 29    ┆ 80            ┆ 3779.375        ┆ 0.9625          │
+└───────┴───────────────┴─────────────────┴─────────────────┘
+
+sanity: {'health_le_0_rows': 0, 'helmet_without_armor_rows': 0, 'money_min': 0, 'money_max': 16000, 'armor_min': 0, 'armor_max': 100, 'player_rounds_per_side': {'T': 13360, 'CT': 13360}}
+
+wrote G:/pureskill/csds-cs2/data/viz/N5_smg_armor_results.json

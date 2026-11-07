@@ -1,0 +1,19 @@
+raw player-round groups with team codes: 319393  with >1 distinct team code: 0
+events in those multi-team groups: 0 of 2227012
+events whose team differs from the player's first-seen team in that round: 0
+their ts pct 10/50/90: None
+their round distribution: []
+early pick x earlier drop: relation by round band:
+shape: (5, 3)
+┌───────┬───────┬───────┐
+│ band  ┆ rel   ┆ n     │
+│ ---   ┆ ---   ┆ ---   │
+│ str   ┆ str   ┆ u32   │
+╞═══════╪═══════╪═══════╡
+│ r13+  ┆ enemy ┆ 1751  │
+│ r13+  ┆ same  ┆ 12695 │
+│ r2-12 ┆ enemy ┆ 2311  │
+│ r2-12 ┆ same  ┆ 17742 │
+│ r2-12 ┆ unk   ┆ 1     │
+└───────┴───────┴───────┘
+early enemy pairs by round (top): [{'round': 12, 'n': 352}, {'round': 10, 'n': 315}, {'round': 11, 'n': 268}, {'round': 8, 'n': 262}, {'round': 7, 'n': 255}, {'round': 9, 'n': 249}, {'round': 5, 'n': 220}, {'round': 19, 'n': 203}]

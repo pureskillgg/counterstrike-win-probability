@@ -1,0 +1,24 @@
+{
+ "variants": [
+  {
+   "name": "baseline: 58 inputs",
+   "n_features": 58,
+   "best_iteration": 1355,
+   "validation_logloss": 0.452779762706049,
+   "test_logloss": 0.45567228799410486
+  },
+  {
+   "name": "58 + event features (64)",
+   "n_features": 64,
+   "best_iteration": 1125,
+   "validation_logloss": 0.4527554250258904,
+   "test_logloss": 0.4558286533000523,
+   "validation_delta_vs_baseline": -2.4337680158636895e-05,
+   "test_delta_vs_baseline": 0.0001563653059474255,
+   "test_delta_ci95": [
+    1.9964917564230038e-05,
+    0.0002897193803224794
+   ]
+  }
+ ]
+}

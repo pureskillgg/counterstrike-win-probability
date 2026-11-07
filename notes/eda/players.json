@@ -1,0 +1,6082 @@
+{
+  "generated_from": "scripts/eda/profile_players.py",
+  "universe_matches": 1752,
+  "goofy_top": [
+    "Duplicate matches leak across splits: player_info has 47 groups (99 matches) and team_change has 46 groups (97 matches) with identical content under different match keys, e.g. copies stamped 2026-10-08 18:08:58 and 18:09:22 UTC. The bakeoff reports the same 46 groups (97 matches) from its round_end and death events, with copies on both sides of the train/test split. Any match-level split or grouped CV will overstate scores.",
+    "Player identity is not recoverable: name, clan_tag, name_new, name_old and chat text are the literal 'redacted' in every row; steam_id is a single letter (19 values A-S), not a SteamID; player_id is a per-match slot 0-19 whose numbering disagrees with player_id_fixed on about 91% of player_info rows. Cross-match player keys are invalid.",
+    "Player count is not fixed at 10: 149 header matches are Wingman (is_wingman True), and 148 of them show only 4 player IDs. A further 271 matches show 11 player IDs in player_info, 263 with a header max_unique_players of 10 (likely bot slots). The bakeoff drops 3,663 rounds for player_count != 10, so this anomaly is already costing data.",
+    "player_sound covers 20 of 1,751 matches with rows (1.1%); all 20 are dated 2026-10-08. Rows per match run 6.6K-21.6K versus a median of about 200 elsewhere, and a zero-fill join reads 'no sound' as signal for 98.9% of matches. Within a tick, 23,967 excess rows repeat the same (match, round, player_id, tick) with different radius and duration; is_step is exactly duration == 0.5.",
+    "Spawn and team_change velocities include impossible magnitudes: 16,801 player_spawn rows (5.1%) exceed 10,000 units/s (max about 344,000), and 889 team_change rows do (max about 280,000). 6.5% of spawn rows exceed 250 units/s, while player_chat tops out near 258. player_phi_ang is exactly 90.0 in 67% of spawn rows and stays within 1-179."
+  ],
+  "cross_channel": {
+    "duplicate_match_content": {
+      "player_info": {
+        "groups": 47,
+        "matches": 99,
+        "examples_first_2_groups": [
+          [
+            "00a7aa86-ad70-4ef2-939d-1ffc1c9f65ad",
+            "581a94e3-b279-4102-a305-6c3e8ad57547"
+          ],
+          [
+            "0028511a-254e-4f7f-af32-56766299f471",
+            "3b6d44fe-60ac-4926-8b40-1b11eb6ccb46"
+          ]
+        ]
+      },
+      "player_personal": {
+        "groups": 0,
+        "matches": 0,
+        "examples_first_2_groups": []
+      },
+      "team_change": {
+        "groups": 46,
+        "matches": 97,
+        "examples_first_2_groups": [
+          [
+            "95bd3d04-83e0-4a66-86dd-7af95fcaa756",
+            "d7390cb5-47c7-4563-adf2-2dc2cc98b656"
+          ],
+          [
+            "5658de7b-ef58-48ba-a040-8b2e14bbd486",
+            "ead7d678-5105-4051-8332-058acd366a3d"
+          ]
+        ]
+      }
+    },
+    "personal_rows_without_player_info_row": {
+      "count": 35,
+      "matches": 23,
+      "rounds": {
+        "1": 35
+      },
+      "is_bot_true": 26
+    }
+  },
+  "channels": [
+    {
+      "channel": "player_info",
+      "tome_folder": "basic_player_info.2026-09-18,2026-10-08",
+      "pages": [
+        "dataframe_00000"
+      ],
+      "page_rows": [
+        347243
+      ],
+      "rows": 347243,
+      "ncols": 13,
+      "distinct_match_keys": 1751,
+      "universe_matches": 1752,
+      "coverage_share": 0.9994,
+      "zero_row_matches": 1,
+      "match_keys_not_in_header": 0,
+      "columns": [
+        {
+          "name": "round",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 48,
+          "min": 1,
+          "max": 48,
+          "median": 11.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 2,
+              "count": 16650,
+              "share": 0.0479
+            },
+            {
+              "value": 3,
+              "count": 16640,
+              "share": 0.0479
+            },
+            {
+              "value": 4,
+              "count": 16623,
+              "share": 0.0479
+            },
+            {
+              "value": 5,
+              "count": 16621,
+              "share": 0.0479
+            },
+            {
+              "value": 1,
+              "count": 16608,
+              "share": 0.0478
+            }
+          ],
+          "top1_value": 2,
+          "top1_share_of_rows": 0.0479
+        },
+        {
+          "name": "player_id",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 20,
+          "min": 0,
+          "max": 19,
+          "median": 4.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 3,
+              "count": 35746,
+              "share": 0.1029
+            },
+            {
+              "value": 2,
+              "count": 35737,
+              "share": 0.1029
+            },
+            {
+              "value": 1,
+              "count": 35179,
+              "share": 0.1013
+            },
+            {
+              "value": 0,
+              "count": 34536,
+              "share": 0.0995
+            },
+            {
+              "value": 4,
+              "count": 33765,
+              "share": 0.0972
+            }
+          ],
+          "top1_value": 3,
+          "top1_share_of_rows": 0.1029
+        },
+        {
+          "name": "player_controller_id",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 20,
+          "min": 0,
+          "max": 19,
+          "median": 4.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 3,
+              "count": 35746,
+              "share": 0.1029
+            },
+            {
+              "value": 2,
+              "count": 35737,
+              "share": 0.1029
+            },
+            {
+              "value": 1,
+              "count": 35179,
+              "share": 0.1013
+            },
+            {
+              "value": 0,
+              "count": 34536,
+              "share": 0.0995
+            },
+            {
+              "value": 4,
+              "count": 33765,
+              "share": 0.0972
+            }
+          ],
+          "top1_value": 3,
+          "top1_share_of_rows": 0.1029
+        },
+        {
+          "name": "team_code",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 3,
+          "min": 0,
+          "max": 3,
+          "median": 2.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 2,
+              "count": 173644,
+              "share": 0.5001
+            },
+            {
+              "value": 3,
+              "count": 173597,
+              "share": 0.4999
+            },
+            {
+              "value": 0,
+              "count": 2,
+              "share": 0.0
+            }
+          ],
+          "top1_value": 2,
+          "top1_share_of_rows": 0.5001
+        },
+        {
+          "name": "wins",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 361,
+          "min": 0,
+          "max": 2023,
+          "median": 0.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 0,
+          "top1_share_of_rows": 0.6889
+        },
+        {
+          "name": "rank",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 2465,
+          "min": 0,
+          "max": 28467,
+          "median": 0.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 0,
+          "top1_share_of_rows": 0.7474
+        },
+        {
+          "name": "rank_type",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 4,
+          "min": -1,
+          "max": 12,
+          "median": -1.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": -1,
+              "count": 236182,
+              "share": 0.6802
+            },
+            {
+              "value": 11,
+              "count": 70072,
+              "share": 0.2018
+            },
+            {
+              "value": 12,
+              "count": 32915,
+              "share": 0.0948
+            },
+            {
+              "value": 7,
+              "count": 8074,
+              "share": 0.0233
+            }
+          ],
+          "top1_value": -1,
+          "top1_share_of_rows": 0.6802
+        },
+        {
+          "name": "radar_color_code",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 6,
+          "min": -1,
+          "max": 4,
+          "median": 2.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 4,
+              "count": 69676,
+              "share": 0.2007
+            },
+            {
+              "value": 0,
+              "count": 69586,
+              "share": 0.2004
+            },
+            {
+              "value": 3,
+              "count": 69298,
+              "share": 0.1996
+            },
+            {
+              "value": 1,
+              "count": 68724,
+              "share": 0.1979
+            },
+            {
+              "value": 2,
+              "count": 68670,
+              "share": 0.1978
+            }
+          ],
+          "top1_value": 4,
+          "top1_share_of_rows": 0.2007
+        },
+        {
+          "name": "player_id_fixed",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 19,
+          "min": 1,
+          "max": 19,
+          "median": 6.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 4,
+              "count": 35440,
+              "share": 0.1021
+            },
+            {
+              "value": 3,
+              "count": 34934,
+              "share": 0.1006
+            },
+            {
+              "value": 8,
+              "count": 33803,
+              "share": 0.0973
+            },
+            {
+              "value": 9,
+              "count": 33800,
+              "share": 0.0973
+            },
+            {
+              "value": 10,
+              "count": 33737,
+              "share": 0.0972
+            }
+          ],
+          "top1_value": 4,
+          "top1_share_of_rows": 0.1021
+        },
+        {
+          "name": "rank_raw",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 2465,
+          "min": 0,
+          "max": 28467,
+          "median": 0.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 0,
+          "top1_share_of_rows": 0.7474
+        },
+        {
+          "name": "rank_platform",
+          "dtype": "double",
+          "null_count": 33,
+          "null_rate": 9.5e-05,
+          "n_distinct": 2465,
+          "min": 0.0,
+          "max": 28467.0,
+          "median": 0.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 0.0,
+          "top1_share_of_rows": 0.7391
+        },
+        {
+          "name": "match_key",
+          "dtype": "string",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 1751,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": "csds/2026/10/08/5c541eaa-41a1-4e32-8875-595706c9778c/csds",
+          "top1_share_of_rows": 0.0014,
+          "empty_or_blank_string_count": 0,
+          "nullish_string_count": 0
+        },
+        {
+          "name": "elo_platform",
+          "dtype": "double",
+          "null_count": 344200,
+          "null_rate": 0.991237,
+          "n_distinct": 123,
+          "min": 0.0,
+          "max": 1411.0,
+          "median": 1025.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 0.0,
+          "top1_share_of_rows": 0.0003
+        }
+      ],
+      "flags": {
+        "constant": [],
+        "over50_null": [
+          {
+            "column": "elo_platform",
+            "detail": "null rate 0.9912",
+            "count": 344200,
+            "examples": []
+          }
+        ],
+        "sentinel": [
+          {
+            "column": "rank",
+            "detail": "sentinel-like values: 9999x344",
+            "count": 344,
+            "examples": [
+              {
+                "match_key": "00854d33-3cb8-4c55-b5d3-dfa1748689d6",
+                "round": 1,
+                "player_id": 5,
+                "rank": 9999
+              },
+              {
+                "match_key": "00854d33-3cb8-4c55-b5d3-dfa1748689d6",
+                "round": 2,
+                "player_id": 5,
+                "rank": 9999
+              }
+            ]
+          },
+          {
+            "column": "rank_type",
+            "detail": "sentinel-like values: -1x236182",
+            "count": 236182,
+            "examples": [
+              {
+                "match_key": "5cc15153-bcec-4d6a-94c5-2ce09fe23c8c",
+                "round": 1,
+                "player_id": 1,
+                "rank_type": -1
+              },
+              {
+                "match_key": "5cc15153-bcec-4d6a-94c5-2ce09fe23c8c",
+                "round": 1,
+                "player_id": 2,
+                "rank_type": -1
+              }
+            ]
+          },
+          {
+            "column": "radar_color_code",
+            "detail": "sentinel-like values: -1x1289",
+            "count": 1289,
+            "examples": [
+              {
+                "match_key": "5cc15153-bcec-4d6a-94c5-2ce09fe23c8c",
+                "round": 28,
+                "player_id": 12,
+                "radar_color_code": -1
+              },
+              {
+                "match_key": "5cc15153-bcec-4d6a-94c5-2ce09fe23c8c",
+                "round": 29,
+                "player_id": 12,
+                "radar_color_code": -1
+              }
+            ]
+          },
+          {
+            "column": "rank_raw",
+            "detail": "sentinel-like values: 9999x344",
+            "count": 344,
+            "examples": [
+              {
+                "match_key": "00854d33-3cb8-4c55-b5d3-dfa1748689d6",
+                "round": 1,
+                "player_id": 5,
+                "rank_raw": 9999
+              },
+              {
+                "match_key": "00854d33-3cb8-4c55-b5d3-dfa1748689d6",
+                "round": 2,
+                "player_id": 5,
+                "rank_raw": 9999
+              }
+            ]
+          },
+          {
+            "column": "rank_platform",
+            "detail": "sentinel-like values: 9999x344",
+            "count": 344,
+            "examples": [
+              {
+                "match_key": "00854d33-3cb8-4c55-b5d3-dfa1748689d6",
+                "round": 1,
+                "player_id": 5,
+                "rank_platform": 9999.0
+              },
+              {
+                "match_key": "00854d33-3cb8-4c55-b5d3-dfa1748689d6",
+                "round": 2,
+                "player_id": 5,
+                "rank_platform": 9999.0
+              }
+            ]
+          }
+        ],
+        "spike": [
+          {
+            "column": "team_code",
+            "detail": "value 2 holds 50.0% of rows",
+            "count": 173656,
+            "examples": []
+          },
+          {
+            "column": "wins",
+            "detail": "value 0 holds 68.9% of rows",
+            "count": 239215,
+            "examples": []
+          },
+          {
+            "column": "rank",
+            "detail": "value 0 holds 74.7% of rows",
+            "count": 259529,
+            "examples": []
+          },
+          {
+            "column": "rank_type",
+            "detail": "value -1 holds 68.0% of rows",
+            "count": 236194,
+            "examples": []
+          },
+          {
+            "column": "radar_color_code",
+            "detail": "value 4 holds 20.1% of rows",
+            "count": 69691,
+            "examples": []
+          },
+          {
+            "column": "rank_raw",
+            "detail": "value 0 holds 74.7% of rows",
+            "count": 259529,
+            "examples": []
+          },
+          {
+            "column": "rank_platform",
+            "detail": "value 0.0 holds 73.9% of rows",
+            "count": 256647,
+            "examples": []
+          }
+        ],
+        "impossible_value": [],
+        "identical_columns": [
+          [
+            "player_id",
+            "player_controller_id"
+          ],
+          [
+            "rank",
+            "rank_raw"
+          ]
+        ],
+        "one_to_one_pairs": [],
+        "impossible_checked_columns": [],
+        "identical_checked_columns": [
+          "round",
+          "player_id",
+          "player_controller_id",
+          "team_code",
+          "wins",
+          "rank",
+          "rank_type",
+          "radar_color_code",
+          "player_id_fixed",
+          "rank_raw",
+          "rank_platform",
+          "match_key",
+          "elo_platform"
+        ],
+        "duplicates": {
+          "full_row_excess": {
+            "count": 0,
+            "examples": []
+          },
+          "key_excess_match_key_round_player_id": {
+            "count": 0,
+            "key": [
+              "match_key",
+              "round",
+              "player_id"
+            ],
+            "examples": [],
+            "groups_with_varying_column_counts": {},
+            "top_patterns_in_dup_rows": []
+          }
+        },
+        "match_row_count_outliers": {
+          "zero_row_matches": 1,
+          "median_rows_per_nonzero_match": 210.0,
+          "max_rows_per_match": 484,
+          "min_rows_per_match": 20,
+          "top3_far_from_median": [
+            {
+              "match": "5c541eaa-41a1-4e32-8875-595706c9778c",
+              "rows": 484,
+              "median_nonzero_match": 210.0,
+              "ratio_to_median": 2.305
+            },
+            {
+              "match": "9a7cc4c1-5ea4-427b-bd5c-c0205a994650",
+              "rows": 480,
+              "median_nonzero_match": 210.0,
+              "ratio_to_median": 2.286
+            },
+            {
+              "match": "9c9e7287-a5ce-443d-aeba-81e083bbedf9",
+              "rows": 461,
+              "median_nonzero_match": 210.0,
+              "ratio_to_median": 2.195
+            }
+          ]
+        }
+      },
+      "extra": {
+        "match_key_dates": {
+          "matches": 1751,
+          "by_date_top5": {
+            "2026-10-08": 1135,
+            "2026-10-04": 109,
+            "2026-10-06": 104,
+            "2026-10-03": 100,
+            "2026-10-07": 88
+          },
+          "first_date": "2026-10-01",
+          "last_date": "2026-10-08"
+        },
+        "distinct_player_id_per_match": {
+          "3": 1,
+          "4": 148,
+          "9": 1,
+          "10": 1216,
+          "11": 271,
+          "12": 73,
+          "13": 25,
+          "14": 5,
+          "15": 5,
+          "16": 4,
+          "17": 1,
+          "19": 1
+        },
+        "wingman_matches_in_channel": 149,
+        "round_le_0": {
+          "count": 0,
+          "examples": []
+        },
+        "round_gt_header_max_rounds": {
+          "count": 11670,
+          "examples": [
+            {
+              "match": "5cc15153-bcec-4d6a-94c5-2ce09fe23c8c",
+              "round": 25,
+              "max_rounds": 24.0
+            },
+            {
+              "match": "5cc15153-bcec-4d6a-94c5-2ce09fe23c8c",
+              "round": 25,
+              "max_rounds": 24.0
+            }
+          ]
+        },
+        "round_min_max": {
+          "min": 1,
+          "max": 48
+        },
+        "player_id_vs_player_id_fixed": {
+          "rows_both_present": 347243,
+          "mismatch": 316519,
+          "examples": [
+            {
+              "match": "0f044ff9-4360-4738-8eb2-a82b616b2d87",
+              "round": 1,
+              "player_id": 3.0,
+              "player_id_fixed": 1.0
+            },
+            {
+              "match": "0f044ff9-4360-4738-8eb2-a82b616b2d87",
+              "round": 1,
+              "player_id": 4.0,
+              "player_id_fixed": 2.0
+            }
+          ]
+        },
+        "player_id_negative": {
+          "count": 0
+        },
+        "player_id_fixed_null_rate": 0.0
+      }
+    },
+    {
+      "channel": "player_personal",
+      "tome_folder": "basic_player_personal.2026-09-18,2026-10-08",
+      "pages": [
+        "dataframe_00000"
+      ],
+      "page_rows": [
+        347278
+      ],
+      "rows": 347278,
+      "ncols": 10,
+      "distinct_match_keys": 1751,
+      "universe_matches": 1752,
+      "coverage_share": 0.9994,
+      "zero_row_matches": 1,
+      "match_keys_not_in_header": 0,
+      "columns": [
+        {
+          "name": "round",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 48,
+          "min": 1,
+          "max": 48,
+          "median": 11.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 2,
+              "count": 16650,
+              "share": 0.0479
+            },
+            {
+              "value": 1,
+              "count": 16643,
+              "share": 0.0479
+            },
+            {
+              "value": 3,
+              "count": 16640,
+              "share": 0.0479
+            },
+            {
+              "value": 4,
+              "count": 16623,
+              "share": 0.0479
+            },
+            {
+              "value": 5,
+              "count": 16621,
+              "share": 0.0479
+            }
+          ],
+          "top1_value": 2,
+          "top1_share_of_rows": 0.0479
+        },
+        {
+          "name": "player_id",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 20,
+          "min": 0,
+          "max": 19,
+          "median": 4.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 3,
+              "count": 35747,
+              "share": 0.1029
+            },
+            {
+              "value": 2,
+              "count": 35738,
+              "share": 0.1029
+            },
+            {
+              "value": 1,
+              "count": 35179,
+              "share": 0.1013
+            },
+            {
+              "value": 0,
+              "count": 34537,
+              "share": 0.0995
+            },
+            {
+              "value": 4,
+              "count": 33766,
+              "share": 0.0972
+            }
+          ],
+          "top1_value": 3,
+          "top1_share_of_rows": 0.1029
+        },
+        {
+          "name": "player_controller_id",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 20,
+          "min": 0,
+          "max": 19,
+          "median": 4.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 3,
+              "count": 35747,
+              "share": 0.1029
+            },
+            {
+              "value": 2,
+              "count": 35738,
+              "share": 0.1029
+            },
+            {
+              "value": 1,
+              "count": 35179,
+              "share": 0.1013
+            },
+            {
+              "value": 0,
+              "count": 34537,
+              "share": 0.0995
+            },
+            {
+              "value": 4,
+              "count": 33766,
+              "share": 0.0972
+            }
+          ],
+          "top1_value": 3,
+          "top1_share_of_rows": 0.1029
+        },
+        {
+          "name": "player_id_pawn",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 957,
+          "min": 66,
+          "max": 1023,
+          "median": 399.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 533,
+          "top1_share_of_rows": 0.0082
+        },
+        {
+          "name": "name",
+          "dtype": "string",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 1,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": "redacted",
+              "count": 347278,
+              "share": 1.0
+            }
+          ],
+          "top1_value": "redacted",
+          "top1_share_of_rows": 1.0,
+          "empty_or_blank_string_count": 0,
+          "nullish_string_count": 0
+        },
+        {
+          "name": "clan_tag",
+          "dtype": "string",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 1,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": "redacted",
+              "count": 347278,
+              "share": 1.0
+            }
+          ],
+          "top1_value": "redacted",
+          "top1_share_of_rows": 1.0,
+          "empty_or_blank_string_count": 0,
+          "nullish_string_count": 0
+        },
+        {
+          "name": "steam_id",
+          "dtype": "string",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 19,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": "D",
+              "count": 35771,
+              "share": 0.103
+            },
+            {
+              "value": "B",
+              "count": 35769,
+              "share": 0.103
+            },
+            {
+              "value": "C",
+              "count": 35747,
+              "share": 0.1029
+            },
+            {
+              "value": "A",
+              "count": 35355,
+              "share": 0.1018
+            },
+            {
+              "value": "F",
+              "count": 33821,
+              "share": 0.0974
+            }
+          ],
+          "top1_value": "D",
+          "top1_share_of_rows": 0.103,
+          "empty_or_blank_string_count": 0,
+          "nullish_string_count": 0
+        },
+        {
+          "name": "is_bot",
+          "dtype": "bool",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 2,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": false,
+              "count": 346108,
+              "share": 0.9966
+            },
+            {
+              "value": true,
+              "count": 1170,
+              "share": 0.0034
+            }
+          ],
+          "top1_value": false,
+          "top1_share_of_rows": 0.9966
+        },
+        {
+          "name": "player_id_fixed",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 19,
+          "min": 1,
+          "max": 19,
+          "median": 6.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 4,
+              "count": 35441,
+              "share": 0.1021
+            },
+            {
+              "value": 3,
+              "count": 34935,
+              "share": 0.1006
+            },
+            {
+              "value": 8,
+              "count": 33804,
+              "share": 0.0973
+            },
+            {
+              "value": 9,
+              "count": 33801,
+              "share": 0.0973
+            },
+            {
+              "value": 10,
+              "count": 33737,
+              "share": 0.0971
+            }
+          ],
+          "top1_value": 4,
+          "top1_share_of_rows": 0.1021
+        },
+        {
+          "name": "match_key",
+          "dtype": "string",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 1751,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": "csds/2026/10/08/5c541eaa-41a1-4e32-8875-595706c9778c/csds",
+          "top1_share_of_rows": 0.0014,
+          "empty_or_blank_string_count": 0,
+          "nullish_string_count": 0
+        }
+      ],
+      "flags": {
+        "constant": [
+          {
+            "column": "name",
+            "detail": "one distinct non-null value (value='redacted'), null rate 0.0",
+            "count": 347278,
+            "examples": [
+              {
+                "value": "redacted",
+                "null_rate": 0.0
+              }
+            ]
+          },
+          {
+            "column": "clan_tag",
+            "detail": "one distinct non-null value (value='redacted'), null rate 0.0",
+            "count": 347278,
+            "examples": [
+              {
+                "value": "redacted",
+                "null_rate": 0.0
+              }
+            ]
+          }
+        ],
+        "over50_null": [],
+        "sentinel": [
+          {
+            "column": "player_id_pawn",
+            "detail": "sentinel-like values: 999x114",
+            "count": 114,
+            "examples": [
+              {
+                "match_key": "089a93e7-2b6e-4851-82c5-15a725a3d69f",
+                "round": 21,
+                "player_id": 11,
+                "player_id_pawn": 999
+              },
+              {
+                "match_key": "14ada7f1-2105-49e6-b86b-631a81553294",
+                "round": 1,
+                "player_id": 9,
+                "player_id_pawn": 999
+              }
+            ]
+          }
+        ],
+        "spike": [
+          {
+            "column": "is_bot",
+            "detail": "value False holds 99.7% of rows",
+            "count": 346097,
+            "examples": []
+          }
+        ],
+        "impossible_value": [],
+        "identical_columns": [
+          [
+            "player_id",
+            "player_controller_id"
+          ],
+          [
+            "name",
+            "clan_tag"
+          ]
+        ],
+        "one_to_one_pairs": [],
+        "impossible_checked_columns": [],
+        "identical_checked_columns": [
+          "round",
+          "player_id",
+          "player_controller_id",
+          "player_id_pawn",
+          "name",
+          "clan_tag",
+          "steam_id",
+          "is_bot",
+          "player_id_fixed",
+          "match_key"
+        ],
+        "duplicates": {
+          "full_row_excess": {
+            "count": 0,
+            "examples": []
+          },
+          "key_excess_match_key_round_player_id": {
+            "count": 0,
+            "key": [
+              "match_key",
+              "round",
+              "player_id"
+            ],
+            "examples": [],
+            "groups_with_varying_column_counts": {},
+            "top_patterns_in_dup_rows": []
+          }
+        },
+        "match_row_count_outliers": {
+          "zero_row_matches": 1,
+          "median_rows_per_nonzero_match": 210.0,
+          "max_rows_per_match": 484,
+          "min_rows_per_match": 20,
+          "top3_far_from_median": [
+            {
+              "match": "5c541eaa-41a1-4e32-8875-595706c9778c",
+              "rows": 484,
+              "median_nonzero_match": 210.0,
+              "ratio_to_median": 2.305
+            },
+            {
+              "match": "9a7cc4c1-5ea4-427b-bd5c-c0205a994650",
+              "rows": 480,
+              "median_nonzero_match": 210.0,
+              "ratio_to_median": 2.286
+            },
+            {
+              "match": "9c9e7287-a5ce-443d-aeba-81e083bbedf9",
+              "rows": 461,
+              "median_nonzero_match": 210.0,
+              "ratio_to_median": 2.195
+            }
+          ]
+        }
+      },
+      "extra": {
+        "match_key_dates": {
+          "matches": 1751,
+          "by_date_top5": {
+            "2026-10-08": 1135,
+            "2026-10-04": 109,
+            "2026-10-06": 104,
+            "2026-10-03": 100,
+            "2026-10-07": 88
+          },
+          "first_date": "2026-10-01",
+          "last_date": "2026-10-08"
+        },
+        "distinct_player_id_per_match": {
+          "3": 1,
+          "4": 148,
+          "9": 1,
+          "10": 1203,
+          "11": 279,
+          "12": 74,
+          "13": 27,
+          "14": 7,
+          "15": 4,
+          "16": 5,
+          "17": 1,
+          "19": 1
+        },
+        "wingman_matches_in_channel": 149,
+        "steam_id_values": {
+          "distinct": 19,
+          "all_values": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K",
+            "L",
+            "M",
+            "N",
+            "O",
+            "P",
+            "Q",
+            "R",
+            "S"
+          ],
+          "length_counts": {
+            "1": 347278
+          }
+        },
+        "round_le_0": {
+          "count": 0,
+          "examples": []
+        },
+        "round_gt_header_max_rounds": {
+          "count": 11670,
+          "examples": [
+            {
+              "match": "5cc15153-bcec-4d6a-94c5-2ce09fe23c8c",
+              "round": 25,
+              "max_rounds": 24.0
+            },
+            {
+              "match": "5cc15153-bcec-4d6a-94c5-2ce09fe23c8c",
+              "round": 25,
+              "max_rounds": 24.0
+            }
+          ]
+        },
+        "round_min_max": {
+          "min": 1,
+          "max": 48
+        },
+        "player_id_vs_player_id_fixed": {
+          "rows_both_present": 347278,
+          "mismatch": 316552,
+          "examples": [
+            {
+              "match": "0f044ff9-4360-4738-8eb2-a82b616b2d87",
+              "round": 1,
+              "player_id": 3.0,
+              "player_id_fixed": 1.0
+            },
+            {
+              "match": "0f044ff9-4360-4738-8eb2-a82b616b2d87",
+              "round": 1,
+              "player_id": 4.0,
+              "player_id_fixed": 2.0
+            }
+          ]
+        },
+        "player_id_negative": {
+          "count": 0
+        },
+        "player_id_fixed_null_rate": 0.0,
+        "is_bot_true_rows": {
+          "count": 1170,
+          "share": 0.0034
+        }
+      }
+    },
+    {
+      "channel": "player_name",
+      "tome_folder": "basic_player_name.2026-09-18,2026-10-08",
+      "pages": [
+        "dataframe_00000"
+      ],
+      "page_rows": [
+        507
+      ],
+      "rows": 507,
+      "ncols": 8,
+      "distinct_match_keys": 378,
+      "universe_matches": 1752,
+      "coverage_share": 0.2158,
+      "zero_row_matches": 1374,
+      "match_keys_not_in_header": 0,
+      "columns": [
+        {
+          "name": "round",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 30,
+          "min": 1,
+          "max": 34,
+          "median": 10.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 5,
+              "count": 33,
+              "share": 0.0651
+            },
+            {
+              "value": 13,
+              "count": 32,
+              "share": 0.0631
+            },
+            {
+              "value": 3,
+              "count": 31,
+              "share": 0.0611
+            },
+            {
+              "value": 9,
+              "count": 28,
+              "share": 0.0552
+            },
+            {
+              "value": 1,
+              "count": 28,
+              "share": 0.0552
+            }
+          ],
+          "top1_value": 5,
+          "top1_share_of_rows": 0.0651
+        },
+        {
+          "name": "tick",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 499,
+          "min": 3632,
+          "max": 245576,
+          "median": 68151.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 49061,
+          "top1_share_of_rows": 0.0059
+        },
+        {
+          "name": "player_id",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 12,
+          "min": 0,
+          "max": 12,
+          "median": 4.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 3,
+              "count": 56,
+              "share": 0.1105
+            },
+            {
+              "value": 2,
+              "count": 55,
+              "share": 0.1085
+            },
+            {
+              "value": 0,
+              "count": 54,
+              "share": 0.1065
+            },
+            {
+              "value": 8,
+              "count": 52,
+              "share": 0.1026
+            },
+            {
+              "value": 1,
+              "count": 52,
+              "share": 0.1026
+            }
+          ],
+          "top1_value": 3,
+          "top1_share_of_rows": 0.1105
+        },
+        {
+          "name": "name_new",
+          "dtype": "string",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 1,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": "redacted",
+              "count": 507,
+              "share": 1.0
+            }
+          ],
+          "top1_value": "redacted",
+          "top1_share_of_rows": 1.0,
+          "empty_or_blank_string_count": 0,
+          "nullish_string_count": 0
+        },
+        {
+          "name": "name_old",
+          "dtype": "string",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 1,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": "redacted",
+              "count": 507,
+              "share": 1.0
+            }
+          ],
+          "top1_value": "redacted",
+          "top1_share_of_rows": 1.0,
+          "empty_or_blank_string_count": 0,
+          "nullish_string_count": 0
+        },
+        {
+          "name": "second",
+          "dtype": "double",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 499,
+          "min": 56.75,
+          "max": 3837.125,
+          "median": 1064.859375,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 766.578125,
+          "top1_share_of_rows": 0.0059
+        },
+        {
+          "name": "player_id_fixed",
+          "dtype": "double",
+          "null_count": 6,
+          "null_rate": 0.011834,
+          "n_distinct": 16,
+          "min": 1.0,
+          "max": 16.0,
+          "median": 8.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 9.0,
+              "count": 57,
+              "share": 0.1124
+            },
+            {
+              "value": 7.0,
+              "count": 56,
+              "share": 0.1105
+            },
+            {
+              "value": 11.0,
+              "count": 56,
+              "share": 0.1105
+            },
+            {
+              "value": 8.0,
+              "count": 55,
+              "share": 0.1085
+            },
+            {
+              "value": 10.0,
+              "count": 50,
+              "share": 0.0986
+            }
+          ],
+          "top1_value": 9.0,
+          "top1_share_of_rows": 0.1124
+        },
+        {
+          "name": "match_key",
+          "dtype": "string",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 378,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": "csds/2026/10/08/2f2acbd5-a3b0-496f-b537-c030fb851aa5/csds",
+          "top1_share_of_rows": 0.0099,
+          "empty_or_blank_string_count": 0,
+          "nullish_string_count": 0
+        }
+      ],
+      "flags": {
+        "constant": [
+          {
+            "column": "name_new",
+            "detail": "one distinct non-null value (value='redacted'), null rate 0.0",
+            "count": 507,
+            "examples": [
+              {
+                "value": "redacted",
+                "null_rate": 0.0
+              }
+            ]
+          },
+          {
+            "column": "name_old",
+            "detail": "one distinct non-null value (value='redacted'), null rate 0.0",
+            "count": 507,
+            "examples": [
+              {
+                "value": "redacted",
+                "null_rate": 0.0
+              }
+            ]
+          }
+        ],
+        "over50_null": [],
+        "sentinel": [],
+        "spike": [],
+        "impossible_value": [],
+        "identical_columns": [
+          [
+            "name_new",
+            "name_old"
+          ]
+        ],
+        "one_to_one_pairs": [],
+        "impossible_checked_columns": [],
+        "identical_checked_columns": [
+          "round",
+          "tick",
+          "player_id",
+          "name_new",
+          "name_old",
+          "second",
+          "player_id_fixed",
+          "match_key"
+        ],
+        "duplicates": {
+          "full_row_excess": {
+            "count": 0,
+            "examples": []
+          },
+          "key_excess_match_key_round_player_id_tick": {
+            "count": 0,
+            "key": [
+              "match_key",
+              "round",
+              "player_id",
+              "tick"
+            ],
+            "examples": [],
+            "groups_with_varying_column_counts": {},
+            "top_patterns_in_dup_rows": []
+          }
+        },
+        "match_row_count_outliers": {
+          "zero_row_matches": 1374,
+          "median_rows_per_nonzero_match": 1.0,
+          "max_rows_per_match": 5,
+          "min_rows_per_match": 1,
+          "top3_far_from_median": [
+            {
+              "match": "2f2acbd5-a3b0-496f-b537-c030fb851aa5",
+              "rows": 5,
+              "median_nonzero_match": 1.0,
+              "ratio_to_median": 5.0
+            },
+            {
+              "match": "04ece982-e5c8-4102-8b31-c8a1d28ab6a7",
+              "rows": 4,
+              "median_nonzero_match": 1.0,
+              "ratio_to_median": 4.0
+            },
+            {
+              "match": "6f06ed00-81d7-496c-898c-aebd2eb68e6c",
+              "rows": 4,
+              "median_nonzero_match": 1.0,
+              "ratio_to_median": 4.0
+            }
+          ]
+        }
+      },
+      "extra": {
+        "match_key_dates": {
+          "matches": 378,
+          "by_date_top5": {
+            "2026-10-08": 367,
+            "2026-10-03": 3,
+            "2026-10-01": 2,
+            "2026-10-04": 2,
+            "2026-10-07": 2
+          },
+          "first_date": "2026-10-01",
+          "last_date": "2026-10-08"
+        },
+        "distinct_player_id_per_match": {
+          "1": 282,
+          "2": 76,
+          "3": 12,
+          "4": 8
+        },
+        "wingman_matches_in_channel": 1,
+        "round_le_0": {
+          "count": 0,
+          "examples": []
+        },
+        "round_gt_header_max_rounds": {
+          "count": 13,
+          "examples": [
+            {
+              "match": "002aa219-53f3-4d2f-9bed-b9bdb8236ea4",
+              "round": 34,
+              "max_rounds": 24.0
+            },
+            {
+              "match": "01a629ff-9ea8-4468-8c93-c0f5956f5075",
+              "round": 34,
+              "max_rounds": 24.0
+            }
+          ]
+        },
+        "round_min_max": {
+          "min": 1,
+          "max": 34
+        },
+        "tick_negative": {
+          "count": 0
+        },
+        "second_vs_tick_div_rate": {
+          "rows_gt_2s_off": 0,
+          "rows_checked": 507,
+          "median_abs_diff_s": 0.0,
+          "examples": []
+        },
+        "player_id_vs_player_id_fixed": {
+          "rows_both_present": 501,
+          "mismatch": 461,
+          "examples": [
+            {
+              "match": "5cc15153-bcec-4d6a-94c5-2ce09fe23c8c",
+              "round": 11,
+              "player_id": 3.0,
+              "player_id_fixed": 6.0
+            },
+            {
+              "match": "d196fa56-9b8a-4b7c-933c-dbec4988947b",
+              "round": 9,
+              "player_id": 9.0,
+              "player_id_fixed": 6.0
+            }
+          ]
+        },
+        "player_id_negative": {
+          "count": 0
+        },
+        "player_id_fixed_null_rate": 0.011834
+      }
+    },
+    {
+      "channel": "player_connect",
+      "tome_folder": "basic_player_connect.2026-09-18,2026-10-08",
+      "pages": [
+        "dataframe_00000"
+      ],
+      "page_rows": [
+        1827
+      ],
+      "rows": 1827,
+      "ncols": 8,
+      "distinct_match_keys": 704,
+      "universe_matches": 1752,
+      "coverage_share": 0.4018,
+      "zero_row_matches": 1048,
+      "match_keys_not_in_header": 0,
+      "columns": [
+        {
+          "name": "round",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 34,
+          "min": 1,
+          "max": 46,
+          "median": 10.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 13,
+              "count": 122,
+              "share": 0.0668
+            },
+            {
+              "value": 1,
+              "count": 115,
+              "share": 0.0629
+            },
+            {
+              "value": 2,
+              "count": 103,
+              "share": 0.0564
+            },
+            {
+              "value": 9,
+              "count": 102,
+              "share": 0.0558
+            },
+            {
+              "value": 3,
+              "count": 99,
+              "share": 0.0542
+            }
+          ],
+          "top1_value": 13,
+          "top1_share_of_rows": 0.0668
+        },
+        {
+          "name": "tick",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 1769,
+          "min": 164,
+          "max": 301291,
+          "median": 66597.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 147130,
+          "top1_share_of_rows": 0.0022
+        },
+        {
+          "name": "player_index",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 20,
+          "min": 1,
+          "max": 20,
+          "median": 8.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 12,
+              "count": 371,
+              "share": 0.2031
+            },
+            {
+              "value": 3,
+              "count": 144,
+              "share": 0.0788
+            },
+            {
+              "value": 13,
+              "count": 143,
+              "share": 0.0783
+            },
+            {
+              "value": 2,
+              "count": 135,
+              "share": 0.0739
+            },
+            {
+              "value": 4,
+              "count": 129,
+              "share": 0.0706
+            }
+          ],
+          "top1_value": 12,
+          "top1_share_of_rows": 0.2031
+        },
+        {
+          "name": "player_id",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 20,
+          "min": 0,
+          "max": 19,
+          "median": 7.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 11,
+              "count": 371,
+              "share": 0.2031
+            },
+            {
+              "value": 2,
+              "count": 144,
+              "share": 0.0788
+            },
+            {
+              "value": 12,
+              "count": 143,
+              "share": 0.0783
+            },
+            {
+              "value": 1,
+              "count": 135,
+              "share": 0.0739
+            },
+            {
+              "value": 3,
+              "count": 129,
+              "share": 0.0706
+            }
+          ],
+          "top1_value": 11,
+          "top1_share_of_rows": 0.2031
+        },
+        {
+          "name": "is_bot",
+          "dtype": "bool",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 2,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": false,
+              "count": 1220,
+              "share": 0.6678
+            },
+            {
+              "value": true,
+              "count": 607,
+              "share": 0.3322
+            }
+          ],
+          "top1_value": false,
+          "top1_share_of_rows": 0.6678
+        },
+        {
+          "name": "second",
+          "dtype": "double",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 1769,
+          "min": 2.5625,
+          "max": 4707.671875,
+          "median": 1040.578125,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 2298.90625,
+          "top1_share_of_rows": 0.0022
+        },
+        {
+          "name": "player_id_fixed",
+          "dtype": "double",
+          "null_count": 56,
+          "null_rate": 0.030651,
+          "n_distinct": 18,
+          "min": 1.0,
+          "max": 18.0,
+          "median": 5.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 1.0,
+              "count": 417,
+              "share": 0.2282
+            },
+            {
+              "value": 2.0,
+              "count": 197,
+              "share": 0.1078
+            },
+            {
+              "value": 10.0,
+              "count": 132,
+              "share": 0.0722
+            },
+            {
+              "value": 5.0,
+              "count": 128,
+              "share": 0.0701
+            },
+            {
+              "value": 3.0,
+              "count": 124,
+              "share": 0.0679
+            }
+          ],
+          "top1_value": 1.0,
+          "top1_share_of_rows": 0.2282
+        },
+        {
+          "name": "match_key",
+          "dtype": "string",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 704,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": "csds/2026/10/07/8b551923-2abc-4d79-b3a6-12b45e9c01a8/csds",
+          "top1_share_of_rows": 0.012,
+          "empty_or_blank_string_count": 0,
+          "nullish_string_count": 0
+        }
+      ],
+      "flags": {
+        "constant": [],
+        "over50_null": [],
+        "sentinel": [],
+        "spike": [
+          {
+            "column": "player_index",
+            "detail": "value 12 holds 20.3% of rows",
+            "count": 371,
+            "examples": []
+          },
+          {
+            "column": "player_id",
+            "detail": "value 11 holds 20.3% of rows",
+            "count": 371,
+            "examples": []
+          },
+          {
+            "column": "is_bot",
+            "detail": "value False holds 66.8% of rows",
+            "count": 1220,
+            "examples": []
+          },
+          {
+            "column": "player_id_fixed",
+            "detail": "value 1.0 holds 22.8% of rows",
+            "count": 416,
+            "examples": []
+          }
+        ],
+        "impossible_value": [],
+        "identical_columns": [],
+        "one_to_one_pairs": [
+          [
+            "player_index",
+            "player_id"
+          ]
+        ],
+        "impossible_checked_columns": [],
+        "identical_checked_columns": [
+          "round",
+          "tick",
+          "player_index",
+          "player_id",
+          "is_bot",
+          "second",
+          "player_id_fixed",
+          "match_key"
+        ],
+        "duplicates": {
+          "full_row_excess": {
+            "count": 0,
+            "examples": []
+          },
+          "key_excess_match_key_round_player_id_tick": {
+            "count": 0,
+            "key": [
+              "match_key",
+              "round",
+              "player_id",
+              "tick"
+            ],
+            "examples": [],
+            "groups_with_varying_column_counts": {},
+            "top_patterns_in_dup_rows": []
+          }
+        },
+        "match_row_count_outliers": {
+          "zero_row_matches": 1048,
+          "median_rows_per_nonzero_match": 2.0,
+          "max_rows_per_match": 22,
+          "min_rows_per_match": 1,
+          "top3_far_from_median": [
+            {
+              "match": "8b551923-2abc-4d79-b3a6-12b45e9c01a8",
+              "rows": 22,
+              "median_nonzero_match": 2.0,
+              "ratio_to_median": 11.0
+            },
+            {
+              "match": "c2cbfb53-8944-48e0-9ef6-4504992bf897",
+              "rows": 19,
+              "median_nonzero_match": 2.0,
+              "ratio_to_median": 9.5
+            },
+            {
+              "match": "a8c541a7-c43f-4ea5-87ac-d79429b63157",
+              "rows": 16,
+              "median_nonzero_match": 2.0,
+              "ratio_to_median": 8.0
+            }
+          ]
+        }
+      },
+      "extra": {
+        "match_key_dates": {
+          "matches": 704,
+          "by_date_top5": {
+            "2026-10-08": 513,
+            "2026-10-06": 44,
+            "2026-10-03": 34,
+            "2026-10-04": 29,
+            "2026-10-07": 28
+          },
+          "first_date": "2026-10-01",
+          "last_date": "2026-10-08"
+        },
+        "distinct_player_id_per_match": {
+          "1": 276,
+          "2": 251,
+          "3": 67,
+          "4": 64,
+          "5": 17,
+          "6": 12,
+          "7": 5,
+          "8": 5,
+          "9": 3,
+          "10": 2,
+          "11": 1,
+          "12": 1
+        },
+        "wingman_matches_in_channel": 21,
+        "round_le_0": {
+          "count": 0,
+          "examples": []
+        },
+        "round_gt_header_max_rounds": {
+          "count": 58,
+          "examples": [
+            {
+              "match": "5cc15153-bcec-4d6a-94c5-2ce09fe23c8c",
+              "round": 28,
+              "max_rounds": 24.0
+            },
+            {
+              "match": "602677f3-1060-4072-ab7e-cafdf559250d",
+              "round": 25,
+              "max_rounds": 24.0
+            }
+          ]
+        },
+        "round_min_max": {
+          "min": 1,
+          "max": 46
+        },
+        "tick_negative": {
+          "count": 0
+        },
+        "second_vs_tick_div_rate": {
+          "rows_gt_2s_off": 0,
+          "rows_checked": 1827,
+          "median_abs_diff_s": 0.0,
+          "examples": []
+        },
+        "player_id_vs_player_id_fixed": {
+          "rows_both_present": 1771,
+          "mismatch": 1689,
+          "examples": [
+            {
+              "match": "17eb0e83-9fe7-4a50-b4f8-8b1426849ad3",
+              "round": 15,
+              "player_id": 2.0,
+              "player_id_fixed": 1.0
+            },
+            {
+              "match": "3a891d08-f9b5-4e77-ac70-b2328a58d5d3",
+              "round": 3,
+              "player_id": 3.0,
+              "player_id_fixed": 7.0
+            }
+          ]
+        },
+        "player_id_negative": {
+          "count": 0
+        },
+        "player_id_fixed_null_rate": 0.030651,
+        "is_bot_true_rows": {
+          "count": 607,
+          "share": 0.3322
+        }
+      }
+    },
+    {
+      "channel": "player_disconnect",
+      "tome_folder": "basic_player_disconnect.2026-09-18,2026-10-08",
+      "pages": [
+        "dataframe_00000"
+      ],
+      "page_rows": [
+        11594
+      ],
+      "rows": 11594,
+      "ncols": 8,
+      "distinct_match_keys": 1732,
+      "universe_matches": 1752,
+      "coverage_share": 0.9886,
+      "zero_row_matches": 20,
+      "match_keys_not_in_header": 0,
+      "columns": [
+        {
+          "name": "round",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 43,
+          "min": 1,
+          "max": 48,
+          "median": 20.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 23,
+              "count": 1170,
+              "share": 0.1009
+            },
+            {
+              "value": 24,
+              "count": 1151,
+              "share": 0.0993
+            },
+            {
+              "value": 21,
+              "count": 1010,
+              "share": 0.0871
+            },
+            {
+              "value": 22,
+              "count": 960,
+              "share": 0.0828
+            },
+            {
+              "value": 20,
+              "count": 933,
+              "share": 0.0805
+            }
+          ],
+          "top1_value": 23,
+          "top1_share_of_rows": 0.1009
+        },
+        {
+          "name": "tick",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 10515,
+          "min": 80,
+          "max": 334616,
+          "median": 123748.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 129587,
+          "top1_share_of_rows": 0.0009
+        },
+        {
+          "name": "player_id",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 19,
+          "min": 0,
+          "max": 18,
+          "median": 5.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 1,
+              "count": 1185,
+              "share": 0.1022
+            },
+            {
+              "value": 2,
+              "count": 1168,
+              "share": 0.1007
+            },
+            {
+              "value": 0,
+              "count": 1155,
+              "share": 0.0996
+            },
+            {
+              "value": 3,
+              "count": 1132,
+              "share": 0.0976
+            },
+            {
+              "value": 6,
+              "count": 1063,
+              "share": 0.0917
+            }
+          ],
+          "top1_value": 1,
+          "top1_share_of_rows": 0.1022
+        },
+        {
+          "name": "disconnect_reason",
+          "dtype": "string",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 1,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": "",
+              "count": 11594,
+              "share": 1.0
+            }
+          ],
+          "top1_value": "",
+          "top1_share_of_rows": 1.0,
+          "empty_or_blank_string_count": 11594,
+          "nullish_string_count": 11594
+        },
+        {
+          "name": "is_bot",
+          "dtype": "bool",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 2,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": false,
+              "count": 11033,
+              "share": 0.9516
+            },
+            {
+              "value": true,
+              "count": 561,
+              "share": 0.0484
+            }
+          ],
+          "top1_value": false,
+          "top1_share_of_rows": 0.9516
+        },
+        {
+          "name": "second",
+          "dtype": "double",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 10515,
+          "min": 1.25,
+          "max": 5228.375,
+          "median": 1933.5625,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 2024.796875,
+          "top1_share_of_rows": 0.0009
+        },
+        {
+          "name": "player_id_fixed",
+          "dtype": "double",
+          "null_count": 337,
+          "null_rate": 0.029067,
+          "n_distinct": 19,
+          "min": 1.0,
+          "max": 19.0,
+          "median": 6.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 10.0,
+              "count": 1175,
+              "share": 0.1013
+            },
+            {
+              "value": 9.0,
+              "count": 1138,
+              "share": 0.0982
+            },
+            {
+              "value": 4.0,
+              "count": 1094,
+              "share": 0.0944
+            },
+            {
+              "value": 7.0,
+              "count": 1073,
+              "share": 0.0925
+            },
+            {
+              "value": 8.0,
+              "count": 1068,
+              "share": 0.0921
+            }
+          ],
+          "top1_value": 10.0,
+          "top1_share_of_rows": 0.1013
+        },
+        {
+          "name": "match_key",
+          "dtype": "string",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 1732,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": "csds/2026/10/07/8b551923-2abc-4d79-b3a6-12b45e9c01a8/csds",
+          "top1_share_of_rows": 0.0027,
+          "empty_or_blank_string_count": 0,
+          "nullish_string_count": 0
+        }
+      ],
+      "flags": {
+        "constant": [
+          {
+            "column": "disconnect_reason",
+            "detail": "one distinct non-null value (value=''), null rate 0.0",
+            "count": 11594,
+            "examples": [
+              {
+                "value": "",
+                "null_rate": 0.0
+              }
+            ]
+          }
+        ],
+        "over50_null": [],
+        "sentinel": [],
+        "spike": [
+          {
+            "column": "is_bot",
+            "detail": "value False holds 95.2% of rows",
+            "count": 11032,
+            "examples": []
+          }
+        ],
+        "impossible_value": [],
+        "identical_columns": [],
+        "one_to_one_pairs": [],
+        "impossible_checked_columns": [],
+        "identical_checked_columns": [
+          "round",
+          "tick",
+          "player_id",
+          "disconnect_reason",
+          "is_bot",
+          "second",
+          "player_id_fixed",
+          "match_key"
+        ],
+        "duplicates": {
+          "full_row_excess": {
+            "count": 0,
+            "examples": []
+          },
+          "key_excess_match_key_round_player_id_tick": {
+            "count": 0,
+            "key": [
+              "match_key",
+              "round",
+              "player_id",
+              "tick"
+            ],
+            "examples": [],
+            "groups_with_varying_column_counts": {},
+            "top_patterns_in_dup_rows": []
+          }
+        },
+        "match_row_count_outliers": {
+          "zero_row_matches": 20,
+          "median_rows_per_nonzero_match": 7.0,
+          "max_rows_per_match": 31,
+          "min_rows_per_match": 1,
+          "top3_far_from_median": [
+            {
+              "match": "8b551923-2abc-4d79-b3a6-12b45e9c01a8",
+              "rows": 31,
+              "median_nonzero_match": 7.0,
+              "ratio_to_median": 4.429
+            },
+            {
+              "match": "c2cbfb53-8944-48e0-9ef6-4504992bf897",
+              "rows": 29,
+              "median_nonzero_match": 7.0,
+              "ratio_to_median": 4.143
+            },
+            {
+              "match": "a8c541a7-c43f-4ea5-87ac-d79429b63157",
+              "rows": 24,
+              "median_nonzero_match": 7.0,
+              "ratio_to_median": 3.429
+            }
+          ]
+        }
+      },
+      "extra": {
+        "match_key_dates": {
+          "matches": 1732,
+          "by_date_top5": {
+            "2026-10-08": 1124,
+            "2026-10-04": 107,
+            "2026-10-06": 103,
+            "2026-10-03": 98,
+            "2026-10-07": 88
+          },
+          "first_date": "2026-10-01",
+          "last_date": "2026-10-08"
+        },
+        "distinct_player_id_per_match": {
+          "1": 72,
+          "2": 93,
+          "3": 153,
+          "4": 199,
+          "5": 188,
+          "6": 208,
+          "7": 226,
+          "8": 220,
+          "9": 172,
+          "10": 145,
+          "11": 36,
+          "12": 8,
+          "13": 3,
+          "14": 4,
+          "15": 2,
+          "16": 2,
+          "18": 1
+        },
+        "wingman_matches_in_channel": 145,
+        "round_le_0": {
+          "count": 0,
+          "examples": []
+        },
+        "round_gt_header_max_rounds": {
+          "count": 939,
+          "examples": [
+            {
+              "match": "5cc15153-bcec-4d6a-94c5-2ce09fe23c8c",
+              "round": 27,
+              "max_rounds": 24.0
+            },
+            {
+              "match": "5cc15153-bcec-4d6a-94c5-2ce09fe23c8c",
+              "round": 29,
+              "max_rounds": 24.0
+            }
+          ]
+        },
+        "round_min_max": {
+          "min": 1,
+          "max": 48
+        },
+        "tick_negative": {
+          "count": 0
+        },
+        "second_vs_tick_div_rate": {
+          "rows_gt_2s_off": 0,
+          "rows_checked": 11594,
+          "median_abs_diff_s": 0.0,
+          "examples": []
+        },
+        "player_id_vs_player_id_fixed": {
+          "rows_both_present": 11257,
+          "mismatch": 10347,
+          "examples": [
+            {
+              "match": "0f044ff9-4360-4738-8eb2-a82b616b2d87",
+              "round": 24,
+              "player_id": 9.0,
+              "player_id_fixed": 5.0
+            },
+            {
+              "match": "0f044ff9-4360-4738-8eb2-a82b616b2d87",
+              "round": 24,
+              "player_id": 5.0,
+              "player_id_fixed": 7.0
+            }
+          ]
+        },
+        "player_id_negative": {
+          "count": 0
+        },
+        "player_id_fixed_null_rate": 0.029067,
+        "is_bot_true_rows": {
+          "count": 561,
+          "share": 0.0484
+        }
+      }
+    },
+    {
+      "channel": "player_sound",
+      "tome_folder": "basic_player_sound.2026-09-18,2026-10-08",
+      "pages": [
+        "dataframe_00000"
+      ],
+      "page_rows": [
+        315382
+      ],
+      "rows": 315382,
+      "ncols": 19,
+      "distinct_match_keys": 20,
+      "universe_matches": 1752,
+      "coverage_share": 0.0114,
+      "zero_row_matches": 1732,
+      "match_keys_not_in_header": 0,
+      "columns": [
+        {
+          "name": "round",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 29,
+          "min": 1,
+          "max": 29,
+          "median": 12.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 7,
+              "count": 15715,
+              "share": 0.0498
+            },
+            {
+              "value": 8,
+              "count": 15662,
+              "share": 0.0497
+            },
+            {
+              "value": 9,
+              "count": 15374,
+              "share": 0.0487
+            },
+            {
+              "value": 10,
+              "count": 15133,
+              "share": 0.048
+            },
+            {
+              "value": 14,
+              "count": 15105,
+              "share": 0.0479
+            }
+          ],
+          "top1_value": 7,
+          "top1_share_of_rows": 0.0498
+        },
+        {
+          "name": "tick",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 131452,
+          "min": 3417,
+          "max": 213745,
+          "median": 78479.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 111917,
+          "top1_share_of_rows": 0.0001
+        },
+        {
+          "name": "player_id",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 12,
+          "min": 0,
+          "max": 11,
+          "median": 5.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 5,
+              "count": 32432,
+              "share": 0.1028
+            },
+            {
+              "value": 2,
+              "count": 32289,
+              "share": 0.1024
+            },
+            {
+              "value": 3,
+              "count": 31271,
+              "share": 0.0992
+            },
+            {
+              "value": 4,
+              "count": 30542,
+              "share": 0.0968
+            },
+            {
+              "value": 6,
+              "count": 30352,
+              "share": 0.0962
+            }
+          ],
+          "top1_value": 5,
+          "top1_share_of_rows": 0.1028
+        },
+        {
+          "name": "radius",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 13,
+          "min": 98,
+          "max": 9000,
+          "median": 1100.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 1100,
+              "count": 286361,
+              "share": 0.908
+            },
+            {
+              "value": 98,
+              "count": 16013,
+              "share": 0.0508
+            },
+            {
+              "value": 1070,
+              "count": 3353,
+              "share": 0.0106
+            },
+            {
+              "value": 597,
+              "count": 2393,
+              "share": 0.0076
+            },
+            {
+              "value": 1400,
+              "count": 1943,
+              "share": 0.0062
+            }
+          ],
+          "top1_value": 1100,
+          "top1_share_of_rows": 0.908
+        },
+        {
+          "name": "duration",
+          "dtype": "double",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 2,
+          "min": 0.10000000149011612,
+          "max": 0.5,
+          "median": 0.5,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 0.5,
+              "count": 257574,
+              "share": 0.8167
+            },
+            {
+              "value": 0.10000000149011612,
+              "count": 57808,
+              "share": 0.1833
+            }
+          ],
+          "top1_value": 0.5,
+          "top1_share_of_rows": 0.8167
+        },
+        {
+          "name": "is_step",
+          "dtype": "bool",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 2,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": true,
+              "count": 257574,
+              "share": 0.8167
+            },
+            {
+              "value": false,
+              "count": 57808,
+              "share": 0.1833
+            }
+          ],
+          "top1_value": true,
+          "top1_share_of_rows": 0.8167
+        },
+        {
+          "name": "second",
+          "dtype": "double",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 131452,
+          "min": 53.390625,
+          "max": 3339.765625,
+          "median": 1226.234375,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 1748.703125,
+          "top1_share_of_rows": 0.0001
+        },
+        {
+          "name": "player_id_fixed",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 11,
+          "min": 1,
+          "max": 11,
+          "median": 6.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 3,
+              "count": 33991,
+              "share": 0.1078
+            },
+            {
+              "value": 8,
+              "count": 33164,
+              "share": 0.1052
+            },
+            {
+              "value": 5,
+              "count": 32056,
+              "share": 0.1016
+            },
+            {
+              "value": 6,
+              "count": 31407,
+              "share": 0.0996
+            },
+            {
+              "value": 4,
+              "count": 31258,
+              "share": 0.0991
+            }
+          ],
+          "top1_value": 3,
+          "top1_share_of_rows": 0.1078
+        },
+        {
+          "name": "player_x_pos",
+          "dtype": "double",
+          "null_count": 7548,
+          "null_rate": 0.023933,
+          "n_distinct": 266358,
+          "min": -2922.982666015625,
+          "max": 3497.93896484375,
+          "median": 36.24844932556152,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": -1947.010009765625,
+          "top1_share_of_rows": 0.0023
+        },
+        {
+          "name": "player_y_pos",
+          "dtype": "double",
+          "null_count": 7548,
+          "null_rate": 0.023933,
+          "n_distinct": 268022,
+          "min": -2597.9853515625,
+          "max": 3512.85302734375,
+          "median": -283.60784912109375,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": -2288.0,
+          "top1_share_of_rows": 0.0033
+        },
+        {
+          "name": "player_z_pos",
+          "dtype": "double",
+          "null_count": 7548,
+          "null_rate": 0.023933,
+          "n_distinct": 110979,
+          "min": -775.96875,
+          "max": 1902.03125,
+          "median": -63.96875,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": -415.96875,
+          "top1_share_of_rows": 0.1225
+        },
+        {
+          "name": "player_x_vel",
+          "dtype": "double",
+          "null_count": 7548,
+          "null_rate": 0.023933,
+          "n_distinct": 120756,
+          "min": -426.015625,
+          "max": 324.6015625,
+          "median": 0.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 0.0,
+          "top1_share_of_rows": 0.073
+        },
+        {
+          "name": "player_y_vel",
+          "dtype": "double",
+          "null_count": 7548,
+          "null_rate": 0.023933,
+          "n_distinct": 117574,
+          "min": -382.931640625,
+          "max": 309.546875,
+          "median": 0.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 0.0,
+          "top1_share_of_rows": 0.0667
+        },
+        {
+          "name": "player_z_vel",
+          "dtype": "double",
+          "null_count": 7548,
+          "null_rate": 0.023933,
+          "n_distinct": 75645,
+          "min": -1056.0,
+          "max": 1144.9200439453125,
+          "median": 0.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 0.0,
+          "top1_share_of_rows": 0.4982
+        },
+        {
+          "name": "player_phi_ang",
+          "dtype": "double",
+          "null_count": 7548,
+          "null_rate": 0.023933,
+          "n_distinct": 58172,
+          "min": 1.0000991821289062,
+          "max": 178.99990844726562,
+          "median": 92.15606689453125,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 90.0,
+          "top1_share_of_rows": 0.0153
+        },
+        {
+          "name": "player_theta_ang",
+          "dtype": "double",
+          "null_count": 7548,
+          "null_rate": 0.023933,
+          "n_distinct": 223777,
+          "min": -180.0,
+          "max": 179.99932861328125,
+          "median": 0.39739227294921875,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": -90.0,
+          "top1_share_of_rows": 0.0022
+        },
+        {
+          "name": "player_weapon_code",
+          "dtype": "int64",
+          "null_count": 7589,
+          "null_rate": 0.024063,
+          "n_distinct": 62,
+          "min": 1,
+          "max": 526,
+          "median": 48.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 7,
+          "top1_share_of_rows": 0.1224
+        },
+        {
+          "name": "player_team_code",
+          "dtype": "int64",
+          "null_count": 7548,
+          "null_rate": 0.023933,
+          "n_distinct": 2,
+          "min": 2,
+          "max": 3,
+          "median": 2.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 2,
+              "count": 160785,
+              "share": 0.5098
+            },
+            {
+              "value": 3,
+              "count": 147049,
+              "share": 0.4663
+            }
+          ],
+          "top1_value": 2,
+          "top1_share_of_rows": 0.5098
+        },
+        {
+          "name": "match_key",
+          "dtype": "string",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 20,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": "csds/2026/10/08/6cb9cbd6-af71-4bc8-8456-e21a063c5e37/csds",
+              "count": 21643,
+              "share": 0.0686
+            },
+            {
+              "value": "csds/2026/10/08/a6a9408e-bd5e-4c61-9293-da2027e3e20c/csds",
+              "count": 21372,
+              "share": 0.0678
+            },
+            {
+              "value": "csds/2026/10/08/b0196443-9130-4bdb-8c1c-8902c49bf040/csds",
+              "count": 20968,
+              "share": 0.0665
+            },
+            {
+              "value": "csds/2026/10/08/3b220543-d2fb-42ba-8a29-e452e424a95b/csds",
+              "count": 19561,
+              "share": 0.062
+            },
+            {
+              "value": "csds/2026/10/08/54a5bd1c-9926-4901-bfd0-5c9ed076c114/csds",
+              "count": 18318,
+              "share": 0.0581
+            }
+          ],
+          "top1_value": "csds/2026/10/08/6cb9cbd6-af71-4bc8-8456-e21a063c5e37/csds",
+          "top1_share_of_rows": 0.0686,
+          "empty_or_blank_string_count": 0,
+          "nullish_string_count": 0
+        }
+      ],
+      "flags": {
+        "constant": [],
+        "over50_null": [],
+        "sentinel": [
+          {
+            "column": "tick",
+            "detail": "sentinel-like values: 65535x1",
+            "count": 1,
+            "examples": [
+              {
+                "match_key": "6cb9cbd6-af71-4bc8-8456-e21a063c5e37",
+                "round": 10,
+                "tick": 65535,
+                "player_id": 10
+              }
+            ]
+          },
+          {
+            "column": "player_x_vel",
+            "detail": "sentinel-like values: -1x7",
+            "count": 7,
+            "examples": [
+              {
+                "match_key": "0ccfe0a7-d609-4888-be80-438c11c6e141",
+                "round": 16,
+                "tick": 112865,
+                "player_id": 6,
+                "player_x_vel": -1.0
+              },
+              {
+                "match_key": "2b363fc0-92e8-4e8b-ad4e-9f57af56cc22",
+                "round": 15,
+                "tick": 108429,
+                "player_id": 5,
+                "player_x_vel": -1.0
+              }
+            ]
+          },
+          {
+            "column": "player_y_vel",
+            "detail": "sentinel-like values: -1x6",
+            "count": 6,
+            "examples": [
+              {
+                "match_key": "54a5bd1c-9926-4901-bfd0-5c9ed076c114",
+                "round": 22,
+                "tick": 154485,
+                "player_id": 7,
+                "player_y_vel": -1.0
+              },
+              {
+                "match_key": "6d0b9016-20e0-4ec0-b051-2d53c260dbb0",
+                "round": 16,
+                "tick": 93643,
+                "player_id": 3,
+                "player_y_vel": -1.0
+              }
+            ]
+          },
+          {
+            "column": "player_z_vel",
+            "detail": "sentinel-like values: -1x26",
+            "count": 26,
+            "examples": [
+              {
+                "match_key": "016ea1cf-d349-4a22-a388-61f9bc2ab05a",
+                "round": 20,
+                "tick": 153288,
+                "player_id": 11,
+                "player_z_vel": -1.0
+              },
+              {
+                "match_key": "099a55fb-1328-4af1-a888-1c889ffc563e",
+                "round": 11,
+                "tick": 61725,
+                "player_id": 5,
+                "player_z_vel": -1.0
+              }
+            ]
+          }
+        ],
+        "spike": [
+          {
+            "column": "radius",
+            "detail": "value 1100 holds 90.8% of rows",
+            "count": 286366,
+            "examples": []
+          },
+          {
+            "column": "duration",
+            "detail": "value 0.5 holds 81.7% of rows",
+            "count": 257572,
+            "examples": []
+          },
+          {
+            "column": "is_step",
+            "detail": "value True holds 81.7% of rows",
+            "count": 257572,
+            "examples": []
+          },
+          {
+            "column": "player_z_vel",
+            "detail": "value 0.0 holds 49.8% of rows",
+            "count": 157123,
+            "examples": []
+          },
+          {
+            "column": "player_team_code",
+            "detail": "value 2 holds 51.0% of rows",
+            "count": 160781,
+            "examples": []
+          }
+        ],
+        "impossible_value": [],
+        "identical_columns": [],
+        "one_to_one_pairs": [
+          [
+            "duration",
+            "is_step"
+          ]
+        ],
+        "impossible_checked_columns": [],
+        "identical_checked_columns": [
+          "round",
+          "tick",
+          "player_id",
+          "radius",
+          "duration",
+          "is_step",
+          "second",
+          "player_id_fixed",
+          "player_x_pos",
+          "player_y_pos",
+          "player_z_pos",
+          "player_x_vel",
+          "player_y_vel",
+          "player_z_vel",
+          "player_phi_ang",
+          "player_theta_ang",
+          "player_weapon_code",
+          "player_team_code",
+          "match_key"
+        ],
+        "duplicates": {
+          "full_row_excess": {
+            "count": 0,
+            "examples": []
+          },
+          "key_excess_match_key_round_player_id_tick": {
+            "count": 23967,
+            "key": [
+              "match_key",
+              "round",
+              "player_id",
+              "tick"
+            ],
+            "examples": [
+              {
+                "match_key": "016ea1cf-d349-4a22-a388-61f9bc2ab05a",
+                "round": 1,
+                "player_id": 0,
+                "tick": 6667
+              },
+              {
+                "match_key": "016ea1cf-d349-4a22-a388-61f9bc2ab05a",
+                "round": 1,
+                "player_id": 0,
+                "tick": 6667
+              }
+            ],
+            "groups_with_varying_column_counts": {
+              "radius": 15934,
+              "duration": 18544,
+              "is_step": 18544
+            },
+            "top_patterns_in_dup_rows": [
+              {
+                "pattern": "radius|duration|is_step = 1100|0.5|True",
+                "rows": 18544
+              },
+              {
+                "pattern": "radius|duration|is_step = 98|0.10000000149011612|False",
+                "rows": 12455
+              },
+              {
+                "pattern": "radius|duration|is_step = 1100|0.10000000149011612|False",
+                "rows": 7252
+              }
+            ]
+          }
+        },
+        "match_row_count_outliers": {
+          "zero_row_matches": 1732,
+          "median_rows_per_nonzero_match": 15599.0,
+          "max_rows_per_match": 21643,
+          "min_rows_per_match": 6605,
+          "top3_far_from_median": [
+            {
+              "match": "58fbf59c-b93a-4b69-bee4-c5e88dfdbff1",
+              "rows": 6605,
+              "median_nonzero_match": 15599.0,
+              "ratio_to_median": 0.423
+            },
+            {
+              "match": "6cb9cbd6-af71-4bc8-8456-e21a063c5e37",
+              "rows": 21643,
+              "median_nonzero_match": 15599.0,
+              "ratio_to_median": 1.387
+            },
+            {
+              "match": "a6a9408e-bd5e-4c61-9293-da2027e3e20c",
+              "rows": 21372,
+              "median_nonzero_match": 15599.0,
+              "ratio_to_median": 1.37
+            }
+          ]
+        }
+      },
+      "extra": {
+        "match_key_dates": {
+          "matches": 20,
+          "by_date_top5": {
+            "2026-10-08": 20
+          },
+          "first_date": "2026-10-08",
+          "last_date": "2026-10-08"
+        },
+        "distinct_player_id_per_match": {
+          "10": 18,
+          "11": 2
+        },
+        "wingman_matches_in_channel": 0,
+        "round_le_0": {
+          "count": 0,
+          "examples": []
+        },
+        "round_gt_header_max_rounds": {
+          "count": 10743,
+          "examples": [
+            {
+              "match": "54a5bd1c-9926-4901-bfd0-5c9ed076c114",
+              "round": 25,
+              "max_rounds": 24.0
+            },
+            {
+              "match": "54a5bd1c-9926-4901-bfd0-5c9ed076c114",
+              "round": 25,
+              "max_rounds": 24.0
+            }
+          ]
+        },
+        "round_min_max": {
+          "min": 1,
+          "max": 29
+        },
+        "tick_negative": {
+          "count": 0
+        },
+        "second_vs_tick_div_rate": {
+          "rows_gt_2s_off": 0,
+          "rows_checked": 315382,
+          "median_abs_diff_s": 0.0,
+          "examples": []
+        },
+        "horizontal_speed": {
+          "rows_gt_250": 29466,
+          "rows_gt_1000": 0,
+          "rows_gt_10000": 0,
+          "max": 442.3616182147037,
+          "matches_with_gt_1000": 0,
+          "rows_checked": 307834
+        },
+        "phi_outside_-180_360": {
+          "count": 0,
+          "range": [
+            1.0000991821289062,
+            178.99990844726562
+          ],
+          "share_exactly_90": 0.0153
+        },
+        "theta_beyond_pm90_informational": {
+          "count": 151284,
+          "range": [
+            -180.0,
+            179.99932861328125
+          ],
+          "note": "theta spans +/-180 so it looks like yaw, not pitch"
+        },
+        "player_id_vs_player_id_fixed": {
+          "rows_both_present": 315382,
+          "mismatch": 294907,
+          "examples": [
+            {
+              "match": "016ea1cf-d349-4a22-a388-61f9bc2ab05a",
+              "round": 1,
+              "player_id": 6.0,
+              "player_id_fixed": 9.0
+            },
+            {
+              "match": "016ea1cf-d349-4a22-a388-61f9bc2ab05a",
+              "round": 1,
+              "player_id": 3.0,
+              "player_id_fixed": 6.0
+            }
+          ]
+        },
+        "player_id_negative": {
+          "count": 0
+        },
+        "player_id_fixed_null_rate": 0.0
+      }
+    },
+    {
+      "channel": "player_spawn",
+      "tome_folder": "basic_player_spawn.2026-09-18,2026-10-08",
+      "pages": [
+        "dataframe_00000"
+      ],
+      "page_rows": [
+        331291
+      ],
+      "rows": 331291,
+      "ncols": 16,
+      "distinct_match_keys": 1751,
+      "universe_matches": 1752,
+      "coverage_share": 0.9994,
+      "zero_row_matches": 1,
+      "match_keys_not_in_header": 0,
+      "columns": [
+        {
+          "name": "round",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 48,
+          "min": 1,
+          "max": 48,
+          "median": 11.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 2,
+              "count": 16668,
+              "share": 0.0503
+            },
+            {
+              "value": 3,
+              "count": 16656,
+              "share": 0.0503
+            },
+            {
+              "value": 4,
+              "count": 16653,
+              "share": 0.0503
+            },
+            {
+              "value": 5,
+              "count": 16619,
+              "share": 0.0502
+            },
+            {
+              "value": 6,
+              "count": 16603,
+              "share": 0.0501
+            }
+          ],
+          "top1_value": 2,
+          "top1_share_of_rows": 0.0503
+        },
+        {
+          "name": "tick",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 30817,
+          "min": 164,
+          "max": 325581,
+          "median": 67385.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 27507,
+          "top1_share_of_rows": 0.0002
+        },
+        {
+          "name": "player_id",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 20,
+          "min": 0,
+          "max": 19,
+          "median": 4.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 3,
+              "count": 34060,
+              "share": 0.1028
+            },
+            {
+              "value": 2,
+              "count": 34045,
+              "share": 0.1028
+            },
+            {
+              "value": 1,
+              "count": 33525,
+              "share": 0.1012
+            },
+            {
+              "value": 0,
+              "count": 32917,
+              "share": 0.0994
+            },
+            {
+              "value": 4,
+              "count": 32234,
+              "share": 0.0973
+            }
+          ],
+          "top1_value": 3,
+          "top1_share_of_rows": 0.1028
+        },
+        {
+          "name": "second",
+          "dtype": "double",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 30817,
+          "min": 2.5625,
+          "max": 5087.203125,
+          "median": 1052.890625,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 429.796875,
+          "top1_share_of_rows": 0.0002
+        },
+        {
+          "name": "player_id_fixed",
+          "dtype": "double",
+          "null_count": 241,
+          "null_rate": 0.000727,
+          "n_distinct": 19,
+          "min": 1.0,
+          "max": 19.0,
+          "median": 6.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 4.0,
+              "count": 33742,
+              "share": 0.1019
+            },
+            {
+              "value": 3.0,
+              "count": 33266,
+              "share": 0.1004
+            },
+            {
+              "value": 8.0,
+              "count": 32236,
+              "share": 0.0973
+            },
+            {
+              "value": 9.0,
+              "count": 32236,
+              "share": 0.0973
+            },
+            {
+              "value": 10.0,
+              "count": 32169,
+              "share": 0.0971
+            }
+          ],
+          "top1_value": 4.0,
+          "top1_share_of_rows": 0.1019
+        },
+        {
+          "name": "player_x_pos",
+          "dtype": "double",
+          "null_count": 395,
+          "null_rate": 0.001192,
+          "n_distinct": 230,
+          "min": -3002.0,
+          "max": 3280.0,
+          "median": -384.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 1136.0,
+          "top1_share_of_rows": 0.0422
+        },
+        {
+          "name": "player_y_pos",
+          "dtype": "double",
+          "null_count": 395,
+          "null_rate": 0.001192,
+          "n_distinct": 219,
+          "min": -2614.489990234375,
+          "max": 2480.5537109375,
+          "median": -115.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": -1976.0,
+          "top1_share_of_rows": 0.0419
+        },
+        {
+          "name": "player_z_pos",
+          "dtype": "double",
+          "null_count": 395,
+          "null_rate": 0.001192,
+          "n_distinct": 323,
+          "min": -639.96875,
+          "max": 11805.099609375,
+          "median": -63.96875,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": -63.96875,
+          "top1_share_of_rows": 0.04
+        },
+        {
+          "name": "player_x_vel",
+          "dtype": "double",
+          "null_count": 395,
+          "null_rate": 0.001192,
+          "n_distinct": 60600,
+          "min": -318084.84375,
+          "max": 340512.078125,
+          "median": 0.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 0.0,
+          "top1_share_of_rows": 0.8116
+        },
+        {
+          "name": "player_y_vel",
+          "dtype": "double",
+          "null_count": 395,
+          "null_rate": 0.001192,
+          "n_distinct": 60604,
+          "min": -300342.765625,
+          "max": 251704.03125,
+          "median": 0.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 0.0,
+          "top1_share_of_rows": 0.8115
+        },
+        {
+          "name": "player_z_vel",
+          "dtype": "double",
+          "null_count": 395,
+          "null_rate": 0.001192,
+          "n_distinct": 51472,
+          "min": -26617.625,
+          "max": 1038134.03125,
+          "median": 0.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 0.0,
+          "top1_share_of_rows": 0.8163
+        },
+        {
+          "name": "player_phi_ang",
+          "dtype": "double",
+          "null_count": 395,
+          "null_rate": 0.001192,
+          "n_distinct": 53654,
+          "min": 1.0000991821289062,
+          "max": 178.99990844726562,
+          "median": 90.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 90.0,
+          "top1_share_of_rows": 0.6691
+        },
+        {
+          "name": "player_theta_ang",
+          "dtype": "double",
+          "null_count": 395,
+          "null_rate": 0.001192,
+          "n_distinct": 100478,
+          "min": -180.0,
+          "max": 179.99758911132812,
+          "median": -16.2825927734375,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": -90.0,
+          "top1_share_of_rows": 0.1112
+        },
+        {
+          "name": "player_weapon_code",
+          "dtype": "int64",
+          "null_count": 597,
+          "null_rate": 0.001802,
+          "n_distinct": 64,
+          "min": 1,
+          "max": 526,
+          "median": 49.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 61,
+          "top1_share_of_rows": 0.3415
+        },
+        {
+          "name": "player_team_code",
+          "dtype": "int64",
+          "null_count": 420,
+          "null_rate": 0.001268,
+          "n_distinct": 2,
+          "min": 2,
+          "max": 3,
+          "median": 2.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 2,
+              "count": 165457,
+              "share": 0.4994
+            },
+            {
+              "value": 3,
+              "count": 165414,
+              "share": 0.4993
+            }
+          ],
+          "top1_value": 2,
+          "top1_share_of_rows": 0.4994
+        },
+        {
+          "name": "match_key",
+          "dtype": "string",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 1751,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": "csds/2026/10/08/5c541eaa-41a1-4e32-8875-595706c9778c/csds",
+          "top1_share_of_rows": 0.0014,
+          "empty_or_blank_string_count": 0,
+          "nullish_string_count": 0
+        }
+      ],
+      "flags": {
+        "constant": [],
+        "over50_null": [],
+        "sentinel": [],
+        "spike": [
+          {
+            "column": "player_x_vel",
+            "detail": "value 0.0 holds 81.2% of rows",
+            "count": 268875,
+            "examples": []
+          },
+          {
+            "column": "player_y_vel",
+            "detail": "value 0.0 holds 81.2% of rows",
+            "count": 268842,
+            "examples": []
+          },
+          {
+            "column": "player_z_vel",
+            "detail": "value 0.0 holds 81.6% of rows",
+            "count": 270432,
+            "examples": []
+          },
+          {
+            "column": "player_phi_ang",
+            "detail": "value 90.0 holds 66.9% of rows",
+            "count": 221666,
+            "examples": []
+          },
+          {
+            "column": "player_weapon_code",
+            "detail": "value 61 holds 34.2% of rows",
+            "count": 113135,
+            "examples": []
+          },
+          {
+            "column": "player_team_code",
+            "detail": "value 2 holds 49.9% of rows",
+            "count": 165446,
+            "examples": []
+          }
+        ],
+        "impossible_value": [],
+        "identical_columns": [],
+        "one_to_one_pairs": [],
+        "impossible_checked_columns": [],
+        "identical_checked_columns": [
+          "round",
+          "tick",
+          "player_id",
+          "second",
+          "player_id_fixed",
+          "player_x_pos",
+          "player_y_pos",
+          "player_z_pos",
+          "player_x_vel",
+          "player_y_vel",
+          "player_z_vel",
+          "player_phi_ang",
+          "player_theta_ang",
+          "player_weapon_code",
+          "player_team_code",
+          "match_key"
+        ],
+        "duplicates": {
+          "full_row_excess": {
+            "count": 0,
+            "examples": []
+          },
+          "key_excess_match_key_round_player_id_tick": {
+            "count": 0,
+            "key": [
+              "match_key",
+              "round",
+              "player_id",
+              "tick"
+            ],
+            "examples": [],
+            "groups_with_varying_column_counts": {},
+            "top_patterns_in_dup_rows": []
+          }
+        },
+        "match_row_count_outliers": {
+          "zero_row_matches": 1,
+          "median_rows_per_nonzero_match": 200.0,
+          "max_rows_per_match": 474,
+          "min_rows_per_match": 19,
+          "top3_far_from_median": [
+            {
+              "match": "5c541eaa-41a1-4e32-8875-595706c9778c",
+              "rows": 474,
+              "median_nonzero_match": 200.0,
+              "ratio_to_median": 2.37
+            },
+            {
+              "match": "9a7cc4c1-5ea4-427b-bd5c-c0205a994650",
+              "rows": 470,
+              "median_nonzero_match": 200.0,
+              "ratio_to_median": 2.35
+            },
+            {
+              "match": "9c9e7287-a5ce-443d-aeba-81e083bbedf9",
+              "rows": 451,
+              "median_nonzero_match": 200.0,
+              "ratio_to_median": 2.255
+            }
+          ]
+        }
+      },
+      "extra": {
+        "match_key_dates": {
+          "matches": 1751,
+          "by_date_top5": {
+            "2026-10-08": 1135,
+            "2026-10-04": 109,
+            "2026-10-06": 104,
+            "2026-10-03": 100,
+            "2026-10-07": 88
+          },
+          "first_date": "2026-10-01",
+          "last_date": "2026-10-08"
+        },
+        "distinct_player_id_per_match": {
+          "3": 1,
+          "4": 146,
+          "5": 2,
+          "9": 4,
+          "10": 1193,
+          "11": 283,
+          "12": 76,
+          "13": 27,
+          "14": 7,
+          "15": 5,
+          "16": 5,
+          "17": 1,
+          "19": 1
+        },
+        "wingman_matches_in_channel": 149,
+        "round_le_0": {
+          "count": 0,
+          "examples": []
+        },
+        "round_gt_header_max_rounds": {
+          "count": 11482,
+          "examples": [
+            {
+              "match": "5cc15153-bcec-4d6a-94c5-2ce09fe23c8c",
+              "round": 25,
+              "max_rounds": 24.0
+            },
+            {
+              "match": "5cc15153-bcec-4d6a-94c5-2ce09fe23c8c",
+              "round": 25,
+              "max_rounds": 24.0
+            }
+          ]
+        },
+        "round_min_max": {
+          "min": 1,
+          "max": 48
+        },
+        "tick_negative": {
+          "count": 0
+        },
+        "second_vs_tick_div_rate": {
+          "rows_gt_2s_off": 0,
+          "rows_checked": 331291,
+          "median_abs_diff_s": 0.0,
+          "examples": []
+        },
+        "horizontal_speed": {
+          "rows_gt_250": 21670,
+          "rows_gt_1000": 16953,
+          "rows_gt_10000": 16801,
+          "max": 344296.63055565726,
+          "matches_with_gt_1000": 382,
+          "rows_checked": 330896
+        },
+        "z_pos_gt_10000": {
+          "count": 4999,
+          "maps": {
+            "de_vertigo": 4999
+          }
+        },
+        "phi_outside_-180_360": {
+          "count": 0,
+          "range": [
+            1.0000991821289062,
+            178.99990844726562
+          ],
+          "share_exactly_90": 0.6691
+        },
+        "theta_beyond_pm90_informational": {
+          "count": 135150,
+          "range": [
+            -180.0,
+            179.99758911132812
+          ],
+          "note": "theta spans +/-180 so it looks like yaw, not pitch"
+        },
+        "player_id_vs_player_id_fixed": {
+          "rows_both_present": 331050,
+          "mismatch": 301793,
+          "examples": [
+            {
+              "match": "0f044ff9-4360-4738-8eb2-a82b616b2d87",
+              "round": 1,
+              "player_id": 3.0,
+              "player_id_fixed": 1.0
+            },
+            {
+              "match": "0f044ff9-4360-4738-8eb2-a82b616b2d87",
+              "round": 1,
+              "player_id": 4.0,
+              "player_id_fixed": 2.0
+            }
+          ]
+        },
+        "player_id_negative": {
+          "count": 0
+        },
+        "player_id_fixed_null_rate": 0.000727
+      }
+    },
+    {
+      "channel": "player_chat",
+      "tome_folder": "basic_player_chat.2026-09-18,2026-10-08",
+      "pages": [
+        "dataframe_00000"
+      ],
+      "page_rows": [
+        19586
+      ],
+      "rows": 19586,
+      "ncols": 18,
+      "distinct_match_keys": 1053,
+      "universe_matches": 1752,
+      "coverage_share": 0.601,
+      "zero_row_matches": 699,
+      "match_keys_not_in_header": 0,
+      "columns": [
+        {
+          "name": "round",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 47,
+          "min": 1,
+          "max": 48,
+          "median": 14.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 12,
+              "count": 1241,
+              "share": 0.0634
+            },
+            {
+              "value": 1,
+              "count": 1193,
+              "share": 0.0609
+            },
+            {
+              "value": 13,
+              "count": 1151,
+              "share": 0.0588
+            },
+            {
+              "value": 15,
+              "count": 1013,
+              "share": 0.0517
+            },
+            {
+              "value": 14,
+              "count": 1005,
+              "share": 0.0513
+            }
+          ],
+          "top1_value": 12,
+          "top1_share_of_rows": 0.0634
+        },
+        {
+          "name": "tick",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 17835,
+          "min": 2518,
+          "max": 334448,
+          "median": 87327.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 133034,
+          "top1_share_of_rows": 0.0003
+        },
+        {
+          "name": "player_id",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 13,
+          "min": 0,
+          "max": 12,
+          "median": 5.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 7,
+              "count": 2073,
+              "share": 0.1058
+            },
+            {
+              "value": 9,
+              "count": 1960,
+              "share": 0.1001
+            },
+            {
+              "value": 5,
+              "count": 1943,
+              "share": 0.0992
+            },
+            {
+              "value": 6,
+              "count": 1932,
+              "share": 0.0986
+            },
+            {
+              "value": 2,
+              "count": 1906,
+              "share": 0.0973
+            }
+          ],
+          "top1_value": 7,
+          "top1_share_of_rows": 0.1058
+        },
+        {
+          "name": "text",
+          "dtype": "string",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 1,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": "redacted",
+              "count": 19586,
+              "share": 1.0
+            }
+          ],
+          "top1_value": "redacted",
+          "top1_share_of_rows": 1.0,
+          "empty_or_blank_string_count": 0,
+          "nullish_string_count": 0
+        },
+        {
+          "name": "is_chat_all",
+          "dtype": "bool",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 1,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": true,
+              "count": 19586,
+              "share": 1.0
+            }
+          ],
+          "top1_value": true,
+          "top1_share_of_rows": 1.0
+        },
+        {
+          "name": "second",
+          "dtype": "double",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 17835,
+          "min": 39.34375,
+          "max": 5225.75,
+          "median": 1364.484375,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 2078.65625,
+          "top1_share_of_rows": 0.0003
+        },
+        {
+          "name": "player_id_fixed",
+          "dtype": "int64",
+          "null_count": 4,
+          "null_rate": 0.000204,
+          "n_distinct": 17,
+          "min": 1,
+          "max": 19,
+          "median": 7.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 10,
+              "count": 2452,
+              "share": 0.1252
+            },
+            {
+              "value": 7,
+              "count": 2146,
+              "share": 0.1096
+            },
+            {
+              "value": 9,
+              "count": 2008,
+              "share": 0.1025
+            },
+            {
+              "value": 3,
+              "count": 1886,
+              "share": 0.0963
+            },
+            {
+              "value": 8,
+              "count": 1854,
+              "share": 0.0947
+            }
+          ],
+          "top1_value": 10,
+          "top1_share_of_rows": 0.1252
+        },
+        {
+          "name": "player_x_pos",
+          "dtype": "double",
+          "null_count": 8247,
+          "null_rate": 0.421066,
+          "n_distinct": 2050,
+          "min": -2591.3916015625,
+          "max": 3094.2685546875,
+          "median": -367.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": -1776.0,
+          "top1_share_of_rows": 0.0264
+        },
+        {
+          "name": "player_y_pos",
+          "dtype": "double",
+          "null_count": 8247,
+          "null_rate": 0.421066,
+          "n_distinct": 2042,
+          "min": -2603.077392578125,
+          "max": 3491.29443359375,
+          "median": -115.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": -1800.0,
+          "top1_share_of_rows": 0.0293
+        },
+        {
+          "name": "player_z_pos",
+          "dtype": "double",
+          "null_count": 8247,
+          "null_rate": 0.421066,
+          "n_distinct": 1365,
+          "min": -775.96875,
+          "max": 11874.03125,
+          "median": -63.96875,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": -63.96875,
+          "top1_share_of_rows": 0.0332
+        },
+        {
+          "name": "player_x_vel",
+          "dtype": "double",
+          "null_count": 8247,
+          "null_rate": 0.421066,
+          "n_distinct": 291,
+          "min": -249.984375,
+          "max": 249.9140625,
+          "median": 0.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 0.0,
+          "top1_share_of_rows": 0.5636
+        },
+        {
+          "name": "player_y_vel",
+          "dtype": "double",
+          "null_count": 8247,
+          "null_rate": 0.421066,
+          "n_distinct": 295,
+          "min": -250.515625,
+          "max": 249.98828125,
+          "median": 0.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 0.0,
+          "top1_share_of_rows": 0.5634
+        },
+        {
+          "name": "player_z_vel",
+          "dtype": "double",
+          "null_count": 8247,
+          "null_rate": 0.421066,
+          "n_distinct": 183,
+          "min": -368.0,
+          "max": 230.0,
+          "median": 0.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 0.0,
+          "top1_share_of_rows": 0.5695
+        },
+        {
+          "name": "player_phi_ang",
+          "dtype": "double",
+          "null_count": 8247,
+          "null_rate": 0.421066,
+          "n_distinct": 4623,
+          "min": 31.09508514404297,
+          "max": 178.99990844726562,
+          "median": 90.6004638671875,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 90.0,
+          "top1_share_of_rows": 0.1418
+        },
+        {
+          "name": "player_theta_ang",
+          "dtype": "double",
+          "null_count": 8247,
+          "null_rate": 0.421066,
+          "n_distinct": 5996,
+          "min": -179.94163513183594,
+          "max": 179.9725341796875,
+          "median": -13.36041259765625,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": -90.0,
+          "top1_share_of_rows": 0.0219
+        },
+        {
+          "name": "player_weapon_code",
+          "dtype": "int64",
+          "null_count": 8256,
+          "null_rate": 0.421526,
+          "n_distinct": 56,
+          "min": 1,
+          "max": 526,
+          "median": 59.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 61,
+          "top1_share_of_rows": 0.0717
+        },
+        {
+          "name": "player_team_code",
+          "dtype": "int64",
+          "null_count": 8247,
+          "null_rate": 0.421066,
+          "n_distinct": 2,
+          "min": 2,
+          "max": 3,
+          "median": 2.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 2,
+              "count": 5736,
+              "share": 0.2929
+            },
+            {
+              "value": 3,
+              "count": 5603,
+              "share": 0.2861
+            }
+          ],
+          "top1_value": 2,
+          "top1_share_of_rows": 0.2929
+        },
+        {
+          "name": "match_key",
+          "dtype": "string",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 1053,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": "csds/2026/10/08/35dc0c41-df64-432f-87dd-5bf8501fe8e8/csds",
+          "top1_share_of_rows": 0.007,
+          "empty_or_blank_string_count": 0,
+          "nullish_string_count": 0
+        }
+      ],
+      "flags": {
+        "constant": [
+          {
+            "column": "text",
+            "detail": "one distinct non-null value (value='redacted'), null rate 0.0",
+            "count": 19586,
+            "examples": [
+              {
+                "value": "redacted",
+                "null_rate": 0.0
+              }
+            ]
+          },
+          {
+            "column": "is_chat_all",
+            "detail": "one distinct non-null value (value=True), null rate 0.0",
+            "count": 19586,
+            "examples": [
+              {
+                "value": true,
+                "null_rate": 0.0
+              }
+            ]
+          }
+        ],
+        "over50_null": [],
+        "sentinel": [
+          {
+            "column": "tick",
+            "detail": "sentinel-like values: 65535x1",
+            "count": 1,
+            "examples": [
+              {
+                "match_key": "d3c6cdd0-40db-4a4f-b38c-0c4ca1a91766",
+                "round": 8,
+                "tick": 65535,
+                "player_id": 2
+              }
+            ]
+          }
+        ],
+        "spike": [
+          {
+            "column": "player_x_vel",
+            "detail": "value 0.0 holds 56.4% of rows",
+            "count": 11038,
+            "examples": []
+          },
+          {
+            "column": "player_y_vel",
+            "detail": "value 0.0 holds 56.3% of rows",
+            "count": 11034,
+            "examples": []
+          },
+          {
+            "column": "player_z_vel",
+            "detail": "value 0.0 holds 57.0% of rows",
+            "count": 11154,
+            "examples": []
+          },
+          {
+            "column": "player_team_code",
+            "detail": "value 2 holds 29.3% of rows",
+            "count": 5736,
+            "examples": []
+          }
+        ],
+        "impossible_value": [],
+        "identical_columns": [],
+        "one_to_one_pairs": [],
+        "impossible_checked_columns": [],
+        "identical_checked_columns": [
+          "round",
+          "tick",
+          "player_id",
+          "text",
+          "is_chat_all",
+          "second",
+          "player_id_fixed",
+          "player_x_pos",
+          "player_y_pos",
+          "player_z_pos",
+          "player_x_vel",
+          "player_y_vel",
+          "player_z_vel",
+          "player_phi_ang",
+          "player_theta_ang",
+          "player_weapon_code",
+          "player_team_code",
+          "match_key"
+        ],
+        "duplicates": {
+          "full_row_excess": {
+            "count": 0,
+            "examples": []
+          },
+          "key_excess_match_key_round_player_id_tick": {
+            "count": 0,
+            "key": [
+              "match_key",
+              "round",
+              "player_id",
+              "tick"
+            ],
+            "examples": [],
+            "groups_with_varying_column_counts": {},
+            "top_patterns_in_dup_rows": []
+          }
+        },
+        "match_row_count_outliers": {
+          "zero_row_matches": 699,
+          "median_rows_per_nonzero_match": 12.0,
+          "max_rows_per_match": 137,
+          "min_rows_per_match": 1,
+          "top3_far_from_median": [
+            {
+              "match": "35dc0c41-df64-432f-87dd-5bf8501fe8e8",
+              "rows": 137,
+              "median_nonzero_match": 12.0,
+              "ratio_to_median": 11.417
+            },
+            {
+              "match": "c9a31441-99f1-48af-a852-ac0f3a488772",
+              "rows": 131,
+              "median_nonzero_match": 12.0,
+              "ratio_to_median": 10.917
+            },
+            {
+              "match": "d2b52558-a6d2-4ff5-bec9-37769ec8030b",
+              "rows": 123,
+              "median_nonzero_match": 12.0,
+              "ratio_to_median": 10.25
+            }
+          ]
+        }
+      },
+      "extra": {
+        "match_key_dates": {
+          "matches": 1053,
+          "by_date_top5": {
+            "2026-10-08": 1029,
+            "2026-10-03": 10,
+            "2026-10-07": 5,
+            "2026-10-02": 4,
+            "2026-10-01": 2
+          },
+          "first_date": "2026-10-01",
+          "last_date": "2026-10-08"
+        },
+        "distinct_player_id_per_match": {
+          "1": 51,
+          "2": 96,
+          "3": 143,
+          "4": 184,
+          "5": 173,
+          "6": 156,
+          "7": 119,
+          "8": 81,
+          "9": 41,
+          "10": 9
+        },
+        "wingman_matches_in_channel": 0,
+        "round_le_0": {
+          "count": 0,
+          "examples": []
+        },
+        "round_gt_header_max_rounds": {
+          "count": 1282,
+          "examples": [
+            {
+              "match": "5cc15153-bcec-4d6a-94c5-2ce09fe23c8c",
+              "round": 25,
+              "max_rounds": 24.0
+            },
+            {
+              "match": "5cc15153-bcec-4d6a-94c5-2ce09fe23c8c",
+              "round": 26,
+              "max_rounds": 24.0
+            }
+          ]
+        },
+        "round_min_max": {
+          "min": 1,
+          "max": 48
+        },
+        "tick_negative": {
+          "count": 0
+        },
+        "second_vs_tick_div_rate": {
+          "rows_gt_2s_off": 0,
+          "rows_checked": 19586,
+          "median_abs_diff_s": 0.0,
+          "examples": []
+        },
+        "horizontal_speed": {
+          "rows_gt_250": 83,
+          "rows_gt_1000": 0,
+          "rows_gt_10000": 0,
+          "max": 257.70663830367516,
+          "matches_with_gt_1000": 0,
+          "rows_checked": 11339
+        },
+        "z_pos_gt_10000": {
+          "count": 240,
+          "maps": {
+            "de_vertigo": 240
+          }
+        },
+        "phi_outside_-180_360": {
+          "count": 0,
+          "range": [
+            31.09508514404297,
+            178.99990844726562
+          ],
+          "share_exactly_90": 0.1418
+        },
+        "theta_beyond_pm90_informational": {
+          "count": 4947,
+          "range": [
+            -179.94163513183594,
+            179.9725341796875
+          ],
+          "note": "theta spans +/-180 so it looks like yaw, not pitch"
+        },
+        "player_id_vs_player_id_fixed": {
+          "rows_both_present": 19582,
+          "mismatch": 17992,
+          "examples": [
+            {
+              "match": "5cc15153-bcec-4d6a-94c5-2ce09fe23c8c",
+              "round": 1,
+              "player_id": 3.0,
+              "player_id_fixed": 6.0
+            },
+            {
+              "match": "5cc15153-bcec-4d6a-94c5-2ce09fe23c8c",
+              "round": 5,
+              "player_id": 0.0,
+              "player_id_fixed": 10.0
+            }
+          ]
+        },
+        "player_id_negative": {
+          "count": 0
+        },
+        "player_id_fixed_null_rate": 0.000204
+      }
+    },
+    {
+      "channel": "team_change",
+      "tome_folder": "basic_team_change.2026-09-18,2026-10-08",
+      "pages": [
+        "dataframe_00000"
+      ],
+      "page_rows": [
+        19302
+      ],
+      "rows": 19302,
+      "ncols": 20,
+      "distinct_match_keys": 1735,
+      "universe_matches": 1752,
+      "coverage_share": 0.9903,
+      "zero_row_matches": 17,
+      "match_keys_not_in_header": 0,
+      "columns": [
+        {
+          "name": "round",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 36,
+          "min": 1,
+          "max": 46,
+          "median": 12.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 12,
+              "count": 15937,
+              "share": 0.8257
+            },
+            {
+              "value": 27,
+              "count": 1641,
+              "share": 0.085
+            },
+            {
+              "value": 8,
+              "count": 625,
+              "share": 0.0324
+            },
+            {
+              "value": 33,
+              "count": 373,
+              "share": 0.0193
+            },
+            {
+              "value": 39,
+              "count": 130,
+              "share": 0.0067
+            }
+          ],
+          "top1_value": 12,
+          "top1_share_of_rows": 0.8257
+        },
+        {
+          "name": "tick",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 2465,
+          "min": 3062,
+          "max": 309768,
+          "median": 79065.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 90040,
+          "top1_share_of_rows": 0.0016
+        },
+        {
+          "name": "player_id",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 20,
+          "min": 0,
+          "max": 19,
+          "median": 5.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 3,
+              "count": 1951,
+              "share": 0.1011
+            },
+            {
+              "value": 2,
+              "count": 1947,
+              "share": 0.1009
+            },
+            {
+              "value": 1,
+              "count": 1923,
+              "share": 0.0996
+            },
+            {
+              "value": 0,
+              "count": 1889,
+              "share": 0.0979
+            },
+            {
+              "value": 4,
+              "count": 1801,
+              "share": 0.0933
+            }
+          ],
+          "top1_value": 3,
+          "top1_share_of_rows": 0.1011
+        },
+        {
+          "name": "old_team_code",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 3,
+          "min": 0,
+          "max": 3,
+          "median": 2.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 2,
+              "count": 9337,
+              "share": 0.4837
+            },
+            {
+              "value": 3,
+              "count": 9330,
+              "share": 0.4834
+            },
+            {
+              "value": 0,
+              "count": 635,
+              "share": 0.0329
+            }
+          ],
+          "top1_value": 2,
+          "top1_share_of_rows": 0.4837
+        },
+        {
+          "name": "new_team_code",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 2,
+          "min": 2,
+          "max": 3,
+          "median": 2.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 2,
+              "count": 9679,
+              "share": 0.5015
+            },
+            {
+              "value": 3,
+              "count": 9623,
+              "share": 0.4985
+            }
+          ],
+          "top1_value": 2,
+          "top1_share_of_rows": 0.5015
+        },
+        {
+          "name": "is_bot",
+          "dtype": "bool",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 2,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": false,
+              "count": 18647,
+              "share": 0.9661
+            },
+            {
+              "value": true,
+              "count": 655,
+              "share": 0.0339
+            }
+          ],
+          "top1_value": false,
+          "top1_share_of_rows": 0.9661
+        },
+        {
+          "name": "silent",
+          "dtype": "bool",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 2,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": true,
+              "count": 18667,
+              "share": 0.9671
+            },
+            {
+              "value": false,
+              "count": 635,
+              "share": 0.0329
+            }
+          ],
+          "top1_value": true,
+          "top1_share_of_rows": 0.9671
+        },
+        {
+          "name": "second",
+          "dtype": "double",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 2465,
+          "min": 47.84375,
+          "max": 4840.125,
+          "median": 1235.390625,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 1406.875,
+          "top1_share_of_rows": 0.0016
+        },
+        {
+          "name": "player_id_fixed",
+          "dtype": "double",
+          "null_count": 110,
+          "null_rate": 0.005699,
+          "n_distinct": 18,
+          "min": 1.0,
+          "max": 18.0,
+          "median": 6.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 4.0,
+              "count": 1941,
+              "share": 0.1006
+            },
+            {
+              "value": 3.0,
+              "count": 1938,
+              "share": 0.1004
+            },
+            {
+              "value": 2.0,
+              "count": 1915,
+              "share": 0.0992
+            },
+            {
+              "value": 1.0,
+              "count": 1870,
+              "share": 0.0969
+            },
+            {
+              "value": 8.0,
+              "count": 1802,
+              "share": 0.0934
+            }
+          ],
+          "top1_value": 4.0,
+          "top1_share_of_rows": 0.1006
+        },
+        {
+          "name": "player_x_pos",
+          "dtype": "double",
+          "null_count": 197,
+          "null_rate": 0.010206,
+          "n_distinct": 188,
+          "min": -3002.0,
+          "max": 3171.6435546875,
+          "median": -384.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 1136.0,
+          "top1_share_of_rows": 0.0423
+        },
+        {
+          "name": "player_y_pos",
+          "dtype": "double",
+          "null_count": 197,
+          "null_rate": 0.010206,
+          "n_distinct": 176,
+          "min": -2614.489990234375,
+          "max": 2480.5537109375,
+          "median": -115.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": -2288.0,
+          "top1_share_of_rows": 0.042
+        },
+        {
+          "name": "player_z_pos",
+          "dtype": "double",
+          "null_count": 197,
+          "null_rate": 0.010206,
+          "n_distinct": 242,
+          "min": -639.96875,
+          "max": 11804.90625,
+          "median": -63.96875,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": -63.96875,
+          "top1_share_of_rows": 0.0412
+        },
+        {
+          "name": "player_x_vel",
+          "dtype": "double",
+          "null_count": 197,
+          "null_rate": 0.010206,
+          "n_distinct": 3381,
+          "min": -272267.5546875,
+          "max": 266236.9375,
+          "median": 0.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 0.0,
+          "top1_share_of_rows": 0.8109
+        },
+        {
+          "name": "player_y_vel",
+          "dtype": "double",
+          "null_count": 197,
+          "null_rate": 0.010206,
+          "n_distinct": 3381,
+          "min": -239633.875,
+          "max": 207011.4375,
+          "median": 0.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 0.0,
+          "top1_share_of_rows": 0.8109
+        },
+        {
+          "name": "player_z_vel",
+          "dtype": "double",
+          "null_count": 197,
+          "null_rate": 0.010206,
+          "n_distinct": 3059,
+          "min": -22681.6015625,
+          "max": 26886.3984375,
+          "median": 0.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 0.0,
+          "top1_share_of_rows": 0.8154
+        },
+        {
+          "name": "player_phi_ang",
+          "dtype": "double",
+          "null_count": 197,
+          "null_rate": 0.010206,
+          "n_distinct": 5123,
+          "min": 12.067451477050781,
+          "max": 178.99990844726562,
+          "median": 90.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 90.0,
+          "top1_share_of_rows": 0.6568
+        },
+        {
+          "name": "player_theta_ang",
+          "dtype": "double",
+          "null_count": 197,
+          "null_rate": 0.010206,
+          "n_distinct": 6264,
+          "min": -180.0,
+          "max": 179.97357177734375,
+          "median": -17.339859008789062,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": -90.0,
+          "top1_share_of_rows": 0.1129
+        },
+        {
+          "name": "player_weapon_code",
+          "dtype": "int64",
+          "null_count": 207,
+          "null_rate": 0.010724,
+          "n_distinct": 4,
+          "min": 4,
+          "max": 61,
+          "median": 49.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 61,
+              "count": 8766,
+              "share": 0.4541
+            },
+            {
+              "value": 4,
+              "count": 7638,
+              "share": 0.3957
+            },
+            {
+              "value": 49,
+              "count": 1943,
+              "share": 0.1007
+            },
+            {
+              "value": 32,
+              "count": 748,
+              "share": 0.0388
+            }
+          ],
+          "top1_value": 61,
+          "top1_share_of_rows": 0.4541
+        },
+        {
+          "name": "player_team_code",
+          "dtype": "int64",
+          "null_count": 222,
+          "null_rate": 0.011501,
+          "n_distinct": 3,
+          "min": 0,
+          "max": 3,
+          "median": 2.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 2,
+              "count": 9569,
+              "share": 0.4958
+            },
+            {
+              "value": 3,
+              "count": 9509,
+              "share": 0.4926
+            },
+            {
+              "value": 0,
+              "count": 2,
+              "share": 0.0001
+            }
+          ],
+          "top1_value": 2,
+          "top1_share_of_rows": 0.4958
+        },
+        {
+          "name": "match_key",
+          "dtype": "string",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 1735,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": "csds/2026/10/08/5c541eaa-41a1-4e32-8875-595706c9778c/csds",
+          "top1_share_of_rows": 0.0027,
+          "empty_or_blank_string_count": 0,
+          "nullish_string_count": 0
+        }
+      ],
+      "flags": {
+        "constant": [],
+        "over50_null": [],
+        "sentinel": [],
+        "spike": [
+          {
+            "column": "round",
+            "detail": "value 12 holds 82.6% of rows",
+            "count": 15937,
+            "examples": []
+          },
+          {
+            "column": "old_team_code",
+            "detail": "value 2 holds 48.4% of rows",
+            "count": 9336,
+            "examples": []
+          },
+          {
+            "column": "new_team_code",
+            "detail": "value 2 holds 50.1% of rows",
+            "count": 9679,
+            "examples": []
+          },
+          {
+            "column": "is_bot",
+            "detail": "value False holds 96.6% of rows",
+            "count": 18647,
+            "examples": []
+          },
+          {
+            "column": "silent",
+            "detail": "value True holds 96.7% of rows",
+            "count": 18666,
+            "examples": []
+          },
+          {
+            "column": "player_x_vel",
+            "detail": "value 0.0 holds 81.1% of rows",
+            "count": 15651,
+            "examples": []
+          },
+          {
+            "column": "player_y_vel",
+            "detail": "value 0.0 holds 81.1% of rows",
+            "count": 15651,
+            "examples": []
+          },
+          {
+            "column": "player_z_vel",
+            "detail": "value 0.0 holds 81.5% of rows",
+            "count": 15738,
+            "examples": []
+          },
+          {
+            "column": "player_phi_ang",
+            "detail": "value 90.0 holds 65.7% of rows",
+            "count": 12677,
+            "examples": []
+          },
+          {
+            "column": "player_weapon_code",
+            "detail": "value 61 holds 45.4% of rows",
+            "count": 8765,
+            "examples": []
+          },
+          {
+            "column": "player_team_code",
+            "detail": "value 2 holds 49.6% of rows",
+            "count": 9569,
+            "examples": []
+          }
+        ],
+        "impossible_value": [],
+        "identical_columns": [],
+        "one_to_one_pairs": [],
+        "impossible_checked_columns": [],
+        "identical_checked_columns": [
+          "round",
+          "tick",
+          "player_id",
+          "old_team_code",
+          "new_team_code",
+          "is_bot",
+          "silent",
+          "second",
+          "player_id_fixed",
+          "player_x_pos",
+          "player_y_pos",
+          "player_z_pos",
+          "player_x_vel",
+          "player_y_vel",
+          "player_z_vel",
+          "player_phi_ang",
+          "player_theta_ang",
+          "player_weapon_code",
+          "player_team_code",
+          "match_key"
+        ],
+        "duplicates": {
+          "full_row_excess": {
+            "count": 0,
+            "examples": []
+          },
+          "key_excess_match_key_round_player_id_tick": {
+            "count": 0,
+            "key": [
+              "match_key",
+              "round",
+              "player_id",
+              "tick"
+            ],
+            "examples": [],
+            "groups_with_varying_column_counts": {},
+            "top_patterns_in_dup_rows": []
+          }
+        },
+        "match_row_count_outliers": {
+          "zero_row_matches": 17,
+          "median_rows_per_nonzero_match": 10.0,
+          "max_rows_per_match": 53,
+          "min_rows_per_match": 1,
+          "top3_far_from_median": [
+            {
+              "match": "5c541eaa-41a1-4e32-8875-595706c9778c",
+              "rows": 53,
+              "median_nonzero_match": 10.0,
+              "ratio_to_median": 5.3
+            },
+            {
+              "match": "9c9e7287-a5ce-443d-aeba-81e083bbedf9",
+              "rows": 51,
+              "median_nonzero_match": 10.0,
+              "ratio_to_median": 5.1
+            },
+            {
+              "match": "9a7cc4c1-5ea4-427b-bd5c-c0205a994650",
+              "rows": 50,
+              "median_nonzero_match": 10.0,
+              "ratio_to_median": 5.0
+            }
+          ]
+        }
+      },
+      "extra": {
+        "match_key_dates": {
+          "matches": 1735,
+          "by_date_top5": {
+            "2026-10-08": 1131,
+            "2026-10-04": 108,
+            "2026-10-06": 101,
+            "2026-10-03": 97,
+            "2026-10-07": 88
+          },
+          "first_date": "2026-10-01",
+          "last_date": "2026-10-08"
+        },
+        "distinct_player_id_per_match": {
+          "1": 1,
+          "4": 146,
+          "5": 2,
+          "9": 1,
+          "10": 1183,
+          "11": 281,
+          "12": 77,
+          "13": 25,
+          "14": 7,
+          "15": 5,
+          "16": 5,
+          "17": 1,
+          "19": 1
+        },
+        "wingman_matches_in_channel": 148,
+        "round_le_0": {
+          "count": 0,
+          "examples": []
+        },
+        "round_gt_header_max_rounds": {
+          "count": 2197,
+          "examples": [
+            {
+              "match": "5cc15153-bcec-4d6a-94c5-2ce09fe23c8c",
+              "round": 27,
+              "max_rounds": 24.0
+            },
+            {
+              "match": "5cc15153-bcec-4d6a-94c5-2ce09fe23c8c",
+              "round": 27,
+              "max_rounds": 24.0
+            }
+          ]
+        },
+        "round_min_max": {
+          "min": 1,
+          "max": 46
+        },
+        "tick_negative": {
+          "count": 0
+        },
+        "second_vs_tick_div_rate": {
+          "rows_gt_2s_off": 0,
+          "rows_checked": 19302,
+          "median_abs_diff_s": 0.0,
+          "examples": []
+        },
+        "horizontal_speed": {
+          "rows_gt_250": 1123,
+          "rows_gt_1000": 893,
+          "rows_gt_10000": 889,
+          "max": 280412.2259193985,
+          "matches_with_gt_1000": 368,
+          "rows_checked": 19105
+        },
+        "z_pos_gt_10000": {
+          "count": 269,
+          "maps": {
+            "de_vertigo": 269
+          }
+        },
+        "phi_outside_-180_360": {
+          "count": 0,
+          "range": [
+            12.067451477050781,
+            178.99990844726562
+          ],
+          "share_exactly_90": 0.6568
+        },
+        "theta_beyond_pm90_informational": {
+          "count": 7817,
+          "range": [
+            -180.0,
+            179.97357177734375
+          ],
+          "note": "theta spans +/-180 so it looks like yaw, not pitch"
+        },
+        "player_id_vs_player_id_fixed": {
+          "rows_both_present": 19192,
+          "mismatch": 17542,
+          "examples": [
+            {
+              "match": "0f044ff9-4360-4738-8eb2-a82b616b2d87",
+              "round": 12,
+              "player_id": 0.0,
+              "player_id_fixed": 6.0
+            },
+            {
+              "match": "0f044ff9-4360-4738-8eb2-a82b616b2d87",
+              "round": 12,
+              "player_id": 1.0,
+              "player_id_fixed": 3.0
+            }
+          ]
+        },
+        "player_id_negative": {
+          "count": 0
+        },
+        "player_id_fixed_null_rate": 0.005699,
+        "is_bot_true_rows": {
+          "count": 655,
+          "share": 0.0339
+        },
+        "old_team_code0_vs_silent_false": {
+          "both": 635,
+          "old0_only": 0,
+          "silent_false_only": 0
+        },
+        "team_swap_by_round": {
+          "round12_rows": 15903,
+          "round12_swapped_share": 1.0,
+          "round27_rows": 1640,
+          "round27_swapped_share": 1.0,
+          "note": "round 12 and 27 are half-time style swaps: all but a few rows change team"
+        }
+      }
+    },
+    {
+      "channel": "bot_takeover",
+      "tome_folder": "basic_bot_takeover.2026-09-18,2026-10-08",
+      "pages": [
+        "dataframe_00000"
+      ],
+      "page_rows": [
+        983
+      ],
+      "rows": 983,
+      "ncols": 19,
+      "distinct_match_keys": 112,
+      "universe_matches": 1752,
+      "coverage_share": 0.0639,
+      "zero_row_matches": 1640,
+      "match_keys_not_in_header": 0,
+      "columns": [
+        {
+          "name": "round",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 38,
+          "min": 1,
+          "max": 42,
+          "median": 15.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 15,
+              "count": 71,
+              "share": 0.0722
+            },
+            {
+              "value": 12,
+              "count": 66,
+              "share": 0.0671
+            },
+            {
+              "value": 14,
+              "count": 63,
+              "share": 0.0641
+            },
+            {
+              "value": 18,
+              "count": 60,
+              "share": 0.061
+            },
+            {
+              "value": 17,
+              "count": 58,
+              "share": 0.059
+            }
+          ],
+          "top1_value": 15,
+          "top1_share_of_rows": 0.0722
+        },
+        {
+          "name": "tick",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 957,
+          "min": 6676,
+          "max": 332009,
+          "median": 106131.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 200132,
+          "top1_share_of_rows": 0.002
+        },
+        {
+          "name": "player_id",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 10,
+          "min": 0,
+          "max": 9,
+          "median": 5.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 8,
+              "count": 132,
+              "share": 0.1343
+            },
+            {
+              "value": 4,
+              "count": 119,
+              "share": 0.1211
+            },
+            {
+              "value": 7,
+              "count": 111,
+              "share": 0.1129
+            },
+            {
+              "value": 2,
+              "count": 109,
+              "share": 0.1109
+            },
+            {
+              "value": 9,
+              "count": 107,
+              "share": 0.1089
+            }
+          ],
+          "top1_value": 8,
+          "top1_share_of_rows": 0.1343
+        },
+        {
+          "name": "player_index",
+          "dtype": "int64",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 10,
+          "min": 1,
+          "max": 10,
+          "median": 6.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 9,
+              "count": 132,
+              "share": 0.1343
+            },
+            {
+              "value": 5,
+              "count": 119,
+              "share": 0.1211
+            },
+            {
+              "value": 8,
+              "count": 111,
+              "share": 0.1129
+            },
+            {
+              "value": 3,
+              "count": 109,
+              "share": 0.1109
+            },
+            {
+              "value": 10,
+              "count": 107,
+              "share": 0.1089
+            }
+          ],
+          "top1_value": 9,
+          "top1_share_of_rows": 0.1343
+        },
+        {
+          "name": "bot_id",
+          "dtype": "int64",
+          "null_count": 479,
+          "null_rate": 0.487284,
+          "n_distinct": 9,
+          "min": 11,
+          "max": 19,
+          "median": 11.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 11,
+              "count": 300,
+              "share": 0.3052
+            },
+            {
+              "value": 12,
+              "count": 110,
+              "share": 0.1119
+            },
+            {
+              "value": 13,
+              "count": 55,
+              "share": 0.056
+            },
+            {
+              "value": 14,
+              "count": 15,
+              "share": 0.0153
+            },
+            {
+              "value": 19,
+              "count": 11,
+              "share": 0.0112
+            }
+          ],
+          "top1_value": 11,
+          "top1_share_of_rows": 0.3052
+        },
+        {
+          "name": "is_controlling",
+          "dtype": "bool",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 2,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": true,
+              "count": 504,
+              "share": 0.5127
+            },
+            {
+              "value": false,
+              "count": 479,
+              "share": 0.4873
+            }
+          ],
+          "top1_value": true,
+          "top1_share_of_rows": 0.5127
+        },
+        {
+          "name": "second",
+          "dtype": "double",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 957,
+          "min": 104.3125,
+          "max": 5187.640625,
+          "median": 1658.296875,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": 3127.0625,
+          "top1_share_of_rows": 0.002
+        },
+        {
+          "name": "player_id_fixed",
+          "dtype": "int64",
+          "null_count": 4,
+          "null_rate": 0.004069,
+          "n_distinct": 16,
+          "min": 2,
+          "max": 18,
+          "median": 9.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 11,
+              "count": 141,
+              "share": 0.1434
+            },
+            {
+              "value": 10,
+              "count": 116,
+              "share": 0.118
+            },
+            {
+              "value": 12,
+              "count": 94,
+              "share": 0.0956
+            },
+            {
+              "value": 4,
+              "count": 91,
+              "share": 0.0926
+            },
+            {
+              "value": 8,
+              "count": 88,
+              "share": 0.0895
+            }
+          ],
+          "top1_value": 11,
+          "top1_share_of_rows": 0.1434
+        },
+        {
+          "name": "player_x_pos",
+          "dtype": "double",
+          "null_count": 851,
+          "null_rate": 0.865717,
+          "n_distinct": 49,
+          "min": -1776.0,
+          "max": 3094.2685546875,
+          "median": 0.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 0.0,
+              "count": 21,
+              "share": 0.0214
+            },
+            {
+              "value": 2472.349853515625,
+              "count": 6,
+              "share": 0.0061
+            },
+            {
+              "value": 2456.830078125,
+              "count": 6,
+              "share": 0.0061
+            },
+            {
+              "value": 1136.0,
+              "count": 5,
+              "share": 0.0051
+            },
+            {
+              "value": -1720.0,
+              "count": 5,
+              "share": 0.0051
+            }
+          ],
+          "top1_value": 0.0,
+          "top1_share_of_rows": 0.0214
+        },
+        {
+          "name": "player_y_pos",
+          "dtype": "double",
+          "null_count": 851,
+          "null_rate": 0.865717,
+          "n_distinct": 46,
+          "min": -2288.0,
+          "max": 2480.5537109375,
+          "median": 0.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 0.0,
+              "count": 21,
+              "share": 0.0214
+            },
+            {
+              "value": 2192.0,
+              "count": 7,
+              "share": 0.0071
+            },
+            {
+              "value": 2005.969970703125,
+              "count": 6,
+              "share": 0.0061
+            },
+            {
+              "value": 2153.159912109375,
+              "count": 6,
+              "share": 0.0061
+            },
+            {
+              "value": -1503.0799560546875,
+              "count": 5,
+              "share": 0.0051
+            }
+          ],
+          "top1_value": 0.0,
+          "top1_share_of_rows": 0.0214
+        },
+        {
+          "name": "player_z_pos",
+          "dtype": "double",
+          "null_count": 851,
+          "null_rate": 0.865717,
+          "n_distinct": 43,
+          "min": -351.96875,
+          "max": 11488.03125,
+          "median": 0.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 0.0,
+              "count": 21,
+              "share": 0.0214
+            },
+            {
+              "value": 25.031251907348633,
+              "count": 9,
+              "share": 0.0092
+            },
+            {
+              "value": -11.96875,
+              "count": 9,
+              "share": 0.0092
+            },
+            {
+              "value": -63.96875,
+              "count": 7,
+              "share": 0.0071
+            },
+            {
+              "value": 134.5050506591797,
+              "count": 6,
+              "share": 0.0061
+            }
+          ],
+          "top1_value": 0.0,
+          "top1_share_of_rows": 0.0214
+        },
+        {
+          "name": "player_x_vel",
+          "dtype": "double",
+          "null_count": 851,
+          "null_rate": 0.865717,
+          "n_distinct": 1,
+          "min": 0.0,
+          "max": 0.0,
+          "median": 0.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 0.0,
+              "count": 132,
+              "share": 0.1343
+            }
+          ],
+          "top1_value": 0.0,
+          "top1_share_of_rows": 0.1343
+        },
+        {
+          "name": "player_y_vel",
+          "dtype": "double",
+          "null_count": 851,
+          "null_rate": 0.865717,
+          "n_distinct": 1,
+          "min": 0.0,
+          "max": 0.0,
+          "median": 0.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 0.0,
+              "count": 132,
+              "share": 0.1343
+            }
+          ],
+          "top1_value": 0.0,
+          "top1_share_of_rows": 0.1343
+        },
+        {
+          "name": "player_z_vel",
+          "dtype": "double",
+          "null_count": 851,
+          "null_rate": 0.865717,
+          "n_distinct": 1,
+          "min": 0.0,
+          "max": 0.0,
+          "median": 0.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 0.0,
+              "count": 132,
+              "share": 0.1343
+            }
+          ],
+          "top1_value": 0.0,
+          "top1_share_of_rows": 0.1343
+        },
+        {
+          "name": "player_phi_ang",
+          "dtype": "double",
+          "null_count": 851,
+          "null_rate": 0.865717,
+          "n_distinct": 2,
+          "min": 77.33001708984375,
+          "max": 90.0,
+          "median": 90.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 90.0,
+              "count": 131,
+              "share": 0.1333
+            },
+            {
+              "value": 77.33001708984375,
+              "count": 1,
+              "share": 0.001
+            }
+          ],
+          "top1_value": 90.0,
+          "top1_share_of_rows": 0.1333
+        },
+        {
+          "name": "player_theta_ang",
+          "dtype": "double",
+          "null_count": 851,
+          "null_rate": 0.865717,
+          "n_distinct": 40,
+          "min": -178.00015258789062,
+          "max": 178.00015258789062,
+          "median": 0.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 0.0,
+              "count": 21,
+              "share": 0.0214
+            },
+            {
+              "value": -90.0,
+              "count": 16,
+              "share": 0.0163
+            },
+            {
+              "value": 90.0,
+              "count": 12,
+              "share": 0.0122
+            },
+            {
+              "value": 160.00006103515625,
+              "count": 6,
+              "share": 0.0061
+            },
+            {
+              "value": -108.49994659423828,
+              "count": 6,
+              "share": 0.0061
+            }
+          ],
+          "top1_value": 0.0,
+          "top1_share_of_rows": 0.0214
+        },
+        {
+          "name": "player_weapon_code",
+          "dtype": "int64",
+          "null_count": 872,
+          "null_rate": 0.88708,
+          "n_distinct": 4,
+          "min": 4,
+          "max": 61,
+          "median": 61.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 61,
+              "count": 60,
+              "share": 0.061
+            },
+            {
+              "value": 4,
+              "count": 32,
+              "share": 0.0326
+            },
+            {
+              "value": 49,
+              "count": 16,
+              "share": 0.0163
+            },
+            {
+              "value": 32,
+              "count": 3,
+              "share": 0.0031
+            }
+          ],
+          "top1_value": 61,
+          "top1_share_of_rows": 0.061
+        },
+        {
+          "name": "player_team_code",
+          "dtype": "int64",
+          "null_count": 851,
+          "null_rate": 0.865717,
+          "n_distinct": 3,
+          "min": 0,
+          "max": 3,
+          "median": 3.0,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top5": [
+            {
+              "value": 3,
+              "count": 74,
+              "share": 0.0753
+            },
+            {
+              "value": 2,
+              "count": 57,
+              "share": 0.058
+            },
+            {
+              "value": 0,
+              "count": 1,
+              "share": 0.001
+            }
+          ],
+          "top1_value": 3,
+          "top1_share_of_rows": 0.0753
+        },
+        {
+          "name": "match_key",
+          "dtype": "string",
+          "null_count": 0,
+          "null_rate": 0.0,
+          "n_distinct": 112,
+          "nan_count": 0,
+          "inf_count": 0,
+          "top1_value": "csds/2026/10/08/de9f93f7-1301-4bc8-93c7-748c73eba97b/csds",
+          "top1_share_of_rows": 0.0448,
+          "empty_or_blank_string_count": 0,
+          "nullish_string_count": 0
+        }
+      ],
+      "flags": {
+        "constant": [
+          {
+            "column": "player_x_vel",
+            "detail": "one distinct non-null value (value=0.0), null rate 0.865717",
+            "count": 983,
+            "examples": [
+              {
+                "value": 0.0,
+                "null_rate": 0.865717
+              }
+            ]
+          },
+          {
+            "column": "player_y_vel",
+            "detail": "one distinct non-null value (value=0.0), null rate 0.865717",
+            "count": 983,
+            "examples": [
+              {
+                "value": 0.0,
+                "null_rate": 0.865717
+              }
+            ]
+          },
+          {
+            "column": "player_z_vel",
+            "detail": "one distinct non-null value (value=0.0), null rate 0.865717",
+            "count": 983,
+            "examples": [
+              {
+                "value": 0.0,
+                "null_rate": 0.865717
+              }
+            ]
+          }
+        ],
+        "over50_null": [
+          {
+            "column": "player_x_pos",
+            "detail": "null rate 0.8657",
+            "count": 851,
+            "examples": []
+          },
+          {
+            "column": "player_y_pos",
+            "detail": "null rate 0.8657",
+            "count": 851,
+            "examples": []
+          },
+          {
+            "column": "player_z_pos",
+            "detail": "null rate 0.8657",
+            "count": 851,
+            "examples": []
+          },
+          {
+            "column": "player_x_vel",
+            "detail": "null rate 0.8657",
+            "count": 851,
+            "examples": []
+          },
+          {
+            "column": "player_y_vel",
+            "detail": "null rate 0.8657",
+            "count": 851,
+            "examples": []
+          },
+          {
+            "column": "player_z_vel",
+            "detail": "null rate 0.8657",
+            "count": 851,
+            "examples": []
+          },
+          {
+            "column": "player_phi_ang",
+            "detail": "null rate 0.8657",
+            "count": 851,
+            "examples": []
+          },
+          {
+            "column": "player_theta_ang",
+            "detail": "null rate 0.8657",
+            "count": 851,
+            "examples": []
+          },
+          {
+            "column": "player_weapon_code",
+            "detail": "null rate 0.8871",
+            "count": 872,
+            "examples": []
+          },
+          {
+            "column": "player_team_code",
+            "detail": "null rate 0.8657",
+            "count": 851,
+            "examples": []
+          }
+        ],
+        "sentinel": [],
+        "spike": [
+          {
+            "column": "bot_id",
+            "detail": "value 11 holds 30.5% of rows",
+            "count": 300,
+            "examples": []
+          },
+          {
+            "column": "is_controlling",
+            "detail": "value True holds 51.3% of rows",
+            "count": 503,
+            "examples": []
+          }
+        ],
+        "impossible_value": [],
+        "identical_columns": [
+          [
+            "player_x_vel",
+            "player_y_vel"
+          ],
+          [
+            "player_x_vel",
+            "player_z_vel"
+          ],
+          [
+            "player_y_vel",
+            "player_z_vel"
+          ]
+        ],
+        "one_to_one_pairs": [
+          [
+            "player_id",
+            "player_index"
+          ]
+        ],
+        "impossible_checked_columns": [],
+        "identical_checked_columns": [
+          "round",
+          "tick",
+          "player_id",
+          "player_index",
+          "bot_id",
+          "is_controlling",
+          "second",
+          "player_id_fixed",
+          "player_x_pos",
+          "player_y_pos",
+          "player_z_pos",
+          "player_x_vel",
+          "player_y_vel",
+          "player_z_vel",
+          "player_phi_ang",
+          "player_theta_ang",
+          "player_weapon_code",
+          "player_team_code",
+          "match_key"
+        ],
+        "duplicates": {
+          "full_row_excess": {
+            "count": 0,
+            "examples": []
+          },
+          "key_excess_match_key_round_player_id_tick": {
+            "count": 0,
+            "key": [
+              "match_key",
+              "round",
+              "player_id",
+              "tick"
+            ],
+            "examples": [],
+            "groups_with_varying_column_counts": {},
+            "top_patterns_in_dup_rows": []
+          }
+        },
+        "match_row_count_outliers": {
+          "zero_row_matches": 1640,
+          "median_rows_per_nonzero_match": 4.0,
+          "max_rows_per_match": 44,
+          "min_rows_per_match": 1,
+          "top3_far_from_median": [
+            {
+              "match": "de9f93f7-1301-4bc8-93c7-748c73eba97b",
+              "rows": 44,
+              "median_nonzero_match": 4.0,
+              "ratio_to_median": 11.0
+            },
+            {
+              "match": "9dca2949-9a46-403b-8cea-c57f0bb1abb3",
+              "rows": 33,
+              "median_nonzero_match": 4.0,
+              "ratio_to_median": 8.25
+            },
+            {
+              "match": "70fe79b2-8cd6-491b-aa53-a404e74d85d9",
+              "rows": 32,
+              "median_nonzero_match": 4.0,
+              "ratio_to_median": 8.0
+            }
+          ]
+        }
+      },
+      "extra": {
+        "match_key_dates": {
+          "matches": 112,
+          "by_date_top5": {
+            "2026-10-08": 106,
+            "2026-10-01": 2,
+            "2026-10-03": 2,
+            "2026-10-07": 2
+          },
+          "first_date": "2026-10-01",
+          "last_date": "2026-10-08"
+        },
+        "distinct_player_id_per_match": {
+          "1": 47,
+          "2": 22,
+          "3": 20,
+          "4": 23
+        },
+        "wingman_matches_in_channel": 0,
+        "round_le_0": {
+          "count": 0,
+          "examples": []
+        },
+        "round_gt_header_max_rounds": {
+          "count": 117,
+          "examples": [
+            {
+              "match": "5cc15153-bcec-4d6a-94c5-2ce09fe23c8c",
+              "round": 29,
+              "max_rounds": 24.0
+            },
+            {
+              "match": "5cc15153-bcec-4d6a-94c5-2ce09fe23c8c",
+              "round": 29,
+              "max_rounds": 24.0
+            }
+          ]
+        },
+        "round_min_max": {
+          "min": 1,
+          "max": 42
+        },
+        "tick_negative": {
+          "count": 0
+        },
+        "second_vs_tick_div_rate": {
+          "rows_gt_2s_off": 0,
+          "rows_checked": 983,
+          "median_abs_diff_s": 0.0,
+          "examples": []
+        },
+        "horizontal_speed": {
+          "rows_gt_250": 0,
+          "rows_gt_1000": 0,
+          "rows_gt_10000": 0,
+          "max": 0.0,
+          "matches_with_gt_1000": 0,
+          "rows_checked": 132
+        },
+        "z_pos_gt_10000": {
+          "count": 3,
+          "maps": {
+            "de_vertigo": 3
+          }
+        },
+        "phi_outside_-180_360": {
+          "count": 0,
+          "range": [
+            77.33001708984375,
+            90.0
+          ],
+          "share_exactly_90": 0.1333
+        },
+        "theta_beyond_pm90_informational": {
+          "count": 44,
+          "range": [
+            -178.00015258789062,
+            178.00015258789062
+          ],
+          "note": "theta spans +/-180 so it looks like yaw, not pitch"
+        },
+        "player_id_vs_player_id_fixed": {
+          "rows_both_present": 979,
+          "mismatch": 935,
+          "examples": [
+            {
+              "match": "5cc15153-bcec-4d6a-94c5-2ce09fe23c8c",
+              "round": 29,
+              "player_id": 0.0,
+              "player_id_fixed": 10.0
+            },
+            {
+              "match": "5cc15153-bcec-4d6a-94c5-2ce09fe23c8c",
+              "round": 29,
+              "player_id": 0.0,
+              "player_id_fixed": 10.0
+            }
+          ]
+        },
+        "player_id_negative": {
+          "count": 0
+        },
+        "player_id_fixed_null_rate": 0.004069
+      }
+    }
+  ]
+}

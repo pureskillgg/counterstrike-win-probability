@@ -1,0 +1,105 @@
+Provenance final_review 2026-10-15T17:55:31
+git 7a530a9ac4de on main: Provenance snapshots for v3
+dirty tracked files: 5, untracked: 9
+{
+ "matches_in_store": 20754,
+ "matches_by_era": {
+  "2024": 4435,
+  "2026": 16319
+ },
+ "usable_rounds": 329028,
+ "usable_matches": 17563,
+ "grid_rows": 22535651,
+ "split_manifest": {
+  "sha256": "2088a5a6ae944cdd79f8a8c8801e523d58afe0d61e0d9af29be45c49c87edf4f",
+  "history": [
+   {
+    "added": 6475,
+    "at": "2026-10-15T09:00:33",
+    "event": "freeze"
+   },
+   {
+    "added": 8393,
+    "at": "2026-10-15T09:11:31",
+    "event": "extend"
+   },
+   {
+    "added": 2695,
+    "at": "2026-10-15T15:12:50",
+    "event": "extend"
+   }
+  ],
+  "sizes": {
+   "train": 12563,
+   "val": 1389,
+   "test": 3611
+  }
+ },
+ "versions": {
+  "python": "3.12.15",
+  "polars": "2.0.0",
+  "numpy": "2.5.4",
+  "xgboost": "3.4.2"
+ }
+}
+
+?              0    models/_partial_killed_runs
+20163a91cefc2ebf        125,302  2026-10-15T09:55:18  models/golden_winprob_v1.json
+280d0d8e0a9b1fe1         17,157  2026-10-15T09:56:31  models/golden_winprob_v1_basic.json
+4912912001eeac14        119,599  2026-10-15T12:12:53  models/golden_winprob_v2.json
+8d5fe2d4fac12700         16,405  2026-10-15T12:13:10  models/golden_winprob_v2_basic.json
+50ce31a443bd9b01        119,587  2026-10-15T16:29:00  models/golden_winprob_v3.json
+b8d7da1efca91525         16,401  2026-10-15T16:29:00  models/golden_winprob_v3_basic.json
+bff5f6797fe4fbb0      1,096,237  2026-10-14T04:29:07  models/winprob_test.json
+55a81399f9ffc053          1,421  2026-10-14T04:34:22  models/winprob_test.meta.json
+cbdea94243ac27e6      1,019,888  2026-10-14T05:23:39  models/winprob_v1.json
+4f7ddbab3f5a1655          3,182  2026-10-14T05:26:43  models/winprob_v1.meta.json
+37a0bfcb3278bae3        714,605  2026-10-14T05:16:09  models/winprob_v1_basic.json
+7a977ddcf492e30a          1,410  2026-10-14T05:19:39  models/winprob_v1_basic.meta.json
+6e6d5fcf734a5029      1,875,071  2026-10-15T12:10:01  models/winprob_v2.json
+b5ee76b7a11c9ef5          3,504  2026-10-15T12:12:18  models/winprob_v2.meta.json
+9488c99be6593553        921,555  2026-10-15T12:08:14  models/winprob_v2_basic.json
+53e1934caafdcc7c          1,827  2026-10-15T12:09:43  models/winprob_v2_basic.meta.json
+2bd2852c1ae2479d      2,124,587  2026-10-15T16:29:00  models/winprob_v3.json
+c4cf4a2f781e80fd          3,505  2026-10-15T16:29:00  models/winprob_v3.meta.json
+2c86590c24eed7d9      1,089,196  2026-10-15T16:29:00  models/winprob_v3_basic.json
+e0cf43ccabbcdc34          1,827  2026-10-15T16:29:00  models/winprob_v3_basic.meta.json
+b8f7c2278f2ceedc        599,074  2026-10-12T19:12:21  models/xgb_primary_seed0.json
+d7c596b815e62b94          2,411  2026-10-12T19:12:22  models/xgb_primary_seed0_meta.json
+e65e22bcb642ee08          3,641  2026-10-15T13:13:56  data/combined/e2e_v2_part2.json
+89157f5d12e16f74          7,058  2026-10-15T13:11:44  data/combined/e2e_v2_split_part.json
+8b0f42d2e601fc1c          3,700  2026-10-14T16:03:46  data/combined/e2e_winprob_v1.json
+85ee6627068feb02         51,373  2026-10-15T14:56:31  data/combined/e2e_winprob_v2.json
+f2881751aa1403d3         51,436  2026-10-15T16:39:42  data/combined/e2e_winprob_v3.json
+abf74354343e0d09         12,525  2026-10-14T05:26:43  data/combined/export_winprob_v1.json
+4fa9b66daa41e5c8         12,016  2026-10-14T05:19:39  data/combined/export_winprob_v1_basic.json
+aa70e51b7ca1f3d7        387,303  2026-10-14T05:19:39  data/combined/export_winprob_v1_basic_test_sample.parquet
+4e5866026e76a936      1,006,328  2026-10-14T05:26:43  data/combined/export_winprob_v1_test_sample.parquet
+80e368b9c2296f7f         12,927  2026-10-15T12:12:18  data/combined/export_winprob_v2.json
+2063fd16124876dc         12,515  2026-10-15T12:09:43  data/combined/export_winprob_v2_basic.json
+67aa21f8e2da2313     20,069,350  2026-10-15T12:09:43  data/combined/export_winprob_v2_basic_test_predictions.parquet
+1c0dd9115592e4d8        458,727  2026-10-15T12:09:43  data/combined/export_winprob_v2_basic_test_sample.parquet
+984f33869a589d4b     20,044,933  2026-10-15T12:12:18  data/combined/export_winprob_v2_test_predictions.parquet
+1358b176ec8120c3      1,077,141  2026-10-15T12:12:18  data/combined/export_winprob_v2_test_sample.parquet
+dceb5e92e62d2cb8         12,931  2026-10-15T16:29:02  data/combined/export_winprob_v3.json
+9b3d51cada0a0941         12,524  2026-10-15T16:29:02  data/combined/export_winprob_v3_basic.json
+d581a7045f7740ba     23,894,536  2026-10-15T16:29:03  data/combined/export_winprob_v3_basic_test_predictions.parquet
+05defa2da6303df5        478,201  2026-10-15T16:29:03  data/combined/export_winprob_v3_basic_test_sample.parquet
+c73cecb09816a2c5     24,919,116  2026-10-15T16:29:04  data/combined/export_winprob_v3_test_predictions.parquet
+96618cd04648521d      1,095,665  2026-10-15T16:29:04  data/combined/export_winprob_v3_test_sample.parquet
+a1aff524830f692e         20,896  2026-10-15T11:41:07  data/combined/mutation_report.json
+51c33e12a906516b            275  2026-10-14T14:01:38  data/combined/parity_winprob_v1.json
+60bfb19fffca054f          5,389  2026-10-15T13:07:34  data/combined/parity_winprob_v2.json
+b42356b98f977bce          5,382  2026-10-15T16:36:06  data/combined/parity_winprob_v3.json
+a17f219b5287ff1e      1,241,225  2026-10-15T15:12:50  data/combined/split_manifest.json
+47f1fd8b2f72beaf          2,220  2026-10-14T15:46:10  data/combined/stress_winprob_v1.json
+c53864af56398cfe          2,165  2026-10-14T15:47:59  data/combined/stress_winprob_v1_basic.json
+45224962d34a9334         12,823  2026-10-15T12:12:54  data/combined/stress_winprob_v2.json
+9b32e3a9b1ff03b0          9,893  2026-10-15T12:13:11  data/combined/stress_winprob_v2_basic.json
+902ccf45a90ff250         12,825  2026-10-15T16:29:09  data/combined/stress_winprob_v3.json
+ced26fb92c11f24e          9,893  2026-10-15T16:29:11  data/combined/stress_winprob_v3_basic.json
+a643e0762f8c7e30      1,919,466  2026-10-15T15:08:31  data/combined/matches.parquet
+6ba4acea55408f9a     15,819,521  2026-10-15T15:08:31  data/combined/rounds.parquet
+2f08dc8de55cce6d     94,897,451  2026-10-15T15:12:30  data/combined/grid.parquet
+9413b1baa50b21ad     11,773,495  2026-10-15T15:08:32  data/combined/deaths.parquet
+2450d96404298718    182,283,341  2026-10-15T15:38:22  data/combined/cache_snapshot_2026.parquet

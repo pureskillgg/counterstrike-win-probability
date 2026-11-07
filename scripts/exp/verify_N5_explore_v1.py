@@ -1,0 +1,20 @@
+import polars as pl
+P = 'G:/pureskill/csds-cs2/data/state_sample/players_1hz.parquet'
+R = 'G:/pureskill/csds-cs2/data/state_sample/rounds.parquet'
+lf = pl.scan_parquet(P)
+print("matches:", lf.select(pl.col("match_key").n_unique()).collect().item())
+print("splits:", lf.group_by("split").agg(pl.len()).collect())
+print("team_code values:", lf.group_by("team_code").agg(pl.len()).sort("team_code").collect())
+sl = lf.group_by("seconds_since_live").agg(pl.len().alias("n")).sort("seconds_since_live").head(8).collect()
+print("seconds_since_live head:\n", sl)
+print("min/max ssl:", lf.select(pl.col("seconds_since_live").min().alias("mn"), pl.col("seconds_since_live").max().alias("mx")).collect())
+s0 = lf.filter(pl.col("seconds_since_live") == 0)
+print("sec0 rows:", s0.select(pl.len()).collect().item())
+print("sec0 distinct (match,round,player):", s0.select(pl.struct(["match_key","round","player_id"]).n_unique()).collect().item())
+print("sec0 distinct (match,round):", s0.select(pl.struct(["match_key","round"]).n_unique()).collect().item())
+print("inv_primary value counts (sec0):")
+print(s0.group_by("inv_primary").agg(pl.len().alias("n")).sort("n", descending=True).collect())
+print("weapon_code value counts (sec0):")
+print(s0.group_by("weapon_code").agg(pl.len().alias("n")).sort("n", descending=True).head(40).collect())
+print("inv_secondary value counts (sec0):")
+print(s0.group_by("inv_secondary").agg(pl.len().alias("n")).sort("n", descending=True).head(15).collect())

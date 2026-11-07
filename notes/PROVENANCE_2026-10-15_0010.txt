@@ -1,0 +1,11 @@
+﻿fe4ab993db0cf39d       2,810  data\combined\exp_foundation.json
+ade01b8d84179ac4       2,879  data\combined\exp_model_families.json
+c4caa4537677737e      13,521  data\combined\exp_robustness.json
+e18926e6f7668e9b       1,168  data\combined\fm\meta.json
+60fcea052ea4cac2       3,887  notes\research\FM_HEAD_TO_HEAD_2026-10-14.md
+784ee23431404c0a     190,265  notes\research\RESEARCH_ROUND4_2026-10-14.md
+7f3e1e7c06631785       6,458  scripts\fm\exp_foundation.py
+f4106b1d67d043cc       4,233  scripts\fm\prep_fm_data.py
+f0e42b5a5c1e972f      12,377  scripts\zotero\organize_cs2_zotero.py
+3ce875f8309931db      15,847  scripts\data\append_combined.py
+7e161d357d92b4c2      14,243  scripts\run_tome_queue.ps1

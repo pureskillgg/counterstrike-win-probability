@@ -1,0 +1,25 @@
+pairs (pick x earlier same-def drop in round): 129228
+shape: (16, 4)
+┌───────┬──────────┬───────┬───────┐
+│ early ┆ reason   ┆ rel   ┆ n     │
+│ ---   ┆ ---      ┆ ---   ┆ ---   │
+│ bool  ┆ str      ┆ str   ┆ u32   │
+╞═══════╪══════════╪═══════╪═══════╡
+│ false ┆ death    ┆ enemy ┆ 49042 │
+│ false ┆ death    ┆ same  ┆ 19965 │
+│ false ┆ death    ┆ unk   ┆ 266   │
+│ false ┆ manual   ┆ enemy ┆ 7536  │
+│ false ┆ manual   ┆ same  ┆ 11473 │
+│ …     ┆ …        ┆ …     ┆ …     │
+│ true  ┆ death    ┆ unk   ┆ 1     │
+│ true  ┆ manual   ┆ enemy ┆ 3524  │
+│ true  ┆ manual   ┆ same  ┆ 27333 │
+│ true  ┆ replaced ┆ enemy ┆ 523   │
+│ true  ┆ replaced ┆ same  ┆ 3014  │
+└───────┴──────────┴───────┴───────┘
+gap_s pct (early pairs, all reasons): [0.11, 1.56, 8.28]
+gap_s pct (late pairs, all reasons): [1.69, 12.17, 53.97]
+early manual pairs distance pct 10/50/90: [0.0, 120.0, 3321.7] n 30857
+late manual pairs distance pct 10/50/90: [20.6, 971.9, 3068.9] n 19011
+early replaced pairs distance pct 10/50/90: [0.0, 104.9, 3461.8] n 3537
+early pairs self (same raw id): 8384

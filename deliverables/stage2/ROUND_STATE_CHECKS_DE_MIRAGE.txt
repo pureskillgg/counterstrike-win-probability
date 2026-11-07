@@ -1,0 +1,44 @@
+ROUND-STATE CHECKS, de_mirage (PCA baseline; not the learned encoder)
+
+rows 4342609, shape (10, 6), window {'xy_min': -2655.97265625, 'xy_max': 1455.9708251953125, 'z_min': -367.96875, 'z_max': 68.09468078613281, 'n_train_rows': 21886862}
+rows per split {'train': 3135188, 'val': 341139, 'test': 866282}
+matches per split {'train': 2455, 'val': 274, 'test': 687}
+out-of-window fraction per split {'train': 0.0, 'val': 9.768565927074584e-07, 'test': 1.6518195618383432e-07}
+rows dropped as recording gaps 246; position rows with no snapshot match 65064
+
+round winner known for 100.0000% of rows; winner codes [{'winner': 2, 'len': 2025557}, {'winner': 3, 'len': 2317052}]
+
+PCA baseline on flattened (10 x 6) states, fitted on a train subsample: explained variance ratio [0.1832, 0.0525, 0.0364, 0.0327, 0.0325, 0.0324, 0.0322, 0.0319]
+
+NEAREST NEIGHBOURS (same match excluded; 5 neighbours; distance in PCA space)
+  query row 1196904: CT alive 4, T alive 5, second 35, winner 2, match csds/2026/10/09/3b439376-ba96-42b6-b269-54a97f246807/csds
+      nbr row 1229284: d=0.242, CT 4 T 5, second 21, winner 3
+      nbr row 3143573: d=0.257, CT 5 T 5, second 20, winner 3
+      nbr row 4242243: d=0.272, CT 4 T 5, second 22, winner 3
+      nbr row 350945: d=0.280, CT 4 T 5, second 19, winner 2
+      nbr row 3378055: d=0.281, CT 4 T 5, second 26, winner 2
+    neighbours with the same alive counts: 4/5; same winner: 2/5
+  query row 2242316: CT alive 5, T alive 4, second 26, winner 3, match csds/2026/10/10/ae07704b-c983-4718-b043-912f45bfb827/csds
+      nbr row 4130558: d=0.289, CT 5 T 4, second 13, winner 3
+      nbr row 3168385: d=0.325, CT 5 T 4, second 17, winner 3
+      nbr row 4130557: d=0.328, CT 5 T 4, second 12, winner 3
+      nbr row 2060786: d=0.340, CT 5 T 4, second 19, winner 3
+      nbr row 4241951: d=0.351, CT 5 T 4, second 37, winner 3
+    neighbours with the same alive counts: 5/5; same winner: 5/5
+  query row 3728611: CT alive 5, T alive 4, second 16, winner 2, match csds/2026/10/13/3ed818ee-8bfe-40b4-ac79-bdd2ba799ee1/csds
+      nbr row 3594070: d=0.220, CT 5 T 4, second 15, winner 2
+      nbr row 953660: d=0.284, CT 5 T 4, second 45, winner 3
+      nbr row 2547051: d=0.288, CT 5 T 4, second 28, winner 3
+      nbr row 1562595: d=0.308, CT 5 T 4, second 51, winner 3
+      nbr row 3456913: d=0.312, CT 5 T 4, second 19, winner 3
+    neighbours with the same alive counts: 5/5; same winner: 1/5
+  query row 2840521: CT alive 4, T alive 2, second 45, winner 3, match csds/2026/10/11/5fbfc3c4-b02b-4c8e-9327-08081be47cdc/csds
+      nbr row 3850069: d=0.185, CT 4 T 2, second 21, winner 3
+      nbr row 3850070: d=0.318, CT 4 T 2, second 22, winner 3
+      nbr row 1603592: d=0.322, CT 4 T 2, second 20, winner 3
+      nbr row 1948081: d=0.322, CT 4 T 2, second 42, winner 3
+      nbr row 973272: d=0.336, CT 4 T 2, second 32, winner 3
+    neighbours with the same alive counts: 5/5; same winner: 5/5
+
+TRACED ROUND: test round with the most seconds: match_idx 180, round 20, 155 seconds
+figures: round_state_de_mirage_pca.png, round_state_de_mirage_neighbours.png, round_state_de_mirage_path.png in G:\pureskill\csds-cs2\deliverables\stage2\figs

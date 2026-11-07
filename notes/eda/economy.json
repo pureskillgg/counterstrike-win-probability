@@ -1,0 +1,1434 @@
+{
+ "group": "economy",
+ "tome": "tomes/2026-10-01_to_08/tome/csds",
+ "universe_note": "header tome key column (1752 matches); keyset per page lists that page's match keys",
+ "channels": {
+  "rank_update": {
+   "channel": "rank_update",
+   "tome_folder": "basic_rank_update.2026-09-18,2026-10-08",
+   "pages": 1,
+   "rows": 5873,
+   "column_count": 20,
+   "findings": {},
+   "match_level": {
+    "pages": [
+     {
+      "file": "dataframe_00000",
+      "rows": 5873,
+      "distinct_match_key": 677,
+      "null_match_key": 0
+     }
+    ],
+    "page_key_overlap": {},
+    "per_match": {
+     "universe_matches_header": 1752,
+     "distinct_match_key": 677,
+     "zero_row_matches": 1075,
+     "match_key_not_in_header": 0,
+     "rows_per_match_min": 3,
+     "rows_per_match_p25": 10.0,
+     "rows_per_match_median": 10.0,
+     "rows_per_match_p75": 10.0,
+     "rows_per_match_max": 10,
+     "top3_far_from_median_with_rows": [
+      {
+       "match_key": "csds/2026/10/06/c65f08d7-faf4-4266-9d52-839b6a6d53b5/csds",
+       "rows": 3,
+       "abs_dev_from_median": 7.0
+      },
+      {
+       "match_key": "csds/2026/10/01/1a48baf5-6ac2-4621-a614-884090c1c01e/csds",
+       "rows": 4,
+       "abs_dev_from_median": 6.0
+      },
+      {
+       "match_key": "csds/2026/10/01/28f428c6-6c65-4898-9918-bad89a9d81a1/csds",
+       "rows": 4,
+       "abs_dev_from_median": 6.0
+      }
+     ],
+     "zero_row_match_examples": [
+      "csds/2026/10/01/5cc15153-bcec-4d6a-94c5-2ce09fe23c8c/csds",
+      "csds/2026/10/01/a96124a5-fa60-4a28-b4c6-117054d56a39/csds",
+      "csds/2026/10/02/11d7a4e6-34d9-4941-ab89-d68c0654a554/csds"
+     ]
+    }
+   },
+   "columns": {
+    "round": {
+     "dtype": "int64",
+     "null_count": 0,
+     "null_rate": 0.0,
+     "nan_count": 0,
+     "nan_rate": 0.0,
+     "distinct_nonnull": 24,
+     "min": 1.0,
+     "max": 30.0,
+     "median": 19.0,
+     "top_values": [
+      {
+       "value": 21.0,
+       "count": 530,
+       "share": 0.09024348714455985
+      },
+      {
+       "value": 17.0,
+       "count": 520,
+       "share": 0.08854077983994552
+      },
+      {
+       "value": 22.0,
+       "count": 520,
+       "share": 0.08854077983994552
+      },
+      {
+       "value": 20.0,
+       "count": 490,
+       "share": 0.08343265792610251
+      },
+      {
+       "value": 23.0,
+       "count": 490,
+       "share": 0.08343265792610251
+      }
+     ],
+     "sentinel_hits": [],
+     "negative_count": 0,
+     "null_rate_total": 0.0,
+     "top_value": 21.0,
+     "top_share": 0.09024348714455985,
+     "flags": []
+    },
+    "tick": {
+     "dtype": "int64",
+     "null_count": 0,
+     "null_rate": 0.0,
+     "nan_count": 0,
+     "nan_rate": 0.0,
+     "distinct_nonnull": 662,
+     "min": 1823.0,
+     "max": 211579.0,
+     "median": 113907.0,
+     "top_values": [
+      {
+       "value": 57265.0,
+       "count": 20,
+       "share": 0.0034054146092286734
+      },
+      {
+       "value": 98097.0,
+       "count": 20,
+       "share": 0.0034054146092286734
+      },
+      {
+       "value": 101083.0,
+       "count": 20,
+       "share": 0.0034054146092286734
+      },
+      {
+       "value": 111905.0,
+       "count": 20,
+       "share": 0.0034054146092286734
+      },
+      {
+       "value": 112840.0,
+       "count": 20,
+       "share": 0.0034054146092286734
+      }
+     ],
+     "sentinel_hits": [],
+     "negative_count": 0,
+     "null_rate_total": 0.0,
+     "top_value": 57265.0,
+     "top_share": 0.0034054146092286734,
+     "flags": []
+    },
+    "player_id": {
+     "dtype": "int64",
+     "null_count": 0,
+     "null_rate": 0.0,
+     "nan_count": 0,
+     "nan_rate": 0.0,
+     "distinct_nonnull": 10,
+     "min": 0.0,
+     "max": 9.0,
+     "median": 4.0,
+     "top_values": [
+      {
+       "value": 0.0,
+       "count": 677,
+       "share": 0.1152732845223906
+      },
+      {
+       "value": 2.0,
+       "count": 677,
+       "share": 0.1152732845223906
+      },
+      {
+       "value": 1.0,
+       "count": 676,
+       "share": 0.11510301379192917
+      },
+      {
+       "value": 3.0,
+       "count": 676,
+       "share": 0.11510301379192917
+      },
+      {
+       "value": 4.0,
+       "count": 528,
+       "share": 0.08990294568363698
+      }
+     ],
+     "sentinel_hits": [],
+     "negative_count": 0,
+     "null_rate_total": 0.0,
+     "top_value": 0.0,
+     "top_share": 0.1152732845223906,
+     "flags": []
+    },
+    "rank_old": {
+     "dtype": "int64",
+     "null_count": 0,
+     "null_rate": 0.0,
+     "nan_count": 0,
+     "nan_rate": 0.0,
+     "distinct_nonnull": 2466,
+     "min": 0.0,
+     "max": 28467.0,
+     "median": 16.0,
+     "top_values": [
+      {
+       "value": 0.0,
+       "count": 1247,
+       "share": 0.2123276008854078
+      },
+      {
+       "value": 1.0,
+       "count": 321,
+       "share": 0.05465690447812021
+      },
+      {
+       "value": 2.0,
+       "count": 228,
+       "share": 0.03882172654520688
+      },
+      {
+       "value": 3.0,
+       "count": 154,
+       "share": 0.026221692491060787
+      },
+      {
+       "value": 8.0,
+       "count": 110,
+       "share": 0.018729780350757706
+      }
+     ],
+     "sentinel_hits": [
+      {
+       "value": 9999,
+       "count": 20
+      }
+     ],
+     "negative_count": 0,
+     "null_rate_total": 0.0,
+     "top_value": 0.0,
+     "top_share": 0.2123276008854078,
+     "flags": [
+      {
+       "flag": "sentinel_like_value",
+       "detail": [
+        {
+         "value": 9999,
+         "count": 20
+        }
+       ],
+       "examples": [
+        {
+         "file": "basic_rank_update.2026-09-18,2026-10-08/dataframe_00000",
+         "match_key": "csds/2026/10/03/00854d33-3cb8-4c55-b5d3-dfa1748689d6/csds",
+         "round": 24,
+         "tick": 171139,
+         "player_id": 5,
+         "value": 9999
+        }
+       ]
+      },
+      {
+       "flag": "spike_top_value_gt_20pct",
+       "detail": {
+        "value": 0.0,
+        "share": 0.2123276008854078,
+        "count": 1247
+       },
+       "examples": [
+        {
+         "file": "basic_rank_update.2026-09-18,2026-10-08/dataframe_00000",
+         "match_key": "csds/2026/10/01/0f044ff9-4360-4738-8eb2-a82b616b2d87/csds",
+         "round": 24,
+         "tick": 134888,
+         "player_id": 1,
+         "value": 0
+        },
+        {
+         "file": "basic_rank_update.2026-09-18,2026-10-08/dataframe_00000",
+         "match_key": "csds/2026/10/01/103674c8-120d-40cc-a9d3-c870ab4cb804/csds",
+         "round": 16,
+         "tick": 111905,
+         "player_id": 1,
+         "value": 0
+        }
+       ]
+      }
+     ]
+    },
+    "rank_new": {
+     "dtype": "int64",
+     "null_count": 0,
+     "null_rate": 0.0,
+     "nan_count": 0,
+     "nan_rate": 0.0,
+     "distinct_nonnull": 2516,
+     "min": 0.0,
+     "max": 28822.0,
+     "median": 1106.0,
+     "top_values": [
+      {
+       "value": 0.0,
+       "count": 992,
+       "share": 0.1689085646177422
+      },
+      {
+       "value": 1.0,
+       "count": 368,
+       "share": 0.06265962880980759
+      },
+      {
+       "value": 2.0,
+       "count": 252,
+       "share": 0.04290822407628129
+      },
+      {
+       "value": 3.0,
+       "count": 161,
+       "share": 0.027413587604290822
+      },
+      {
+       "value": 8.0,
+       "count": 131,
+       "share": 0.022305465690447814
+      }
+     ],
+     "sentinel_hits": [
+      {
+       "value": 9999,
+       "count": 24
+      }
+     ],
+     "negative_count": 0,
+     "null_rate_total": 0.0,
+     "top_value": 0.0,
+     "top_share": 0.1689085646177422,
+     "flags": [
+      {
+       "flag": "sentinel_like_value",
+       "detail": [
+        {
+         "value": 9999,
+         "count": 24
+        }
+       ],
+       "examples": [
+        {
+         "file": "basic_rank_update.2026-09-18,2026-10-08/dataframe_00000",
+         "match_key": "csds/2026/10/02/fb065560-aad1-4b35-b3b9-316091fdbe36/csds",
+         "round": 15,
+         "tick": 88487,
+         "player_id": 0,
+         "value": 9999
+        }
+       ]
+      }
+     ]
+    },
+    "rank_change": {
+     "dtype": "double",
+     "null_count": 0,
+     "null_rate": 0.0,
+     "nan_count": 0,
+     "nan_rate": 0.0,
+     "distinct_nonnull": 764,
+     "min": -1000.0,
+     "max": 793.0,
+     "median": 0.0,
+     "top_values": [
+      {
+       "value": 0.0,
+       "count": 2822,
+       "share": 0.48050400136216587
+      },
+      {
+       "value": 1.0,
+       "count": 112,
+       "share": 0.01907032181168057
+      },
+      {
+       "value": -1.0,
+       "count": 49,
+       "share": 0.00834326579261025
+      },
+      {
+       "value": -1000.0,
+       "count": 32,
+       "share": 0.0054486633747658775
+      },
+      {
+       "value": -100.0,
+       "count": 28,
+       "share": 0.004767580452920143
+      }
+     ],
+     "sentinel_hits": [
+      {
+       "value": -1,
+       "count": 49
+      }
+     ],
+     "negative_count": 1482,
+     "null_rate_total": 0.0,
+     "top_value": 0.0,
+     "top_share": 0.48050400136216587,
+     "flags": [
+      {
+       "flag": "sentinel_like_value",
+       "detail": [
+        {
+         "value": -1,
+         "count": 49
+        }
+       ],
+       "examples": [
+        {
+         "file": "basic_rank_update.2026-09-18,2026-10-08/dataframe_00000",
+         "match_key": "csds/2026/10/01/2257de78-4392-4584-bb3e-d43ab1914ac8/csds",
+         "round": 20,
+         "tick": 115080,
+         "player_id": 5,
+         "value": -1.0
+        }
+       ]
+      },
+      {
+       "flag": "spike_top_value_gt_20pct",
+       "detail": {
+        "value": 0.0,
+        "share": 0.48050400136216587,
+        "count": 2822
+       },
+       "examples": [
+        {
+         "file": "basic_rank_update.2026-09-18,2026-10-08/dataframe_00000",
+         "match_key": "csds/2026/10/01/0f044ff9-4360-4738-8eb2-a82b616b2d87/csds",
+         "round": 24,
+         "tick": 134888,
+         "player_id": 1,
+         "value": 0.0
+        },
+        {
+         "file": "basic_rank_update.2026-09-18,2026-10-08/dataframe_00000",
+         "match_key": "csds/2026/10/01/103674c8-120d-40cc-a9d3-c870ab4cb804/csds",
+         "round": 16,
+         "tick": 111905,
+         "player_id": 1,
+         "value": 0.0
+        }
+       ]
+      }
+     ]
+    },
+    "win_count": {
+     "dtype": "int64",
+     "null_count": 0,
+     "null_rate": 0.0,
+     "nan_count": 0,
+     "nan_rate": 0.0,
+     "distinct_nonnull": 366,
+     "min": 0.0,
+     "max": 2024.0,
+     "median": 32.0,
+     "top_values": [
+      {
+       "value": 1.0,
+       "count": 181,
+       "share": 0.030819002213519495
+      },
+      {
+       "value": 2.0,
+       "count": 153,
+       "share": 0.026051421760599353
+      },
+      {
+       "value": 6.0,
+       "count": 148,
+       "share": 0.025200068108292183
+      },
+      {
+       "value": 3.0,
+       "count": 146,
+       "share": 0.024859526647369318
+      },
+      {
+       "value": 8.0,
+       "count": 129,
+       "share": 0.021964924229524944
+      }
+     ],
+     "sentinel_hits": [],
+     "negative_count": 0,
+     "null_rate_total": 0.0,
+     "top_value": 1.0,
+     "top_share": 0.030819002213519495,
+     "flags": []
+    },
+    "second": {
+     "dtype": "double",
+     "null_count": 0,
+     "null_rate": 0.0,
+     "nan_count": 0,
+     "nan_rate": 0.0,
+     "distinct_nonnull": 662,
+     "min": 28.484375,
+     "max": 3305.921875,
+     "median": 1779.796875,
+     "top_values": [
+      {
+       "value": 894.765625,
+       "count": 20,
+       "share": 0.0034054146092286734
+      },
+      {
+       "value": 1532.765625,
+       "count": 20,
+       "share": 0.0034054146092286734
+      },
+      {
+       "value": 1579.421875,
+       "count": 20,
+       "share": 0.0034054146092286734
+      },
+      {
+       "value": 1748.515625,
+       "count": 20,
+       "share": 0.0034054146092286734
+      },
+      {
+       "value": 1763.125,
+       "count": 20,
+       "share": 0.0034054146092286734
+      }
+     ],
+     "sentinel_hits": [],
+     "negative_count": 0,
+     "null_rate_total": 0.0,
+     "top_value": 894.765625,
+     "top_share": 0.0034054146092286734,
+     "flags": []
+    },
+    "player_id_fixed": {
+     "dtype": "double",
+     "null_count": 365,
+     "null_rate": 0.062148816618423294,
+     "nan_count": 0,
+     "nan_rate": 0.0,
+     "distinct_nonnull": 12,
+     "min": 1.0,
+     "max": 12.0,
+     "median": 5.0,
+     "top_values": [
+      {
+       "value": 3.0,
+       "count": 642,
+       "share": 0.10931380895624042
+      },
+      {
+       "value": 1.0,
+       "count": 640,
+       "share": 0.10897326749531755
+      },
+      {
+       "value": 4.0,
+       "count": 636,
+       "share": 0.10829218457347183
+      },
+      {
+       "value": 2.0,
+       "count": 634,
+       "share": 0.10795164311254896
+      },
+      {
+       "value": 8.0,
+       "count": 497,
+       "share": 0.08462455303933254
+      }
+     ],
+     "sentinel_hits": [],
+     "negative_count": 0,
+     "null_rate_total": 0.062148816618423294,
+     "top_value": 3.0,
+     "top_share": 0.10931380895624042,
+     "flags": []
+    },
+    "player_x_pos": {
+     "dtype": "double",
+     "null_count": 4320,
+     "null_rate": 0.7355695555933935,
+     "nan_count": 0,
+     "nan_rate": 0.0,
+     "distinct_nonnull": 1516,
+     "min": -2557.6650390625,
+     "max": 2774.906982421875,
+     "median": 161.463623046875,
+     "top_values": [
+      {
+       "value": -1794.845458984375,
+       "count": 2,
+       "share": 0.00034054146092286734
+      },
+      {
+       "value": -1780.9156494140625,
+       "count": 2,
+       "share": 0.00034054146092286734
+      },
+      {
+       "value": -1776.0,
+       "count": 2,
+       "share": 0.00034054146092286734
+      },
+      {
+       "value": -1549.44921875,
+       "count": 2,
+       "share": 0.00034054146092286734
+      },
+      {
+       "value": -1379.9002685546875,
+       "count": 2,
+       "share": 0.00034054146092286734
+      }
+     ],
+     "sentinel_hits": [],
+     "negative_count": 716,
+     "abs_gt_8192_count": 0,
+     "null_rate_total": 0.7355695555933935,
+     "top_value": -1794.845458984375,
+     "top_share": 0.00034054146092286734,
+     "flags": [
+      {
+       "flag": "over_50pct_null",
+       "detail": {
+        "null_rate": 0.7355695555933935
+       },
+       "examples": []
+      }
+     ]
+    },
+    "player_y_pos": {
+     "dtype": "double",
+     "null_count": 4320,
+     "null_rate": 0.7355695555933935,
+     "nan_count": 0,
+     "nan_rate": 0.0,
+     "distinct_nonnull": 1513,
+     "min": -2547.078369140625,
+     "max": 3434.01025390625,
+     "median": 328.8901062011719,
+     "top_values": [
+      {
+       "value": -2288.0,
+       "count": 4,
+       "share": 0.0006810829218457347
+      },
+      {
+       "value": -1976.0,
+       "count": 3,
+       "share": 0.000510812191384301
+      },
+      {
+       "value": -2338.1474609375,
+       "count": 2,
+       "share": 0.00034054146092286734
+      },
+      {
+       "value": -1841.134033203125,
+       "count": 2,
+       "share": 0.00034054146092286734
+      },
+      {
+       "value": -1587.2532958984375,
+       "count": 2,
+       "share": 0.00034054146092286734
+      }
+     ],
+     "sentinel_hits": [],
+     "negative_count": 617,
+     "abs_gt_8192_count": 0,
+     "null_rate_total": 0.7355695555933935,
+     "top_value": -2288.0,
+     "top_share": 0.0006810829218457347,
+     "flags": [
+      {
+       "flag": "over_50pct_null",
+       "detail": {
+        "null_rate": 0.7355695555933935
+       },
+       "examples": []
+      }
+     ]
+    },
+    "player_z_pos": {
+     "dtype": "double",
+     "null_count": 4320,
+     "null_rate": 0.7355695555933935,
+     "nan_count": 0,
+     "nan_rate": 0.0,
+     "distinct_nonnull": 926,
+     "min": -775.96875,
+     "max": 11904.03125,
+     "median": 2.287764549255371,
+     "top_values": [
+      {
+       "value": -167.96875,
+       "count": 81,
+       "share": 0.013791929167376128
+      },
+      {
+       "value": -415.96875,
+       "count": 75,
+       "share": 0.012770304784607526
+      },
+      {
+       "value": 1684.03125,
+       "count": 36,
+       "share": 0.006129746296611612
+      },
+      {
+       "value": 160.03125,
+       "count": 28,
+       "share": 0.004767580452920143
+      },
+      {
+       "value": 1612.03125,
+       "count": 26,
+       "share": 0.0044270389919972754
+      }
+     ],
+     "sentinel_hits": [],
+     "negative_count": 698,
+     "abs_gt_8192_count": 28,
+     "null_rate_total": 0.7355695555933935,
+     "top_value": -167.96875,
+     "top_share": 0.013791929167376128,
+     "flags": [
+      {
+       "flag": "over_50pct_null",
+       "detail": {
+        "null_rate": 0.7355695555933935
+       },
+       "examples": []
+      }
+     ]
+    },
+    "player_x_vel": {
+     "dtype": "double",
+     "null_count": 4320,
+     "null_rate": 0.7355695555933935,
+     "nan_count": 0,
+     "nan_rate": 0.0,
+     "distinct_nonnull": 3,
+     "min": -138.953125,
+     "max": 181.296875,
+     "median": 0.0,
+     "top_values": [
+      {
+       "value": 0.0,
+       "count": 1551,
+       "share": 0.26408990294568363
+      },
+      {
+       "value": -138.953125,
+       "count": 1,
+       "share": 0.00017027073046143367
+      },
+      {
+       "value": 181.296875,
+       "count": 1,
+       "share": 0.00017027073046143367
+      }
+     ],
+     "sentinel_hits": [],
+     "negative_count": 1,
+     "abs_gt_3000_count": 0,
+     "null_rate_total": 0.7355695555933935,
+     "top_value": 0.0,
+     "top_share": 0.26408990294568363,
+     "flags": [
+      {
+       "flag": "over_50pct_null",
+       "detail": {
+        "null_rate": 0.7355695555933935
+       },
+       "examples": []
+      },
+      {
+       "flag": "spike_top_value_gt_20pct",
+       "detail": {
+        "value": 0.0,
+        "share": 0.26408990294568363,
+        "count": 1551
+       },
+       "examples": [
+        {
+         "file": "basic_rank_update.2026-09-18,2026-10-08/dataframe_00000",
+         "match_key": "csds/2026/10/01/0f044ff9-4360-4738-8eb2-a82b616b2d87/csds",
+         "round": 24,
+         "tick": 134888,
+         "player_id": 0,
+         "value": 0.0
+        },
+        {
+         "file": "basic_rank_update.2026-09-18,2026-10-08/dataframe_00000",
+         "match_key": "csds/2026/10/01/0f044ff9-4360-4738-8eb2-a82b616b2d87/csds",
+         "round": 24,
+         "tick": 134888,
+         "player_id": 1,
+         "value": 0.0
+        }
+       ]
+      }
+     ]
+    },
+    "player_y_vel": {
+     "dtype": "double",
+     "null_count": 4320,
+     "null_rate": 0.7355695555933935,
+     "nan_count": 0,
+     "nan_rate": 0.0,
+     "distinct_nonnull": 3,
+     "min": -164.078125,
+     "max": 0.0,
+     "median": 0.0,
+     "top_values": [
+      {
+       "value": 0.0,
+       "count": 1551,
+       "share": 0.26408990294568363
+      },
+      {
+       "value": -164.078125,
+       "count": 1,
+       "share": 0.00017027073046143367
+      },
+      {
+       "value": -77.546875,
+       "count": 1,
+       "share": 0.00017027073046143367
+      }
+     ],
+     "sentinel_hits": [],
+     "negative_count": 2,
+     "abs_gt_3000_count": 0,
+     "null_rate_total": 0.7355695555933935,
+     "top_value": 0.0,
+     "top_share": 0.26408990294568363,
+     "flags": [
+      {
+       "flag": "over_50pct_null",
+       "detail": {
+        "null_rate": 0.7355695555933935
+       },
+       "examples": []
+      },
+      {
+       "flag": "spike_top_value_gt_20pct",
+       "detail": {
+        "value": 0.0,
+        "share": 0.26408990294568363,
+        "count": 1551
+       },
+       "examples": [
+        {
+         "file": "basic_rank_update.2026-09-18,2026-10-08/dataframe_00000",
+         "match_key": "csds/2026/10/01/0f044ff9-4360-4738-8eb2-a82b616b2d87/csds",
+         "round": 24,
+         "tick": 134888,
+         "player_id": 0,
+         "value": 0.0
+        },
+        {
+         "file": "basic_rank_update.2026-09-18,2026-10-08/dataframe_00000",
+         "match_key": "csds/2026/10/01/0f044ff9-4360-4738-8eb2-a82b616b2d87/csds",
+         "round": 24,
+         "tick": 134888,
+         "player_id": 1,
+         "value": 0.0
+        }
+       ]
+      }
+     ]
+    },
+    "player_z_vel": {
+     "dtype": "double",
+     "null_count": 4320,
+     "null_rate": 0.7355695555933935,
+     "nan_count": 0,
+     "nan_rate": 0.0,
+     "distinct_nonnull": 5,
+     "min": -459.0,
+     "max": 0.0,
+     "median": 0.0,
+     "top_values": [
+      {
+       "value": 0.0,
+       "count": 1549,
+       "share": 0.26374936148476075
+      },
+      {
+       "value": -459.0,
+       "count": 1,
+       "share": 0.00017027073046143367
+      },
+      {
+       "value": -225.0,
+       "count": 1,
+       "share": 0.00017027073046143367
+      },
+      {
+       "value": -13.0,
+       "count": 1,
+       "share": 0.00017027073046143367
+      },
+      {
+       "value": -12.0,
+       "count": 1,
+       "share": 0.00017027073046143367
+      }
+     ],
+     "sentinel_hits": [],
+     "negative_count": 4,
+     "abs_gt_3000_count": 0,
+     "null_rate_total": 0.7355695555933935,
+     "top_value": 0.0,
+     "top_share": 0.26374936148476075,
+     "flags": [
+      {
+       "flag": "over_50pct_null",
+       "detail": {
+        "null_rate": 0.7355695555933935
+       },
+       "examples": []
+      },
+      {
+       "flag": "spike_top_value_gt_20pct",
+       "detail": {
+        "value": 0.0,
+        "share": 0.26374936148476075,
+        "count": 1549
+       },
+       "examples": [
+        {
+         "file": "basic_rank_update.2026-09-18,2026-10-08/dataframe_00000",
+         "match_key": "csds/2026/10/01/0f044ff9-4360-4738-8eb2-a82b616b2d87/csds",
+         "round": 24,
+         "tick": 134888,
+         "player_id": 0,
+         "value": 0.0
+        },
+        {
+         "file": "basic_rank_update.2026-09-18,2026-10-08/dataframe_00000",
+         "match_key": "csds/2026/10/01/0f044ff9-4360-4738-8eb2-a82b616b2d87/csds",
+         "round": 24,
+         "tick": 134888,
+         "player_id": 1,
+         "value": 0.0
+        }
+       ]
+      }
+     ]
+    },
+    "player_phi_ang": {
+     "dtype": "double",
+     "null_count": 4320,
+     "null_rate": 0.7355695555933935,
+     "nan_count": 0,
+     "nan_rate": 0.0,
+     "distinct_nonnull": 1442,
+     "min": 35.814056396484375,
+     "max": 178.99990844726562,
+     "median": 93.372802734375,
+     "top_values": [
+      {
+       "value": 90.0,
+       "count": 13,
+       "share": 0.0022135194959986377
+      },
+      {
+       "value": 90.65986633300781,
+       "count": 4,
+       "share": 0.0006810829218457347
+      },
+      {
+       "value": 90.99014282226562,
+       "count": 4,
+       "share": 0.0006810829218457347
+      },
+      {
+       "value": 88.20477294921875,
+       "count": 3,
+       "share": 0.000510812191384301
+      },
+      {
+       "value": 90.52803039550781,
+       "count": 3,
+       "share": 0.000510812191384301
+      }
+     ],
+     "sentinel_hits": [],
+     "negative_count": 0,
+     "null_rate_total": 0.7355695555933935,
+     "top_value": 90.0,
+     "top_share": 0.0022135194959986377,
+     "flags": [
+      {
+       "flag": "over_50pct_null",
+       "detail": {
+        "null_rate": 0.7355695555933935
+       },
+       "examples": []
+      }
+     ]
+    },
+    "player_theta_ang": {
+     "dtype": "double",
+     "null_count": 4320,
+     "null_rate": 0.7355695555933935,
+     "nan_count": 0,
+     "nan_rate": 0.0,
+     "distinct_nonnull": 1517,
+     "min": -179.9457550048828,
+     "max": 179.60964965820312,
+     "median": -0.101959228515625,
+     "top_values": [
+      {
+       "value": -177.35333251953125,
+       "count": 2,
+       "share": 0.00034054146092286734
+      },
+      {
+       "value": -155.6944580078125,
+       "count": 2,
+       "share": 0.00034054146092286734
+      },
+      {
+       "value": -147.77435302734375,
+       "count": 2,
+       "share": 0.00034054146092286734
+      },
+      {
+       "value": -125.85285186767578,
+       "count": 2,
+       "share": 0.00034054146092286734
+      },
+      {
+       "value": -121.34811401367188,
+       "count": 2,
+       "share": 0.00034054146092286734
+      }
+     ],
+     "sentinel_hits": [],
+     "negative_count": 777,
+     "null_rate_total": 0.7355695555933935,
+     "top_value": -177.35333251953125,
+     "top_share": 0.00034054146092286734,
+     "flags": [
+      {
+       "flag": "impossible_value_for_name",
+       "detail": [
+        {
+         "rule": "outside [-90,90]",
+         "count": 776
+        }
+       ],
+       "examples": [
+        {
+         "file": "basic_rank_update.2026-09-18,2026-10-08/dataframe_00000",
+         "match_key": "csds/2026/10/01/0f044ff9-4360-4738-8eb2-a82b616b2d87/csds",
+         "round": 24,
+         "tick": 134888,
+         "player_id": 0,
+         "value": -156.2091064453125
+        },
+        {
+         "file": "basic_rank_update.2026-09-18,2026-10-08/dataframe_00000",
+         "match_key": "csds/2026/10/01/0f044ff9-4360-4738-8eb2-a82b616b2d87/csds",
+         "round": 24,
+         "tick": 134888,
+         "player_id": 1,
+         "value": 176.36489868164062
+        }
+       ]
+      },
+      {
+       "flag": "over_50pct_null",
+       "detail": {
+        "null_rate": 0.7355695555933935
+       },
+       "examples": []
+      }
+     ]
+    },
+    "player_weapon_code": {
+     "dtype": "int64",
+     "null_count": 4320,
+     "null_rate": 0.7355695555933935,
+     "nan_count": 0,
+     "nan_rate": 0.0,
+     "distinct_nonnull": 60,
+     "min": 1.0,
+     "max": 526.0,
+     "median": 32.0,
+     "top_values": [
+      {
+       "value": 7.0,
+       "count": 305,
+       "share": 0.05193257279073727
+      },
+      {
+       "value": 60.0,
+       "count": 153,
+       "share": 0.026051421760599353
+      },
+      {
+       "value": 4.0,
+       "count": 138,
+       "share": 0.02349736080367785
+      },
+      {
+       "value": 59.0,
+       "count": 138,
+       "share": 0.02349736080367785
+      },
+      {
+       "value": 42.0,
+       "count": 120,
+       "share": 0.02043248765537204
+      }
+     ],
+     "sentinel_hits": [],
+     "negative_count": 0,
+     "distinct_values_all": [
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      7.0,
+      8.0,
+      9.0,
+      10.0,
+      11.0,
+      13.0,
+      16.0,
+      17.0,
+      19.0,
+      23.0,
+      24.0,
+      25.0,
+      26.0,
+      28.0,
+      29.0,
+      30.0,
+      31.0,
+      32.0,
+      33.0,
+      34.0,
+      35.0,
+      36.0,
+      38.0,
+      39.0,
+      40.0,
+      42.0,
+      43.0,
+      44.0,
+      45.0,
+      46.0,
+      48.0,
+      49.0,
+      59.0,
+      60.0,
+      61.0,
+      64.0,
+      500.0,
+      503.0,
+      505.0,
+      506.0,
+      507.0,
+      508.0,
+      509.0,
+      512.0,
+      514.0,
+      515.0,
+      516.0,
+      517.0,
+      518.0,
+      519.0,
+      520.0,
+      521.0,
+      522.0,
+      523.0,
+      525.0,
+      526.0
+     ],
+     "null_rate_total": 0.7355695555933935,
+     "top_value": 7.0,
+     "top_share": 0.05193257279073727,
+     "flags": [
+      {
+       "flag": "over_50pct_null",
+       "detail": {
+        "null_rate": 0.7355695555933935
+       },
+       "examples": [
+        {
+         "file": "basic_rank_update.2026-09-18,2026-10-08/dataframe_00000",
+         "match_key": "csds/2026/10/01/0f044ff9-4360-4738-8eb2-a82b616b2d87/csds",
+         "round": 24,
+         "tick": 134888,
+         "player_id": 2,
+         "value": null
+        },
+        {
+         "file": "basic_rank_update.2026-09-18,2026-10-08/dataframe_00000",
+         "match_key": "csds/2026/10/01/0f044ff9-4360-4738-8eb2-a82b616b2d87/csds",
+         "round": 24,
+         "tick": 134888,
+         "player_id": 3,
+         "value": null
+        }
+       ]
+      }
+     ]
+    },
+    "player_team_code": {
+     "dtype": "int64",
+     "null_count": 4320,
+     "null_rate": 0.7355695555933935,
+     "nan_count": 0,
+     "nan_rate": 0.0,
+     "distinct_nonnull": 2,
+     "min": 2.0,
+     "max": 3.0,
+     "median": 2.0,
+     "top_values": [
+      {
+       "value": 2.0,
+       "count": 802,
+       "share": 0.13655712583006982
+      },
+      {
+       "value": 3.0,
+       "count": 751,
+       "share": 0.1278733185765367
+      }
+     ],
+     "sentinel_hits": [],
+     "negative_count": 0,
+     "distinct_values_all": [
+      2.0,
+      3.0
+     ],
+     "null_rate_total": 0.7355695555933935,
+     "top_value": 2.0,
+     "top_share": 0.13655712583006982,
+     "flags": [
+      {
+       "flag": "over_50pct_null",
+       "detail": {
+        "null_rate": 0.7355695555933935
+       },
+       "examples": [
+        {
+         "file": "basic_rank_update.2026-09-18,2026-10-08/dataframe_00000",
+         "match_key": "csds/2026/10/01/0f044ff9-4360-4738-8eb2-a82b616b2d87/csds",
+         "round": 24,
+         "tick": 134888,
+         "player_id": 2,
+         "value": null
+        },
+        {
+         "file": "basic_rank_update.2026-09-18,2026-10-08/dataframe_00000",
+         "match_key": "csds/2026/10/01/0f044ff9-4360-4738-8eb2-a82b616b2d87/csds",
+         "round": 24,
+         "tick": 134888,
+         "player_id": 3,
+         "value": null
+        }
+       ]
+      }
+     ]
+    },
+    "match_key": {
+     "dtype": "string",
+     "null_count": 0,
+     "null_rate": 0.0,
+     "nan_count": 0,
+     "nan_rate": 0.0,
+     "distinct_nonnull": 677,
+     "top_values": [
+      {
+       "value": "csds/2026/10/01/0f044ff9-4360-4738-8eb2-a82b616b2d87/csds",
+       "count": 10,
+       "share": 0.0017027073046143367
+      },
+      {
+       "value": "csds/2026/10/01/0f310b70-8917-42f0-a073-40a7e022ea63/csds",
+       "count": 10,
+       "share": 0.0017027073046143367
+      },
+      {
+       "value": "csds/2026/10/01/103674c8-120d-40cc-a9d3-c870ab4cb804/csds",
+       "count": 10,
+       "share": 0.0017027073046143367
+      },
+      {
+       "value": "csds/2026/10/01/10e45c16-1b50-45aa-a476-6758713442b1/csds",
+       "count": 10,
+       "share": 0.0017027073046143367
+      },
+      {
+       "value": "csds/2026/10/01/17eb0e83-9fe7-4a50-b4f8-8b1426849ad3/csds",
+       "count": 10,
+       "share": 0.0017027073046143367
+      }
+     ],
+     "sentinel_hits": [],
+     "null_rate_total": 0.0,
+     "top_value": "csds/2026/10/01/0f044ff9-4360-4738-8eb2-a82b616b2d87/csds",
+     "top_share": 0.0017027073046143367,
+     "flags": []
+    }
+   },
+   "identical_column_groups": [],
+   "duplicates": {
+    "exact_full_row_extra_copies": 0,
+    "exact_full_row_groups": 0,
+    "exact_full_row_examples": [],
+    "key_dup_extra_copies": 0,
+    "key_dup_key": [
+     "match_key",
+     "round",
+     "tick",
+     "player_id"
+    ],
+    "key_dup_match_round_pairs": 0,
+    "key_dup_examples": []
+   },
+   "extras": [
+    {
+     "check": "player_id != player_id_fixed (both non-null)",
+     "count": 4970,
+     "compared": 5508,
+     "examples": [
+      {
+       "file": "dataframe_00000",
+       "player_id": 0,
+       "player_id_fixed": 6.0,
+       "match_key": "csds/2026/10/01/0f044ff9-4360-4738-8eb2-a82b616b2d87/csds",
+       "round": 24,
+       "tick": 134888
+      },
+      {
+       "file": "dataframe_00000",
+       "player_id": 1,
+       "player_id_fixed": 3.0,
+       "match_key": "csds/2026/10/01/0f044ff9-4360-4738-8eb2-a82b616b2d87/csds",
+       "round": 24,
+       "tick": 134888
+      }
+     ]
+    },
+    {
+     "check": "rank_change != rank_new - rank_old",
+     "count": 260,
+     "compared": 5873,
+     "examples": [
+      {
+       "file": "dataframe_00000",
+       "rank_old": 0,
+       "rank_new": 4704,
+       "rank_change": 0.0,
+       "match_key": "csds/2026/10/01/103674c8-120d-40cc-a9d3-c870ab4cb804/csds",
+       "round": 16,
+       "tick": 111905,
+       "expected_change": 4704.0
+      },
+      {
+       "file": "dataframe_00000",
+       "rank_old": 0,
+       "rank_new": 10,
+       "rank_change": 0.0,
+       "match_key": "csds/2026/10/01/17eb0e83-9fe7-4a50-b4f8-8b1426849ad3/csds",
+       "round": 22,
+       "tick": 141091,
+       "expected_change": 10.0
+      }
+     ]
+    },
+    {
+     "check": "rank_change distribution (top 8 by count)",
+     "values": [
+      {
+       "value": 0.0,
+       "count": 2822
+      },
+      {
+       "value": 1.0,
+       "count": 112
+      },
+      {
+       "value": -1.0,
+       "count": 49
+      },
+      {
+       "value": -1000.0,
+       "count": 32
+      },
+      {
+       "value": -100.0,
+       "count": 28
+      },
+      {
+       "value": 372.0,
+       "count": 28
+      },
+      {
+       "value": -124.0,
+       "count": 27
+      },
+      {
+       "value": -121.0,
+       "count": 26
+      }
+     ],
+     "distinct": 764
+    },
+    {
+     "check": "tick - second*tick_rate(header)",
+     "compared": 5873,
+     "median": 0.0,
+     "abs_gt_2_ticks": 0,
+     "abs_gt_2_ticks_pct": 0.0,
+     "p01": 0.0,
+     "p99": 0.0
+    }
+   ]
+  }
+ }
+}

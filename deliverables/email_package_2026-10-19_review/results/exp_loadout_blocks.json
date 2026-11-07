@@ -1,0 +1,46 @@
+{
+ "settings": "winprob_v4 settings, frozen split, every second; deltas vs the retrained control (positive = removing the block hurts)",
+ "variants": [
+  {
+   "name": "control (all 59 inputs)",
+   "n_features": 59,
+   "best_iteration": 1059,
+   "test_logloss": 0.4564347047610735,
+   "validation_logloss": 0.4536432416972257
+  },
+  {
+   "name": "drop weapon types + equipment (22)",
+   "n_features": 37,
+   "best_iteration": 922,
+   "test_logloss": 0.4591331468320016,
+   "validation_logloss": 0.4562442776737646,
+   "test_delta_vs_control": 0.002698442070928075,
+   "test_delta_ci95": [
+    0.002211080395096993,
+    0.003188155065818109
+   ],
+   "validation_delta_vs_control": 0.0026010359765387962,
+   "validation_delta_ci95": [
+    0.001735077185836098,
+    0.0034174213104654566
+   ]
+  },
+  {
+   "name": "drop weapon types + grenades (29)",
+   "n_features": 30,
+   "best_iteration": 1029,
+   "test_logloss": 0.45682268126686787,
+   "validation_logloss": 0.45423576256579173,
+   "test_delta_vs_control": 0.00038797650579427924,
+   "test_delta_ci95": [
+    0.0001100502594871941,
+    0.000674874472746081
+   ],
+   "validation_delta_vs_control": 0.0005925208685659703,
+   "validation_delta_ci95": [
+    9.92016647049219e-05,
+    0.0010650148962370763
+   ]
+  }
+ ]
+}

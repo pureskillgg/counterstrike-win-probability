@@ -1,0 +1,324 @@
+BRIEFING: WIN PROBABILITY IN CS2 (27 OCTOBER 2026)
+Plain text. Times are Central.
+Numbers are log loss unless marked. Lower is better. A 50/50 guess scores 0.693.
+Validation = the 1,168 matches used to choose between options.
+Test = the Mirage test, 687 matches, read many times since 23 Oct.
+Fresh = 653 matches from 22 to 25 Oct, built and checked, never scored.
+
+
+PART 1. WHAT HAPPENED, IN ORDER
+
+1. 14 Oct. Integrity rules pinned: splits by match, bootstrap intervals, exclusions.
+   The tree model was kept, because research found no sequence or set network
+   beating a tuned tree model. Foundation models tested: worse by 0.009 to 0.013.
+
+2. 22 Oct. Stage-two plan (an assistant proposal; no owner approval pinned):
+   a set encoder, and a temporal model over the last 20 to 40 seconds.
+
+3. 23 Oct. First read of the Mirage test. 2024 February kept separate.
+   Matches from 17 to 21 Oct added to training.
+
+4. 24 to 25 Oct. Many checks on the Mirage test: the all-maps sequence model,
+   distances, walking routes, defuse timing, word2vec, map control.
+   Walking did not beat straight-line on test.
+   A matched-scope check found the sequence model better than the tree model
+   on test, by 0.00166 (pin 2e4130fe).
+
+5. 26 Oct. Validation-only pre-registrations start.
+   The straight-line distance gain was re-checked on validation with site centres
+   fitted on training matches only. It held (pin ee61ba3a).
+   Tests run: plain network, attention, defuse speed, event counts, sanity check.
+   The 50/50 blend was pinned with a read-once rule.
+
+6. 27 Oct. The 22 to 25 Oct matches were merged into the tomes. The first merge check
+   failed; the store was restored; the amended check passed.
+   Manifest checked. Learning curve run. Six correction pins written.
+   The blend's one-time read was re-pinned to the 653 fresh matches (pin dd78df27).
+   Deck and fact sheet built.
+
+
+PART 2. RESULTS
+
+Each result has: the number, the split, the status, and the pin.
+
+R1. Baseline: tree model (XGBoost), 57 inputs.
+    0.4533. Validation, 1,168 matches. Reference point.
+
+R2. Straight-line distance from the nearest living player to each bomb site.
+    -0.0028 (mean -0.00285). Every seed passes.
+    Validation, with site centres fitted on training matches only.
+    Status: clean on validation. Pin ee61ba3a.
+    Note: the distance idea was first seen on the Mirage test. See C2 and C3.
+
+R3. Walking distance on the map graph (shortest route).
+    -0.0026 (mean -0.00257). Every seed passes. Validation.
+    On the Mirage test it did not beat straight-line (+0.00027).
+    Status: passes on validation. Walking against straight-line on validation: not run.
+    Pins 8697407b, 7b4f7a87.
+
+R4. Sequence model (GRU), reads the last 20 seconds in order.
+    -0.0022 against the tree model (mean -0.00219). Every seed passes. Validation.
+    Pin 921fa3dd.
+
+R5. Blend, 50/50 sequence model and distance model.
+    -0.0011 against the distance model. -0.0018 against the sequence model.
+    About -0.0040 against the baseline (computed by adding -0.0011 and -0.0028).
+    Validation. Not read on clean test data. Pin 993fc8bb.
+
+R6. Learning curve (27 Oct, one training seed). Sequence minus tree, validation,
+    at 25, 50 and 100 percent of training matches:
+    +0.00037, -0.00046, -0.00197.
+    The sequence model is behind with less data and ahead with more. Pin 1db6312a.
+
+R7. Distance gain on contested rounds (sides about even in players and equipment).
+    -0.00386. Every seed passes. Validation, 172,067 seconds (11.4 percent of validation).
+    Pin 370f5ec6.
+
+R8. Sanity check: tree model against plain logistic regression.
+    The tree model is 0.0104 better. Passes. Validation. Pin 8212faf3.
+
+R9. Plain neural network (57-256-256-1, no set encoder).
+    +0.00077. Fails. No seed passes. Overfits after 1 to 2 epochs.
+    Rented-GPU rerun: +0.000769. Pin 27589820.
+
+R10. Player-to-player attention, added to the sequence model.
+     +0.00015 (mean). Fails. Pin 0242913c.
+
+R11. Kills, utility and bomb events (second version).
+     -0.00044 (mean). Fails, just short of the -0.0005 bar. Pin be851706.
+
+R12. Death in the next 3 seconds, as an input.
+     Adds nothing. Fails. Pin 3796266f.
+
+R13. Per-weapon run speed in the defuse timing.
+     -0.00026 (mean). Fails. Pin acaea8a3.
+
+R14. Travel-time map control.
+     +0.00005. Wrong direction. Fails. Pin d165c955.
+
+R15. Learned set embedding (word2vec style).
+     -0.00054 on the baseline (passes). -0.00009 once distances are in (fails).
+     Pin 5ba17087.
+
+R16. Word2vec position embeddings, Chahrour 2023 setup.
+     The paper reports +0.027 in accuracy on 200 matches. This is a different measure.
+     Our replication: -0.009 on a 4-feature base; +0.0001 on the 57 features.
+     Status: not reproduced. Pins c95b21e0, a70d2a77.
+
+R17. THGNN-lite: navigation-region graph against the k-means graph.
+     Mean +0.000033. Seeds: +0.000374, -0.000643, +0.000367.
+     Measured on the Mirage test: 865,974 seconds, 687 matches. Test set, not validation.
+     Status: not adopted. Validation check pending. Pin 4edc74c3.
+
+R18. Foundation models (TabPFN v2, TabICL), no tuning.
+     Worse by 0.009 to 0.013. Tested 14 Oct. Pin a79d4206.
+
+R19. 2024 February, frozen 2026 model.
+     0.470 log loss on the 2024 rounds that pass the data rules.
+     Descriptive only, not a comparison of models. Pin afa62544.
+
+
+PART 3. WHAT THE RESULTS ADD UP TO (our interpretation; check it before saying it)
+
+- Gains that held on validation with rules fixed in advance:
+  the distance features (R2, and the contested-round gain in R7),
+  and the sequence model (R4), which grows with more data (R6).
+- Things that did not clear the bar: the learned structure on top (R9 to R13, R15, R16)
+  and the graph variant (R17).
+- The blend (R5) is the best measured result. It is measured on validation only.
+- Working idea: the model improves when it knows where the bomb could go off, and it
+  improves with more training data. Learned structure on top added nothing at this data size.
+- What would change this: the blend failing to beat the distance model on the
+  653 fresh matches.
+
+
+PART 4. COMPLICATIONS
+
+C1. The Mirage test (687 matches) has been read many times since 23 Oct.
+    88 unpinned result files touch test-split numbers. 87 report a test outcome.
+
+C2. Several choices were first checked on the test set: distance features,
+    walking versus straight-line, defuse timing, word2vec, and the THGNN graph.
+    Only the straight-line distance has a validation check (R2).
+    Walking versus straight-line, defuse timing and the THGNN graph have none yet.
+
+C3. The site centres were fitted with test matches included. The straight-line
+    gain was re-checked with training-only centres and held. The walking arm and the
+    sequence model's distance arm were not rebuilt with training-only centres.
+
+C4. The blend was chosen after the test numbers for its two parts were already on record.
+
+C5. The training split for the all-maps runs is inferred, not recorded. Their row counts
+    match the 21,468-entry manifest exactly, but the saved JSON has no manifest hash.
+    The shipped v6 model file was trained on a 12,563-train manifest.
+
+C6. Reproduction: a CPU retrain of the tree model (arm A, seed 0) missed the 1e-4
+    prediction gate. Log loss matched to 2e-5, but single predictions differed by up to
+    0.126. The GPU that would settle it is busy with another project's job.
+
+C7. Validation covers all maps (1,168 matches). The clean test numbers are Mirage only.
+    Claims about other maps rest on validation alone.
+
+C8. The fresh 653 matches have 11 duplicate copies outside every split.
+    How to handle them is undecided.
+
+C9. The 22 to 25 Oct matches are in the tomes but not yet in the model tables
+    (the snapshot and the geo join). No run uses them.
+
+C10. The learning curve is one seed, with the sequence model's epoch picked on validation.
+     It used 19,478 matches where the pre-registration said 21,468 entries.
+
+C11. The blend is not servable yet. In production, the sequence model needs the last
+     20 seconds of per-second state. That path has not been checked.
+
+C12. Licence: the navigation mesh derives from Valve game data. Internal research use only,
+     until a licence review (download approved; pin c432a055).
+
+C13. Sources. Huang et al. 2026 (the source of the 250 units per second and of the
+     contested-round rule) is not found online. The Chahrour 2023 paper is not found;
+     we used its repository and a manuscript page. The Szmida and Toka year is open
+     (2025 by paper ID, 2026 by listing). Our walking formula has not been compared
+     with Xenopoulos 2020, Section III.
+
+C14. The 20 seconds is a count, not a duration. The paper's window is 20 snapshots at
+     4 Hz, which is 5 seconds. Ours is 20 seconds at 1 Hz.
+
+C15. The reading list has 28 numbered entries, not 27: 4 tested, 2 related, 22 not tested.
+
+
+PART 5. CHECKLIST BEFORE PRESENTING
+
+- Say "validation" for every gain. Mention the test set only as a caveat.
+- Do not say walking beats or loses to straight-line on clean data.
+- The blend's -0.0040 is computed from two results. Say so.
+- Dataset: 23,705 matches with data rows. Training 19,478; validation 1,168; test 3,059
+  (687 on Mirage).
+- Word2vec: say "not reproduced", not "replicated".
+- THGNN-lite: say it was measured on the test set and has no validation check yet.
+- 20 seconds: say it is a count and a code default, not a tuned or paper-matched duration.
+- Map visuals: mention the licence limit first if they leave the team.
+
+
+PART 6. DECISIONS WAITING ON YOU
+
+D1. Go or no-go on the final check: the blend on the 653 fresh matches, once,
+    with its rule fixed in advance.
+D2. Duplicates in the fresh set: score keeper copies only (recommended), or all copies.
+D3. Reproduction gate: keep the 1e-4 gate and rerun on the GPU (recommended), or change
+    the gate before a rerun and disclose the failure.
+D4. The 88 unpinned result files that touch test numbers: label descriptive
+    (recommended), pin, or retire.
+D5. 2024 February in any pre-registered test: recommended no, for the final read.
+D6. Split ratio for new matches (pin 2569aac7, still open).
+D7. Republish the deck Artifact. The published version is older.
+D8. Optional: a pre-registered, validation-only comparison of the sequence model against
+    LSTM and convolution options. Needs GPU time.
+
+
+PART 7. SLIDE BY SLIDE (deck: deck_plain_preview.html)
+
+Slide 1. Cover.
+  Say: this is a progress report as of 27 Oct. The question is the chance the
+  Counter-Terrorist side wins the round, second by second. Scale: seven maps, 23,705
+  matches. Nothing here is a final score on fresh data.
+  Do not claim: that the model is ready to ship, or that the test set is clean.
+
+Slide 2. The short version.
+  Say: four cards (built, helped, didn't, next). Distance -0.0028 and sequence model
+  -0.0022, both on validation, on 1,168 matches. About ten other ideas did not clear the
+  bar. Next: one final check on 653 fresh matches, which needs your go.
+  Watch out: the distance result was first seen on the test set. The validation check
+  came after, with training-only centres.
+
+Slide 3. How the model works.
+  Say: each second on seven maps is one row, with 57 inputs. The tree model is the
+  baseline. The sequence model also reads the last 20 seconds. The output is one
+  probability per second (62% on the slide is an example). Lower log loss is better;
+  a 50/50 guess scores 0.693.
+  Numbers: 23,705 matches with data rows (training 19,478; validation 1,168; test 3,059,
+  of which 687 on Mirage). 3,417 matches from 22 to 25 Oct are in the tomes but not yet in
+  the model tables. Baseline 0.453 on validation.
+  Watch out: 0.453 is validation, not test.
+
+Slide 4. The papers.
+  Say: 28 numbered papers. 4 tested directly: Xenopoulos and Silva 2022 (graph attention),
+  Xenopoulos and Silva 2022 ESTA (plain network, set encoder), TabPFN-2.5 (we ran v2 and
+  TabICL), and Szmida and Toka (THGNN). 2 related runs: distillation (Lopez-Paz 2016,
+  Karlsson 2022). 22 not tested. "Tested" means we tried the idea on our data; it does not
+  mean we reproduced the paper.
+  Do not claim: that we reproduced any paper, or that we tested TabPFN-2.5 itself.
+  Watch out: Xenopoulos 2020, Lundberg 2018, Chahrour 2023 and Huang 2026 are "also used",
+  not in the 22.
+
+Slide 5. What we did with each paper.
+  Say: seven rows, each with the paper's idea, what we did, and the result. Distance is the
+  clear win on validation. Attention gave no gain. The plain network was worse.
+  Word2vec was not reproduced. THGNN-lite (measured on test) and TabPFN/TabICL did not help.
+  Watch out: the contested-round row is a validation result (172,067 seconds). The word2vec
+  row is a replication attempt, not a reproduction.
+
+Slide 6. What helped: distance and the sequence model.
+  Say: baseline 0.4533. Straight-line distance -0.0028. Walking distance -0.0026, but it did
+  not beat straight-line on the Mirage test. The sequence model -0.0022. Each held on every
+  seed.
+  Watch out: the walking figure is validation against the baseline only.
+
+Slide 7. The map as a graph.
+  Say: Mirage has 2,544 areas and 3,344 connections in the navigation data (awpy-data
+  release 2000935, published 23 Oct 2026). Walking distance is the shortest route over that
+  graph. The example: a straight line of 1,699 units, and a walk of 2,672 units (ratio 1.57;
+  the median ratio in that band is 1.51). At 250 units per second, about 7 seconds and
+  about 11 seconds.
+  Do not claim: that the walk is how players actually moved.
+  Watch out: licence limit (internal research use only).
+
+Slide 8. What didn't help.
+  Say: ten ideas with their results (R9 to R18). A gain counts only if it is at least 0.0005
+  better on each of three seeds, with each seed's range below zero.
+  Watch out: the bar and every number here is validation, except THGNN-lite (test).
+
+Slide 9. Why a sequence model, and why 20 seconds.
+  Say: 14 Oct we kept the tree model. 22 Oct the plan proposed a sequence model over
+  20 to 40 seconds. 25 Oct the earlier tree-model edge came from scope; on matched scope the
+  sequence model was better (on test). 26 Oct the sequence model beat the tree model on
+  every seed (validation). The learning curve (R6): more matches help the sequence model most.
+  Watch out: the 25 Oct comparison was on test. The 20 seconds is a count; the paper's
+  window is 5 seconds (20 snapshots at 4 Hz). Our recurrent part is a GRU, the same family as
+  the THGNN recurrent layer, and the CS:GO GRU precedent on our reading list
+  (Leathart and Polaczuk 2020) also uses one.
+
+Slide 10. Current best: distance model plus sequence model.
+  Say: distance -0.0028. Adding the sequence model in a 50/50 blend: -0.0011 more. Total
+  about -0.0040 against the baseline. Validation only. Baseline 0.4533; plain logistic
+  regression 0.010 worse.
+  Do not claim: that the blend has been tested on clean data.
+  Watch out: 0.0040 is two validation results added together.
+
+Slide 11. The test set: why it is a problem, and the fix.
+  Say: training fits the models. Validation (1,168) chooses, with rules fixed from 26 Oct.
+  Test (Mirage 687) has been read many times; some choices were first checked there.
+  The fresh 653 are built and never scored.
+  What went wrong: choices first checked on test (distance features, walking versus
+  straight-line, defuse timing, word2vec, the THGNN graph). The site centres were fitted with
+  test matches included.
+  What is being done: the fresh 653 are the one clean final check. Rules are fixed in
+  advance. Validation checks for walking, defuse and THGNN are still to do. The blend's
+  one-time read waits for an audit review and your go.
+  Watch out: this is the slide people will press on. Say it plainly.
+
+Slide 12. Next steps.
+  Say: the final check on the 653 fresh matches (needs your go). Confirm the saved
+  predictions reproduce (needs the GPU, which is busy). Validation checks for walking,
+  defuse and THGNN. Correct the register (learning curve, dataset counts). Add the 26 Oct
+  matches when complete.
+  Decision for you: run the final check now, or not yet.
+
+Slide 13. Appendix: this week.
+  Say: Fri 23, 2024 kept separate and 17 to 21 Oct added to training. Sat 24, no decisions
+  registered. Sun 25, distance and paper checks, and the 2024 out-of-time check (0.470).
+  Mon 26, pre-registered validation-only tests. Tue 27, 22 to 25 Oct merged; fresh set built;
+  learning curve run.
+
+Slide 14. Appendix: words used in this deck.
+  Say: the plain meanings. Longer explainers for GRU, TreeSHAP and the others are in tab 8
+  of the fact sheet.

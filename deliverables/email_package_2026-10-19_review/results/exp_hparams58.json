@@ -1,0 +1,193 @@
+{
+ "features": 58,
+ "configs": [
+  {
+   "name": "baseline d4 mcw20 sub0.8",
+   "config": {
+    "depth": 4,
+    "mcw": 20,
+    "subsample": 0.8
+   },
+   "best_iteration": 1408,
+   "validation_logloss": 0.45277813228582553,
+   "test_logloss": 0.45568029840363017,
+   "validation_delta_vs_baseline": null,
+   "test_delta_vs_baseline": null,
+   "test_delta_ci95": null
+  },
+  {
+   "name": "depth 5",
+   "config": {
+    "depth": 5,
+    "mcw": 20,
+    "subsample": 0.8
+   },
+   "best_iteration": 836,
+   "validation_logloss": 0.45279200313669743,
+   "test_logloss": 0.4556586359831958,
+   "validation_delta_vs_baseline": 1.3870850871947244e-05,
+   "test_delta_vs_baseline": -2.1662420434372782e-05,
+   "test_delta_ci95": [
+    -0.00013672310621848816,
+    9.757209890042688e-05
+   ]
+  },
+  {
+   "name": "depth 6",
+   "config": {
+    "depth": 6,
+    "mcw": 20,
+    "subsample": 0.8
+   },
+   "best_iteration": 425,
+   "validation_logloss": 0.4528902821168307,
+   "test_logloss": 0.4557993281423492,
+   "validation_delta_vs_baseline": 0.00011214983100516672,
+   "test_delta_vs_baseline": 0.0001190297387190327,
+   "test_delta_ci95": [
+    -4.943173679774435e-05,
+    0.000282246323610979
+   ]
+  },
+  {
+   "name": "depth 8",
+   "config": {
+    "depth": 8,
+    "mcw": 20,
+    "subsample": 0.8
+   },
+   "best_iteration": 252,
+   "validation_logloss": 0.453034940821841,
+   "test_logloss": 0.45601269888160206,
+   "validation_delta_vs_baseline": 0.0002568085360155269,
+   "test_delta_vs_baseline": 0.00033240047797192186,
+   "test_delta_ci95": [
+    0.0001442710154830745,
+    0.0005279346115957822
+   ]
+  },
+  {
+   "name": "min child weight 50",
+   "config": {
+    "depth": 4,
+    "mcw": 50,
+    "subsample": 0.8
+   },
+   "best_iteration": 988,
+   "validation_logloss": 0.45281276103853857,
+   "test_logloss": 0.45579466326817114,
+   "validation_delta_vs_baseline": 3.462875271306866e-05,
+   "test_delta_vs_baseline": 0.00011436486454099894,
+   "test_delta_ci95": [
+    1.670584800765141e-05,
+    0.00021924862200336216
+   ]
+  },
+  {
+   "name": "min child weight 100",
+   "config": {
+    "depth": 4,
+    "mcw": 100,
+    "subsample": 0.8
+   },
+   "best_iteration": 1030,
+   "validation_logloss": 0.45292936861085814,
+   "test_logloss": 0.45582020240050375,
+   "validation_delta_vs_baseline": 0.00015123632503266288,
+   "test_delta_vs_baseline": 0.00013990399687367264,
+   "test_delta_ci95": [
+    4.304169593251166e-05,
+    0.0002420401198880848
+   ]
+  },
+  {
+   "name": "subsample 1.0",
+   "config": {
+    "depth": 4,
+    "mcw": 20,
+    "subsample": 1.0
+   },
+   "best_iteration": 1108,
+   "validation_logloss": 0.45292060355335045,
+   "test_logloss": 0.45585811161246903,
+   "validation_delta_vs_baseline": 0.00014247126752489904,
+   "test_delta_vs_baseline": 0.00017781320883890475,
+   "test_delta_ci95": [
+    8.729243927235733e-05,
+    0.0002696009111122172
+   ]
+  },
+  {
+   "name": "colsample 0.8",
+   "config": {
+    "depth": 4,
+    "mcw": 20,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8
+   },
+   "best_iteration": 1114,
+   "validation_logloss": 0.4527874399445007,
+   "test_logloss": 0.4557168093352423,
+   "validation_delta_vs_baseline": 9.307658675196428e-06,
+   "test_delta_vs_baseline": 3.651093161214144e-05,
+   "test_delta_ci95": [
+    -6.93052192382479e-05,
+    0.0001312124226798965
+   ]
+  },
+  {
+   "name": "depth 6, mcw 100",
+   "config": {
+    "depth": 6,
+    "mcw": 100,
+    "subsample": 0.8
+   },
+   "best_iteration": 427,
+   "validation_logloss": 0.4530113232595132,
+   "test_logloss": 0.4558806023587949,
+   "validation_delta_vs_baseline": 0.00023319097368771315,
+   "test_delta_vs_baseline": 0.0002003039551647952,
+   "test_delta_ci95": [
+    4.4303513414515125e-05,
+    0.00035669513276662194
+   ]
+  },
+  {
+   "name": "depth 6, mcw 100, colsample 0.8",
+   "config": {
+    "depth": 6,
+    "mcw": 100,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8
+   },
+   "best_iteration": 520,
+   "validation_logloss": 0.4528942469304894,
+   "test_logloss": 0.4557231407269173,
+   "validation_delta_vs_baseline": 0.00011611464466395906,
+   "test_delta_vs_baseline": 4.2842323287128046e-05,
+   "test_delta_ci95": [
+    -0.00010149981467356007,
+    0.00018582914497754113
+   ]
+  },
+  {
+   "name": "eta 0.03",
+   "config": {
+    "depth": 4,
+    "mcw": 20,
+    "subsample": 0.8,
+    "eta": 0.03
+   },
+   "best_iteration": 1991,
+   "validation_logloss": 0.4528702156379709,
+   "test_logloss": 0.45572459796967196,
+   "validation_delta_vs_baseline": 9.208335214535136e-05,
+   "test_delta_vs_baseline": 4.4299566041801305e-05,
+   "test_delta_ci95": [
+    -3.626361332782594e-05,
+    0.00012081662541059511
+   ]
+  }
+ ],
+ "selected": "baseline d4 mcw20 sub0.8"
+}

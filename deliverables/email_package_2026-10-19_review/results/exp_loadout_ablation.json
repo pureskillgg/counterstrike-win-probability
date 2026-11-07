@@ -1,0 +1,237 @@
+{
+ "settings": "winprob_v4 settings, frozen split, every second; deltas vs the retrained control (positive = dropping hurts)",
+ "reference_winprob_v4": {
+  "test_logloss": 0.4564122946926198,
+  "validation_logloss": 0.4536947143778305
+ },
+ "variants": [
+  {
+   "name": "control (all 59 inputs)",
+   "n_features": 59,
+   "best_iteration": 1059,
+   "test_logloss": 0.4564347047610735,
+   "validation_logloss": 0.4536432416972257
+  },
+  {
+   "name": "drop heavy (shotguns, machine guns)",
+   "n_features": 57,
+   "best_iteration": 1029,
+   "test_logloss": 0.4564107438146608,
+   "validation_logloss": 0.45355674869013596,
+   "test_delta_vs_control": -2.396094641275995e-05,
+   "test_delta_ci95": [
+    -0.00010027023180997031,
+    5.210940384046838e-05
+   ],
+   "validation_delta_vs_control": -8.649300708978118e-05,
+   "validation_delta_ci95": [
+    -0.00021681975083816815,
+    3.852466056960459e-05
+   ]
+  },
+  {
+   "name": "drop armor",
+   "n_features": 54,
+   "best_iteration": 1003,
+   "test_logloss": 0.45712361434045706,
+   "validation_logloss": 0.4542278492319918,
+   "test_delta_vs_control": 0.0006889095793835349,
+   "test_delta_ci95": [
+    0.00046078314330910144,
+    0.0009371898551691779
+   ],
+   "validation_delta_vs_control": 0.0005846075347661059,
+   "validation_delta_ci95": [
+    0.00020307658393342988,
+    0.0009382829242980039
+   ]
+  },
+  {
+   "name": "drop ak + m4 split (keeps all rifles)",
+   "n_features": 55,
+   "best_iteration": 838,
+   "test_logloss": 0.45662845602224067,
+   "validation_logloss": 0.4535350446786072,
+   "test_delta_vs_control": 0.00019375126116704465,
+   "test_delta_ci95": [
+    9.462274852857962e-05,
+    0.00029346716705715863
+   ],
+   "validation_delta_vs_control": -0.00010819701861850991,
+   "validation_delta_ci95": [
+    -0.0002695854201666729,
+    4.679220680648422e-05
+   ]
+  },
+  {
+   "name": "drop all rifles (incl. ak, m4)",
+   "n_features": 52,
+   "best_iteration": 1083,
+   "test_logloss": 0.456546871515765,
+   "validation_logloss": 0.4535637992445943,
+   "test_delta_vs_control": 0.0001121667546914771,
+   "test_delta_ci95": [
+    -3.119192468539017e-05,
+    0.00024329874635034662
+   ],
+   "validation_delta_vs_control": -7.944245263144655e-05,
+   "validation_delta_ci95": [
+    -0.0002893965679616712,
+    0.00012182671193188233
+   ]
+  },
+  {
+   "name": "drop awp",
+   "n_features": 56,
+   "best_iteration": 1119,
+   "test_logloss": 0.45650131739590405,
+   "validation_logloss": 0.4536334951891164,
+   "test_delta_vs_control": 6.661263483048619e-05,
+   "test_delta_ci95": [
+    -1.4698145747277308e-05,
+    0.00014821248754378957
+   ],
+   "validation_delta_vs_control": -9.746508109343946e-06,
+   "validation_delta_ci95": [
+    -0.00013805091440048921,
+    0.00012418653231315133
+   ]
+  },
+  {
+   "name": "drop smg",
+   "n_features": 56,
+   "best_iteration": 1158,
+   "test_logloss": 0.4564833713800292,
+   "validation_logloss": 0.45371042201388556,
+   "test_delta_vs_control": 4.866661895564628e-05,
+   "test_delta_ci95": [
+    -6.0890251542046654e-05,
+    0.00016762622209347868
+   ],
+   "validation_delta_vs_control": 6.71803166598447e-05,
+   "validation_delta_ci95": [
+    -0.00010381862100443365,
+    0.0002456840412123404
+   ]
+  },
+  {
+   "name": "drop other snipers (scout, autos)",
+   "n_features": 57,
+   "best_iteration": 900,
+   "test_logloss": 0.4564888097850752,
+   "validation_logloss": 0.45371059376298095,
+   "test_delta_vs_control": 5.410502400159061e-05,
+   "test_delta_ci95": [
+    -3.952144180114771e-05,
+    0.00014472417009679843
+   ],
+   "validation_delta_vs_control": 6.735206575523359e-05,
+   "validation_delta_ci95": [
+    -9.301662146249662e-05,
+    0.00023241672302688602
+   ]
+  },
+  {
+   "name": "drop no primary (pistol-only players)",
+   "n_features": 57,
+   "best_iteration": 1023,
+   "test_logloss": 0.45650289034053604,
+   "validation_logloss": 0.4536155532934084,
+   "test_delta_vs_control": 6.818557946248509e-05,
+   "test_delta_ci95": [
+    -5.9613093499709385e-06,
+    0.0001349204624434532
+   ],
+   "validation_delta_vs_control": -2.7688403817252525e-05,
+   "validation_delta_ci95": [
+    -0.0001354930799269992,
+    8.554112917704097e-05
+   ]
+  },
+  {
+   "name": "drop health",
+   "n_features": 56,
+   "best_iteration": 1168,
+   "test_logloss": 0.46106834387181467,
+   "validation_logloss": 0.4578886133671937,
+   "test_delta_vs_control": 0.004633639110741128,
+   "test_delta_ci95": [
+    0.004068985777340768,
+    0.00522549448649071
+   ],
+   "validation_delta_vs_control": 0.004245371669967914,
+   "validation_delta_ci95": [
+    0.0033258508369310704,
+    0.005124800094524219
+   ]
+  },
+  {
+   "name": "drop equipment value",
+   "n_features": 56,
+   "best_iteration": 834,
+   "test_logloss": 0.4565611226187823,
+   "validation_logloss": 0.45365431842720494,
+   "test_delta_vs_control": 0.0001264178577086948,
+   "test_delta_ci95": [
+    -1.356694368876167e-05,
+    0.00027780010345279963
+   ],
+   "validation_delta_vs_control": 1.1076729979152956e-05,
+   "validation_delta_ci95": [
+    -0.00022201072551022953,
+    0.00024720900295763346
+   ]
+  },
+  {
+   "name": "drop grenades (flash, smoke, he, fire, decoy)",
+   "n_features": 49,
+   "best_iteration": 809,
+   "test_logloss": 0.45651092964422524,
+   "validation_logloss": 0.4536427994049329,
+   "test_delta_vs_control": 7.622488315167914e-05,
+   "test_delta_ci95": [
+    -2.7498236125383552e-05,
+    0.00018054524458004052
+   ],
+   "validation_delta_vs_control": -4.4229229278560943e-07,
+   "validation_delta_ci95": [
+    -0.00016704007919524566,
+    0.0001506819072151743
+   ]
+  },
+  {
+   "name": "drop defuse kits, defusing, helmets",
+   "n_features": 53,
+   "best_iteration": 867,
+   "test_logloss": 0.4580364357099203,
+   "validation_logloss": 0.45544337923284306,
+   "test_delta_vs_control": 0.0016017309488467193,
+   "test_delta_ci95": [
+    0.0014094543335185655,
+    0.0018030592567495774
+   ],
+   "validation_delta_vs_control": 0.0018001375356173255,
+   "validation_delta_ci95": [
+    0.0014637262702828803,
+    0.0021526002935717136
+   ]
+  },
+  {
+   "name": "add pistol count (3 features)",
+   "n_features": 62,
+   "best_iteration": 958,
+   "test_logloss": 0.4564625715425525,
+   "validation_logloss": 0.4536138101895021,
+   "test_delta_vs_control": 2.7866781478899588e-05,
+   "test_delta_ci95": [
+    -4.539948668652737e-05,
+    0.00010224636993634479
+   ],
+   "validation_delta_vs_control": -2.943150772358013e-05,
+   "validation_delta_ci95": [
+    -0.00013873329348553832,
+    8.817098568161367e-05
+   ]
+  }
+ ]
+}

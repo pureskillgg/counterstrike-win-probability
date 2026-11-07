@@ -1,0 +1,50 @@
+{
+  "v": 4,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-10-17T04:41:26Z"
+  },
+  "lists": "css",
+  "title": "Round win probability for CS2: method and results",
+  "order": [
+    "cover",
+    "question",
+    "pool",
+    "data",
+    "roster",
+    "split",
+    "split_rationale",
+    "ticks",
+    "inputs",
+    "model",
+    "settings",
+    "families",
+    "rounds",
+    "rejected",
+    "results",
+    "submission",
+    "compare",
+    "limits",
+    "open"
+  ],
+  "sections": {
+    "s1": {
+      "description": "What the model is and what data it uses",
+      "start": "cover"
+    },
+    "s2": {
+      "description": "Scope, data and how matches and seconds are chosen",
+      "start": "pool"
+    },
+    "s3": {
+      "description": "The model, how its settings were chosen, and the alternatives",
+      "start": "model"
+    },
+    "s4": {
+      "description": "Results, limits and open items",
+      "start": "results"
+    }
+  },
+  "faces": {},
+  "designSystems": []
+}

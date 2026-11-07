@@ -1,0 +1,329 @@
+{
+ "inputs": 59,
+ "stride": 1,
+ "train_matches": 10577,
+ "val_matches": 1168,
+ "test_matches": 3059,
+ "train_rows": 13758901,
+ "val_rows": 1515228,
+ "test_rows": 3956374,
+ "models": {
+  "xgb": {
+   "logloss": 0.4564122947410805,
+   "logloss_ci95": [
+    0.453331906397478,
+    0.459139738758694
+   ],
+   "logloss_round_weighted": 0.4340308204647888,
+   "logloss_round_weighted_ci95": [
+    0.43135046089820595,
+    0.43645182228673146
+   ],
+   "auc": 0.8578198497324748,
+   "ece10": 0.003234437763420064,
+   "fit_seconds": 20,
+   "note": "winprob_v4, loaded from models/: best_iteration 1051, fitted on cuda",
+   "validation_logloss": 0.4536947144214568,
+   "rank_per_second": 1,
+   "rank_round_weighted": 1
+  },
+  "lgbm": {
+   "logloss": 0.4567819321581615,
+   "logloss_ci95": [
+    0.45362969249387397,
+    0.4595098930569209
+   ],
+   "logloss_round_weighted": 0.43432300946318614,
+   "logloss_round_weighted_ci95": [
+    0.4316819493987611,
+    0.43676218118998733
+   ],
+   "auc": 0.8576052812119496,
+   "ece10": 0.003605306976607721,
+   "fit_seconds": 365,
+   "note": "leaves 31, lr 0.05, early stop on validation, best_iteration 514",
+   "delta_vs_xgb": 0.0003696374170810339,
+   "delta_vs_xgb_ci95": [
+    0.00023673017614980022,
+    0.0005229386535857037
+   ],
+   "validation_logloss": 0.4538688891463726,
+   "rank_per_second": 3,
+   "rank_round_weighted": 2
+  },
+  "logit": {
+   "logloss": 0.46740988059850513,
+   "logloss_ci95": [
+    0.4642850431949406,
+    0.4703589721099315
+   ],
+   "logloss_round_weighted": 0.44320796094325626,
+   "logloss_round_weighted_ci95": [
+    0.4403457708472693,
+    0.44581135513774883
+   ],
+   "auc": 0.8526139305573668,
+   "ece10": 0.009132843073232661,
+   "fit_seconds": 128,
+   "note": "standardised, C 1.0, no interactions",
+   "delta_vs_xgb": 0.010997585857424615,
+   "delta_vs_xgb_ci95": [
+    0.010421102136263263,
+    0.011590535759087051
+   ],
+   "validation_logloss": 0.46372883474116766,
+   "rank_per_second": 11,
+   "rank_round_weighted": 12
+  },
+  "hgb": {
+   "logloss": 0.4569054127348664,
+   "logloss_ci95": [
+    0.4537846512240983,
+    0.45962835593897333
+   ],
+   "logloss_round_weighted": 0.43442956522673354,
+   "logloss_round_weighted_ci95": [
+    0.431779532989111,
+    0.4368323552053864
+   ],
+   "auc": 0.8575378286622979,
+   "ece10": 0.0035500451949868925,
+   "fit_seconds": 987,
+   "note": "600 iterations, no early stopping (sklearn's own early stopping uses a random row split)",
+   "delta_vs_xgb": 0.0004931179937858845,
+   "delta_vs_xgb_ci95": [
+    0.000328645264325798,
+    0.0006563954925747562
+   ],
+   "validation_logloss": 0.454027744038383,
+   "rank_per_second": 5,
+   "rank_round_weighted": 4
+  },
+  "rf": {
+   "logloss": 0.46033854185184947,
+   "logloss_ci95": [
+    0.45726225347830995,
+    0.46300939194654456
+   ],
+   "logloss_round_weighted": 0.4378086233890876,
+   "logloss_round_weighted_ci95": [
+    0.435125555584428,
+    0.4402630088669865
+   ],
+   "auc": 0.8559837135585637,
+   "ece10": 0.003501585127490423,
+   "fit_seconds": 108,
+   "note": "100 trees, min leaf 50, fit on 10% of training rows (1,375,890)",
+   "delta_vs_xgb": 0.003926247110768999,
+   "delta_vs_xgb_ci95": [
+    0.003564453079892587,
+    0.004299464909459388
+   ],
+   "validation_logloss": 0.4578557935704666,
+   "rank_per_second": 6,
+   "rank_round_weighted": 6
+  },
+  "et": {
+   "logloss": 0.46167981191554136,
+   "logloss_ci95": [
+    0.45880301152045183,
+    0.4642369938409735
+   ],
+   "logloss_round_weighted": 0.43953426924495087,
+   "logloss_round_weighted_ci95": [
+    0.43691826482036267,
+    0.44187997750946095
+   ],
+   "auc": 0.8553217823604551,
+   "ece10": 0.008103054313631007,
+   "fit_seconds": 101,
+   "note": "100 trees, min leaf 50, fit on 10% of training rows (1,375,890)",
+   "delta_vs_xgb": 0.005267517174460816,
+   "delta_vs_xgb_ci95": [
+    0.004830008903325861,
+    0.005761887000698164
+   ],
+   "validation_logloss": 0.4590400802476287,
+   "rank_per_second": 8,
+   "rank_round_weighted": 9
+  },
+  "mlp": {
+   "logloss": 0.4640687293100332,
+   "logloss_ci95": [
+    0.4608003895994263,
+    0.4669311322282696
+   ],
+   "logloss_round_weighted": 0.44118452679122283,
+   "logloss_round_weighted_ci95": [
+    0.43834008354467846,
+    0.44369896082033516
+   ],
+   "auc": 0.8526137222846492,
+   "ece10": 0.01180587315000514,
+   "fit_seconds": 3032,
+   "note": "128-64, 10 epochs, fit on 25% of training rows (3,439,725)",
+   "delta_vs_xgb": 0.007656434568952648,
+   "delta_vs_xgb_ci95": [
+    0.006963008662954292,
+    0.00844813508940274
+   ],
+   "validation_logloss": 0.4608308671708875,
+   "rank_per_second": 10,
+   "rank_round_weighted": 10
+  },
+  "catboost": {
+   "logloss": 0.4567539405225064,
+   "logloss_ci95": [
+    0.45363719275475006,
+    0.45942927022102165
+   ],
+   "logloss_round_weighted": 0.43445320613217525,
+   "logloss_round_weighted_ci95": [
+    0.4318607961689486,
+    0.4368397516354951
+   ],
+   "auc": 0.8579739730738221,
+   "ece10": 0.007313756541987177,
+   "fit_seconds": 1422,
+   "note": "depth 6, lr 0.08, early stop on validation, best_iteration 598",
+   "delta_vs_xgb": 0.00034164578142589823,
+   "delta_vs_xgb_ci95": [
+    0.00014927212200442017,
+    0.0005418911972847948
+   ],
+   "validation_logloss": 0.45373082825663025,
+   "rank_per_second": 2,
+   "rank_round_weighted": 5
+  },
+  "catboost_gpu": {
+   "logloss": 0.45681441489854346,
+   "logloss_ci95": [
+    0.45378861616704325,
+    0.4595555195060693
+   ],
+   "logloss_round_weighted": 0.43437574068844476,
+   "logloss_round_weighted_ci95": [
+    0.4317552110380782,
+    0.43679428338779447
+   ],
+   "auc": 0.8577604675589032,
+   "ece10": 0.0035502294087891464,
+   "fit_seconds": 59,
+   "note": "GPU, depth 6, lr 0.08, early stop on validation, NO monotone constraints (the GPU refused them), best_iteration 559",
+   "validation_logloss": 0.453544929437459,
+   "delta_vs_xgb": 0.0004021201574630081,
+   "delta_vs_xgb_ci95": [
+    0.00023066175231933533,
+    0.0005769844643147532
+   ],
+   "rank_per_second": 4,
+   "rank_round_weighted": 3
+  },
+  "mlp_torch_gpu": {
+   "logloss": 0.4625169408498078,
+   "logloss_ci95": [
+    0.4590910540456274,
+    0.46553277402584814
+   ],
+   "logloss_round_weighted": 0.4388531721930189,
+   "logloss_round_weighted_ci95": [
+    0.43594850743456975,
+    0.4414581214070303
+   ],
+   "auc": 0.8542271849292035,
+   "ece10": 0.015389177580145559,
+   "fit_seconds": 45,
+   "note": "PyTorch on GPU, 128-64 ReLU, Adam 1e-3, batch 4096, 10 epochs, fit on 25% of training rows (3,439,725)",
+   "validation_logloss": 0.45900173980482256,
+   "delta_vs_xgb": 0.006104646108727358,
+   "delta_vs_xgb_ci95": [
+    0.005394916061799928,
+    0.006821817624387601
+   ],
+   "rank_per_second": 9,
+   "rank_round_weighted": 8
+  },
+  "cuml_logit": {
+   "logloss": 0.46741999387643923,
+   "logloss_ci95": [
+    0.4642934200187354,
+    0.47037710178105085
+   ],
+   "logloss_round_weighted": 0.4432039180059969,
+   "logloss_round_weighted_ci95": [
+    0.44034015659706777,
+    0.44579942209452966
+   ],
+   "auc": 0.8525909073556134,
+   "ece10": 0.009182217696248043,
+   "fit_seconds": 39,
+   "note": "cuML LogisticRegression on GPU, standardised, C 1.0, max_iter 300",
+   "validation_logloss": 0.4637313882403827,
+   "delta_vs_xgb": 0.011007699135358744,
+   "delta_vs_xgb_ci95": [
+    0.01042411899541048,
+    0.011598834150347893
+   ],
+   "rank_per_second": 12,
+   "rank_round_weighted": 11
+  },
+  "cuml_rf": {
+   "logloss": 0.46059322995652524,
+   "logloss_ci95": [
+    0.4574891498404138,
+    0.46326057952579575
+   ],
+   "logloss_round_weighted": 0.43809623564190303,
+   "logloss_round_weighted_ci95": [
+    0.43533604838352663,
+    0.44047266611496144
+   ],
+   "auc": 0.8557417932877316,
+   "ece10": 0.003078492448868119,
+   "fit_seconds": 18,
+   "note": "cuML RandomForestClassifier on GPU, 100 trees, min leaf 50, fit on 10% of training rows (1,375,890); quantile-binned splits, max depth 16 (cuML default)",
+   "validation_logloss": 0.45781478957593547,
+   "delta_vs_xgb": 0.0041809352154447465,
+   "delta_vs_xgb_ci95": [
+    0.0037941610148320213,
+    0.004599680273468615
+   ],
+   "rank_per_second": 7,
+   "rank_round_weighted": 7
+  }
+ },
+ "ranking_per_second": [
+  "xgb",
+  "catboost",
+  "lgbm",
+  "catboost_gpu",
+  "hgb",
+  "rf",
+  "cuml_rf",
+  "et",
+  "mlp_torch_gpu",
+  "mlp",
+  "logit",
+  "cuml_logit"
+ ],
+ "ranking_round_weighted": [
+  "xgb",
+  "lgbm",
+  "catboost_gpu",
+  "hgb",
+  "catboost",
+  "rf",
+  "cuml_rf",
+  "mlp_torch_gpu",
+  "et",
+  "mlp",
+  "cuml_logit",
+  "logit"
+ ],
+ "merged_from": [
+  "exp_full_comparison_part_a.json",
+  "exp_full_comparison_part_b.json",
+  "exp_families_torch.json",
+  "exp_families_cuml.json"
+ ]
+}

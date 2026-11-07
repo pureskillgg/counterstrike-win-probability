@@ -1,0 +1,1018 @@
+{
+ "check": "C cross-period (file: cross_period)",
+ "run_at": "2026-10-13 15:01:54",
+ "label_rule": "Every number is VERIFIED (computed in this run). Items marked UNVERIFIED are not checked.",
+ "devices": {
+  "model_A": "cuda",
+  "model_B": "cuda",
+  "model_A_errors": [],
+  "model_B_errors": []
+ },
+ "best_iteration": {
+  "model_A": 265,
+  "model_B": 261
+ },
+ "split_sizes_2026": {
+  "A_train_plus_test": 1399,
+  "A_early_stop": 122,
+  "B_train": 1095,
+  "B_val": 122,
+  "B_test": 304
+ },
+ "counts_2026": {
+  "kept_matches": 1521,
+  "kept_rounds": 28683,
+  "states": 234265,
+  "A_train": {
+   "matches": 1399,
+   "rounds": 26319,
+   "states": 215095,
+   "ct_win_share": 0.5185
+  },
+  "A_early_stop": {
+   "matches": 122,
+   "rounds": 2364,
+   "states": 19170,
+   "ct_win_share": 0.519
+  },
+  "B_train": {
+   "matches": 1095,
+   "rounds": 20470,
+   "states": 167379,
+   "ct_win_share": 0.5214
+  },
+  "B_val": {
+   "matches": 122,
+   "rounds": 2364,
+   "states": 19170,
+   "ct_win_share": 0.519
+  },
+  "B_test": {
+   "matches": 304,
+   "rounds": 5849,
+   "states": 47716,
+   "ct_win_share": 0.5084
+  },
+  "bakeoff_log_counts_reproduced": true
+ },
+ "max_rounds_rule_2026": {
+  "header_matches": 1752,
+  "with_halftime_event": 1736,
+  "event_rule_agrees_with_header": 1736,
+  "without_halftime_event": 16,
+  "header_max_rounds_dist": {
+   "24": 1603,
+   "16": 149
+  }
+ },
+ "counts_2024": {
+  "header_matches": 4435,
+  "rounds_in_round_end": 83527,
+  "channel_kept_matches": 4221,
+  "dropped_missing_channel_matches": 214,
+  "rounds_in_channel_kept_matches": 80236,
+  "duplicate_matches_removed": 271,
+  "duplicate_groups": 202,
+  "matches_with_no_kept_round": 651,
+  "kept_matches": 3299,
+  "kept_rounds": 53816,
+  "states": 447555,
+  "live_start_states": 53816,
+  "death_states": 393739,
+  "ct_win_share_states": 0.5027,
+  "kept_rounds_with_total_players_not_10": 0,
+  "kept_rounds_with_round_end_player_count_not_10_(not filtered)": 53816,
+  "round_end_player_count_not_10_in_channel_kept_rounds": 80236,
+  "freeze_rows_with_null_score_all_matches": 0,
+  "max_rounds_source_kept_matches": {
+   "halftime announcement": 53452,
+   "default 24 (no halftime announcement)": 364
+  },
+  "max_rounds_source_all_header_matches": {
+   "halftime announcement": 4307,
+   "default 24 (no halftime announcement)": 128
+  }
+ },
+ "channels_2024": [
+  {
+   "channel": "round_end",
+   "kind": "dense",
+   "rows": 83527,
+   "matches_with_rows": 4435,
+   "keyset_matches": 4435,
+   "zero_row_matches": 0,
+   "not_in_keyset": 0,
+   "counted_missing": 0
+  },
+  {
+   "channel": "round_start",
+   "kind": "dense",
+   "rows": 81020,
+   "matches_with_rows": 4434,
+   "keyset_matches": 4435,
+   "zero_row_matches": 1,
+   "not_in_keyset": 0,
+   "counted_missing": 1
+  },
+  {
+   "channel": "round_state",
+   "kind": "dense",
+   "rows": 1009532,
+   "matches_with_rows": 4435,
+   "keyset_matches": 4435,
+   "zero_row_matches": 0,
+   "not_in_keyset": 0,
+   "counted_missing": 0
+  },
+  {
+   "channel": "player_death",
+   "kind": "dense",
+   "rows": 579124,
+   "matches_with_rows": 4435,
+   "keyset_matches": 4435,
+   "zero_row_matches": 0,
+   "not_in_keyset": 0,
+   "counted_missing": 0
+  },
+  {
+   "channel": "player_info",
+   "kind": "dense",
+   "rows": 781897,
+   "matches_with_rows": 4435,
+   "keyset_matches": 4435,
+   "zero_row_matches": 0,
+   "not_in_keyset": 0,
+   "counted_missing": 0
+  },
+  {
+   "channel": "bomb_state",
+   "kind": "dense",
+   "rows": 56009,
+   "matches_with_rows": 4222,
+   "keyset_matches": 4435,
+   "zero_row_matches": 213,
+   "not_in_keyset": 0,
+   "counted_missing": 213
+  },
+  {
+   "channel": "player_disconnect",
+   "kind": "sparse",
+   "rows": 20898,
+   "matches_with_rows": 4249,
+   "keyset_matches": 4435,
+   "zero_row_matches": 186,
+   "not_in_keyset": 0,
+   "counted_missing": 0
+  },
+  {
+   "channel": "bot_takeover",
+   "kind": "sparse",
+   "rows": 0,
+   "matches_with_rows": 0,
+   "keyset_matches": 4435,
+   "zero_row_matches": 4435,
+   "not_in_keyset": 0,
+   "counted_missing": 0
+  }
+ ],
+ "drop_reasons_2024": {
+  "disconnect or bot takeover event in round": 4784,
+  "not exactly 5 T and 5 CT at start (player_info, unique player ids)": 14960,
+  "no round_start row": 141,
+  "duplicate copy of a kept match (identical events)": 4559,
+  "death with unresolved victim side in live window": 1976
+ },
+ "score_checks_2024": {
+  "rounds_with_freeze": 83382,
+  "sum_eq_r_minus_1": 83382,
+  "transitions": {
+   "consistent": 76370,
+   "no_next_round_with_freeze": 4440,
+   "inconsistent": 2572
+  },
+  "schedule_swap_transitions": 4523,
+  "schedule_swap_consistent": 4523,
+  "inconsistent_by_round": [
+   [
+    [
+     9,
+     16,
+     false
+    ],
+    292
+   ],
+   [
+    [
+     13,
+     24,
+     false
+    ],
+    2051
+   ],
+   [
+    [
+     25,
+     24,
+     false
+    ],
+    124
+   ],
+   [
+    [
+     28,
+     24,
+     false
+    ],
+    105
+   ]
+  ]
+ },
+ "completion_checks_2024": {
+  "n_rounds_equals_header_final_sum": 1318,
+  "not_completed_overall": 279,
+  "n_rounds_below_header_final_sum": 3117,
+  "matches_below_max_rounds": 3847,
+  "below_max_rounds_completed_by_threshold": 3655,
+  "below_max_rounds_not_completed": 192
+ },
+ "cross_tome_duplicate_matches": 0,
+ "metrics": [
+  {
+   "model": "XGBoost (A)",
+   "set": "2024-02 relaxed kept set, all states",
+   "matches": 3299,
+   "rounds": 53816,
+   "states": 447555,
+   "ct_win_share": 0.5027,
+   "logloss": 0.5044104148798078,
+   "brier": 0.16365150703803036,
+   "auc": 0.8400910835559809,
+   "ece": 0.026975629732906806,
+   "acc": 0.7481985454301706,
+   "table": [
+    [
+     0.0,
+     0.1,
+     74017,
+     0.02624265320870795,
+     0.06544442492940811
+    ],
+    [
+     0.1,
+     0.2,
+     29619,
+     0.1386605793928234,
+     0.1802221546979979
+    ],
+    [
+     0.2,
+     0.3,
+     43829,
+     0.25733476230052876,
+     0.29181592096557074
+    ],
+    [
+     0.3,
+     0.4,
+     21814,
+     0.3291295134197117,
+     0.3745301182726689
+    ],
+    [
+     0.4,
+     0.5,
+     48828,
+     0.4629271047473188,
+     0.47052920455476366
+    ],
+    [
+     0.5,
+     0.6,
+     60326,
+     0.5489480008397388,
+     0.5396512283260949
+    ],
+    [
+     0.6,
+     0.7,
+     26459,
+     0.6615409708206893,
+     0.6359650780452776
+    ],
+    [
+     0.7,
+     0.8,
+     44020,
+     0.744101145404515,
+     0.7317582916855975
+    ],
+    [
+     0.8,
+     0.9,
+     29756,
+     0.8613476802231019,
+     0.8198346551955908
+    ],
+    [
+     0.9,
+     1.0,
+     68887,
+     0.9716272397241505,
+     0.9418467925733448
+    ]
+   ],
+   "label": "VERIFIED"
+  },
+  {
+   "model": "XGBoost (A)",
+   "set": "2024-02 relaxed kept set, live-start states",
+   "matches": 3299,
+   "rounds": 53816,
+   "states": 53816,
+   "ct_win_share": 0.5072,
+   "logloss": 0.678343069342295,
+   "brier": 0.24280625330045388,
+   "auc": 0.5899973198744759,
+   "ece": 0.018872374095276312,
+   "acc": 0.5595547792478074,
+   "table": [
+    [
+     0.0,
+     0.1,
+     0,
+     null,
+     null
+    ],
+    [
+     0.1,
+     0.2,
+     0,
+     null,
+     null
+    ],
+    [
+     0.2,
+     0.3,
+     1668,
+     0.2920147478580475,
+     0.17326139088729017
+    ],
+    [
+     0.3,
+     0.4,
+     0,
+     null,
+     null
+    ],
+    [
+     0.4,
+     0.5,
+     20399,
+     0.4686769665944307,
+     0.4576204715917447
+    ],
+    [
+     0.5,
+     0.6,
+     28824,
+     0.5536564358019214,
+     0.5400013877324452
+    ],
+    [
+     0.6,
+     0.7,
+     2925,
+     0.6518220383693011,
+     0.7196581196581197
+    ],
+    [
+     0.7,
+     0.8,
+     0,
+     null,
+     null
+    ],
+    [
+     0.8,
+     0.9,
+     0,
+     null,
+     null
+    ],
+    [
+     0.9,
+     1.0,
+     0,
+     null,
+     null
+    ]
+   ],
+   "label": "VERIFIED"
+  },
+  {
+   "model": "Constant (A train rate)",
+   "set": "2024-02 relaxed kept set, all states",
+   "matches": 3299,
+   "rounds": 53816,
+   "states": 447555,
+   "ct_win_share": 0.5027,
+   "logloss": 0.6936315591811847,
+   "brier": 0.2502420008468897,
+   "auc": 0.5,
+   "ece": 0.01578936804172626,
+   "acc": 0.5027024611500263,
+   "table": [
+    [
+     0.0,
+     0.1,
+     0,
+     null,
+     null
+    ],
+    [
+     0.1,
+     0.2,
+     0,
+     null,
+     null
+    ],
+    [
+     0.2,
+     0.3,
+     0,
+     null,
+     null
+    ],
+    [
+     0.3,
+     0.4,
+     0,
+     null,
+     null
+    ],
+    [
+     0.4,
+     0.5,
+     0,
+     null,
+     null
+    ],
+    [
+     0.5,
+     0.6,
+     447555,
+     0.5184918291917525,
+     0.5027024611500263
+    ],
+    [
+     0.6,
+     0.7,
+     0,
+     null,
+     null
+    ],
+    [
+     0.7,
+     0.8,
+     0,
+     null,
+     null
+    ],
+    [
+     0.8,
+     0.9,
+     0,
+     null,
+     null
+    ],
+    [
+     0.9,
+     1.0,
+     0,
+     null,
+     null
+    ]
+   ],
+   "label": "VERIFIED"
+  },
+  {
+   "model": "LR ct_alive_minus_t (A)",
+   "set": "2024-02 relaxed kept set, all states",
+   "matches": 3299,
+   "rounds": 53816,
+   "states": 447555,
+   "ct_win_share": 0.5027,
+   "logloss": 0.5165054087236337,
+   "brier": 0.17169321776389068,
+   "auc": 0.8189675329199022,
+   "ece": 0.030035490391492836,
+   "acc": 0.7299862586721185,
+   "table": [
+    [
+     0.0,
+     0.1,
+     73143,
+     0.05054224658248817,
+     0.08060921756012196
+    ],
+    [
+     0.1,
+     0.2,
+     0,
+     null,
+     null
+    ],
+    [
+     0.2,
+     0.3,
+     79565,
+     0.213212171678229,
+     0.25988814177087916
+    ],
+    [
+     0.3,
+     0.4,
+     0,
+     null,
+     null
+    ],
+    [
+     0.4,
+     0.5,
+     128732,
+     0.48135775964653327,
+     0.49160270950501817
+    ],
+    [
+     0.5,
+     0.6,
+     0,
+     null,
+     null
+    ],
+    [
+     0.6,
+     0.7,
+     0,
+     null,
+     null
+    ],
+    [
+     0.7,
+     0.8,
+     83773,
+     0.7606895656936857,
+     0.7170448712592362
+    ],
+    [
+     0.8,
+     0.9,
+     0,
+     null,
+     null
+    ],
+    [
+     0.9,
+     1.0,
+     82342,
+     0.9425745307557041,
+     0.9115518204561464
+    ]
+   ],
+   "label": "VERIFIED"
+  },
+  {
+   "model": "XGBoost (B)",
+   "set": "2026 primary test (in-period, 20%), all states",
+   "matches": 304,
+   "rounds": 5849,
+   "states": 47716,
+   "ct_win_share": 0.5084,
+   "logloss": 0.4365987668076211,
+   "brier": 0.1463668231836436,
+   "auc": 0.870336692355569,
+   "ece": 0.008942104794085493,
+   "acc": 0.7697418056836282,
+   "table": [
+    [
+     0.0,
+     0.1,
+     7283,
+     0.02706289921773481,
+     0.026362762597830564
+    ],
+    [
+     0.1,
+     0.2,
+     2846,
+     0.13830591601307177,
+     0.12789880534082923
+    ],
+    [
+     0.2,
+     0.3,
+     4436,
+     0.2573189808641929,
+     0.2560865644724977
+    ],
+    [
+     0.3,
+     0.4,
+     2403,
+     0.32877370277346046,
+     0.30586766541822724
+    ],
+    [
+     0.4,
+     0.5,
+     5173,
+     0.4615823047351911,
+     0.4654939106901218
+    ],
+    [
+     0.5,
+     0.6,
+     6572,
+     0.5493908700551917,
+     0.5168898356664637
+    ],
+    [
+     0.6,
+     0.7,
+     2832,
+     0.6641449032740742,
+     0.64795197740113
+    ],
+    [
+     0.7,
+     0.8,
+     5053,
+     0.7419550905788201,
+     0.7397585592717197
+    ],
+    [
+     0.8,
+     0.9,
+     3271,
+     0.8621124453917807,
+     0.857535921736472
+    ],
+    [
+     0.9,
+     1.0,
+     7847,
+     0.9713655218237052,
+     0.974639989805021
+    ]
+   ],
+   "label": "VERIFIED"
+  },
+  {
+   "model": "XGBoost (B)",
+   "set": "2026 primary test (in-period, 20%), live-start states",
+   "matches": 304,
+   "rounds": 5849,
+   "states": 5849,
+   "ct_win_share": 0.5121,
+   "logloss": 0.681021716836868,
+   "brier": 0.2441699346640165,
+   "auc": 0.569626555822423,
+   "ece": 0.017793865779828433,
+   "acc": 0.5524021200205164,
+   "table": [
+    [
+     0.0,
+     0.1,
+     0,
+     null,
+     null
+    ],
+    [
+     0.1,
+     0.2,
+     0,
+     null,
+     null
+    ],
+    [
+     0.2,
+     0.3,
+     150,
+     0.2928232252597809,
+     0.14
+    ],
+    [
+     0.3,
+     0.4,
+     0,
+     null,
+     null
+    ],
+    [
+     0.4,
+     0.5,
+     2082,
+     0.46551351167626615,
+     0.4692603266090298
+    ],
+    [
+     0.5,
+     0.6,
+     3251,
+     0.5518589270037895,
+     0.5349123346662565
+    ],
+    [
+     0.6,
+     0.7,
+     227,
+     0.6236198912107997,
+     0.6387665198237885
+    ],
+    [
+     0.7,
+     0.8,
+     139,
+     0.7063286900520325,
+     0.8129496402877698
+    ],
+    [
+     0.8,
+     0.9,
+     0,
+     null,
+     null
+    ],
+    [
+     0.9,
+     1.0,
+     0,
+     null,
+     null
+    ]
+   ],
+   "label": "VERIFIED"
+  },
+  {
+   "model": "Constant (B train rate)",
+   "set": "2026 primary test, all states",
+   "matches": 304,
+   "rounds": 5849,
+   "states": 47716,
+   "ct_win_share": 0.5084,
+   "logloss": 0.6933445496672976,
+   "brier": 0.25009848516493266,
+   "auc": 0.5,
+   "ece": 0.012990716674335268,
+   "acc": 0.508382932349736,
+   "table": [
+    [
+     0.0,
+     0.1,
+     0,
+     null,
+     null
+    ],
+    [
+     0.1,
+     0.2,
+     0,
+     null,
+     null
+    ],
+    [
+     0.2,
+     0.3,
+     0,
+     null,
+     null
+    ],
+    [
+     0.3,
+     0.4,
+     0,
+     null,
+     null
+    ],
+    [
+     0.4,
+     0.5,
+     0,
+     null,
+     null
+    ],
+    [
+     0.5,
+     0.6,
+     47716,
+     0.5213736490240712,
+     0.508382932349736
+    ],
+    [
+     0.6,
+     0.7,
+     0,
+     null,
+     null
+    ],
+    [
+     0.7,
+     0.8,
+     0,
+     null,
+     null
+    ],
+    [
+     0.8,
+     0.9,
+     0,
+     null,
+     null
+    ],
+    [
+     0.9,
+     1.0,
+     0,
+     null,
+     null
+    ]
+   ],
+   "label": "VERIFIED"
+  },
+  {
+   "model": "LR ct_alive_minus_t (B)",
+   "set": "2026 primary test, all states",
+   "matches": 304,
+   "rounds": 5849,
+   "states": 47716,
+   "ct_win_share": 0.5084,
+   "logloss": 0.4609335858100391,
+   "brier": 0.15320824527282703,
+   "auc": 0.852417294099514,
+   "ece": 0.010237931444573765,
+   "acc": 0.759493670886076,
+   "table": [
+    [
+     0.0,
+     0.1,
+     7239,
+     0.05266839806301355,
+     0.044205000690703135
+    ],
+    [
+     0.1,
+     0.2,
+     0,
+     null,
+     null
+    ],
+    [
+     0.2,
+     0.3,
+     8267,
+     0.2158314985260653,
+     0.2110801983790976
+    ],
+    [
+     0.3,
+     0.4,
+     0,
+     null,
+     null
+    ],
+    [
+     0.4,
+     0.5,
+     13618,
+     0.48459597047702013,
+     0.47775003671611105
+    ],
+    [
+     0.5,
+     0.6,
+     0,
+     null,
+     null
+    ],
+    [
+     0.6,
+     0.7,
+     0,
+     null,
+     null
+    ],
+    [
+     0.7,
+     0.8,
+     9076,
+     0.7625760124781661,
+     0.7343543411194359
+    ],
+    [
+     0.8,
+     0.9,
+     0,
+     null,
+     null
+    ],
+    [
+     0.9,
+     1.0,
+     9516,
+     0.9440311276052702,
+     0.9480874316939891
+    ]
+   ],
+   "label": "VERIFIED"
+  },
+  {
+   "model": "XGBoost (A)",
+   "set": "2026 early-stop slice (8%; used for stopping, not clean)",
+   "matches": 122,
+   "rounds": 2364,
+   "states": 19170,
+   "ct_win_share": 0.519,
+   "logloss": 0.43549049963836006,
+   "brier": 0.14565258240939932,
+   "auc": 0.8713570267904325,
+   "ece": 0.011745398000148859,
+   "acc": 0.771413667188315,
+   "table": [
+    [
+     0.0,
+     0.1,
+     2944,
+     0.027184451739240893,
+     0.029551630434782608
+    ],
+    [
+     0.1,
+     0.2,
+     1176,
+     0.1393120918536977,
+     0.1522108843537415
+    ],
+    [
+     0.2,
+     0.3,
+     1884,
+     0.2565879723780854,
+     0.2776008492569002
+    ],
+    [
+     0.3,
+     0.4,
+     948,
+     0.32800284103502203,
+     0.3206751054852321
+    ],
+    [
+     0.4,
+     0.5,
+     2129,
+     0.46530652428356456,
+     0.48285580084546736
+    ],
+    [
+     0.5,
+     0.6,
+     2597,
+     0.547624307225932,
+     0.5329226030034655
+    ],
+    [
+     0.6,
+     0.7,
+     1087,
+     0.6633258129657685,
+     0.6632934682612696
+    ],
+    [
+     0.7,
+     0.8,
+     1919,
+     0.743060663940386,
+     0.7691505992704534
+    ],
+    [
+     0.8,
+     0.9,
+     1300,
+     0.8618877978966786,
+     0.8761538461538462
+    ],
+    [
+     0.9,
+     1.0,
+     3186,
+     0.971658496776618,
+     0.975517890772128
+    ]
+   ],
+   "label": "VERIFIED"
+  }
+ ],
+ "verdict_rule": "transfers if 2024 XGBoost log loss < constant and gap to 2026 in-period <= 0.02",
+ "verdict": "Partial transfer: 2024 log loss 0.50441 vs 2026 in-period 0.43660 (gap +0.06781 exceeds 0.02), better than the constant baseline 0.69363. 2024 round_end winners UNVERIFIED.",
+ "runtime_s": 1326.4
+}

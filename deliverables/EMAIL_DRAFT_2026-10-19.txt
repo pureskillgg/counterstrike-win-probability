@@ -1,0 +1,39 @@
+Draft email: CS2 round win-probability models (NOT SENT)
+
+Status: draft only. Sending needs an explicit yes for this send from the project owner.
+To: Bill Freeman
+Subject: CS2 round win-probability models: final package, 19 October 2026
+
+Hi,
+
+The round win-probability package is ready: the submission model, the score-lead comparison model, one Word report (wrap-up, methodology, deliverable summary, experiment register and presentation list), the slides, and the scoring function with the model files.
+
+Submission model (test: 3,059 matches, 3,956,374 seconds, 2026): 57 inputs (59 minus the heavy-weapon group), no score lead, all round types, one seed. Per-second log loss 0.456411 [0.453311, 0.459138]; validation 0.453557. It needs per-tick player status. Serving parity: the scoring function reproduces the grid's predictions on 294 October test matches (374,500 seconds) with a maximum gap of 0.0001 percentage points.
+
+Comparison (same test seconds): the score-lead comparison model, 58 inputs, mean of five seeds, scores 0.455605. The submission is worse by +0.000806 [+0.000508, +0.001105], which is the cost of leaving out the score lead.
+- Event-only model, 14 inputs, for tomes without per-tick player status: 0.498695 on the same seconds. The paired gap is +0.043090 [+0.041449, +0.044884].
+
+Score lead, 2026 data: the score lead changes in every one of the 259,948 consecutive round pairs (282,284 rounds, 14,814 matches). In the 245,136 pairs with no side swap, the change equals the previous round's CT-win sign in every pair; the current round's share there (62.91%) equals how often the same side wins two rounds in a row. Over all pairs, the previous-round share is 96.79% and the current-round share is 62.22%. The earlier quick-check figures (95.13%, 0.37%, 59.93%, 35.58%) did not reproduce and are withdrawn. This is consistent with the score lead being the running score of earlier rounds; it does not show that the score lead contains the current round's result. The reason given for leaving it out was round leakage. [Owner to confirm that reason before this is sent.] Sources: data/combined/exp_scorelead_leak.json and scripts/model/exp_scorelead_leak.py.
+
+Files (links, add before sending):
+- Report (Word, with a contents list and links): [LINK: report]
+- Slides (PowerPoint, 19 slides with speaker notes): [LINK: slides]
+- Package (zip with the models, results, scripts and the parity log): [LINK: zip]
+
+What is in the zip:
+- scripts/serving/win_probability.py: the scoring function (needs xgboost, polars and numpy). Call it as win_probability(data, team="CT"); the default is the submission (winprob_v6_drop_heavy). It returns {tick: percent}.
+- models/: the submission (.json and .meta.json), the five score-lead seeds, the ensemble metadata, and the event-only model with its metadata.
+- results/: the split manifest, the data report, the key experiment result files, the score-lead check and the serving parity log.
+- The live presentation is at https://claude.ai/artifact/SFAnn4viMQ5DEieNVvdQEv (private); the slides link above has the current slides. [Republish the artifact before sending so the link shows the current deck.]
+
+Open items, stated plainly:
+1. Monotone constraints: the submission keeps them. On the 59-input model it comes from (no score lead, before the heavy-weapon group was dropped), removing them changes test log loss by +0.000092 [+0.000009, +0.000176] (3,059 test matches) and validation log loss by -0.000064 [-0.000183, +0.000066] (1,168 validation matches). A positive test change means removing them makes the test loss worse (data/combined/exp_59_nomono.json). The older 13-input event-only model (winprob_v4_basic, no score lead) had its loss lowered on both splits by removing them (test -0.000443, validation -0.000188; data/combined/exp_mono_paired.json). The 14-input event-only model has not been tested without them.
+2. The split (72/8/20) is the first training code's default, not a named standard; no fraction sweep was run.
+3. CatBoost on CPU and logistic regression at stride 3 were not run; their full-set versions are in the record.
+4. Map pool: the seven maps are the pool from 6 July 2026 (Wikipedia; a season tracker on 18 October); no Valve notice was found.
+5. Days 14 and 15 of October are not in the built store (tomes/). Raw match folders for both days exist on the E: drive (950 and 835 match folders, each with a sibling zip); their origin and completeness are not verified, and they are not used in any result.
+6. Confirm the origin of the day 14 and 15 folders on the E: drive before anyone relies on them.
+7. The scoring function's default is the submission (winprob_v6_drop_heavy, 57 inputs). The score-lead comparison (winprob_v8_ensemble, 58 inputs) is passed by name: model_name="winprob_v8_ensemble".
+
+Regards,
+Adam

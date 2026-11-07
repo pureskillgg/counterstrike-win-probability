@@ -1,0 +1,23 @@
+{
+ "reference": "winprob_v4 (59 inputs, monotone constraints on the alive counts), same rows",
+ "reference_best_iteration": 1051,
+ "no_mono_best_iteration": 956,
+ "test_logloss_no_mono": 0.45650456005737067,
+ "test_logloss_no_mono_ci95": [
+  0.45340555204942845,
+  0.45922306782917544
+ ],
+ "test_delta_no_mono_minus_mono": 9.226531629018692e-05,
+ "test_delta_ci95": [
+  8.762610136250991e-06,
+  0.00017639277890157525
+ ],
+ "validation_logloss_no_mono": 0.453631014024208,
+ "validation_delta_no_mono_minus_mono": -6.370039724881928e-05,
+ "validation_delta_ci95": [
+  -0.00018335911044836586,
+  6.640449624773859e-05
+ ],
+ "test_matches": 3059,
+ "validation_matches": 1168
+}

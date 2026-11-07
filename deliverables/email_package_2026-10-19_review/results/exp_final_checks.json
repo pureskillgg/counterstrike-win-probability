@@ -1,0 +1,20 @@
+{
+ "canary": {
+  "test_logloss_with_future_feature": 0.4412755949708818,
+  "best_iteration": 1169,
+  "note": "stride-3 training, 59 inputs plus the future alive count"
+ },
+ "weighted_draws": {
+  "unweighted_test_logloss": 0.4576883344336361,
+  "weighted_test_logloss": 0.45657214242678895,
+  "weighted_minus_unweighted": -0.0011161920068471025,
+  "ci95": [
+   -0.0014402457347953152,
+   -0.0007897531605077241
+  ],
+  "best_iterations": [
+   884,
+   861
+  ]
+ }
+}

@@ -1,0 +1,220 @@
+searched 45 distinct candidates; verified 43; dropped 2
+
+[csgo-deep|deep-graph] Graph Neural Networks to Predict Sports Outcomes -- Peter Xenopoulos, Claudio Silva (2022)
+  https://arxiv.org/abs/2207.14124
+  claim_supported=False | WHAT: Round-level P(CT wins) from one-second game states. Each living player is a node in a fully connected graph (position, HP, armor, equipment, grenades, bombsite distances, alive status), with a GAT branch concatenated to a feedforward global-state branch. Data: 7,222 pro games, 9,414 demofiles, 14,291,069 states, 70/10/20 split, one model per map. Best model GAT+State: log loss 0.4276, AUC 0.8753, versus state-only ba
+  US: Nearly the same task and data scale as the user's model (per-second CS:GO round win probability, about 15M rows). This is the closest work found and it refutes the premise that no one has done a deep model here. Its state-only baseline is the direct analog of an XGBoost-on-state model, so it is the 
+
+[csgo-deep|deep-tabular] ESTA: An Esports Trajectory and Action Dataset -- Peter Xenopoulos, Claudio Silva (2022)
+  https://arxiv.org/abs/2209.09861
+  claim_supported=False | WHAT: Dataset (1,558 pro game logs; 8.6M actions, 7.9M frames, 417k trajectories) plus a round-win benchmark: P(CT wins | state), with per-map models over seven maps (35 total). One random state per round, 70/10/20 split, averaged over 10 runs. Compares LightGBM, XGBoost and MLP on vector states against Deep Sets and Set Transformer on set states. Reports log loss and ECE, not accuracy or AUC. The MLP has the lowest log lo
+  US: Direct benchmark for the XGBoost choice: a plain MLP beats XGBoost on log loss by 0.010 to 0.026 on every map, so XGBoost may leave log loss on the table. Sampling differs (one state per round, not per second), so the numbers are not directly comparable. Public data, so usable as an external check. 
+
+[csgo-deep|other] Precision Under Fire: Analysis and Predictive Modeling in Counter-Strike: Global Offensive -- Xinyao Xia, Abel Salinas, Fred Morstatter (2025)
+  https://www.isi.edu/results/publications/31260/precision-under-fire-analysis-and-predictive-modeling-in-counter-strike-global-offensive
+  claim_supported=True | WHAT: Round-result prediction and player-death prediction from health, spatial position and economy features. Compares logistic regression, decision trees and XGBoost against random and majority baselines. The abstract says XGBoost consistently outperforms the others. No deep model. I read only the IEEE CoG 2025 publication listing page, so there are no numbers, dataset size or feature list.
+  US: Closest round-level CS:GO predictor I found, and it reports XGBoost best, which supports the user's model family. It is not deep, and I could not verify its accuracy figures.
+
+[csgo-deep|deep-sequence] Temporal Probability Calibration -- Tim Leathart and Maksymilian Polaczuk (2020)
+  https://arxiv.org/abs/2002.02644
+  claim_supported=False | WHAT: Calibrates class probabilities from sequences truncated at random points. Uses a 12,362-game CS:GO dataset (8,751 train / 2,907 calibration / 704 test), with per-round records of winner, surviving players and score. Sequence model: GRU with 96 units plus two 96-unit dense layers. Round-indexed temporal calibration improves NLL from 0.3830 to 0.3793 and ECE from 0.0316 to 0.0235; score-indexed temporal calibration mak
+  US: Directly relevant to calibrating a win-probability output over time, which matters for a per-second model. Its game count is close to the user's roughly 12,000 matches, so check whether it is the same corpus. The round-index calibration idea maps naturally onto calibrating by clock.
+
+[csgo-deep|deep-sequence] Round Outcome Prediction in VALORANT Using Tactical Features from Video Analysis -- Nirai Hayakawa, Kazumasa Shimari, Kazuma Yamasaki, Hirotatsu Hoshikawa, Rikuto Tsuchida, Kenichi Matsumoto (2025)
+  https://arxiv.org/abs/2510.17199
+  claim_supported=True | WHAT: Round outcome from minimap video using a TimeSformer video transformer, plus tactical features (character positions, in-game events) extracted from the minimap. Reports about 81% accuracy, strongest from mid-round onward, and beats a minimap-only model. Accepted to IEEE CoG 2025. Dataset size is not on the page I read.
+  US: Only 2025 deep round-outcome paper on a tactical shooter I found. Its accuracy-versus-round-time curve is a useful reference point. The input is video rather than tabular state, so the architecture does not transfer directly. No distillation.
+
+[csgo-deep|deep-sequence] Machine learning models for DOTA 2 outcomes prediction -- Kodirjon Akhmedov, Anh Huy Phan (2021)
+  https://arxiv.org/abs/2106.01782
+  claim_supported=True | WHAT: Live outcome prediction from Game State Integration telemetry with linear regression, a neural network and an LSTM, using a multi-forward-step prediction method. Reported average accuracy: LR 82% (69% worst case), NN 88%, LSTM 93%. The abstract page gives no dataset size or evaluation timepoints.
+  US: Generic deep live-outcome precedent with a sequence model. The numbers are abstract-level and the evaluation protocol is unclear, so do not take 93% at face value. Useful as a check on whether an LSTM beats a feedforward net on per-second outcome data.
+
+[csgo-deep|other] Win Prediction in Multi-Player Esports: Live Professional Match Prediction -- Victoria J. Hodge, Sam Michael Devlin, Nicholas John Sephton, Florian Oliver Block, Peter Ivan Cowling, Anders Drachen (2019)
+  https://eprints.whiterose.ac.uk/152931 (DOI: https://doi.org/10.1109/TG.2019.2948469)
+  claim_supported=True | WHAT: IEEE Transactions on Games (online 2019, print 2021; DOI 10.1109/TG.2019.2948469). Live professional Dota 2 match outcome using standard ML models with feature engineering. Reports up to 85% accuracy after 5 minutes of play. Not deep learning. No arXiv version on the record I opened.
+  US: The generic live-prediction precedent you asked for, but not deep and reports a single timepoint. Useful for the feature-engineering and accuracy-by-time framing rather than the model.
+
+[moba-deep|deep-tabular] A Confidence-Calibrated MOBA Game Winner Predictor -- Dong-Hee Kim, Changwoo Lee, Ki-Seok Chung (2020)
+  https://arxiv.org/abs/2006.15521
+  claim_supported=False | WHAT: Real-time League of Legends winner predictor: a PyTorch MLP (layers 295-256-256-2) on one in-game state vector per sample (game time, champion composition, gold and XP differences, kill counts). Trained on 83,875 matches and tested on 10,000, all from the top 0.01% of players. Proposes a data-uncertainty loss (learned per-input logit variance, sampled logits, averaged softmax, cross-entropy) and compares it with no c
+  US: Closest existing match to the user's setup: an in-play MOBA state model with calibration and log loss both reported. It also shows ECE can improve while NLL does not (the DU loss NLL equals the uncalibrated NLL, and temperature scaling has the best NLL), so the user should report NLL and Brier along
+
+[moba-deep|deep-sequence] 3-Dimensional convolutional neural networks for predicting StarCraft II results and extracting key game situations -- Insung Baek; Seoung Bum Kim (2022)
+  https://pmc.ncbi.nlm.nih.gov/articles/PMC8893650/
+  claim_supported=False | WHAT: StarCraft II (Terran vs Protoss) win prediction from replays. A 3D residual network (ResNet-18 base, with a non-local block) takes 50 time points per replay (120x128x128 tensors, with an embedding for categorical variables) and Grad-CAM highlights key moments. Data: 1,725 replays (1,227 train, 498 test), published in PLoS One 17(3): e0264550 (DOI 10.1371/journal.pone.0264550). Baselines: 2D-ResNet on one time point, 
+  US: Real deep-versus-gradient-boosting comparison on in-play time-sliced game data, though in an RTS game and with accuracy and AUC only. Supports the claim that a 3D or sequence deep model can be benchmarked directly against XGBoost and LightGBM on the same replays, which the user could extend with log
+
+[moba-deep|other] League of Legends: Real-Time Result Prediction -- Jailson B. S. Junior and Claudio E. C. Campelo (2023)
+  https://arxiv.org/abs/2309.02449
+  claim_supported=True | WHAT: Real-time League of Legends result prediction on unpublished data, comparing LightGBM, logistic regression, gradient boosting and other models across elapsed-time bands. LightGBM is best overall, at about 81.62% average accuracy for 60-80% of elapsed time; logistic regression and gradient boosting do better early. No deep models are named and no log loss, AUC or calibration appears in the abstract.
+  US: The best tree-side in-play reference for LoL and a useful gradient-boosting baseline the deep model should beat. The reported metric is accuracy only, and no calibration is reported.
+
+[moba-deep|deep-sequence] Real-time Prediction of Dota 2 Match Outcomes using In-game Chat Logs -- Tshepiso Bapela, Pravesh Ranchod, Branden Ingram (2025)
+  https://ojs.aaai.org/index.php/AIIDE/article/view/36822
+  claim_supported=True | WHAT: Real-time Dota 2 outcome prediction from in-game chat logs on 50,000 ranked matches (AIIDE 2025, Poster track). Compares an LSTM, DistilBERT and a logistic regression baseline, with and without game events. Accuracy up to 81.4% from chat alone and 98.4% with game events. DistilBERT is more confident and the LSTM more accurate; prediction reliability peaks in the 15-30 minute mid-game. No gradient boosting, log loss, 
+  US: Deep in-play Dota 2 model that notes a confidence-versus-accuracy trade-off, which is the calibration question in another form. It uses text rather than game state, so it is less direct, and it does not score probabilities.
+
+[moba-deep|deep-sequence] Predicting Outcomes in Video Games with Long Short Term Memory Networks -- Kittimate Chulajata, Sean Wu, Fabien Scalzo, Eun Sang Cha (2024)
+  https://arxiv.org/abs/2402.15923
+  claim_supported=True | WHAT: LSTM win prediction from per-player health time series in Super Street Fighter II Turbo, a two-player fighting game used as a proof of concept. Baselines are Transformer forecasting models. The authors open-source their data and code. The abstract page reports no dataset size, metrics or tree baselines.
+  US: Shows a sequence-only deep model for in-play esports outcome prediction, but it is not a MOBA and reports no metrics on the page, so it is weak evidence for the user's question.
+
+[moba-deep|other] Real-time eSports Match Result Prediction -- Yifan Yang, Tian Qin, Yu-Heng Lei (2016)
+  https://arxiv.org/abs/1701.03162
+  claim_supported=True | WHAT: Real-time Dota 2 match result prediction on 78,362 matches (20,631 with replay data). Proposes an Attribute Sequence Model, compared with logistic regression and their combinations. Pre-match history features raise accuracy from 58.69% to 71.49%. Per-minute in-game features reach up to 93.73% accuracy at minute 40. The abstract reports accuracy only, with no log loss, AUC, calibration or tree baseline. The abs page l
+  US: A large-scale Dota 2 in-play baseline with a time-indexed sequence model, but accuracy only and not a deep network as far as the abstract shows, so only partly relevant to the deep question.
+
+[sports-deep|deep-sequence] Deep Reinforcement Learning in Ice Hockey for Context-Aware Player Evaluation -- Guiliang Liu, Oliver Schulte (2018)
+  https://www.ijcai.org/proceedings/2018/478
+  claim_supported=True | WHAT: Learns an action-value Q-function with a neural network that combines continuous game-context signals with a possession-level LSTM, trained on about 3M NHL play-by-play events. Per-action values are aggregated into a per-player Game Impact Metric. The output is action value, not win probability. The IJCAI page reports no calibration analysis.
+  US: Closest opened deep-RL sports value model and the same group behind the later soccer deep-Q work. It values actions for player ranking rather than predicting state win probability, so it is a design reference for a deep value function, not a calibration benchmark. ArXiv id 1805.11088 appeared in sea
+
+[sports-deep|deep-sequence] Using Recurrent and Mixture Density Network Architectures to Model National Basketball Association In-Game Win Probabilities -- Henry Cleveland Poole (advisor/committee chair: Ying Nian Wu) (2020)
+  https://escholarship.org/uc/item/1n78759j
+  claim_supported=False | WHAT: Compares logistic regression, random forest, fully connected NN, recurrent NN, mixture density network (MDN) and recurrent MDN on STATS NBA play-by-play data (2002-03 to 2016-17). Every model gets the same three inputs (game time, score differential, possession). External test accuracy runs from 0.7237 (random forest) and 0.7259 (logistic regression) up to 0.7281 (recurrent MDN); the thesis calls the models relativel
+  US: Only opened sports paper that pits deep in-game win-probability models against a tree baseline (random forest) on identical inputs. The gaps are under half a point of accuracy and calibration is not measured, so it supports evaluating calibration, not just accuracy, when deep and tree models are clo
+
+[sports-deep|deep-sequence] Large-Scale In-Game Outcome Forecasting for Match, Team and Players in Football using an Axial Transformer Neural Network -- Michael Horton and Patrick Lucey (2025)
+  https://arxiv.org/abs/2511.18730
+  claim_supported=False | WHAT: Axial transformer that jointly and recurrently predicts expected totals for 13 action types for each player, each team and the match, at several time-steps, with about 75,000 live predictions per game. A game-level win-probability panel appears in the figures. Only the abstract and figure captions were read; no calibration results, baselines or tree comparison were visible.
+  US: Most recent deep in-game outcome model in sports and the closest in spirit to a per-second state model. Win probability looks like a derived or secondary output, so the full text must be checked for how it is produced and validated before using it as a comparator.
+
+[sports-deep|deep-sequence] Going Deep: Models for Continuous-Time Within-Play Valuation of Game Outcomes in American Football with Tracking Data -- Ronald Yurko, Francesca Matano, Lee F. Richardson, Nicholas Granered, Taylor Pospisil, Konstantinos Pelechrinis, Samuel L. Ventura (2019)
+  https://arxiv.org/abs/1906.01760
+  claim_supported=False | WHAT: Modular framework for continuous-time within-play valuation of expected points and win probability from tracking data. The abstract names an LSTM only for a ball-carrier yards-gained sub-model. The win-probability model class, calibration and baselines are not stated on the abstract page. The full text was not read.
+  US: The continuous-time, within-play framing is the closest sports analogue to a per-second round win-probability model. The abstract does not show a deep win-probability estimator, so confirm the WP component in the full paper before calling it deep.
+
+[sports-deep|deep-sequence] Gaining Momentum: Uncovering Hidden Scoring Dynamics in Hockey through Deep Neural Sequencing and Causal Modeling -- Daniel Griffiths, Piper Moskow (2025)
+  https://arxiv.org/abs/2511.00615
+  claim_supported=True | WHAT: Five-stage pipeline: logistic regression weights micro-events; gradient-boosted decision trees estimate expected goals (xG); an LSTM models temporal sequences; PCA with K-means finds spatial formations; an X-learner estimates the average treatment effect (0.12, 95% CI 0.05-0.17) of adopting identified sequences. The target is scoring likelihood, not win probability. No calibration metrics and no baseline comparisons 
+  US: Shows a sports pipeline in which gradient-boosted trees handle per-event probability and an LSTM handles sequence structure, the same split a CS2 model could use (tree on current state, sequence model on history). Not a win-probability model, and it reports no calibration.
+
+[sports-deep|other] What Happened Next? Using Deep Learning to Value Defensive Actions in Football Event-Data -- Charbel Merhej, Ryan Beal, Sarvapali Ramchurn, Tim Matthews (2021)
+  https://arxiv.org/abs/2106.01786
+  claim_supported=False | WHAT: Defensive Action Expected Threat (DAxT): deep learning values defensive actions by the threat of the play sequence that follows them. Architecture, baselines and calibration are not stated on the abstract page (published at KDD 2021). Only the abstract was read.
+  US: Deep, forward-looking action valuation in soccer in the same family as VAEP, which the user's CS:GO reference builds on. Low detail on the abstract page, so it is a lead rather than a calibration reference.
+
+[sports-deep|other] Action valuation of on- and off-ball soccer players based on multi-agent deep reinforcement learning -- Hiroshi Nakahara, Kazushi Tsutsui, Kazuya Takeda, Keisuke Fujii (2023)
+  https://arxiv.org/abs/2305.17886
+  claim_supported=True | WHAT: Multi-agent deep RL that values on- and off-ball actions in a single framework, using a discrete action space within a continuous state space modelled on Google Research Football. Validated against conventional indicators, season goals and expert ratings. Abstract only; the output form (action value versus probability) and baselines are not stated, and no calibration analysis is mentioned. Published in IEEE Access pe
+  US: Shows simulation can supply dense training signal for a deep valuation model, which matters if real round data is limited. Weak calibration relevance because validation was against outcomes and expert ratings, not probability calibration.
+
+[sports-deep|deep-sequence] Forecasting NCAA Basketball Outcomes with Deep Learning: A Comparative Study of LSTM and Transformer Models -- Md Imtiaz Habib (sole author) (2025)
+  https://arxiv.org/abs/2508.02725
+  claim_supported=True | WHAT: LSTM and Transformer each trained with binary cross-entropy and with Brier loss. Abstract reports Transformer with BCE has the highest AUC (0.8473) and LSTM with Brier loss has the best calibration (Brier score 0.1589). No tree-ensemble baseline is mentioned. Pregame, not in-game. Abstract only; reliability diagrams and ECE are not in the abstract.
+  US: The only opened sports paper with explicit deep-model calibration numbers. Shows the loss function (Brier vs BCE) can trade discrimination against calibration, which bears on training a deep WP model. It gives no answer to the tree-ensemble comparison because no tree baseline is reported.
+
+[privileged|privileged-information] Using Time-Series Privileged Information for Provably Efficient Learning of Prediction Models -- Rickard K.A. Karlsson, Martin Willbo, Zeshan Hussain, Rahul G. Krishnan, David Sontag, Fredrik D. Johansson (2022)
+  https://arxiv.org/abs/2110.14993
+  claim_supported=True | WHAT: Training can use time-series data recorded between the baseline time and the outcome (privileged, training only); the deployed model uses baseline features only. Claims a provable sample-efficiency gain for non-stationary Gaussian-linear dynamics with a fixed horizon, with the largest gains when data is scarce, and connects the estimator to knowledge distillation. Verified on the arXiv abstract page, which lists AIST
+  US: Closest structural match to the CS2 setup: training-only information that lies between the live state and the round outcome, and a student that sees only the state. The theory is linear and the experiments are not on boosted trees or game data, so it does not directly cover an XGBoost model.
+
+[privileged|teacher-student] Improving Text-based Early Prediction by Distillation from Privileged Time-Series Text -- Jinghui Liu, Daniel Capurro, Anthony Nguyen, Karin Verspoor (2023)
+  https://arxiv.org/abs/2301.10887
+  claim_supported=True | WHAT: Treats the text collected between prediction time and the final outcome as privileged information. A teacher trained with it distills into a student that sees only the early input window. Reports more consistent gains than transfer learning or mixed training on four clinical tasks and two mental-health tasks; text representation and window length matter. Verified on the arXiv abstract page (submitted 26 Jan 2023).
+  US: Same temporal design as a per-second round model: the teacher sees post-state events, the student sees only the live state, and the student is trained by distillation. The domain is text, not sports or tabular data, so the results do not transfer directly.
+
+[privileged|privileged-information] Learning with privileged and sensitive information: a gradient-boosting approach -- Siwen Yan, Phillip Odom, Rahul Pasunuri, Kristian Kersting, Sriraam Natarajan (2023)
+  https://pmc.ncbi.nlm.nih.gov/articles/PMC10679679
+  claim_supported=False | WHAT: Proposes two gradient-boosting methods for privileged features (available only in training). KbPIB uses a privileged-feature model to supply a bias for the boosted model on normal features; JPIB fits trees alternately on the two feature sets. The privileged models are discarded after training, and the authors note they are not a classic distillation teacher. In most tabular datasets they raised AUC over a normal-feat
+  US: The only paper opened that works inside a boosted-tree framework, so it maps most directly onto an XGBoost student. It is not a teacher-student distillation method, so it is a baseline for the privileged-feature idea rather than a template for the teacher.
+
+[privileged|teacher-student] Unifying distillation and privileged information -- David Lopez-Paz, Léon Bottou, Bernhard Schölkopf, Vladimir Vapnik (2016)
+  https://arxiv.org/abs/1511.03643
+  claim_supported=False | WHAT: Introduces generalized distillation, which combines distillation with learning using privileged information so that a teacher can use richer or different data views during training and its outputs are distilled into a student. Gives theoretical and causal analysis and extends the method to unsupervised, semi-supervised and multitask settings. Verified on the arXiv abstract page (v1 Nov 2015) and the ICLR 2016 proceed
+  US: The canonical template for a teacher with richer inputs distilled into a student with live inputs, which is the structure of a win-probability model that uses privileged state in training. The framework is stated generally rather than for neural nets, but I did not check which model classes its expe
+
+[privileged|privileged-information] Learning Using Privileged Information: Similarity Control and Knowledge Transfer -- Vladimir Vapnik, Rauf Izmailov (2015)
+  https://www.jmlr.org/beta/papers/v16/vapnik15b.html
+  claim_supported=True | WHAT: Introduces learning with an intelligent teacher who supplies extra per-example information (such as an explanation) during training only. Proposes two ways to speed up the student: correcting the student's similarity measure between examples, and direct knowledge transfer from teacher to student. Verified on the JMLR page (vol. 16, 2015, pp. 2023-2049). The abstract page does not mention SVM+, so the SVM+ and Delta-p
+  US: The foundational reference for the LUPI framing. The theory is kernel-based and not designed for tree models or per-second game data, so it is background rather than a method to adopt.
+
+[privileged|teacher-student] Everything old is new again: A multi-view learning approach to learning using privileged information and distillation -- Weiran Wang (2019)
+  https://arxiv.org/abs/1903.03694
+  claim_supported=True | WHAT: Single-author theory paper that places learning using privileged information and distillation in one multi-view framework. Under reasonable hypothesis-complexity assumptions, it argues that pushing teacher and student toward agreement shrinks the effective search space, which can give faster convergence for a standard regularized learner. Verified on the arXiv abstract page (submitted 8 Mar 2019). I did not check its
+  US: Gives a theoretical reason why a teacher with extra views should help a student, which is what a privileged-state teacher for CS2 would need. It does not address tabular or sports data in the part I read.
+
+[privileged|foundation-model] Efficient Multivariate Time Series Forecasting via Calibrated Language Models with Privileged Knowledge Distillation -- Chenxi Liu, Hao Miao, Qianxiong Xu, Shaowen Zhou, Cheng Long, Yan Zhao, Ziyue Li, Rui Zhao (2025)
+  https://arxiv.org/abs/2505.02138
+  claim_supported=False | WHAT: A calibrated language-model teacher receives ground-truth prompts that the student never sees (learning under privileged information), and a lightweight student is trained with correlation and feature distillation so it imitates the teacher. Verified on the arXiv abstract page (v1 4 May 2025, v2 6 May 2025). The page does not state that the prompts contain future values; reading them as future values is my inference.
+  US: A deployable low-latency student distilled from a richer teacher on time series, which matches the deployment constraint. The teacher is a large language model, so it is heavy, and the work is forecasting rather than sports or tabular outcome modeling.
+
+[privileged|privileged-information] Rethinking Knowledge Transfer in Learning Using Privileged Information -- Danil Provodin, Bram van den Akker, Christina Katsimerou, Maurits Kaptein, Mykola Pechenizkiy (2024)
+  https://arxiv.org/abs/2408.14319
+  claim_supported=True | WHAT: Critical analysis of learning using privileged information. Argues that the theoretical justifications rest on assumptions that do not clearly show when privileged information helps, and reports that many claimed gains come from dataset anomalies or model-design changes wrongly credited to the privileged data. Concludes that current state-of-the-art LUPI methods fail to transfer knowledge from privileged data, and ad
+  US: A required check before claiming a privileged-teacher gain for a CS2 model: compare against a strong student trained alone, and rule out data artifacts or architecture changes being credited to the teacher's extra inputs.
+
+[tree-distill|tree-distillation] Distilling Tabular Foundation Models for Structured Health Data -- Aditya Tanna, Nassim Bouarour, Mohamed Bouadi, Vinay Kumar Sankarapu, Pratinav Seth (2026)
+  https://arxiv.org/abs/2605.18702
+  claim_supported=False | WHAT: Distills six tabular foundation-model teachers (in-context learners) into LightGBM, CatBoost, XGBoost and MLP students across 19 healthcare datasets. Tree students keep about 98.8 to 100.7 percent of teacher AUC; MLP students keep 89.6 to 90.8 percent. Distilled LightGBM has ECE about 0.060 and Brier about 0.098, versus 0.090 and 0.116 for default LightGBM, so the distilled tree is better calibrated than the plain ba
+  US: The only paper I found that reports calibration (ECE, Brier) for a distilled tree student, which matters for a win-probability model. It supports distilling a strong teacher into XGBoost with little AUC loss. Inference, not from the paper: a deep teacher trained on the same CS2 rows will be overconf
+
+[tree-distill|tree-distillation] Practical Knowledge Distillation: Using DNNs to Beat DNNs -- Chung-Wei Lee, Pavlos Athanasios Apostolopulos, Igor L. Markov (2023)
+  https://arxiv.org/abs/2302.12360
+  claim_supported=True | WHAT: Distills an ensemble of DNNs into a single gradient-boosting model with a data-sampling training workflow, reported as keeping performance in a production real-time system at 4M inferences per second. Also studies input-data distillation and data denoising for both GBDT and DNN models, and claims the practical method is equivalent to classical cross-entropy knowledge distillation. The abstract names no public benchma
+  US: Direct DNN-to-GBDT distillation at production scale (100K+ rows), the closest in scale to ~15M rows. Its data-sampling and input-distillation steps could enlarge the per-second training set. Calibration is not reported, so it would still need to be measured.
+
+[tree-distill|tree-distillation] Pocket Foundation Models: Distilling TFMs into CPU-Ready Gradient-Boosted Trees -- Aditya Tanna, Nassim Bouarour, Mohamed Bouadi, Vinay kumar Sankarapu, Pratinav Seth (2026)
+  https://arxiv.org/abs/2605.18654
+  claim_supported=True | WHAT: Uses TabICLv2 as teacher and XGBoost or CatBoost as students across 153 classification datasets. Distilled XGBoost reaches macro-mean AUC 0.882, about 96.5 percent of the teacher, at about 1.9 ms per prediction on CPU (38x to 860x speedup). Identifies label leakage in in-context teachers, whose soft targets collapse to near one-hot; stratified out-of-fold teacher labels fix it. Gains over tuned CatBoost are +0.011 on
+  US: Shows where distillation helps: low-dimensional tables. Check the CS2 feature count before expecting a gain over a tuned XGBoost baseline. The leakage finding applies to any teacher scored on its own training rows.
+
+[tree-distill|tree-distillation] GEAR: Generative Expansion and Real Anchoring for Two-Stage Distillation of Tabular Foundation Models -- Qi Qin, Jiajie Zhu, Dali Chen, Yuzhao Zhang, Jia-Xing Han, Peng Zhang, Ying Yan, Yifan Sun, Yu Su (2026)
+  https://arxiv.org/abs/2608.18849
+  claim_supported=True | WHAT: Two-stage distillation of in-context tabular foundation models: the teacher generates queries (their volume and generator fidelity are the trade-off), then the student is anchored on real data. Students are MLP, LightGBM and XGBoost; evaluated on TALENT and TabArena. Two-stage MLPs gain about 1.2 to 2.4 AUC points over matched baselines; the paper says gains transfer to LightGBM and XGBoost on binary tasks. A search 
+  US: Addresses the data-size lever: the teacher labels extra generated states and the student is anchored on real rows, which fits a setup that already has 15M logged rows. The paper notes tree students are harder to distill into than MLPs, so tree gains may be smaller.
+
+[tree-distill|tree-distillation] Distilling Tabular Foundation Models to Simple Decision Trees -- Hayden McTavish, Daniel Kerrigan, Brian Barr, Samuel Sharpe, Nam Nguyen (2026)
+  https://neurips.cc/virtual/2026/171760
+  claim_supported=True | WHAT: Uses a specialized in-context tabular foundation model as teacher and a single sparse decision tree as student, aimed at interpretability-critical or fast-inference settings. Benchmarks the size-versus-performance trade-off when the foundation model is available at training time, and modifies decision-tree optimization to make distillation work better. Only the NeurIPS listing page was opened; no numbers or full text
+  US: The single-tree student is the most interpretable endpoint, but one tree is unlikely to match a 15M-row XGBoost. Its tree-optimization changes could still help if analysts need an explainable model.
+
+[tree-distill|foundation-model] TabPFN-2.5: Advancing the State of the Art in Tabular Foundation Models -- Léo Grinsztajn, Klemens Flöge, Oscar Key, Felix Birkel, Philipp Jund, et al. (26 authors in total) (2025)
+  https://arxiv.org/abs/2511.08667
+  claim_supported=False | WHAT: Technical report for TabPFN-2.5. Its distillation engine turns a training set into a dataset-specific MLP or tree ensemble with no in-context learning at inference. The HTML v2 text says the tree variant is competitive with tree-based models on internal datasets up to 10K rows and is much faster than TabPFN, but gives no numeric accuracy retention, latency or calibration. The engine is described as proprietary. A sea
+  US: Confirms a foundation model can be compressed into a tree ensemble, but the engine is closed and the paper gives no numbers, so the result cannot be reproduced. Check the license before any production use.
+
+[tree-distill|tree-distillation] Fast, Accurate, and Simple Models for Tabular Data via Augmented Distillation -- Rasool Fakoor, Jonas Mueller, Nick Erickson, Pratik Chaudhari, Alexander J. Smola (2020)
+  https://arxiv.org/abs/2006.14284
+  claim_supported=True | WHAT: FAST-DAD distills complex AutoML ensembles into single students (boosted trees, random forests or deep nets) after augmenting the training inputs with Gibbs samples from a self-attention pseudolikelihood estimator. Across 30 regression and classification datasets, the distilled single models beat standard training on the original data and are over 10x faster and more accurate than the H2O and AutoSklearn ensembles. T
+  US: The closest published ensemble-to-GBDT recipe with augmentation. Its augmentation idea could generate extra per-second states beyond the 15M logged rows.
+
+[tree-distill|tree-distillation] Distilling a Neural Network Into a Soft Decision Tree -- Nicholas Frosst, Geoffrey Hinton (2017)
+  https://arxiv.org/abs/1711.09784
+  claim_supported=True | WHAT: Distills a trained neural network into a soft decision tree (learned soft splits) to get a hierarchical, explainable model of the network. The abstract says the distilled tree generalizes better than a tree trained directly on the data, and gives no numbers or datasets. Calibration is not discussed.
+  US: The original deep-network-to-tree distillation, with soft splits that are differentiable and could take the same teacher soft targets. It is a 2017 idea with no results I could check here, so treat it as background rather than a candidate.
+
+[distill-calibration|teacher-student] The Role of Teacher Calibration in Knowledge Distillation -- Suyoung Kim, Seonguk Park, Junhoo Lee, Nojun Kwak (2025)
+  https://arxiv.org/abs/2508.20224
+  claim_supported=True | WHAT: Reports a strong correlation between the teacher's calibration error and the student's accuracy. Shows that applying a standard calibration method to the teacher lowers its calibration error and improves distillation. Listed as IEEE Access (2025).
+  US: Most direct evidence that teacher probability quality determines what a student inherits. For a per-second win-probability teacher, calibrating the teacher before distilling is a concrete, testable step. Only the abstract page was opened; datasets and specific calibration method were not confirmed.
+
+[distill-calibration|teacher-student] Rethinking the Knowledge Distillation From the Perspective of Model Calibration -- Lehan Yang, Jincen Song (2021)
+  https://arxiv.org/abs/2111.01684
+  claim_supported=True | WHAT: Argues that a larger teacher can be overconfident, which makes it hard for a small student to imitate. After calibrating the teacher (temperature fitted to the teacher), teacher size correlates positively with student performance. arXiv preprint only.
+  US: Speaks directly to the concern that a teacher's overconfidence on its own training data transfers to the student. Only the abstract was opened; the ECE table seen in search snippets was not verified in full text, and it is not a tabular or sports setting.
+
+[distill-calibration|teacher-student] When Does Label Smoothing Help? -- Rafael Müller, Simon Kornblith, Geoffrey Hinton (2019)
+  https://arxiv.org/abs/1906.02629
+  claim_supported=True | WHAT: Shows label smoothing improves generalization and calibration, but a teacher trained with label smoothing is a much worse distillation teacher. The penultimate-layer representations form tight clusters that discard inter-class similarity needed for distillation.
+  US: Answers the label-smoothing-versus-distillation sub-question. If a teacher is smoothed for calibration, the student may lose the soft structure it needs. Abstract only opened; ECE details are in the full text, which was not opened. Not tabular.
+
+[distill-calibration|teacher-student] Hard Gate Knowledge Distillation -- Leverage Calibration for Robust and Reliable Language Model -- Dongkyu Lee, Zhiliang Tian, Yingxiu Zhao, Ka Chun Cheung, Nevin L. Zhang (2022)
+  https://arxiv.org/abs/2210.12427
+  claim_supported=True | WHAT: Uses the teacher both as a knowledge source and as a signal for when the student is poorly calibrated. A sentence-level hard gate switches between learning from the teacher and from the data. Reports substantially lower calibration error than baselines.
+  US: A per-example gate driven by calibration error could translate to a per-second gate in a round model. The task is next-token generation, not tabular data, so the transfer is conceptual.
+
+[distill-calibration|teacher-student] Calibrating Student Models for Emotion-related Tasks -- Mahshid Hosseini, Cornelia Caragea (2022)
+  https://aclanthology.org/2022.emnlp-main.629/
+  claim_supported=True | WHAT: Studies knowledge distillation from a calibration perspective. A training-dynamics-guided mixup applied to the teacher gives students the lowest ECE on emotion detection, sentiment, and empathy tasks, with in-domain and out-of-domain tests.
+  US: One of the few papers found that reports ECE for distilled students against baselines. Text classification, not tabular or sports. Only the abstract was opened, so the numbers are not verified.
+
+[distill-calibration|teacher-student] Trust the uncertain teacher: distilling dark knowledge via calibrated uncertainty -- Jeonghyun Kim, SooKyung Kim, Richeng Xuan, Hyunsoo Cho (2026)
+  https://arxiv.org/abs/2602.12687
+  claim_supported=True | WHAT: Proposes Calibrated Uncertainty Distillation, which reshapes the teacher's predictive distribution before transfer so students learn from calibrated soft targets. Claims students are more calibrated under distribution shift as well as more accurate.
+  US: Recent method aimed at soft-target calibration, relevant if a per-second teacher is overconfident on its own training rows. Calibration metrics and datasets were not confirmed from the abstract page.
+
+DROPPED: Enabling Real-Time Prediction of In-Game Deaths Through Tele; Predicting outcomes of esports matches with probability metr
+
+GAPS: csgo-deep: Teacher-student or knowledge distillation: no CS:GO or CS2 win-probability paper found. The only esports distillation hit is 3M (arXiv:2406.09076, https://arxiv.org/abs/2406.09076), a multi-teacher setup for esports event detection rather than win prediction. I read only its abstract, which says the teachers are trained independently on different tasks; the student details are unverified. | csgo-deep: No peer-reviewed or arXiv deep per-second round win-probability paper for CS2 (2023 to 2026) was found. The closest CS2 artifact is CS-NET v4 (https://huggingface.co/gary2oos/cs-net-v4): a Transformer (d_model 768, about 138.7M parameters) whose spatial-only checkpoint outputs per-player team win rate for one tick. It has no paper, no reported metrics and no distillation, and its code is at github.com/Gary2005/cs-net (MIT). | csgo-deep: No deep Rainbow Six Siege round-outcome arXiv paper found. The only R6 hit is a 2018 non-deep paper in the Indonesian Journal of Electrical Engineering and Computer Science, which I did not open. | csgo-deep: Opened but excluded from the top 8: Katona, Spick, Hodge et al., Time to Die (https://arxiv.org/abs/1906.03939), a deep shared-weight Dota 2 death predictor (precision 0.377, recall 0.725 for a 5-second window), which is not win prediction. Also Chulajata et al. (https://arxiv.org/abs/2402.15923), LSTM vs Transformer on health-only Super Street Fighter II Turbo winner prediction; the abstract gives no accuracy and no dataset size.

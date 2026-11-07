@@ -1,0 +1,17 @@
+{
+ "defect_rounds": 3841,
+ "defect_rows": 275715,
+ "clean_train_seconds": 15933894,
+ "all_round_train_seconds": 16086453,
+ "served_best_iteration": 443,
+ "all_round_best_iteration": 556,
+ "test_seconds": 4568043,
+ "test_matches": 3601,
+ "test_logloss_served_clean": 0.5021984902992838,
+ "test_logloss_all_round_clean": 0.502240115656587,
+ "all_round_minus_served_clean_test": 4.162535730309763e-05,
+ "ci95": [
+  1.98680087585447e-05,
+  6.248612457946134e-05
+ ]
+}

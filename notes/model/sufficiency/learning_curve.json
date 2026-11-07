@@ -1,0 +1,185 @@
+{
+ "label": "VERIFIED",
+ "check": "A learning curve",
+ "seed": 0,
+ "kept_set_check": {
+  "channel_kept": 1709,
+  "dup_matches_removed": 47,
+  "rounds_in_kept_matches": 35502,
+  "kept_rounds": 28683,
+  "kept_matches": 1521,
+  "states": 234265
+ },
+ "splits": {
+  "test": {
+   "matches": 304,
+   "rounds": 5849,
+   "states": 47716,
+   "ct_share": 0.508383
+  },
+  "validation": {
+   "matches": 122,
+   "rounds": 2364,
+   "states": 19170,
+   "ct_share": 0.518988
+  },
+  "train_pool": {
+   "matches": 1095,
+   "rounds": 20470,
+   "states": 167379,
+   "ct_share": 0.521374
+  }
+ },
+ "fractions": [
+  {
+   "fraction": 0.1,
+   "train": {
+    "matches": 110,
+    "rounds": 2071,
+    "states": 16975,
+    "ct_share": 0.525832
+   },
+   "best_iteration": 150,
+   "device": "cpu (cuda requested; XGBoost found no GPU and used CPU)",
+   "fit_s": 415.2,
+   "test": {
+    "n": 47716,
+    "logloss": 0.44356578046332473,
+    "brier": 0.14860628067768974,
+    "auc": 0.866629654073739,
+    "ece": 0.0130693019621445,
+    "acc": 0.7670592673317126
+   }
+  },
+  {
+   "fraction": 0.25,
+   "train": {
+    "matches": 274,
+    "rounds": 5211,
+    "states": 42588,
+    "ct_share": 0.519301
+   },
+   "best_iteration": 224,
+   "device": "cpu (cuda requested; XGBoost found no GPU and used CPU)",
+   "fit_s": 219.7,
+   "test": {
+    "n": 47716,
+    "logloss": 0.4400426181111239,
+    "brier": 0.14758510236795466,
+    "auc": 0.8686660636765621,
+    "ece": 0.013411955937095323,
+    "acc": 0.7693226590661414
+   }
+  },
+  {
+   "fraction": 0.5,
+   "train": {
+    "matches": 548,
+    "rounds": 10180,
+    "states": 83316,
+    "ct_share": 0.518256
+   },
+   "best_iteration": 277,
+   "device": "cpu (cuda requested; XGBoost found no GPU and used CPU)",
+   "fit_s": 51.3,
+   "test": {
+    "n": 47716,
+    "logloss": 0.43800409787819106,
+    "brier": 0.14693255716904474,
+    "auc": 0.8695208145566711,
+    "ece": 0.00973336693845151,
+    "acc": 0.7693855310587644
+   }
+  },
+  {
+   "fraction": 1.0,
+   "train": {
+    "matches": 1095,
+    "rounds": 20470,
+    "states": 167379,
+    "ct_share": 0.521374
+   },
+   "best_iteration": 261,
+   "device": "cpu (cuda requested; XGBoost found no GPU and used CPU)",
+   "fit_s": 184.1,
+   "test": {
+    "n": 47716,
+    "logloss": 0.4365863847669546,
+    "brier": 0.1463521795797429,
+    "auc": 0.8703692223438743,
+    "ece": 0.008751731000169287,
+    "acc": 0.7701399949702405
+   }
+  }
+ ],
+ "test_logloss_changes": [
+  {
+   "from": 0.1,
+   "to": 0.25,
+   "test_logloss_change": -0.003523161737428648,
+   "ci95": [
+    -0.005440759092522277,
+    -0.001426755039574765
+   ],
+   "share_resamples_to_better": 1.0
+  },
+  {
+   "from": 0.25,
+   "to": 0.5,
+   "test_logloss_change": -0.0020385199650331384,
+   "ci95": [
+    -0.002993106347006348,
+    -0.0010406446327229225
+   ],
+   "share_resamples_to_better": 1.0
+  },
+  {
+   "from": 0.5,
+   "to": 1.0,
+   "test_logloss_change": -0.001417714330990063,
+   "ci95": [
+    -0.0023015070381484856,
+    -0.0005702073136694742
+   ],
+   "share_resamples_to_better": 0.9985
+  }
+ ],
+ "crosscheck_100pct_vs_bakeoff": {
+  "bakeoff_log": {
+   "logloss": 0.4366,
+   "brier": 0.14637
+  },
+  "here_cpu_100pct": {
+   "logloss": 0.4365863847669546,
+   "brier": 0.1463521795797429,
+   "best_iteration": 261
+  },
+  "cpu_matches_bakeoff_log_5dp": false
+ },
+ "log_loss_50_to_100_improves": true,
+ "ci95_50_to_100_below_zero": true,
+ "settings": {
+  "xgboost": "hist, depth 4, eta 0.05, min_child_weight 20, subsample 0.8, early stopping 100 on validation, monotone MONO",
+  "features": [
+   "alive_ct",
+   "alive_t",
+   "ct_alive_minus_t",
+   "bomb_planted",
+   "seconds_since_round_live",
+   "seconds_since_plant",
+   "round_number",
+   "ct_score_minus_t_score",
+   "is_pistol_round",
+   "is_overtime"
+  ],
+  "test_frac": 0.2,
+  "validation_frac_of_80pct": 0.1,
+  "bootstrap": "cluster over test matches, 2000 resamples, seed 0"
+ },
+ "notes": [
+  "Validation is 10 percent of the 80 percent pool, so the 100 percent row trains on 1095 of 1521 kept matches (72 percent). A literal 100 percent of the 80 percent would leave no early-stopping slice.",
+  "Fractions are of matches. Metrics are on states (bakeoff metrics()).",
+  "Test set and validation set are the bake-off primary split (same seed, same code)."
+ ],
+ "wall_s": 893.4
+}

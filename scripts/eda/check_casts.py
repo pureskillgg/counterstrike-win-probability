@@ -1,0 +1,17 @@
+import pyarrow as pa, pyarrow.parquet as pq, pyarrow.compute as pc, numpy as np, pandas as pd
+p = "G:/pureskill/csds-cs2/tomes/2026-10-01_to_08/tome/csds/basic_item_equip.2026-09-18,2026-10-08/dataframe_00007"
+t = pq.read_table(p, columns=["is_painted", "match_key", "item", "player_x_pos"])
+b = t.column("is_painted").combine_chunks()
+print("bool nulls:", b.null_count, b.type)
+f = pc.cast(b, pa.float64()).to_numpy(zero_copy_only=False)
+print("bool->f64 ok:", f[:5], np.unique(f, return_counts=True))
+s = t.column("item").combine_chunks()
+print("string nulls:", s.null_count)
+filled = pc.fill_null(s, "\x00<NULL>")
+h = pd.util.hash_array(filled.to_numpy(zero_copy_only=False))
+print("hash dtype:", h.dtype, h[:3])
+vc = pc.value_counts(s)
+print("value_counts struct fields:", vc.type, vc.field("values").to_pylist()[:3], vc.field("counts").to_pylist()[:3])
+x = pc.cast(t.column("player_x_pos").combine_chunks(), pa.float64()).to_numpy(zero_copy_only=False)
+print("float nan:", np.isnan(x).sum(), "nulls:", t.column("player_x_pos").null_count)
+print("item top:", list(zip(vc.field("values").to_pylist()[:5], vc.field("counts").to_pylist()[:5])))

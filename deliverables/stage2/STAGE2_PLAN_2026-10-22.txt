@@ -1,0 +1,38 @@
+STAGE 2: POSITION EMBEDDING AND MATCH RENDERING
+Started 2026-10-22 (Thursday; Bill's meeting is today)
+
+=== DRAFT DAILY UPDATE FOR BILL (not sent; paste into email or Discord) ===
+Update, Thu 22 Oct: I have the round-state brief and the 2D viewer. The position data is ready for the embedding: 134.7 million one-second rows of living-player positions across 14,804 matches (per map: mirage 3,416, dust2 3,099, ancient 2,181, anubis 1,922, inferno 1,760, nuke 1,281, cache 1,145). Next I am building a positions-only embedding for one map, with dead players handled by a mask, then checking it with PCA plots, nearest neighbours, and a few matches rendered in the viewer. Question: for dead players, do you prefer a mask with a separate alive flag (my default) or the last known position?
+=== END DRAFT ===
+
+WHAT THE DATA IS
+- Positions: data/positions_1hz/<date>.parquet (43 days, 2026-09-01 to 2026-10-13).
+  Columns: match_key, round, tick, second, player_id, side, x, y, z, yaw. One row per living player per live second.
+  Dead players are NOT in these files. The embedding has to handle missing players (mask), per the brief.
+- Map per match: data/combined/cache_snapshot_2026.parquet (map_name). 10 matches have no map name; these are the same 10 excluded matches.
+- Raw per-tick positions (player_vector) exist only on E: (read-only). The viewer needs them to render any match that is not the sample.
+
+THE VIEWER (csds-viewer-2d)
+- Static HTML/JS: open index.html (or serve the folder with python -m http.server for ?match= links).
+- Checked: its only network use is reading files in its own folder. No external calls.
+- Renders a DSDK match folder (channel files, including player_vector) and overlays a CSV with a tick column (for example our win probability).
+- Sample match: csds/2026/10/19/05c94574-b25b-4143-b1f3-7572dd808ba8 (de_mirage).
+- Next: build a viewer match folder for one of our matches from the raw player_vector on E:, then overlay the 57 submission's per-second probability.
+
+PLAN
+1. Confirm dead-player data: does the raw player_vector on E: carry dead players (last position) for a sample match? Decide the representation from that.
+2. Render check: serve the viewer, open the sample match, confirm it draws; then render one of our matches with the overlay.
+3. Build the dataset for one map (start with de_mirage, the largest): one row per (match, round, tick); ten player slots ordered by a fixed rule; alive flag, x, y, z per slot.
+4. Embedding model per map: candidates are an autoencoder over the slots, a set encoder (order-free), or a contrastive "same situation" model. Pick one, say why.
+5. Draw: PCA or t-SNE coloured by round winner, time into round, and alive count. Pick points and draw their ten positions on the map.
+6. Nearest neighbours for a few states; trace one round as a path through the picture.
+7. Architecture list (for the embedding and for the win probability model): pros and cons. Include Xenopoulos, Doraiswamy and Silva (2020).
+
+DECISIONS STILL OPEN
+- Dead players: masked slot with an alive flag (default) versus last known position.
+- Which map first (default: de_mirage, the most matches).
+- Whether to send the daily update before or after the meeting (Bill asked for it before Thursday's meeting).
+
+NOT DONE
+- Nothing has been sent to Bill.
+- The Meridian checkpoint and the git commit are from before stage 2; nothing new is committed.

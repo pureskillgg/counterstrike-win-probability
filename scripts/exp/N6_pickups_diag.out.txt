@@ -1,0 +1,17 @@
+== non-ground primary pickups r2+ t_since (s) percentiles
+{1: 0.72, 10: 1.7, 50: 5.97, 90: 17.61, 99: 31.3, 99.9: 117.05} max 427.7 n 182582
+== non-ground primary r2+ histogram 2s bins 0..60 (counts)
+[(0, 25705), (2, 40349), (4, 25419), (6, 18489), (8, 15855), (10, 12842), (12, 10986), (14, 8961), (16, 7074), (18, 6971), (20, 4201), (22, 1772), (24, 1001), (26, 572), (28, 370), (30, 281), (32, 180), (34, 150), (36, 127), (38, 121), (40, 60), (42, 58), (44, 65), (46, 64), (48, 66), (50, 60), (52, 39), (54, 48), (56, 47), (58, 41)]
+== ground primary r2+ histogram 2s bins 0..60 (counts)
+[(0, 1047), (2, 4243), (4, 4343), (6, 3807), (8, 3320), (10, 2913), (12, 2585), (14, 2220), (16, 1872), (18, 1517), (20, 1032), (22, 535), (24, 366), (26, 293), (28, 305), (30, 382), (32, 643), (34, 858), (36, 1130), (38, 1320), (40, 1418), (42, 1453), (44, 1555), (46, 1557), (48, 1523), (50, 1549), (52, 1510), (54, 1412), (56, 1410), (58, 1377)]
+== ground primary r2+ n 70301 under 20s 27867 under 30s 30398
+== primary drops reason=death r-all ts pct 10/50/90: [35.4, 58.9, 100.7] frac<20s 0.0 n 173123
+== primary drops reason=manual r-all ts pct 10/50/90: [2.5, 16.3, 79.2] frac<20s 0.54 n 28528
+== primary drops reason=replaced r-all ts pct 10/50/90: [13.9, 62.3, 104.9] frac<20s 0.137 n 19236
+early ground primary (r2+, ts<20) n: 27867
+candidate (pick,drop) pairs with drop earlier: 34500
+reason of earliest-candidate for early pickups (count by reason): [{'reason1': 'manual', 'n': 25607}, {'reason1': 'death', 'n': 90}, {'reason1': 'replaced', 'n': 2139}]
+drop ts for early pickups (min) pct: [1.4, 4.7, 12.7]
+share of early pickups where a candidate drop also occurred before 20s: 1.0
+drops of primary in freeze (ts<20) by reason: [{'reason': 'manual', 'n': 15393}, {'reason': 'replaced', 'n': 2644}, {'reason': 'death', 'n': 85}]
+primary drops r2+ with ts<20 n 18122 total r2+ 220887
