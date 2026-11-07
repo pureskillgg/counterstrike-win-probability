@@ -17,7 +17,7 @@ model     winprob_v6_drop_heavy (the default; the submission, decided 20 October
           clock, bomb and map (from the event channels), and 44 loadout inputs from the per-tick player_status channel: 19 per side
           (health, armour, helmets, kits, defusing, weapon classes, grenades, equipment value) for each of the two sides, plus 6
           CT-minus-T differences. A tome without player_status cannot be scored: the function returns {} and says so in last_warnings.
-          Trained on the current split manifest. Other models, passed by name: winprob_v8_ensemble (58 inputs: the same with the score lead,
+          Trained on split manifest a17f219b (see TRAINING.md). Other models, passed by name: winprob_v8_ensemble (58 inputs: the same with the score lead,
           the freeze-end CT score minus the T score from round_state; the mean of five seeds; model_name="winprob_v8_ensemble") and
           winprob_v7_basic_scorelead (14 inputs, event channels only) with
           model_name="winprob_v7_basic_scorelead".

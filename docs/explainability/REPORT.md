@@ -45,7 +45,7 @@ The team's evaluation metric is **GDT**, the gain over the lookup table (see [th
 ```mermaid
 flowchart LR
   A["Training cache<br/>14,804 matches"] --> B["Design matrix<br/>15.3 M rows, 83 inputs"]
-  B --> C["Shipped booster<br/>CPU refit, 2,695 rounds"]
+  B --> C["Final booster<br/>CPU refit, 2,695 rounds"]
   C --> D["TreeSHAP<br/>100,000 validation seconds"]
   C --> E["Permutation<br/>all 1.5 M validation seconds"]
   C --> F["Calibration<br/>deciles and 1-versus-5 rounds"]
@@ -77,7 +77,7 @@ flowchart LR
 | You want | Go to |
 |---|---|
 | The write-up with figures (10 pages) | [XGB_explainability_report.docx](XGB_explainability_report.docx) |
-| The shipped model and its metadata | [winprob_xgb83_final.json](../../models/winprob_xgb83_final.json), [meta](../../models/winprob_xgb83_final.meta.json) |
+| The final model and its metadata | [winprob_xgb83_final.json](../../models/winprob_xgb83_final.json), [meta](../../models/winprob_xgb83_final.meta.json) |
 | Global results by bundle | [bundle_importance_and_effects.csv](tables/bundle_importance_and_effects.csv) |
 | Each input: effect, slope, curve | [feature_slopes_all83.csv](tables/feature_slopes_all83.csv), [feature_curves_all83.csv](tables/feature_curves_all83.csv) |
 | One prediction, a contrast, interactions | [local/](local/) |
@@ -225,7 +225,7 @@ The one win is the largest miss's own round. The earlier "3 wins in 426 seconds"
 ## Model and data
 
 - **Model.** XGBoost, binary logistic, 83 inputs: 59 base, plus GEO (16), VIEW (4) and BLIND (4). Depth 4, eta 0.03, min_child_weight 20, subsample 0.8, max_bin 256, seed 0. Early stopping after 100 rounds on a 10% split, with a 3,000-round cap. Best iteration 2,695 (the sprint's was 2,555). Monotone constraints on the alive counts.
-- **The shipped file** is [winprob_xgb83_final.json](../../models/winprob_xgb83_final.json). It is a CPU refit, and it is byte-identical to the booster these explanations were computed from. The file holds 2,796 boosted rounds (best iteration 2,695 plus 100 early-stopping rounds). Predict and explain with the first 2,696 (`iteration_range=(0, 2696)`): a plain predict uses all rounds and differs by up to 0.02. Its metadata records the checklist deviation: the armour sums and the sees-enemy and exposed inputs are kept.
+- **The final file** is [winprob_xgb83_final.json](../../models/winprob_xgb83_final.json). It is a CPU refit, and it is byte-identical to the booster these explanations were computed from. The file holds 2,796 boosted rounds (best iteration 2,695 plus 100 early-stopping rounds). Predict and explain with the first 2,696 (`iteration_range=(0, 2696)`): a plain predict uses all rounds and differs by up to 0.02. Its metadata records the checklist deviation: the armour sums and the sees-enemy and exposed inputs are kept.
 - **Training pool.** `cache_snapshot_2026.parquet`: 14,804 matches dated 2026-08-02 to 2026-10-13. The validation sample has 1,168 matches and 1,515,228 seconds. Checked Nov 5, 2026: the pool has no match on or after Oct 26, and no match in common with the Oct 26–31 holdout keys.
 - **Fit.** The CPU refit gives validation log loss 0.450210. The sprint's GPU run gave 0.450228. Per-row predictions differ from the sprint's by up to 0.25 (mean 0.004), so the refit is not identical to the GPU run.
 - **Protocol.** The team's rules are in [MODELS_TO_RUN.md](../final/MODELS_TO_RUN.md). Nothing here reads the frozen test or the Oct 26–31 holdout.

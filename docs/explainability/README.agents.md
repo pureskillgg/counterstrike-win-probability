@@ -13,7 +13,7 @@ Scripts are in [scripts/explain/](../../scripts/explain/).
 | `xgb83_explain.py --stage report` | bundle and input tables, figures | [tables/](tables/), [figures/](figures/) |
 | `feature_curves.py`, `feature_curve_figs.py` | per-input curves and slopes (needs `explain`) | [tables/](tables/), [figures/](figures/) |
 | `xgb83_local.py` | waterfalls, contrasts, SHAP interactions (about 5 s; needs `explain`) | [local/](local/) |
-| `xgb83_calibration.py` | shipped booster on all validation seconds; deciles; 1-versus-5 per round | [tables/calibration_*](tables/) |
+| `xgb83_calibration.py` | final booster on all validation seconds; deciles; 1-versus-5 per round | [tables/calibration_*](tables/) |
 | `xgb83_drop_ablation.py` | nine drop-group sets × three seeds (WSL, GPU) | work folder `explain83_ablation/` |
 | `xgb83_gdt.py` | population rows (295 matches) and the team's scorer, per seed | work folder `gdt/` |
 | `xgb83_ablation_report.py` | log-loss and GDT ablation tables | [tables/drop_ablation_*](tables/) |
@@ -27,7 +27,7 @@ Scripts are in [scripts/explain/](../../scripts/explain/).
 - WSL Ubuntu 22.04, Python 3.10, `xgboost` 3.2.0 with CUDA, on the RTX 3080. The ablation needs the matrix on WSL's own disk, at `/home/<user>/sprint/matrix_trainctr`. Mapping it over `/mnt/c` is far too slow.
 - `CS2_EXPLAIN_MATRIX`: matrix directory (default `C:/Users/<user>/sprint/matrix_trainctr`). Holds `X.npy` (5.1 GB), `y.npy`, `meta.json`, `val_keys.parquet`. Not in git.
 - `CS2_EXPLAIN_WORK`: work directory (default `C:/Users/<user>/sprint/explain83`). Holds `train_meta.json`, `shap_sample.npz`, `xs.npy`, `perm_importance.csv`, `p_val_shipped.npy`. Not in git.
-- The shipped booster is in git: [models/winprob_xgb83_final.json](../../models/winprob_xgb83_final.json). It is byte-identical to `explain83/xgb83_s0.json`.
+- The final booster is in git: [models/winprob_xgb83_final.json](../../models/winprob_xgb83_final.json). It is byte-identical to `explain83/xgb83_s0.json`.
 - `CS2_ROOT` (default `G:/pureskill/csds-cs2`) is the data root for `sprint_prepare.py`.
 - GDT scorer: [evaluation/intern_gdt/score_gdt.py](../../evaluation/intern_gdt/score_gdt.py). Its README is [evaluation/intern_gdt/README.md](../../evaluation/intern_gdt/README.md).
 
@@ -51,7 +51,7 @@ Scripts are in [scripts/explain/](../../scripts/explain/).
 ## Verification status
 
 - Done: `train` reproduces the sprint's validation log loss to within 0.000018. Per-row predictions differ (max 0.25, mean 0.004).
-- Done: the shipped booster's validation log loss is 0.450210 on all 1,515,228 seconds.
+- Done: the final booster's validation log loss is 0.450210 on all 1,515,228 seconds.
 - Done: the 1-versus-5 check, per round. The one CT win is the largest miss's round.
 - Done: nine drop-group sets, three seeds, scored on GDT. The full model's GDT is 0.0254, matching the team's documented figure.
 - Not done: `sprint_prepare.py` has not been rerun. The 5.1 GB matrix was not rebuilt from raw tomes, so reproducibility from raw data is untested.

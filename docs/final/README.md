@@ -24,7 +24,7 @@ The validation number is optimistic, because it was the selection. The holdout s
 
 Built on the SageMaker space by `scripts/sagemaker/build_event_state.py`: 19,232 matches with states (19,498 entered the build; 266 produced no states, per pin e3ec1051), 374,073 rounds, 3,053,289 states, 10 features (the bake-off's `build_states`, copied unchanged). Holdout B (653 matches) excluded. Pins 9053f4c2 and d7d0bb65 record the build and the data finding. The parity check against the bake-off is recorded below.
 
-**Parity check (done, 4 Nov 2026).** The builder and the bake-off's section 1 and 2 were run on the same full archive, without the holdout B exclusion. Both keep 20,529 channel-kept matches, and both give 386,513 rounds kept and 3,154,730 states, exactly. The bake-off's own section 3 crashes on a null `max_rounds` (in `score_checks`), so it cannot run over the full archive as written. The builder skips those rounds and counts them.
+**Parity check (done, 4 Nov 2026).** The builder and the bake-off's section 1 and 2 were run on the same full archive, without the holdout B exclusion. Both keep 20,529 channel-kept matches, and both give 386,513 rounds kept and 3,154,730 states, exactly. (20,529 less the 653 holdout B matches is 19,876, not the 19,498 that entered the build; the 378-match gap has not been traced.) The bake-off's own section 3 crashes on a null `max_rounds` (in `score_checks`), so it cannot run over the full archive as written. The builder skips those rounds and counts them.
 
 ## Not done
 
